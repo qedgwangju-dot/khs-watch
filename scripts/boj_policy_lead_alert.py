@@ -16,6 +16,7 @@ import hashlib
 import html
 import io
 import json
+import os
 import pathlib
 import re
 import urllib.parse
@@ -43,7 +44,9 @@ WATCH = OUT / "boj_policy_lead_watch.md"
 MARKET = OUT / "boj_policy_market_context.json"
 PENDING = OUT / "boj_policy_lead_pending_state.json"
 CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
-SOURCE_HEALTH = {"rss_ok": 0, "official_index_ok": 0}
+ATTEMPT = OUT / "boj_policy_lead_delivery_attempt.json"
+REJECTED = OUT / "boj_policy_lead_delivery_rejected.json"
+SOURCE_HEALTH = {"rss_ok": 0, "official_index_ok": 0, "official_rss_ok": 0, "speech_fulltext_ok": 0, "speech_fulltext_pending": 0}
 
 
 def source_health_verified(status: dict) -> bool:
@@ -315,6 +318,7 @@ class Item:
     link: str
     published: dt.datetime
     description: str
+    body_verified: bool = False
 
     @property
     def text(self) -> str:
@@ -357,6 +361,12 @@ class Signal:
     # Optional fields: keep previous payloads/state and September test fixtures compatible.
     rate_unchanged: bool = False
     underlying_target_reached: bool = False
+    speaker: str = ""
+    speech_event: str = ""
+    speech_evidence: tuple[str, ...] = ()
+    speech_verified: bool = False
+    speech_conditional: bool = False
+    body_substantive: bool = False
 
 
 def clean(value: str) -> str:
@@ -382,6 +392,8 @@ def pubdate(value: str) -> dt.datetime | None:
 
 def parse_rss(text: str, default_source: str = "") -> list[Item]:
     root = ET.fromstring(text)
+    if root.tag.rsplit("}", 1)[-1].lower() != "rss" or root.find("channel") is None:
+        raise ValueError("BOJ RSS feed structure invalid")
     items: list[Item] = []
     for node in root.findall(".//item"):
         published = pubdate(node.findtext("pubDate") or "")
@@ -415,6 +427,8 @@ def fetch_rss(url: str, source_name: str, now: dt.datetime) -> list[Item]:
     try:
         items = parse_rss(text, source_name)
         SOURCE_HEALTH["rss_ok"] += 1
+        if source_name == "Bank of Japan":
+            SOURCE_HEALTH["official_rss_ok"] = SOURCE_HEALTH.get("official_rss_ok", 0) + 1
         return items
     except Exception as exc:
         record_source_failure(
@@ -427,11 +441,270 @@ def fetch_rss(url: str, source_name: str, now: dt.datetime) -> list[Item]:
         return []
 
 
+
+# Named individual views must not be confused with a collective BOJ decision.
+BOARD_MEMBERS = {
+    "tamura": "다무라 나오키 위원",
+    "takata": "다카타 하지메 위원",
+    "asada": "아사다 위원",
+    "sato": "사토 위원",
+    "koeda": "고에다 위원",
+    "masu": "마스 위원",
+    "himino": "히미노 부총재",
+    "uchida": "우치다 부총재",
+}
+
+
+def member_from_title(title: str) -> str:
+    title = clean(title).lower().replace("’", "'")
+    for surname, korean in BOARD_MEMBERS.items():
+        if re.search(
+            r"\b(?:speech by (?:board member|deputy governor)|"
+            r"boj(?:'s| board member| deputy governor)?|"
+            r"bank of japan(?:'s| board member| deputy governor)?)\s+"
+            + surname + r"\b", title
+        ):
+            return korean
+    return ""
+
+
+def member_event_kind(title: str) -> str:
+    if re.search(r"\b(?:press|news) conference\b", title.lower()):
+        return "기자회견"
+    if "speech" in title.lower():
+        return "연설"
+    return "발언"
+
+
+def same_member_event(signal: Signal, state: dict) -> bool:
+    if not signal.speaker:
+        return False
+    if member_event_id(signal.speaker, signal.published, signal.speech_event) in (state.get("delivered_member_events") or {}):
+        return True
+    previous = state.get("signature") or {}
+    previous_speaker = previous.get("speaker") or member_from_title(str(state.get("last_title") or ""))
+    published = parse_state_time(state.get("last_published_at_kst"))
+    if not published or published.date() != signal.published.date() or previous_speaker != signal.speaker:
+        return False
+    previous_kind = previous.get("speech_event") or member_event_kind(str(state.get("last_title") or ""))
+    # A reported speech and its official PDF are one event. A separately identified
+    # press conference remains a distinct event.
+    return (previous_kind == "기자회견") == (signal.speech_event == "기자회견")
+
+
+
+def member_event_id(speaker: str, published: dt.datetime, kind: str) -> str:
+    return f"{published.astimezone(KST).date()}|{speaker}|{'conference' if kind == '기자회견' else 'speech'}"
+
+
+def delivery_event_id(signal: Signal) -> str:
+    if signal.speaker:
+        return member_event_id(signal.speaker, signal.published, signal.speech_event)
+    if signal.event_type == "decision":
+        return f"{signal.published.date()}|decision"
+    return f"{signal.published.date()}|{signal.event_type}|{normalize(signal.title)}"
+
+
+def delivery_is_unconfirmed(signal: Signal, state: dict) -> bool:
+    return delivery_event_id(signal) in (state.get("unconfirmed_deliveries") or {})
+
+
+def write_json_atomic(path: pathlib.Path, value: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def prepare_delivery_attempt(run_id: str, run_attempt: str, now: dt.datetime) -> dict:
+    """Persist the intent *before* making the non-idempotent sendMessage request.
+    The caller must push STATE successfully before calling Telegram.
+    """
+    payload = json.loads(DATA.read_text(encoding="utf-8"))
+    signal = signal_from_payload(payload)
+    state = load_state()
+    event_id = delivery_event_id(signal)
+    attempt_id = f"{run_id}:{run_attempt}:{signal.key}"
+    pending = dict(state.get("unconfirmed_deliveries") or {})
+    existing = pending.get(event_id)
+    # A rejected/ambiguous git push can have committed this intent. Reusing it is
+    # safe only inside this exact invocation BEFORE its one Telegram request.
+    if existing:
+        if existing.get("attempt_id") != attempt_id:
+            raise RuntimeError("BOJ delivery outcome unconfirmed; automatic retry blocked")
+        record = existing
+    else:
+        ok, reason = should_alert(signal, state, now)
+        if not ok:
+            raise RuntimeError("BOJ pre-send state changed: " + reason)
+        record = {
+            "status": "unconfirmed", "attempt_id": attempt_id,
+            "event_id": event_id, "signal_key": signal.key, "run_id": str(run_id),
+            "baseline_signal_key": state.get("last_signal_key"),
+            "title": signal.title, "source": signal.source,
+            "published_at_kst": signal.published.isoformat(),
+            "prepared_at_kst": now.isoformat(timespec="seconds"),
+        }
+    pending[event_id] = record
+    state["unconfirmed_deliveries"] = pending
+    write_json_atomic(STATE, state)
+    write_json_atomic(ATTEMPT, record)
+    return record
+
+
+def valid_delivery_confirmation(confirmation: dict, attempt: dict) -> bool:
+    mid = confirmation.get("message_id")
+    return (
+        confirmation.get("status") == "confirmed"
+        and confirmation.get("lane") == "boj_policy"
+        and confirmation.get("attempt_id") == attempt.get("attempt_id")
+        and confirmation.get("signal_key") == attempt.get("signal_key")
+        and confirmation.get("bot_username") == "khs8879887988798879_bot"
+        and type(mid) is int and mid > 0
+        and bool(parse_state_time(confirmation.get("confirmed_at_kst")))
+    )
+
+
+
+def has_distinct_body(item: Item) -> bool:
+    body = normalize(item.description)
+    title = normalize(item.title)
+    return bool(body and body != title and len(body.replace(title, "", 1).strip()) >= 35)
+
+
+def member_policy_details(body: str) -> dict:
+    """Extract only explicit policy clauses; economic growth/price acceleration
+    alone, navigation text and a repeated RSS headline are not tightening evidence.
+    """
+    lower = clean(body).lower()
+    sentences = re.split(r"(?<=[.!?])\s+", lower)
+    acceleration = False
+    condition = False
+    inflation_condition = False
+    neutral = False
+    easing = False
+    further = False
+    facts = []
+    for line in sentences:
+        if re.search(r"\b(?:no need to|not necessary to|need not|does not need to|do not need to|should not)\s+(?:\w+\s+){0,3}(?:accelerat|rais|hik)", line):
+            continue
+        if re.search(
+            r"\b(?:accelerat\w*|speed up|faster(?:-pace)?|increase the frequency or size)\b"
+            r".{0,100}\b(?:policy (?:interest )?rate hikes|interest rate hikes|rate hikes|hikes|raising (?:interest )?rates)\b"
+            r"|\b(?:rate hikes|raising (?:interest )?rates)\b.{0,90}\b(?:accelerat\w*|faster|speed up)\b",
+            line,
+        ):
+            if re.search(r"\b(?:past|previous|last year|historical)\b.{0,30}\b(?:accelerat\w*|faster)\b", line):
+                continue
+            if re.search(r"\b(?:if|should|may|might|could|need|needs|required|necessary|must|believe|consider|signals? chance|possible)\b", line):
+                acceleration = further = True
+                inflation_condition = inflation_condition or bool(re.search(
+                    r"\b(?:signs of an upward deviation in prices|inflation overshoot\w*|upside risks? to prices|prices? deviat\w* upward|upward deviation in prices)\b"
+                    r"|inflation.{0,55}\b(?:above|exceed\w*|overshoot\w*)\b", line
+                ))
+                condition = condition or inflation_condition or bool(re.search(r"\b(?:if|provided that|depending on|conditional on)\b", line))
+        if re.search(
+            r"\b(?:bring|move|raise|adjust)\b.{0,100}\b(?:policy (?:interest )?rate|policy rate|interest rates?)\b"
+            r".{0,100}\b(?:neutral (?:interest rate|level|rate)|neutral)\b", line
+        ):
+            neutral = further = True
+        if re.search(r"\b(?:continue to raise|continue raising|further (?:policy )?(?:interest )?rate hikes|additional rate hikes)\b", line):
+            if re.search(r"\b(?:believe|should|need|will|necessary|appropriate|consider)\b", line):
+                further = True
+        if re.search(r"\b(?:no rush|no need to hurry|wait and see|delay further|slow the pace)\b", line) and re.search(r"\b(?:rate hikes|raising rates|interest rates|tightening)\b", line):
+            easing = True
+    if acceleration:
+        facts.append("물가가 목표를 웃돌 조짐이 나타나면 인상 속도를 높여야 한다는 의견" if inflation_condition
+                     else ("조건부로 금리 인상 속도를 높일 가능성을 언급" if condition
+                           else "금리 인상 속도를 높일 가능성을 명시적으로 언급"))
+    if neutral:
+        facts.append("정책금리를 경기 중립 수준으로 높일 필요가 있다는 의견")
+    neutral_value = re.search(
+        r"\bneutral (?:interest )?rate\s+(?:is|would be|was)\s+(?:most likely\s+)?(?:around|about|approximately)\s+(\d+(?:\.\d+)?)\s*(?:percent|per cent|%)",
+        lower,
+    )
+    if neutral_value and (neutral or further):
+        value = float(neutral_value.group(1))
+        if 0 < value <= 10:
+            unchanged = "my view has not changed" in lower
+            facts.append(f"중립금리 약 {value:g}%라는 {'기존 개인 견해 유지' if unchanged else '개인 추정'} — BOJ 전체 목표금리 아님")
+    if (acceleration or further) and re.search(r"\bwithin a few months of each rate hike\b", lower):
+        facts.append("인상 후 수개월 안에 기업 면담·조사로 영향을 평가할 수 있다고 설명 — 고정 인상 간격 확정 아님")
+    if (acceleration or further) and "less firmly anchored" in lower and re.search(r"\b2\s*(?:percent|%)", lower):
+        facts.append("일본의 기조물가·기대물가가 2%에 충분히 안정되지 않아 물가 상방 충격에 신속히 대응할 필요")
+    if (acceleration or further) and re.search(r"\bfinancial conditions remain accommodative\b", lower):
+        facts.append("금융여건은 여전히 완화적이라고 판단")
+    if (acceleration or further) and re.search(r"\b(?:crude oil|oil prices|raw material prices)\b", lower) and re.search(r"\b(?:upside risks?|price pressures|push up prices)\b", lower):
+        channels = ["유가·원재료"]
+        if re.search(r"\b(?:ai-related demand|demand for ai)\b", lower):
+            channels.append("AI 관련 수요")
+        if re.search(r"\b(?:depreciation of the yen|yen depreciation|weak yen)\b", lower):
+            channels.append("엔화 약세")
+        facts.append("물가 상승 위험: " + "·".join(channels))
+    if further and not facts:
+        facts.append("추가 금리 인상이 필요하다는 의견")
+    if easing and not (acceleration or further):
+        facts.append("추가 긴축을 서두르지 말자는 의견")
+    return {"level": 2 if acceleration else (1 if further else (0 if easing else 1)),
+            "further": further, "conditional": condition, "facts": tuple(dict.fromkeys(facts)),
+            "neutral": neutral}
+
+
+def official_speech_pdf_url(page_url: str, document: str) -> str:
+    """Follow only same-document, official English PDF links, never unrelated chart PDFs."""
+    base = urllib.parse.urlparse(page_url)
+    stem = re.search(r"(ko\d{6}[a-z])(?:\.htm|\.html)$", base.path, re.I)
+    if base.hostname not in {"www.boj.or.jp", "boj.or.jp"} or not stem:
+        return ""
+    for href in re.findall(r"""href\s*=\s*["']([^"']+)["']""", document, flags=re.I):
+        absolute = urllib.parse.urljoin(page_url, html.unescape(href))
+        parsed = urllib.parse.urlparse(absolute)
+        if (parsed.scheme == "https" and parsed.hostname in {"www.boj.or.jp", "boj.or.jp"}
+            and "/en/about/press/koen_" in parsed.path
+            and re.search(r"/" + stem.group(1) + r"\d*\.pdf$", parsed.path, re.I)):
+            return absolute
+    return ""
+
+
+def enrich_named_speech_media(items: list[Item], official: list[Item], now: dt.datetime) -> list[Item]:
+    """Use verified official text first; a headline is only a discovery hint."""
+    complete = {(member_from_title(x.title), x.published.date(), member_event_kind(x.title) == "기자회견")
+                for x in official if x.body_verified and member_policy_details(x.description)["facts"]}
+    output = []
+    attempted = set()
+    for item in items:
+        name = member_from_title(item.title)
+        key = (name, item.published.date(), member_event_kind(item.title) == "기자회견")
+        if (not name or key in complete or key in attempted or source_name(item) not in TRUSTED
+            or not (now - dt.timedelta(hours=MEDIA_POLICY_EVENT_MAX_AGE_HOURS) <= item.published <= now + dt.timedelta(minutes=10))):
+            output.append(item)
+            continue
+        attempted.add(key)
+        url = decode_google_link(item.link)
+        host = (urllib.parse.urlparse(url).hostname or "").lower()
+        approved = {"reuters.com", "www.reuters.com", "bloomberg.com", "www.bloomberg.com",
+                    "asia.nikkei.com", "ft.com", "www.ft.com"}
+        if host not in approved:
+            output.append(item)
+            continue
+        body, error = fetch_text(url, UA, timeout=12, attempts=1, accept="text/html,*/*")
+        if body and not error and member_policy_details(body)["facts"]:
+            output.append(replace(item, link=url, description=clean(body), body_verified=True))
+        else:
+            record_source_failure(lane="boj_policy_path", source_name="BOJ member media full text",
+                                  source_url=url, error=error or "policy clauses unavailable", checked_at=now)
+            output.append(item)
+    return output
+
+
+
 def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
     enriched: list[Item] = []
     for item in items:
         if source_name(item) != "Bank of Japan" or not item.link:
             enriched.append(item)
+            continue
+        if not (now - dt.timedelta(hours=MAX_AGE_HOURS) <= item.published <= now + dt.timedelta(minutes=10)):
             continue
         # BOJ RSS sometimes links directly to a policy PDF, not an HTML page.
         # A 200 response to a PDF must not be treated as verified empty prose.
@@ -445,6 +718,21 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
                 attempts=2,
                 accept="text/html,application/xhtml+xml,*/*",
             )
+        member = member_from_title(item.title)
+        document_url = item.link
+        if member and body and not error:
+            pdf_url = official_speech_pdf_url(item.link, body)
+            if pdf_url:
+                pdf_body, pdf_error = _fetch_boj_document_text(pdf_url)
+                if pdf_body and not pdf_error:
+                    body, document_url = pdf_body, pdf_url
+                elif not member_policy_details(body)["facts"]:
+                    body, error = None, pdf_error or "speech PDF body unavailable"
+            if body and not member_policy_details(body)["facts"]:
+                body, error = None, "speech listing/title only; substantive policy clauses unavailable"
+        if member:
+            k = "speech_fulltext_ok" if body and not error else "speech_fulltext_pending"
+            SOURCE_HEALTH[k] = SOURCE_HEALTH.get(k, 0) + 1
         if error or not body:
             record_source_failure(
                 lane="boj_policy_path",
@@ -459,9 +747,10 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
             Item(
                 title=item.title,
                 source=item.source,
-                link=item.link,
+                link=document_url,
                 published=item.published,
                 description=clean(body),
+                body_verified=bool(member),
             )
         )
     return enriched
@@ -935,6 +1224,11 @@ def event_type(item: Item) -> str | None:
     title = item.title.lower()
     source = source_name(item)
 
+    if source in TRUSTED and member_from_title(item.title) and (
+        source == "Bank of Japan"
+        or re.search(r"\b(?:speech|speaks?|said|says|signals?|warns?|urges?|calls? for|views?|remarks?|interview|expects?|argues?)\b", title)
+    ) and not re.search(r"\b(?:dissents?|voted against|votes against)\b", title):
+        return "official_speech"
     if source == "Bank of Japan":
         if "outlook for economic activity and prices" in title:
             return "decision"  # Same meeting, separate 2%-assessment source.
@@ -1116,6 +1410,25 @@ def classify(item: Item) -> Signal | None:
     if kind == "parliament_testimony" and "quite close" in lower and "underlying inflation" in lower:
         note = "국회 답변: 기조물가가 2% 목표에 상당히 근접 — 인상 시점·속도 가속 확정은 아님"
 
+    speaker = member_from_title(item.title) if kind == "official_speech" else ""
+    speech = member_policy_details(item.description) if speaker and item.body_verified else {}
+    speech_facts = tuple(speech.get("facts") or ())
+    if speaker:
+        # An individual's speech does not create a new policy vote or actual hike.
+        rate = bp = vote_for = vote_against = None
+        rate_unchanged = False
+        dissent_direction, dissenters = None, ()
+        assessment_vote_for = assessment_vote_against = assessment_view = None
+        outlook_dissenters, outlook_dissent_view = (), None
+        underlying_target_reached = official_statement_detail_verified = False
+        expected_move = hawkish_tail_50bp = False
+        inflation_spillover = cpi_h2_clearly_above_2 = stabilize_underlying_around_2 = False
+        further = bool(speech.get("further"))
+        conditional = bool(speech.get("conditional"))
+        neutral = bool(speech.get("neutral"))
+        level = int(speech.get("level", 1))
+        note = speech_facts[0] if speech_facts else "발언 제목만 확인 — 본문·조건 확인 대기"
+
     # Official source is authoritative for existence of the event, but may contain only a title in RSS.
     key_material = (
         f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
@@ -1161,6 +1474,12 @@ def classify(item: Item) -> Signal | None:
         note=note,
         rate_unchanged=rate_unchanged,
         underlying_target_reached=underlying_target_reached,
+        speaker=speaker,
+        speech_event=member_event_kind(item.title) if speaker else "",
+        speech_evidence=speech_facts,
+        speech_verified=bool(speech_facts and item.body_verified),
+        speech_conditional=bool(speech.get("conditional")),
+        body_substantive=has_distinct_body(item),
     )
 
 
@@ -1257,13 +1576,24 @@ def verified_event_signals(now: dt.datetime) -> list[Signal]:
 
 
 def collect(now: dt.datetime) -> list[Signal]:
-    SOURCE_HEALTH["rss_ok"] = 0
-    SOURCE_HEALTH["official_index_ok"] = 0
-    items: list[Item] = []
-    for query in QUERIES:
-        items.extend(fetch_rss(news_url(query), "Google News", now))
+    for name in SOURCE_HEALTH:
+        SOURCE_HEALTH[name] = 0
     boj_items = fetch_rss(BOJ_RSS, "Bank of Japan", now)
-    items.extend(enrich_official_items(boj_items, now))
+    official = enrich_official_items(boj_items, now)
+    # The November 26 official PDF is independently verified and used only within
+    # the ordinary live event window, if the RSS landing page omits the attachment.
+    tamura_time = dt.datetime(2026, 11, 26, 10, 0, tzinfo=KST)
+    if (now - dt.timedelta(hours=MAX_AGE_HOURS) <= tamura_time <= now
+        and not any(member_from_title(x.title) == "다무라 나오키 위원" and
+                    x.published.date() == tamura_time.date() and x.body_verified for x in official)):
+        anchor = Item("Speech by Board Member TAMURA in Yamanashi", "Bank of Japan",
+                      "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261126a1.pdf",
+                      tamura_time, "")
+        official.extend(enrich_official_items([anchor], now))
+    media: list[Item] = []
+    for query in QUERIES:
+        media.extend(fetch_rss(news_url(query), "Google News", now))
+    items = official + enrich_named_speech_media(media, official, now)
     items.extend(fetch_official_statement_items(now))
     items.extend(fetch_official_outlook_items(now))
     items.extend(fetch_direct_context(now))
@@ -1274,7 +1604,7 @@ def collect(now: dt.datetime) -> list[Signal]:
         if not (cutoff <= item.published <= now + dt.timedelta(minutes=10)):
             continue
         normalized = normalize(item.title)
-        if normalized not in dedup or item.published > dedup[normalized].published:
+        if normalized not in dedup or (item.body_verified, item.published) > (dedup[normalized].body_verified, dedup[normalized].published):
             dedup[normalized] = item
 
     signals = [classify(item) for item in dedup.values()]
@@ -1296,6 +1626,7 @@ def collect(now: dt.datetime) -> list[Signal]:
         signals,
         key=lambda s: (
             event_priority.get(s.event_type, 0),
+            int(s.speech_verified) if s.event_type == "official_speech" else 0,
             source_priority.get(s.source, 0),
             s.published,
         ),
@@ -1459,11 +1790,16 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
 
 
 def load_state() -> dict:
+    # A corrupted or missing production state must not silently reset deduplication.
     try:
         value = json.loads(STATE.read_text(encoding="utf-8"))
-        return value if isinstance(value, dict) else {}
-    except Exception:
-        return {}
+    except Exception as exc:
+        raise RuntimeError("BOJ delivery state unavailable; stop rather than replay alerts") from exc
+    if not isinstance(value, dict):
+        raise RuntimeError("BOJ delivery state invalid")
+    if not isinstance(value.get("unconfirmed_deliveries", {}), dict):
+        raise RuntimeError("BOJ unconfirmed delivery journal invalid")
+    return value
 
 
 def parse_state_time(value) -> dt.datetime | None:
@@ -1503,6 +1839,10 @@ def signal_signature(signal: Signal) -> dict:
         "risk_channels": signal.risk_channels,
         "rate_unchanged": signal.rate_unchanged,
         "underlying_target_reached": signal.underlying_target_reached,
+        **({"speaker": signal.speaker, "speech_event": signal.speech_event,
+            "speech_evidence": list(signal.speech_evidence),
+            "speech_verified": signal.speech_verified,
+            "speech_conditional": signal.speech_conditional} if signal.speaker else {}),
     }
 
 
@@ -1540,6 +1880,8 @@ def market_path_has_policy_content(signal: Signal) -> bool:
 
 
 def trusted_media_event_has_policy_content(signal: Signal) -> bool:
+    if signal.speaker:
+        return signal.speech_verified and bool(signal.speech_evidence)
     if signal.source == "Bank of Japan":
         return True
     return (
@@ -1566,6 +1908,17 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
 
 
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
+    if delivery_is_unconfirmed(signal, state):
+        return False, "이전 Telegram 전송 결과 미확인 — 중복 위험으로 자동 재전송 보류"
+    rejection = state.get("last_delivery_rejection") or {}
+    retry_at = parse_state_time(rejection.get("retry_not_before_kst"))
+    if rejection.get("event_id") == delivery_event_id(signal) and retry_at and now < retry_at:
+        return False, "Telegram 명시적 전송 거절 — 안전 재시도 대기"
+    if signal.speaker:
+        if same_member_event(signal, state):
+            return False, "이미 발송한 동일 위원 발언 — 공식 원문과 보도 중복 제외"
+        if not signal.speech_verified or not signal.speech_evidence:
+            return False, "위원 발언 원문·핵심 조건 확인 대기"
     if not press_conference_has_policy_content(signal):
         return False, "회견 본문 정책경로 확인 전"
     if signal.event_type == "market_path":
@@ -1573,6 +1926,8 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             return False, "오래된 보도 — 시장 정책경로 보도 신선도 초과"
         if not market_path_has_policy_content(signal):
             return False, "시장 정책경로 핵심 변화 없음"
+        if not signal.body_substantive:
+            return False, "시장 보도 원문·근거 확인 대기"
     elif signal.source != "Bank of Japan" and signal.event_type in {
         "decision",
         "press_conference",
@@ -1636,6 +1991,8 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     ):
         return False, "이미 반영한 동일 회의의 후속 결정 보도"
 
+    if signal.speaker and signal.speech_verified:
+        return True, "새 위원 개인 정책 발언 — 원문 근거 확인"
     if signal.event_type != previous.get("event_type") and signal.event_type != "market_path":
         return True, (
             "새 BOJ 공식 정책 이벤트"
@@ -1794,6 +2151,8 @@ def next_official_check(now: dt.datetime) -> str:
         (dt.datetime(2026, 11, 2, 14, 0, tzinfo=KST), "10월 전망보고서 전체본 11월 2일 14:00 KST"),
         (dt.datetime(2026, 11, 5, 8, 50, tzinfo=KST), "9월 회의 의사록 11월 5일 08:50 KST"),
         (dt.datetime(2026, 11, 10, 8, 50, tzinfo=KST), "10월 회의 주요 의견 11월 10일 08:50 KST"),
+        (dt.datetime(2026, 11, 27, 23, 59, tzinfo=KST), "11월 27일 다무라 위원 회견록(시각 미정) · 11월 30일 10:05 우에다 총재 연설 · 12월 17~18일 회의"),
+        (dt.datetime(2026, 11, 30, 10, 5, tzinfo=KST), "11월 30일 10:05 우에다 총재 연설 · 12월 17~18일 회의"),
         (dt.datetime(2026, 12, 17, 0, 0, tzinfo=KST), "금융정책결정회의 12월 17~18일"),
         (dt.datetime(2026, 12, 28, 8, 50, tzinfo=KST), "12월 회의 주요 의견 12월 28일 08:50 JST"),
     ]
@@ -2034,6 +2393,26 @@ def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
 
 def first_glance_policy(signal: Signal) -> dict[str, str]:
     """Make the actual decision and *conditional* next path readable separately."""
+    if signal.speaker:
+        why = signal.speech_evidence[0] if signal.speech_evidence else "본문 확인 대기"
+        if signal.level == 2:
+            future = ("물가 상방 위험이 커지면 인상 속도를 높일 수 있다는 개인 의견"
+                      if any("물가가 목표를 웃돌" in x for x in signal.speech_evidence)
+                      else ("조건부로 인상 속도를 높일 수 있다는 개인 의견" if signal.speech_conditional
+                            else "인상 속도를 높이자는 개인 의견"))
+            short = "조건부 인상 가속 의견" if signal.speech_conditional else "인상 가속 의견"
+            market = "인상 기대가 실제로 높아질 경우 엔화 강세·일본 단기금리 상승·주식 부담 가능"
+        elif signal.level == 0:
+            future, short = "인상을 서두르지 말자는 개인 의견", "긴축 신중 의견"
+            market = "인상 기대가 낮아지면 엔화 약세·단기금리 하락 압력 가능"
+        else:
+            future, short = "추가 인상 관련 개인 의견 — 시점·폭 확정 아님", "추가 인상 의견"
+            market = "시장 인상 기대의 실제 변화 확인 필요"
+        return {"today": f"{signal.speaker} {signal.speech_event} — 새로운 금리 결정 없음",
+                "short_today": f"{signal.speaker} {signal.speech_event}",
+                "future": future, "short_future": short, "why": why,
+                "meaning": "위원 개인 견해이며 BOJ 전체의 인상 결정·다음 회의 인상폭 확정이 아님",
+                "market": market, "vote": ""}
     if signal.event_type == "decision":
         if signal.rate_unchanged:
             today = (
@@ -2340,20 +2719,23 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             item = market.get(key)
             if usable_event_market_move(item, event_time):
                 suffix = ""
+                pct = item["change_pct"]
+                yen_label = "보합(미세 변동)" if abs(pct) < 0.005 else ("엔화 약세" if pct > 0 else "엔화 강세")
+                pct_text = f"{pct:+.4f}%" if 0 < abs(pct) < 0.005 else f"{pct:+.2f}%"
                 if key == "usd_jpy_event":
-                    suffix = " · 엔화 약세" if item["change_pct"] > 0 else " · 엔화 강세"
+                    suffix = " · " + yen_label
                 observed = item.get("latest_time")
                 stamp = (
                     f" · 시세 시각 {observed.strftime('%m-%d %H:%M')} KST"
                     if isinstance(observed, dt.datetime) else ""
                 )
                 reaction_lines.append(
-                    f"- {label}: {item['change_pct']:+.2f}% "
+                    f"- {label}: {pct_text} "
                     f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}{stamp}"
                 )
                 reaction_parts.append(
-                    f"{label} {item['change_pct']:+.2f}%"
-                    + ((" 엔화약세" if item["change_pct"] > 0 else " 엔화강세") if key == "usd_jpy_event" else "")
+                    f"{label} {pct_text}"
+                    + ((" " + yen_label) if key == "usd_jpy_event" else "")
                 )
             else:
                 reaction_lines.append(
@@ -2393,14 +2775,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%, {market_quote_age_label(nq, now)})"
         )
 
-    if signal.event_type == "press_conference":
-        fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date())) or {}
+    if signal.event_type == "press_conference" and str(signal.published.date()) in VERIFIED_EVENT_FALLBACKS:
+        fallback = VERIFIED_EVENT_FALLBACKS[str(signal.published.date())]
         prior_decision = [
             f"- 직전 결정: {fallback.get('policy_rate', 1.25) - fallback.get('hike_bp', 25)/100:.2f}% → {fallback.get('policy_rate', 1.25):.2f}% (+{fallback.get('hike_bp', 25)}bp)",
             f"- 표결: {fallback.get('vote_for', 7)}대{fallback.get('vote_against', 2)} · 아사다·사토 = 동결 요구",
             "- 시장 기대: +25bp 예상 부합 · 50bp 매파 꼬리위험은 결정에서 미실현",
         ]
-    elif signal.event_type == "parliament_testimony":
+    elif signal.event_type == "parliament_testimony" and signal.published.date() == dt.date(2026, 10, 19):
         prior_decision = [
             "- 직전 결정(9월 18일): 1.00% → 1.25% (+25bp)",
             "- 직전 표결(9월 18일): 7대2 · 이번 국회 발언에서 재표결한 것이 아님",
@@ -2507,6 +2889,27 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         *reaction_lines,
     ]
 
+    if signal.speaker:
+        # A speech has neither a policy vote nor a new executed adjustment.
+        lines = [
+            "【핵심 내용】",
+            f"• 발언 | {signal.speaker} {signal.speech_event} (위원 개인 의견)",
+            f"• 방향 | {glance['future']}",
+            *[f"• 근거 | {fact}" for fact in signal.speech_evidence],
+            f"• 의미 | {glance['meaning']}",
+            f"• 시장 영향(가능성) | {glance['market']}",
+            f"• 다음 확인 | {next_official_check(now)}",
+            "",
+            "【실제 시장 반응 | 자료 공개 시점 기준】",
+            *reaction_lines,
+        ]
+        if not reaction_lines:
+            lines.append("- 발표 후 비교 가능한 유효 시세 확인 전")
+        lines.append("- 각 시세 관측 시각이 다르며 발언 단독 효과로 단정하지 않음")
+        source_validation = [
+            "- 공식 연설 본문·핵심 정책 문구 확인" if signal.source == "Bank of Japan" and signal.speech_verified
+            else "- 고신뢰 보도 본문 확인 · BOJ 공식 연설 원문 별도 검증",
+        ]
     if latest_parts:
         lines += ["", "【시장 시세·마지막 확인 시각】", "- " + " | ".join(latest_parts)]
     if signal.event_type == "parliament_testimony":
@@ -2538,7 +2941,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     ]
     if signal.outlook_dissenters:
         lines.append(f"- 물가전망 문구 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}")
-    if signal.assessment_vote_for is None:
+    if signal.assessment_vote_for is None and not signal.speaker:
         policy_vote_label = (
             f"정책금리 표결({signal.vote_for}대{signal.vote_against})"
             if signal.vote_for is not None and signal.vote_against is not None
@@ -2565,7 +2968,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         f"공개 {label_time(signal.published)} · 조회 {label_time(now)}",
     ]
     if source_link:
-        lines.append(f"원문: {source_link}")
+        if (urllib.parse.urlparse(source_link).hostname or "") == "news.google.com":
+            lines.append("- 원문 직접 링크 확인 실패 · 아래는 기사 중계 링크")
+        lines.append(f"원문: {source_link}" if "news.google.com" not in source_link else f"보도 중계 링크: {source_link}")
 
     payload = {
         "level": signal.level,
@@ -2587,6 +2992,7 @@ def signal_from_payload(payload: dict) -> Signal:
     raw["published"] = dt.datetime.fromisoformat(str(raw["published"]))
     raw["dissenters"] = tuple(raw.get("dissenters") or ())
     raw["outlook_dissenters"] = tuple(raw.get("outlook_dissenters") or ())
+    raw["speech_evidence"] = tuple(raw.get("speech_evidence") or ())
     return Signal(**raw)
 
 
@@ -2603,6 +3009,9 @@ def guard_pending_against_state(state_path: pathlib.Path) -> int:
 
     ok, reason = should_alert(signal, remote_state, dt.datetime.now(KST))
     if ok:
+        # Use the actual remote state, including any delivery intent, not the
+        # checkout snapshot when preparing a new request.
+        write_json_atomic(STATE, remote_state)
         print(f"BOJ_REMOTE_GUARD=allow reason={reason}")
         return 0
 
@@ -2618,7 +3027,7 @@ def guard_pending_against_state(state_path: pathlib.Path) -> int:
 
 
 def clear_outputs() -> None:
-    for path in (TITLE, BODY, DATA, MARKET, PENDING, CONFIRMED):
+    for path in (TITLE, BODY, DATA, MARKET, PENDING, CONFIRMED, ATTEMPT, REJECTED):
         try:
             path.unlink()
         except FileNotFoundError:
@@ -2626,16 +3035,67 @@ def clear_outputs() -> None:
 
 
 def finalize() -> int:
+    if not ATTEMPT.exists():
+        print("BOJ delivery: no Telegram request attempted.")
+        return 0
+    attempt = json.loads(ATTEMPT.read_text(encoding="utf-8"))
+    state = load_state()
+    pending = dict(state.get("unconfirmed_deliveries") or {})
+    event_id = attempt["event_id"]
+    if pending.get(event_id, {}).get("attempt_id") != attempt.get("attempt_id"):
+        # A push may have succeeded even if its local acknowledgment was lost.
+        if CONFIRMED.exists():
+            receipt = json.loads(CONFIRMED.read_text(encoding="utf-8"))
+            if valid_delivery_confirmation(receipt, attempt) and state.get("last_delivery") == receipt:
+                print("BOJ receipt already finalized; no state change.")
+                return 0
+        if REJECTED.exists():
+            rejection = json.loads(REJECTED.read_text(encoding="utf-8"))
+            if rejection.get("attempt_id") == attempt.get("attempt_id") and state.get("last_delivery_rejection") == rejection:
+                print("BOJ explicit rejection already finalized.")
+                return 0
+        raise RuntimeError("BOJ delivery journal mismatch; preserve remote state")
+    if REJECTED.exists():
+        rejection = json.loads(REJECTED.read_text(encoding="utf-8"))
+        if rejection.get("attempt_id") != attempt.get("attempt_id") or rejection.get("status") != "rejected":
+            raise RuntimeError("BOJ Telegram rejection mismatch")
+        pending.pop(event_id)
+        state["unconfirmed_deliveries"] = pending
+        state["last_delivery_rejection"] = rejection
+        write_json_atomic(STATE, state)
+        print("BOJ delivery explicitly rejected; no successful delivery recorded; eligible for safe retry.")
+        return 0
     if not PENDING.exists() or not CONFIRMED.exists():
-        print("BOJ policy Telegram confirmation missing; pending state not finalized.")
+        print("BOJ delivery unconfirmed; durable intent retained, no success recorded or automatic retry.")
         return 0
     confirmation = json.loads(CONFIRMED.read_text(encoding="utf-8"))
-    if confirmation.get("status") != "confirmed" or confirmation.get("lane") != "boj_policy":
-        print("BOJ policy Telegram confirmation mismatch; pending state not finalized.")
-        return 0
-    STATE.parent.mkdir(exist_ok=True)
-    STATE.write_text(PENDING.read_text(encoding="utf-8"), encoding="utf-8")
-    print(f"Finalized BOJ policy path state: {STATE}")
+    if not valid_delivery_confirmation(confirmation, attempt):
+        raise RuntimeError("BOJ Telegram receipt invalid; retain unconfirmed intent")
+    new_state = json.loads(PENDING.read_text(encoding="utf-8"))
+    if new_state.get("last_signal_key") != attempt.get("signal_key"):
+        raise RuntimeError("BOJ pending signal/Telegram receipt mismatch")
+    if state.get("last_signal_key") != attempt.get("baseline_signal_key"):
+        raise RuntimeError("BOJ successful baseline changed; receipt retained for reconciliation")
+    pending.pop(event_id)
+    # Keep older metadata and unresolved deliveries; update the successful
+    # baseline only after a positive, matching Telegram message_id.
+    prior_member = (state.get("signature") or {}).get("speaker") or member_from_title(str(state.get("last_title") or ""))
+    prior_date = parse_state_time(state.get("last_published_at_kst"))
+    seen = dict(state.get("delivered_member_events") or {})
+    if prior_member and prior_date and state.get("last_signal_key"):
+        prior_kind = (state.get("signature") or {}).get("speech_event") or member_event_kind(str(state.get("last_title") or ""))
+        seen.setdefault(member_event_id(prior_member, prior_date, prior_kind),
+                        {"signal_key": state["last_signal_key"], "confirmed_at_kst": state.get("last_alert_at_kst")})
+    if (new_state.get("signature") or {}).get("speaker"):
+        seen[event_id] = {"signal_key": attempt["signal_key"], "message_id": confirmation["message_id"],
+                          "confirmed_at_kst": confirmation["confirmed_at_kst"]}
+    state.update(new_state)
+    state["last_alert_at_kst"] = confirmation["confirmed_at_kst"]
+    state["unconfirmed_deliveries"] = pending
+    state["delivered_member_events"] = seen
+    state["last_delivery"] = confirmation
+    write_json_atomic(STATE, state)
+    print(f"Finalized BOJ policy path state: {STATE} message_id={confirmation['message_id']}")
     return 0
 
 
@@ -2665,6 +3125,12 @@ def main() -> int:
         raise RuntimeError("BOJ source outage: no successfully parsed RSS or BOJ official index")
 
     if not signals:
+        if state.get("unconfirmed_deliveries"):
+            WATCH.write_text("Telegram 전송 결과 미확인 — 원천자료 유효기간 경과 여부와 별개로 확인 필요\n", encoding="utf-8")
+            raise RuntimeError("BOJ delivery unconfirmed; reconcile receipt before retry")
+        if not SOURCE_HEALTH.get("official_rss_ok") or not SOURCE_HEALTH.get("official_index_ok"):
+            WATCH.write_text(f"BOJ 공식 원천 조회 부분 장애 — 새 발표 없음 판정 보류 · {label_time(now)}\n", encoding="utf-8")
+            raise RuntimeError("BOJ official source verification pending")
         WATCH.write_text(
             f"BOJ 정책경로 변화 감지: 새 고신뢰 신호 없음 · 조회 {label_time(now)}\n",
             encoding="utf-8",
@@ -2710,8 +3176,16 @@ def main() -> int:
 
     runtime_health = {
         "official_statement_detail_verified": bool(top.official_statement_detail_verified),
+        "unconfirmed_delivery_count": len(state.get("unconfirmed_deliveries") or {}),
         "top_event_type": top.event_type,
         "top_source": top.source,
+        "top_speaker": top.speaker,
+        "top_speech_verified": top.speech_verified,
+        "top_speech_evidence": list(top.speech_evidence),
+        "verified_speech_count": sum(1 for x in signals if x.speech_verified),
+        "selected_title": selected.title if selected else None,
+        "selected_source": selected.source if selected else None,
+        "selected_speaker": selected.speaker if selected else None,
         "policy_rate": top.policy_rate,
         "hike_bp": top.hike_bp,
         "rate_unchanged": top.rate_unchanged,
@@ -2736,7 +3210,7 @@ def main() -> int:
         (
             f"BOJ 정책경로 변화 감지: 후보 {LEVEL_EMOJI[top.level]} {LEVEL_LABEL[top.level]}\n"
             f"최신 이벤트: {EVENT_LABEL.get(top.event_type, top.event_type)} / {top.source}\n"
-            f"공식 성명 상세 검증: {'완료' if top.official_statement_detail_verified else '대기'}\n"
+            f"공식 원문 상세 검증: {'완료' if (top.official_statement_detail_verified or (top.speaker and top.speech_verified and top.source == 'Bank of Japan')) else '대기'}\n"
             f"시장 교차확인: {', '.join(market_ok) or '없음'}"
             + (f" / 확인 불가: {', '.join(market_missing)}" if market_missing else "")
             + "\n"
@@ -2747,6 +3221,32 @@ def main() -> int:
         encoding="utf-8",
     )
     if selected is None:
+        unresolved = state.get("unconfirmed_deliveries") or {}
+        if unresolved:
+            with WATCH.open("a", encoding="utf-8") as handle:
+                handle.write("\nTelegram 전송 결과 미확인 — 동일 사건 자동 재시도 보류\n")
+            print(json.dumps({"alerted": False, "reason": "delivery_unconfirmed",
+                              "events": [x.get("title") for x in unresolved.values()]}, ensure_ascii=False))
+            raise RuntimeError("BOJ delivery unconfirmed; reconcile receipt before retry")
+        blocked_retry = state.get("last_delivery_rejection") or {}
+        retry_at = parse_state_time(blocked_retry.get("retry_not_before_kst"))
+        if retry_at and now < retry_at and any(delivery_event_id(x) == blocked_retry.get("event_id") for x in signals):
+            with WATCH.open("a", encoding="utf-8") as handle:
+                handle.write("\nTelegram 명시적 거절 — 안전 재시도 대기\n")
+            raise RuntimeError("BOJ delivery explicitly rejected; backoff active")
+        pending_speech = [x for x in signals if x.speaker and not x.speech_verified
+                          and now - x.published <= dt.timedelta(hours=MEDIA_POLICY_EVENT_MAX_AGE_HOURS)
+                          and not same_member_event(x, state)
+                          and not any(y.speaker == x.speaker and y.speech_verified
+                                      and y.published.date() == x.published.date()
+                                      and (y.speech_event == "기자회견") == (x.speech_event == "기자회견")
+                                      for y in signals)]
+        if pending_speech or not SOURCE_HEALTH.get("official_rss_ok") or not SOURCE_HEALTH.get("official_index_ok"):
+            with WATCH.open("a", encoding="utf-8") as handle:
+                handle.write("\n원천자료 부분 장애·본문 확인 대기 — 새 정책 없음으로 판정하지 않음\n")
+            print(json.dumps({"alerted": False, "reason": "source_verification_pending",
+                              "pending_speech": [x.title for x in pending_speech]}, ensure_ascii=False))
+            raise RuntimeError("BOJ source verification pending; do not mark as quiet")
         print(json.dumps({"alerted": False, "reason": "no_material_change"}, ensure_ascii=False))
         return 0
 

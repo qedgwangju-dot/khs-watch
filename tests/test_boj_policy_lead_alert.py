@@ -773,7 +773,8 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             / "workflows"
             / "boj-policy-lead-alert.yml"
         ).read_text(encoding="utf-8")
-        self.assertIn('>원문</a>', workflow)
+        self.assertIn('("원문: ", "원문")', workflow)
+        self.assertIn("보도 중계 링크(원문 미확인)", workflow)
         self.assertIn('>링크</a>', workflow)
         self.assertIn('url_pattern = re.compile', workflow)
         self.assertIn('parse_mode": "HTML"', workflow)
@@ -1480,6 +1481,164 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         )
         self.assertTrue(allowed)
         self.assertIn("표결", reason)
+
+
+    def tamura_fixture(self, verified=True):
+        return Item(
+            title="Speech by Board Member TAMURA in Yamanashi",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/about/press/koen_2026/data/ko261126a1.pdf",
+            published=dt.datetime(2026, 11, 26, 10, 0, tzinfo=KST),
+            description=(
+                "Given that financial conditions remain accommodative, I believe that the Bank "
+                "needs to bring the policy interest rate to the neutral level soon. "
+                "I believe that within a few months of each rate hike the Bank can make a reasonable assessment. "
+                "Given that underlying CPI inflation in Japan is less firmly anchored at the 2 percent target, "
+                "I believe the Bank is required to respond swiftly to signs of an upward deviation in prices, "
+                "including by accelerating the pace of policy interest rate hikes. "
+                "The neutral interest rate is most likely around 2 percent, and my view has not changed."
+            ),
+            body_verified=verified,
+        )
+
+    def test_tamura_original_attribution_condition_and_neutral_rate(self):
+        signal = classify(self.tamura_fixture())
+        self.assertEqual(signal.speaker, "다무라 나오키 위원")
+        self.assertEqual(signal.event_type, "official_speech")
+        self.assertEqual(signal.level, 2)
+        self.assertTrue(signal.speech_conditional)
+        self.assertTrue(signal.speech_verified)
+        self.assertIsNone(signal.hike_bp)
+        self.assertIsNone(signal.policy_rate)
+        self.assertIsNone(signal.vote_for)
+        self.assertTrue(any("기존 개인 견해 유지" in x and "2%" in x for x in signal.speech_evidence))
+        title, body, payload = build(signal, "test", signal.published, {})
+        self.assertIn("다무라 나오키 위원", title)
+        self.assertIn("위원 개인 의견", body)
+        self.assertIn("BOJ 전체 목표금리 아님", body)
+        self.assertIn("ko261126a1.pdf", body)
+        self.assertNotIn("조정폭 추가 확인", body)
+
+    def test_tamura_headline_only_never_sends_and_legacy_665_deduplicates(self):
+        item = self.tamura_fixture(False)
+        from dataclasses import replace
+        headline = classify(replace(
+            item,
+            title="BOJ's Tamura signals chance of faster-pace interest rate hikes - Reuters",
+            source="Reuters", description="",
+        ))
+        allowed, reason = should_alert(headline, {}, item.published)
+        self.assertFalse(allowed)
+        self.assertIn("원문·핵심 조건 확인 대기", reason)
+        state = {
+            "last_title": "BOJ's Tamura signals chance of faster-pace interest rate hikes - Reuters",
+            "last_source": "Reuters",
+            "last_alert_at_kst": "2026-11-26T11:12:11+09:00",
+            "last_published_at_kst": "2026-11-26T10:15:00+09:00",
+            "last_signal_key": "c851b9e960f8a086abb0d89c",
+            "signature": {"level": 2, "event_type": "market_path"},
+        }
+        allowed, reason = should_alert(classify(self.tamura_fixture()), state, dt.datetime(2026, 11, 26, 11, 20, tzinfo=KST))
+        self.assertFalse(allowed)
+        self.assertIn("동일 위원 발언", reason)
+
+    def test_official_speech_landing_page_follows_pdf(self):
+        from dataclasses import replace
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        item = replace(self.tamura_fixture(False), description="",
+                       link="https://www.boj.or.jp/en/about/press/koen_2026/ko261126a.htm")
+        landing = '<a href="data/ko261126a1.pdf">Full text</a>'
+        with patch.object(mod, "fetch_text", return_value=(landing, None)), \
+             patch.object(mod, "_fetch_boj_document_text", return_value=(self.tamura_fixture().description, None)) as pdf:
+            rows = mod.enrich_official_items([item], item.published)
+        self.assertTrue(rows[0].body_verified)
+        self.assertTrue(rows[0].link.endswith("ko261126a1.pdf"))
+        pdf.assert_called_once()
+        self.assertEqual(classify(rows[0]).level, 2)
+
+    def test_growth_acceleration_is_not_policy_evidence_and_invalid_rss_fails(self):
+        import boj_policy_lead_alert as mod
+        self.assertFalse(mod.member_policy_details("Economic growth may accelerate next year.")["facts"])
+        with self.assertRaises(ValueError):
+            mod.parse_rss("<html><title>Unavailable</title></html>")
+
+    def test_delivery_receipt_and_uncertain_retry_state_machine(self):
+        from dataclasses import asdict
+        import tempfile
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        signal = classify(self.tamura_fixture())
+        now = signal.published
+        with tempfile.TemporaryDirectory() as d:
+            paths = {name: Path(d) / (name + ".json") for name in
+                     ("STATE", "DATA", "PENDING", "ATTEMPT", "CONFIRMED", "REJECTED")}
+            with patch.multiple(mod, **paths):
+                old = {"last_signal_key": "old", "signature": {"level": 1},
+                       "last_title": "old decision", "last_published_at_kst": "2026-11-25T10:00:00+09:00"}
+                mod.write_json_atomic(mod.STATE, old)
+                mod.write_json_atomic(mod.DATA, {"signal": dict(asdict(signal), published=now.isoformat())})
+                mod.write_json_atomic(mod.PENDING, {
+                    "last_signal_key": signal.key, "last_title": signal.title,
+                    "last_source": signal.source, "last_published_at_kst": now.isoformat(),
+                    "signature": signal_signature(signal),
+                })
+                attempt = mod.prepare_delivery_attempt("test", "1", now)
+                self.assertEqual(mod.load_state()["last_signal_key"], "old")
+                self.assertFalse(should_alert(signal, mod.load_state(), now)[0])
+                mod.finalize()
+                self.assertEqual(mod.load_state()["last_signal_key"], "old")
+                receipt = {"status": "confirmed", "lane": "boj_policy",
+                           "bot_username": "khs8879887988798879_bot",
+                           "attempt_id": attempt["attempt_id"], "signal_key": signal.key,
+                           "confirmed_at_kst": now.isoformat(), "message_id": 123}
+                for bad in (None, 0, True):
+                    self.assertFalse(mod.valid_delivery_confirmation(dict(receipt, message_id=bad), attempt))
+                self.assertFalse(mod.valid_delivery_confirmation(dict(receipt, signal_key="wrong"), attempt))
+                mod.write_json_atomic(mod.CONFIRMED, receipt)
+                mod.finalize()
+                self.assertEqual(mod.load_state()["last_signal_key"], signal.key)
+                self.assertEqual(mod.load_state()["last_delivery"]["message_id"], 123)
+                self.assertFalse(mod.load_state()["unconfirmed_deliveries"])
+                self.assertFalse(should_alert(signal, mod.load_state(), now)[0])
+                mod.finalize()
+
+    def test_explicit_rejection_retains_baseline_and_waits_before_retry(self):
+        from dataclasses import asdict
+        from unittest.mock import patch
+        import tempfile
+        import boj_policy_lead_alert as mod
+        signal = classify(self.tamura_fixture())
+        now = signal.published
+        with tempfile.TemporaryDirectory() as d:
+            paths = {name: Path(d) / (name + ".json") for name in
+                     ("STATE", "DATA", "PENDING", "ATTEMPT", "CONFIRMED", "REJECTED")}
+            with patch.multiple(mod, **paths):
+                mod.write_json_atomic(mod.STATE, {"last_signal_key": "old", "signature": {"level": 1}})
+                mod.write_json_atomic(mod.DATA, {"signal": dict(asdict(signal), published=now.isoformat())})
+                attempt = mod.prepare_delivery_attempt("test", "1", now)
+                mod.write_json_atomic(mod.REJECTED, {
+                    "status": "rejected", "attempt_id": attempt["attempt_id"],
+                    "event_id": attempt["event_id"], "error_code": 429,
+                    "retry_not_before_kst": (now + dt.timedelta(minutes=5)).isoformat(),
+                })
+                mod.finalize()
+                state = mod.load_state()
+                self.assertEqual(state["last_signal_key"], "old")
+                self.assertFalse(state["unconfirmed_deliveries"])
+                self.assertFalse(should_alert(signal, state, now)[0])
+                self.assertTrue(should_alert(signal, state, now + dt.timedelta(minutes=6))[0])
+                mod.finalize()
+
+    def test_inline_sender_compiles_and_persists_before_send(self):
+        import textwrap
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/boj-policy-lead-alert.yml").read_text(encoding="utf-8")
+        code = textwrap.dedent(workflow.split("python - <<'PY'\n", 1)[1].split("\n          PY", 1)[0])
+        compile(code, "<BOJ sender>", "exec")
+        self.assertLess(code.index("prepare_delivery_attempt(run_id"), code.index("with urllib.request.urlopen(request"))
+        self.assertIn("BOJ_DELIVERY_INTENT=stored", code)
+        self.assertIn("valid_delivery_confirmation(confirmed, attempt)", code)
+
 
 
 if __name__ == "__main__":

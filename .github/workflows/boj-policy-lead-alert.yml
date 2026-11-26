@@ -92,12 +92,9 @@ jobs:
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/boj_policy_lead_alert.json') != ''
         run: |
           git fetch origin main
-          if git show origin/main:data/boj_policy_lead_alert_state.json > /tmp/boj_remote_state.json 2>/dev/null; then
-            python scripts/boj_policy_lead_alert.py --guard-state /tmp/boj_remote_state.json
-          else
-            cp data/boj_policy_lead_alert_state.json /tmp/boj_remote_state.json
-            python scripts/boj_policy_lead_alert.py --guard-state /tmp/boj_remote_state.json
-          fi
+          # A failed remote read must never fall back to a stale state snapshot.
+          git show FETCH_HEAD:data/boj_policy_lead_alert_state.json > /tmp/boj_remote_state.json
+          python scripts/boj_policy_lead_alert.py --guard-state /tmp/boj_remote_state.json
 
       - name: Publish status summary
         if: always()
@@ -139,9 +136,18 @@ jobs:
           import os
           import pathlib
           import re
+          import subprocess
+          import sys
+          import time
+          import urllib.error
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
+          sys.path.insert(0, "scripts")
+          from boj_policy_lead_alert import (
+              STATE, CONFIRMED, REJECTED, prepare_delivery_attempt,
+              valid_delivery_confirmation, write_json_atomic,
+          )
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
@@ -158,11 +164,12 @@ jobs:
           title = pathlib.Path("out/boj_policy_lead_alert_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/boj_policy_lead_alert.md").read_text(encoding="utf-8").strip()
           raw = f"{title}\n\n{body}"
-          url_pattern = re.compile(r"https?://[^\\s<>()]+")
+          url_pattern = re.compile(r"https?://[^\s<>()]+")
           def render_line(line):
-              if line.startswith("원문: "):
-                  source_url = line[len("원문: "):].strip()
-                  return f'<a href="{html.escape(source_url, quote=True)}">원문</a>'
+              for prefix, label in (("원문: ", "원문"), ("보도 중계 링크: ", "보도 중계 링크(원문 미확인)")):
+                  if line.startswith(prefix):
+                      source_url = line[len(prefix):].strip()
+                      return f'<a href="{html.escape(source_url, quote=True)}">{label}</a>'
 
               rendered_line = []
               cursor = 0
@@ -191,27 +198,89 @@ jobs:
                   "disable_web_page_preview": "true",
               }
           ).encode("utf-8")
+          # Persist a BOJ-only delivery intent before the non-idempotent request.
+          # The same invocation may retry a conflicting Git push, but never send
+          # a second Telegram request after an ambiguous network response.
+          def git(*args, check=True):
+              return subprocess.run(["git", *args], check=check)
+          git("config", "user.name", "github-actions[bot]")
+          git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
+          run_id = os.environ["GITHUB_RUN_ID"]
+          run_attempt = os.environ["GITHUB_RUN_ATTEMPT"]
+          attempt = None
+          for index in range(4):
+              git("fetch", "origin", "main")
+              git("reset", "--hard", "FETCH_HEAD")
+              attempt = prepare_delivery_attempt(run_id, run_attempt, dt.datetime.now(ZoneInfo("Asia/Seoul")))
+              git("add", str(STATE))
+              if git("diff", "--cached", "--quiet", check=False).returncode == 0:
+                  break  # Our exact intent is already present remotely.
+              git("commit", "-m", "Record BOJ delivery intent before Telegram request")
+              if git("push", "origin", "HEAD:main", check=False).returncode == 0:
+                  break
+              time.sleep(2 * (index + 1))
+          else:
+              raise RuntimeError("BOJ pre-send intent not durably stored; Telegram request not attempted")
+          print("BOJ_DELIVERY_INTENT=stored attempt_id=" + attempt["attempt_id"])
+
+          def explicit_rejection(result, status=None):
+              code = result.get("error_code") if isinstance(result, dict) else None
+              if not (isinstance(result, dict) and result.get("ok") is False
+                      and type(code) is int and 400 <= code < 500
+                      and (status is None or code == status)):
+                  return False
+              seconds = (result.get("parameters") or {}).get("retry_after", 0)
+              seconds = max(300, seconds) if type(seconds) is int else 300
+              if code != 429:
+                  seconds = max(seconds, 900)
+              rejection = {
+                  "status": "rejected", "attempt_id": attempt["attempt_id"],
+                  "event_id": attempt["event_id"], "error_code": code,
+                  "retry_not_before_kst": (dt.datetime.now(ZoneInfo("Asia/Seoul")) + dt.timedelta(seconds=seconds)).isoformat(timespec="seconds"),
+              }
+              write_json_atomic(REJECTED, rejection)
+              print(f"BOJ_DELIVERY=explicitly_rejected error_code={code} retry_after_seconds={seconds}")
+              return True
+
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
           )
-          with urllib.request.urlopen(request, timeout=25) as response:
-              result = json.loads(response.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected BOJ policy message: {result}")
+          try:
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+          except urllib.error.HTTPError as exc:
+              try:
+                  rejection_body = json.loads(exc.read().decode("utf-8"))
+              except Exception:
+                  rejection_body = {}
+              if explicit_rejection(rejection_body, exc.code):
+                  raise RuntimeError("Telegram explicitly rejected BOJ delivery; safe retry only after backoff") from None
+              raise RuntimeError("BOJ_DELIVERY=unconfirmed HTTP response; reconcile before retry") from None
+          except Exception:
+              raise RuntimeError("BOJ_DELIVERY=unconfirmed transport/response failure; reconcile before retry") from None
+          if not isinstance(result, dict) or result.get("ok") is not True:
+              if explicit_rejection(result):
+                  raise RuntimeError("Telegram explicitly rejected BOJ delivery; safe retry only after backoff")
+              raise RuntimeError("BOJ_DELIVERY=unconfirmed response; reconcile before retry")
+          receipt = result.get("result") or {}
+          if re.fullmatch(r"-?\d+", chat_id) and str((receipt.get("chat") or {}).get("id")) != chat_id:
+              raise RuntimeError("BOJ_DELIVERY=unconfirmed receipt chat mismatch; reconcile before retry")
 
           confirmed = {
               "status": "confirmed",
               "lane": "boj_policy",
               "bot_username": actual,
               "route_secret": "GLOBAL_RATES_TELEGRAM_*",
-              "message_id": result.get("result", {}).get("message_id"),
+              "message_id": receipt.get("message_id"),
+              "attempt_id": attempt["attempt_id"],
+              "signal_key": attempt["signal_key"],
               "render_mode": "HTML",
-              "source_link_label": "원문",
+              "source_link_label": "원문/중계 링크 구분",
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
-          pathlib.Path("out/boj_policy_lead_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-          )
+          if not valid_delivery_confirmation(confirmed, attempt):
+              raise RuntimeError("BOJ_DELIVERY=unconfirmed invalid message_id or receipt; reconcile before retry")
+          write_json_atomic(CONFIRMED, confirmed)
           print(
               "telegram_delivery_confirmed=true lane=boj_policy "
               f"bot_username=@{actual} message_id={confirmed['message_id']} render_mode=HTML source_link=원문"
@@ -219,6 +288,7 @@ jobs:
           PY
 
       - name: Finalize BOJ policy alert state
+        id: finalize_boj
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
         run: python scripts/boj_policy_lead_alert.py --finalize
 
@@ -233,23 +303,29 @@ jobs:
             out/boj_policy_lead_alert.json
             out/boj_policy_market_context.json
             out/boj_policy_lead_telegram_confirmed.json
+            out/boj_policy_lead_delivery_attempt.json
+            out/boj_policy_lead_delivery_rejected.json
+            out/boj_policy_lead_pending_state.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 7
 
       - name: Commit confirmed BOJ policy state
-        if: always() && github.event_name != 'pull_request' && hashFiles('data/boj_policy_lead_alert_state.json') != ''
+        if: >-
+          always() && github.event_name != 'pull_request' &&
+          steps.finalize_boj.outcome == 'success' &&
+          (hashFiles('out/boj_policy_lead_telegram_confirmed.json') != '' ||
+           hashFiles('out/boj_policy_lead_delivery_rejected.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          snapshot="$(mktemp)"
-          cp data/boj_policy_lead_alert_state.json "$snapshot"
-
           for attempt in 1 2 3 4; do
             git fetch origin main
-            git reset --hard origin/main
-            cp "$snapshot" data/boj_policy_lead_alert_state.json
+            git reset --hard FETCH_HEAD
+            # Reconcile the receipt against the newest persisted intent, rather
+            # than blindly copying an earlier whole-state snapshot over main.
+            python scripts/boj_policy_lead_alert.py --finalize
             git add data/boj_policy_lead_alert_state.json
 
             if git diff --cached --quiet; then
