@@ -409,7 +409,9 @@ def _multipart(fields: dict[str, str], photo: bytes) -> tuple[bytes, str]:
     return b"".join(pieces), boundary
 
 
-def _matches_recipient(target: dict, chat_id: str) -> bool:
+def _matches_recipient(target: object, chat_id: str) -> bool:
+    if not isinstance(target, dict):
+        return False
     returned_id = target.get("id")
     if type(returned_id) is not int:
         return False
@@ -502,7 +504,11 @@ def send_photo(alert_path: Path, image_path: Path, guard_path: Path, receipt_pat
         _write_rejection(rejection_path, attempt_id, "telegram_api_rejected", payload.get("error_code"))
         raise RuntimeError("Telegram explicitly rejected the photo; safe retry recorded")
     message = (payload.get("result") or {}) if isinstance(payload, dict) else {}
+    if not isinstance(message, dict):
+        message = {}
     target = message.get("chat") or {}
+    if not isinstance(target, dict):
+        target = {}
     message_id = message.get("message_id")
     photos = message.get("photo")
     recipient_matches = _matches_recipient(target, chat_id)
@@ -552,8 +558,12 @@ def build_send_photo_receipt(payload: dict, response_status: int, chat_id: str,
                               photo_meta: dict, guard: dict, actual_bot: str) -> dict:
     if not isinstance(payload, dict) or payload.get("ok") is not True or response_status != 200:
         raise ValueError("Telegram did not confirm the photo")
-    message = payload.get("result") or {}
-    target = message.get("chat") or {}
+    message = payload.get("result")
+    if not isinstance(message, dict):
+        raise ValueError("Telegram response has no message object")
+    target = message.get("chat")
+    if not isinstance(target, dict):
+        raise ValueError("Telegram response has no chat object")
     message_id = message.get("message_id")
     photos = message.get("photo")
     if type(message_id) is not int or message_id <= 0:
