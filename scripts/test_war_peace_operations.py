@@ -96,6 +96,28 @@ class OperationsWarningTests(unittest.TestCase):
         self.assertTrue(saved['active'])
         self.assertEqual(saved['last_warning_sent_at'], self.now.isoformat(timespec='seconds'))
 
+    def test_circuit_skips_are_not_reported_as_new_http_errors(self):
+        report = {
+            'complete': True, 'phase': 'verified',
+            'source_coverage_complete': False,
+            'news': [
+                {'status': 'error', 'http': [{'error': 'HTTPError: HTTP Error 429: Too Many Requests'}]},
+                {'status': 'error', 'http': [{'error': 'RecordedSourceError: provider access circuit is open; host=news.google.com; retry_at_epoch=2000000000.0', 'request_disposition': 'skipped_provider_cooldown'}]},
+                {'status': 'error', 'http': [{'error': 'RecordedSourceError: provider access circuit is open'}]},
+                {'status': 'ok', 'rows': 0},
+            ],
+        }
+        self.write_coverage(report)
+        self.assertEqual(self.prepare(), 'send')
+        text = self.warning.read_text(encoding='utf-8')
+        self.assertIn('완전 확인: 1/4개 질의', text)
+        self.assertIn('HTTP 429 요청 제한: 1건', text)
+        self.assertIn('원천 접근 제한으로 조회 중단: 2건', text)
+        self.assertNotIn('원천 응답 오류:', text)
+        self.assertFalse(self.finalize())
+        self.write_matching_delivery()
+        self.assertTrue(self.finalize())
+
     def test_failure_repeats_are_throttled_for_six_hours_even_after_recovery(self):
         self.write_coverage(actual_run_727_coverage())
         self.assertEqual(self.prepare(), 'send')
