@@ -126,11 +126,6 @@
       "fingerprint": "40799078875c31733ff3f769d8990461ce698c1dee458d665ee57d129a38c008",
       "outcome": "no_send"
     },
-    "44536897360:1": {
-      "checked_at_kst": "2026-11-19T23:16:02+09:00",
-      "fingerprint": "feaeb3c14867b860e299990f447cb05c02ce446ef6fe0a03b327558b3a121471",
-      "outcome": "no_send"
-    },
     "44541526341:1": {
       "checked_at_kst": "2026-11-19T23:43:48+09:00",
       "completed": "2026-11-19T14:16:03+00:00",
@@ -3927,11 +3922,16 @@
       "checked_at_kst": "2026-11-26T12:37:42+09:00",
       "fingerprint": "662babfb64fa2fa6ea7dc81f513c20c35e27c0e5f80d716adee7ee4049fa5f80",
       "outcome": "no_send"
+    },
+    "45749906236:1": {
+      "checked_at_kst": "2026-11-26T12:56:32+09:00",
+      "fingerprint": "2cd02a759214da2f70eb887a9fd3a1bd366d88004e883c0e752a9b9493057693",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {
     "45648788639:1": {
-      "checked_at_kst": "2026-11-26T12:37:42+09:00",
+      "checked_at_kst": "2026-11-26T12:56:32+09:00",
       "reason": "sender_attempted_but_state_or_receipt_commit_unconfirmed",
       "run_attempt": 1,
       "run_id": 45648788639,
