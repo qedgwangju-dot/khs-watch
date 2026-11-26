@@ -113,5 +113,56 @@ class PriceFiscalTests(unittest.TestCase):
         self.assertIn("정부 인정액·실제 지급액은 별개",msg)
         self.assertIn("금액 미확정",msg)
 
+
+class DeliverySafetyTests(unittest.TestCase):
+    def setUp(self):
+        self.now=dt.datetime(2026,11,26,20,tzinfo=w.KST)
+        self.old={"initialized":True,"seeded_date":"2026-11-16","seen":{"motir_press":["old"]},"sources":{}}
+        self.doc={"id":"new","published":"2026-11-26","source":"motir_press","category":"oil_compensation",
+                  "title":"정유사 손실보전 심의","stage":"금액 미확정","url":"https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/9999/view"}
+    def test_discovery_not_delivery(self):
+        state,queue=w.prepare_operational_state(self.old,{"motir_press":[self.doc]},self.now)
+        self.assertEqual(queue,[self.doc])
+        self.assertNotIn("new",state["seen"]["motir_press"])
+        self.assertEqual(state["pending_delivery"]["new"]["status"],"queued")
+        nxt,queue=w.prepare_operational_state(state,{},self.now)
+        self.assertEqual(queue,[self.doc])
+        self.assertIn("old",nxt["seen"]["motir_press"])
+    def test_interrupted_send_never_replays(self):
+        state,_=w.prepare_operational_state(self.old,{"motir_press":[self.doc]},self.now)
+        state["pending_delivery"]["new"]["status"]="sending"
+        nxt,queue=w.prepare_operational_state(state,{"motir_press":[self.doc]},self.now)
+        self.assertEqual(queue,[])
+        self.assertEqual(nxt["pending_delivery"]["new"]["status"],"uncertain")
+        self.assertNotIn("new",nxt["seen"]["motir_press"])
+    def test_confirm_only_after_valid_receipt(self):
+        state,_=w.prepare_operational_state(self.old,{"motir_press":[self.doc]},self.now)
+        status,receipt=w.classify_response(200,{"ok":True,"result":{"chat":{"id":-1001},"message_id":14}},-1001)
+        self.assertEqual(status,"confirmed")
+        done=w.finalize_delivery(state,[self.doc],status,receipt,self.now)
+        self.assertIn("new",done["seen"]["motir_press"])
+        self.assertNotIn("new",done["pending_delivery"])
+        self.assertTrue(done["delivery_receipts"]["new"]["chat_match"])
+        _,queue=w.prepare_operational_state(done,{"motir_press":[self.doc]},self.now)
+        self.assertEqual(queue,[])
+    def test_ambiguous_or_wrong_chat(self):
+        for payload in ({"ok":True,"result":{"chat":{"id":-999},"message_id":1}},{"ok":True,"result":{"chat":{"id":-1001}}},{}):
+            self.assertEqual(w.classify_response(200,payload,-1001),("uncertain",None))
+        self.assertEqual(w.classify_response(500,{"ok":False,"error_code":500},-1001),("uncertain",None))
+    def test_explicit_rejection_and_rate_limit(self):
+        self.assertEqual(w.classify_response(429,{"ok":False,"error_code":429},-1001),("queued",None))
+        self.assertEqual(w.classify_response(403,{"ok":False,"error_code":403},-1001),("blocked",None))
+    def test_prior_seen_cross_source_no_duplicate(self):
+        old=w.copy_state(self.old)
+        old["seen"]["motir_clarification"]=["new"]
+        state,queue=w.prepare_operational_state(old,{"motir_press":[self.doc]},self.now)
+        self.assertEqual(queue,[])
+        self.assertIn("new",state["seen"]["motir_clarification"])
+    def test_safe_html_batches(self):
+        docs=[dict(self.doc,id=str(i),title="석유 손실보전 "+"가"*700) for i in range(10)]
+        result=list(w.batches(docs,self.now,{}))
+        self.assertEqual(sum(len(g) for g,_ in result),10)
+        self.assertTrue(all(len(m)<=3500 for _,m in result))
+
 if __name__=="__main__":
     unittest.main()

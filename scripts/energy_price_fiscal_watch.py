@@ -3,7 +3,7 @@
 공식 게시물 신규성 확인, 최초 기준선 무발송, 송출 성공 후 상태 저장.
 """
 from __future__ import annotations
-import argparse, datetime as dt, html, json, re, sys
+import argparse, datetime as dt, html, json, re, sys, os, subprocess, time, hashlib
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, parse_qs
 from zoneinfo import ZoneInfo
@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "data/energy_price_fiscal_state.json"
 OUT = ROOT / "out"
 PENDING = OUT / "energy_price_fiscal_pending.json"
+BASELINE = OUT / "energy_price_fiscal_baseline.json"
 ALERT = OUT / "energy_price_fiscal_alert.html"
 STATUS = OUT / "energy_price_fiscal_status.md"
 KST = ZoneInfo("Asia/Seoul")
@@ -144,26 +145,47 @@ def stage(item):
     if cat in ("kepco_financial","kogas_financial"):return "공기업 공식 실적/재무 발표(연결·별도 구분 필요)"
     return "공식 정책 발표(예산·계획·실제 지급 단계 구별)"
 
-def scan(now):
+def scan(now, prior=None):
     fetched={}; failed={}; visited={}
+    prior=prior or {}
     for key,(url,_) in SOURCES.items():
         try:
             entries=candidates(get_page(url),url,key)
+            # Overlap verified MOTIR pagination; inspect deeper after an execution gap.
+            if key.startswith("motir"):
+                last=(prior.get("sources",{}).get(key) or {}).get("last_ok_kst")
+                gap=now-dt.datetime.fromisoformat(last) if last else dt.timedelta(days=1)
+                page_limit=5 if gap>dt.timedelta(hours=4) else 2
+                ids={x["id"] for x in entries}
+                for page in range(2,page_limit+1):
+                    page_url=url.replace("pageIndex=1",f"pageIndex={page}")
+                    try:
+                        more=candidates(get_page(page_url),page_url,key)
+                        novel=[x for x in more if x["id"] not in ids]
+                        if not novel:
+                            raise RuntimeError("공식 목록 추가 페이지 중복")
+                        entries.extend(novel)
+                        ids.update(x["id"] for x in novel)
+                    except Exception as exc:
+                        failed[key]="추가 페이지 확인 실패: "+type(exc).__name__
+                        break
             visited[key]=len(entries)
             good=[]
-            for item in [x for x in entries if x["category"]][:10]:
-                content=get_page(item["url"])
-                item=dict(item)
+            for item in [x for x in entries if x["category"]]:
                 try:
-                    item["published"]=published_date(content)
-                except ValueError:
-                    # 공식 목록에서 확인한 해당 문서의 게시일만 사용한다.
-                    if not item.get("list_date"):
-                        raise
-                    item["published"]=item["list_date"]
-                item["stage"]=stage(item)
-                item["prices"]=prices(content) if item["category"]=="oil_cap" else {}
-                good.append(item)
+                    content=get_page(item["url"])
+                    item=dict(item)
+                    try:
+                        item["published"]=published_date(content)
+                    except ValueError:
+                        if not item.get("list_date"):
+                            raise
+                        item["published"]=item["list_date"]
+                    item["stage"]=stage(item)
+                    item["prices"]=prices(content) if item["category"]=="oil_cap" else {}
+                    good.append(item)
+                except Exception as exc:
+                    failed[key]="공식 상세 문서 확인 실패: "+type(exc).__name__
             fetched[key]=good
         except Exception as exc:
             failed[key]=type(exc).__name__+": "+str(exc)
@@ -207,14 +229,24 @@ def render(items,now,errors):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--no-alert",action="store_true")
+    parser.add_argument("--deliver",action="store_true")
     args=parser.parse_args()
+    if args.deliver:
+        return deliver_pending()
     OUT.mkdir(parents=True,exist_ok=True)
     now=dt.datetime.now(KST)
     previous=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
-    fetched,failed,visited=scan(now)
-    if "motir_press" not in fetched:
-        raise RuntimeError("산업통상부 보도 원천 조회 실패: 상태 전진 및 전송 금지 "+str(failed))
-    state,items=transition(previous,fetched,now)
+    fetched,failed,visited=scan(now,previous)
+    if not fetched:
+        raise RuntimeError("모든 공식 원천 조회 실패: 신규 발표 없음으로 처리하지 않음")
+    state,items=prepare_operational_state(previous,fetched,now)
+    for key in failed:
+        # Keep last fully successful coverage time, so catch-up continues after partial errors.
+        if key in previous.get("sources",{}):
+            state["sources"][key]=previous["sources"][key]
+        else:
+            state["sources"].pop(key,None)
+    BASELINE.write_text(json.dumps(previous,ensure_ascii=False)+"\n",encoding="utf-8")
     state["source_health"]={"ok":sorted(fetched),"failed":failed,"complete":not bool(failed)}
     PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     ALERT.unlink(missing_ok=True)
@@ -225,12 +257,179 @@ def main():
         f"- 최초 기준선 구축: {'예' if not previous.get('initialized') else '아니오'}",
         f"- 공식 원천 목록 성공: {len(fetched)}/{len(SOURCES)}",
         f"- 미확인 원천: {failed or '없음'}",
-        f"- 신규 공식 문서: {len(items)}",
+        f"- 발송 대기 공식 문서: {len(items)}",
+        f"- 발송 미확인/보류: {sum(v.get('status')!='queued' for v in state.get('pending_delivery',{}).values())}",
+        f"- 조회 판정: {'부분 조회 실패' if failed else ('신규/미발송 문서 있음' if items else '신규 문서 없음')}",
         f"- 실제 전송 후보: {bool(items) and not args.no_alert}",
     ]
     STATUS.write_text("\n".join(summary)+"\n",encoding="utf-8")
     print("\n".join(summary))
     if failed:print("partial_source_failures="+json.dumps(failed,ensure_ascii=False),file=sys.stderr)
+    return 0
+
+
+def copy_state(value):
+    return json.loads(json.dumps(value,ensure_ascii=False))
+
+def prepare_operational_state(prior,fetched,now):
+    root,events=transition(prior,fetched,now)
+    pending=root.setdefault("pending_delivery",{})
+    receipts=root.setdefault("delivery_receipts",{})
+    old_ids={i for values in prior.get("seen",{}).values() for i in values}
+    for doc in events:
+        ident=doc["id"]
+        if ident not in old_ids and ident not in pending and ident not in receipts:
+            pending[ident]={"document":doc,"status":"queued","discovered_at_kst":now.isoformat(timespec="seconds")}
+    for record in pending.values():
+        if record.get("status")=="sending":
+            record["status"]="uncertain"
+            record["reason"]="previous_attempt_interrupted"
+    for source,ids in root["seen"].items():
+        root["seen"][source]=sorted((set(ids)|set(prior.get("seen",{}).get(source,[])))-set(pending))
+    queue=[v["document"] for v in pending.values() if v.get("status")=="queued"]
+    queue.sort(key=lambda d:(d.get("published",""),d["id"]))
+    return root,queue
+
+def batches(docs,now,errors):
+    group=[]
+    for doc in docs:
+        if len(render([doc],now,errors))>3500:
+            raise RuntimeError("단일 문서 안전 전송 길이 초과")
+        if group and len(render(group+[doc],now,errors))>3500:
+            yield group,render(group,now,errors)
+            group=[]
+        group.append(doc)
+    if group:
+        yield group,render(group,now,errors)
+
+def git(*args):
+    return subprocess.run(["git",*args],cwd=ROOT,check=True,capture_output=True,text=True).stdout
+
+def persist_state(expected,incoming):
+    # Shared branch may advance, but the dedicated state must match the expected snapshot.
+    git("config","user.name","energy-price-fiscal-watch[bot]")
+    git("config","user.email","energy-price-fiscal-watch[bot]@users.noreply.github.com")
+    for attempt in range(5):
+        try:
+            git("fetch","origin","main")
+            git("reset","--hard","origin/main")
+            remote=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
+            if remote==incoming:
+                return
+            if remote!=expected:
+                raise RuntimeError("운영 상태 동시 변경: 덮어쓰기 및 전송 중단")
+            STATE.parent.mkdir(parents=True,exist_ok=True)
+            STATE.write_text(json.dumps(incoming,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            git("add",str(STATE.relative_to(ROOT)))
+            git("commit","-m","Update energy price fiscal watch state [skip ci]")
+            git("push","origin","HEAD:main")
+            print("energy_state_committed=true",flush=True)
+            return
+        except subprocess.CalledProcessError:
+            time.sleep((attempt+1)*3)
+    raise RuntimeError("운영 상태 저장 실패: 전송 중단")
+
+def resolve_chat(token,configured):
+    # Do not log tokens, raw chat IDs, or raw Telegram exceptions.
+    try:
+        r=requests.post(f"https://api.telegram.org/bot{token}/getChat",json={"chat_id":configured},timeout=20)
+        obj=r.json()
+        chat=obj.get("result") or {}
+        cid=chat.get("id")
+        if not r.ok or obj.get("ok") is not True or type(cid) is not int:
+            raise ValueError()
+        if configured.startswith("@"):
+            if str(chat.get("username") or "").lower()!=configured[1:].lower():
+                raise ValueError()
+        elif str(cid)!=configured:
+            raise ValueError()
+        return cid
+    except Exception:
+        raise RuntimeError("Telegram 지정 수신처 확인 실패: 전송하지 않음") from None
+
+def classify_response(http_status,obj,target):
+    if not isinstance(obj,dict):
+        return "uncertain",None
+    result=obj.get("result")
+    if 200<=http_status<300 and obj.get("ok") is True and isinstance(result,dict):
+        chat=result.get("chat")
+        cid=chat.get("id") if isinstance(chat,dict) else None
+        mid=result.get("message_id")
+        if type(cid) is int and cid==target and type(mid) is int and mid>0:
+            return "confirmed",hashlib.sha256(f"{cid}:{mid}".encode()).hexdigest()
+        return "uncertain",None
+    if obj.get("ok") is False and obj.get("error_code")==http_status and http_status in (400,401,403,404,429):
+        return ("queued" if http_status==429 else "blocked"),None
+    return "uncertain",None
+
+def finalize_delivery(state,docs,status,receipt,now):
+    result=copy_state(state)
+    for doc in docs:
+        ident=doc["id"]
+        record=result["pending_delivery"][ident]
+        record["status"]=status
+        record["last_attempt_kst"]=now.isoformat(timespec="seconds")
+        if status=="confirmed":
+            if not receipt:
+                raise ValueError("확인된 전송 증빙 없음")
+            result["delivery_receipts"][ident]={"confirmed_at_kst":now.isoformat(timespec="seconds"),
+                "chat_match":True,"message_id_present":True,"receipt_sha256":receipt,
+                "run_id":os.getenv("GITHUB_RUN_ID","")}
+            source=doc["source"]
+            result["seen"][source]=sorted(set(result["seen"].get(source,[]))|{ident})
+            del result["pending_delivery"][ident]
+    return result
+
+def deliver_pending():
+    prior=json.loads(BASELINE.read_text(encoding="utf-8"))
+    state=json.loads(PENDING.read_text(encoding="utf-8"))
+    persist_state(prior,state)
+    pending=state.get("pending_delivery",{})
+    docs=[v["document"] for v in pending.values() if v.get("status")=="queued"]
+    docs.sort(key=lambda d:(d.get("published",""),d["id"]))
+    if not docs:
+        if pending:
+            print("::error::발송 미확인/차단 문서 보존: 자동 재발송 금지")
+            return 1
+        print("telegram_delivery_skipped=true reason=no_queued_documents")
+        return 0
+    token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+    configured=(os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
+    if not token or not configured:
+        raise RuntimeError("기존 Telegram 경로 설정 누락")
+    target=resolve_chat(token,configured)
+    print("telegram_chat_resolved=true",flush=True)
+    now=dt.datetime.now(KST)
+    errors=state.get("source_health",{}).get("failed",{})
+    for group,msg in batches(docs,now,errors):
+        intent=copy_state(state)
+        for doc in group:
+            record=intent["pending_delivery"][doc["id"]]
+            record["status"]="sending"
+            record["attempt_run_id"]=os.getenv("GITHUB_RUN_ID","")
+            record["last_attempt_kst"]=now.isoformat(timespec="seconds")
+        # Save intent before send; interrupted requests must never be blindly replayed.
+        persist_state(state,intent)
+        state=intent
+        status,receipt="uncertain",None
+        try:
+            response=requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id":target,"text":msg,"parse_mode":"HTML","disable_web_page_preview":True},timeout=30)
+            status,receipt=classify_response(response.status_code,response.json(),target)
+        except Exception:
+            pass
+        after=finalize_delivery(state,group,status,receipt,dt.datetime.now(KST))
+        if status=="confirmed":
+            print(f"telegram_delivery_confirmed=true chat_match=true message_id_present=true documents={len(group)} receipt_sha256={receipt}",flush=True)
+        else:
+            print(f"::error::telegram_delivery_status={status}; 성공 키 미확정",flush=True)
+        persist_state(state,after)
+        state=after
+        if status!="confirmed":
+            return 1
+    if state.get("pending_delivery"):
+        print("::error::기존 발송 미확인/차단 문서 보존: 자동 재발송 금지")
+        return 1
     return 0
 
 if __name__=="__main__":

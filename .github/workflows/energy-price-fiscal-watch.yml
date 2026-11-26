@@ -18,6 +18,7 @@ permissions:
 concurrency:
   group: energy-price-fiscal-watch
   cancel-in-progress: false
+  queue: max
 
 jobs:
   watch:
@@ -31,6 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'push' && github.sha || 'main' }}
           fetch-depth: 1
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -78,79 +80,21 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
           cat out/energy_price_fiscal_status.md >> "$GITHUB_STEP_SUMMARY"
-      - name: 공식 신규 변화만 Telegram 발송
+      - name: 신규 공식 발표 전달 및 상태 검증
         id: send
-        if: steps.scan.outputs.changed == 'true' && github.event_name != 'push'
+        if: github.event_name != 'push' && steps.scan.conclusion == 'success'
+        run: python scripts/energy_price_fiscal_watch.py --deliver
+      - name: 공식 원천 조회 실패 표시
+        if: always() && steps.scan.conclusion == 'success'
         run: |
           python - <<'PY'
-          import os,pathlib,requests
-          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
-          msg=pathlib.Path("out/energy_price_fiscal_alert.html").read_text(encoding="utf-8").strip()
-          if not msg: raise RuntimeError("전송 내용 누락")
-          remaining=msg;chunks=[]
-          while remaining:
-              if len(remaining)<=3500:
-                  chunks.append(remaining);break
-              cut=remaining.rfind("\n\n",0,3500)
-              if cut<1200:cut=3500
-              chunks.append(remaining[:cut].strip());remaining=remaining[cut:].strip()
-          ids=[]
-          for chunk in chunks:
-              r=requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
-                  json={"chat_id":chat,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":True},timeout=30)
-              r.raise_for_status()
-              result=r.json()
-              if not result.get("ok"):raise RuntimeError(f"Telegram 전송 거부: {result}")
-              ids.append((result.get("result") or {}).get("message_id"))
-          print(f"telegram_delivery_confirmed=true messages={len(ids)} ids={ids}")
-          PY
-      - name: 조회·전송 성공한 상태만 저장
-        if: steps.scan.conclusion == 'success' && (steps.scan.outputs.changed == 'false' || steps.send.conclusion == 'success')
-        run: |
-          git config user.name "energy-price-fiscal-watch[bot]"
-          git config user.email "energy-price-fiscal-watch[bot]@users.noreply.github.com"
-          for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git reset --hard origin/main
-            mkdir -p data
-            python - <<'PY'
           import json
           from pathlib import Path
-          incoming = json.loads(Path("out/energy_price_fiscal_pending.json").read_text(encoding="utf-8"))
-          path = Path("data/energy_price_fiscal_state.json")
-          previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-          latest = incoming if str(incoming.get("updated_at_kst","")) >= str(previous.get("updated_at_kst","")) else previous
-          merged = json.loads(json.dumps(latest))
-          seen = merged.setdefault("seen", {})
-          for snapshot in (previous, incoming):
-              for source, doc_ids in (snapshot.get("seen") or {}).items():
-                  seen[source] = sorted(set(seen.get(source,[])) | set(doc_ids))[-2500:]
-          merged["initialized"] = bool(previous.get("initialized") or incoming.get("initialized"))
-          seed_dates = [x for x in (previous.get("seeded_date"),incoming.get("seeded_date")) if x]
-          if seed_dates:
-              merged["seeded_date"] = min(seed_dates)
-          sources = merged.setdefault("sources", {})
-          for snapshot in (previous, incoming):
-              for source, metadata in (snapshot.get("sources") or {}).items():
-                  if source not in sources or metadata.get("last_ok_kst","") >= sources[source].get("last_ok_kst",""):
-                      sources[source] = metadata
-          path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          p=Path("out/energy_price_fiscal_pending.json")
+          s=json.loads(p.read_text(encoding="utf-8"))
+          if not s["source_health"]["complete"]:
+              raise RuntimeError("일부 공식 원천 조회 실패: 신규 발표 없음으로 판정하지 않음")
           PY
-            git add data/energy_price_fiscal_state.json
-            if git diff --cached --quiet; then
-              echo "energy_state_unchanged=true"
-              exit 0
-            fi
-            git commit -m "Update energy price fiscal watch state [skip ci]"
-            if git push origin HEAD:main; then
-              echo "energy_state_committed=true"
-              exit 0
-            fi
-            sleep $((attempt * 3))
-          done
-          echo "State commit failed after merging latest remote state" >&2
-          exit 1
       - name: 감사 기록 저장
         if: always()
         uses: actions/upload-artifact@v4
