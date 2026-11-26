@@ -4,6 +4,8 @@ from __future__ import annotations
 import datetime as dt
 import html
 import json
+import math
+import re
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -12,11 +14,13 @@ import requests
 
 import korea_market_stress_watch_v11 as v11
 import korea_market_stress_watch_v14 as fx_basis
+from krx_session_calendar import session_bounds
 
 KST = ZoneInfo("Asia/Seoul")
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "fx_sector_rotation_state.json"
 MARKET_STATE_PATH = ROOT / "data" / "korea_market_stress_watch_state.json"
+MARKET_PENDING_PATH = ROOT / "out" / "korea_market_stress_pending_state.json"
 PENDING_PATH = ROOT / "out" / "fx_sector_rotation_pending_state.json"
 ALERT_PATH = ROOT / "out" / "fx_sector_rotation_alert.html"
 STATUS_PATH = ROOT / "out" / "fx_sector_rotation_status.md"
@@ -61,8 +65,6 @@ COUNTER = [
     ("한국가스공사", "036460"),
 ]
 
-TODAY_FX_SOURCE = "https://nwww.newsis.com/view/NISI20260917_0021440924"
-TODAY_SHIP_SOURCE = "https://search.newspim.com/news/view/20260917000373"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; khs-fx-sector-rotation-watch/1.0)",
@@ -74,7 +76,8 @@ def fnum(v: Any) -> float | None:
     try:
         if v is None or str(v).strip() == "":
             return None
-        return float(str(v).replace(",", "").replace("%", "").strip())
+        value = float(str(v).replace(",", "").replace("%", "").strip())
+        return value if math.isfinite(value) and not isinstance(v, bool) else None
     except Exception:
         return None
 
@@ -82,8 +85,14 @@ def fnum(v: Any) -> float | None:
 def load_state(today: str) -> dict[str, Any]:
     try:
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    except Exception:
+    except FileNotFoundError:
         state = {}
+    if not isinstance(state, dict):
+        raise ValueError("로테이션 상태 형식 오류 — 발송 보류")
+    if state.get("date") == today and (
+            state.get("sent_level") not in (0, 1, 2)
+            or not isinstance(state.get("fx_samples"), list)):
+        raise ValueError("로테이션 상태 필수값 오류 — 중복 방지 기록 보존")
     if state.get("date") != today:
         state = {
             "date": today,
@@ -100,109 +109,169 @@ def save_pending(state: dict[str, Any]) -> None:
     PENDING_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def _validated_prev_close_from_market_watch(today: str) -> dict[str, Any] | None:
+def _source_time(raw: Any) -> dt.datetime | None:
+    """Parse provider observation clock; date-only values are not clocks."""
     try:
-        state = json.loads(MARKET_STATE_PATH.read_text(encoding="utf-8"))
-        fx = (state.get("snapshot") or {}).get("usdkrw") or {}
-        if str(fx.get("date") or "") != today:
+        value = str(raw or "").strip()
+        if not re.match(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}", value):
             return None
-        if fx.get("comparison_valid") is not True:
-            return None
-        basis = str(fx.get("comparison_basis") or "")
-        if "서울외환시장 15:30" not in basis:
-            return None
-        prev = float(fx["prev_value"])
-        if not (900.0 <= prev <= 2500.0):
-            return None
-        return {
-            "value": prev,
-            "source": str(fx.get("seoul_close_source") or ""),
-            "basis": basis,
-        }
-    except Exception:
+        stamp = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        # localTradedAt denotes the local exchange/provider time.
+        return stamp.replace(tzinfo=KST) if stamp.tzinfo is None else stamp.astimezone(KST)
+    except (ValueError, TypeError):
         return None
 
 
-def fetch_fx() -> dict[str, Any]:
+def _regular_quote_time(row: dict[str, Any], now: dt.datetime,
+                        bounds: tuple[dt.datetime, dt.datetime]) -> dt.datetime | None:
+    stamp = _source_time(row.get("localTradedAt"))
+    opened, closed = bounds
+    if stamp is None or stamp.date() != now.date() or stamp < opened:
+        return None
+    if stamp > now + dt.timedelta(seconds=5):
+        return None
+    if now >= closed:
+        # Index remains at regular close: no after-market stock prices allowed.
+        if str(row.get("marketStatus") or "").upper() not in ("CLOSE", "CLOSED"):
+            return None
+        if not closed - dt.timedelta(minutes=1) <= stamp <= closed + dt.timedelta(minutes=5):
+            return None
+    elif stamp > closed or now - stamp > dt.timedelta(minutes=5):
+        return None
+    return stamp
+
+
+def _previous_session_day(day: dt.date) -> str:
+    for offset in range(1, 15):
+        candidate = day - dt.timedelta(days=offset)
+        if session_bounds(candidate) is not None:
+            return candidate.isoformat()
+    raise RuntimeError("직전 거래일 확인 실패")
+
+
+def _validated_prev_close_from_market_watch(today: str, expected: str) -> dict[str, Any] | None:
+    # Prefer the current run. A committed prior state is usable ONLY when the
+    # same current date and exact previous closing date are independently valid.
+    for path in (MARKET_PENDING_PATH, MARKET_STATE_PATH):
+        try:
+            state = json.loads(path.read_text(encoding="utf-8"))
+            fx = (state.get("snapshot") or {}).get("usdkrw") or {}
+            if str(fx.get("date") or "") != today or str(fx.get("prev_date") or "") != expected:
+                continue
+            if fx.get("comparison_valid") is not True:
+                continue
+            basis = str(fx.get("comparison_basis") or "")
+            source = str(fx.get("seoul_close_source") or "")
+            prev = fnum(fx.get("prev_value"))
+            if ("서울외환시장 15:30" in basis and prev is not None
+                    and 900 <= prev <= 2500
+                    and source.startswith("https://ksureapi.einfomax.co.kr/")):
+                return {"date": expected, "value": prev, "source": source, "basis": basis}
+        except (OSError, ValueError, TypeError, AttributeError):
+            continue
+    return None
+
+
+def fetch_fx(now: dt.datetime) -> dict[str, Any]:
     r = requests.get(FX_URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
     payload = r.json()
     rows = payload.get("result") if isinstance(payload, dict) else payload
-    rows = rows or []
-    if not rows:
+    if not isinstance(rows, list) or not rows or not isinstance(rows[0], dict):
         raise RuntimeError("원/달러 시세 없음")
     row = rows[0]
     value = fnum(row.get("closePrice"))
-    if value is None:
-        raise RuntimeError("원/달러 현재값 없음")
-
-    today = str(row.get("localTradedAt") or row.get("localDate") or "")[:10]
-    naver_prev = fnum(rows[1].get("closePrice")) if len(rows) > 1 else None
-    prev = None
-    prev_source = None
+    raw_stamp = row.get("localTradedAt") or row.get("localDate")
+    today = str(raw_stamp or "")[:10]
+    if value is None or not 900 <= value <= 2500:
+        raise RuntimeError("원/달러 현재값 범위 오류")
+    if today != now.date().isoformat():
+        raise RuntimeError("원/달러 기준일 불일치")
+    stamp = _source_time(raw_stamp)
+    received = dt.datetime.now(KST)
+    if stamp is not None and (stamp.date() != now.date() or not
+            -5 <= (received - stamp).total_seconds() <= 20 * 60):
+        raise RuntimeError("환율 원천 관측시각 지연")
+    naver_prev = fnum(rows[1].get("closePrice")) if len(rows) > 1 and isinstance(rows[1], dict) else None
+    prev, prev_source, prev_date = None, None, None
     basis = "서울외환시장 15:30 USD/KRW 종가"
-    basis_error = None
-    basis_reused = False
+    basis_error, basis_reused = None, False
     try:
-        ref = fx_basis.fetch_seoul_prev_close()
-        prev = float(ref["value"])
-        prev_source = str(ref.get("source") or "")
-    except Exception as exc:
-        cached = _validated_prev_close_from_market_watch(today)
-        if cached:
-            prev = float(cached["value"])
-            prev_source = str(cached.get("source") or "")
-            basis = str(cached.get("basis") or basis) + " · 시장 스트레스 감시 검증값 재사용"
+        expected = _previous_session_day(now.date())
+        ref = _validated_prev_close_from_market_watch(today, expected)
+        if ref is not None:
             basis_reused = True
+            basis += " · 시장 스트레스 감시 동일 기준일 검증값 재사용"
         else:
-            basis_error = f"{type(exc).__name__}: {exc}"
-
+            ref = fx_basis.fetch_seoul_prev_close(now)
+        prev = fnum(ref.get("value"))
+        prev_date = str(ref.get("date") or "")
+        prev_source = str(ref.get("source") or "")
+        if (prev_date != expected or prev is None or not 900 <= prev <= 2500
+                or not prev_source.startswith("https://ksureapi.einfomax.co.kr/")):
+            raise ValueError("직전 서울 종가 기준일·수치·출처 검증 실패")
+    except Exception as exc:
+        prev, prev_source, prev_date = None, None, None
+        basis_error = type(exc).__name__
+        basis_reused = False
     return {
-        "value": value,
-        "prev_close": prev,
-        "naver_prev_close": naver_prev,
-        "date": today,
-        "source": FX_URL,
-        "comparison_basis": basis,
-        "prev_close_source": prev_source,
-        "basis_error": basis_error,
-        "basis_reused": basis_reused,
+        "value": value, "prev_close": prev, "prev_date": prev_date,
+        "naver_prev_close": naver_prev, "date": today, "source": FX_URL,
+        "comparison_basis": basis, "prev_close_source": prev_source,
+        "basis_error": basis_error, "basis_reused": basis_reused,
+        "queried_at": received.isoformat(timespec="seconds"),
+        "source_observed_at": stamp.isoformat(timespec="seconds") if stamp else None,
+        "source_time_verified": stamp is not None,
     }
 
 
-def fetch_kospi() -> dict[str, Any]:
+def fetch_kospi(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
     r = requests.get(KOSPI_URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
     d = r.json()
     pct = fnum(d.get("fluctuationsRatio"))
     price = fnum(d.get("closePrice") or d.get("currentPrice"))
-    if pct is None:
-        raise RuntimeError("KOSPI 등락률 없음")
-    return {"change_pct": pct, "price": price, "source": KOSPI_URL}
+    stamp = _regular_quote_time(d, dt.datetime.now(KST), bounds)
+    if pct is None or abs(pct) > 30 or price is None or price <= 0 or stamp is None:
+        raise RuntimeError("KOSPI 정규장 날짜·시각·수치 검증 실패")
+    return {"change_pct": pct, "price": price, "source": KOSPI_URL,
+            "source_observed_at": stamp.isoformat(timespec="seconds")}
 
 
-def fetch_quote(name: str, code: str) -> dict[str, Any]:
-    q = v11.fetch_stock_quote(code)
-    return {
-        "name": str(q.get("name") or name),
-        "code": code,
-        "price": float(q["price"]),
-        "change_pct": float(q["change_pct"]),
-    }
+def fetch_quote(name: str, code: str,
+                bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    # Same existing basic endpoint, no new provider or undated HTML fallback.
+    url = v11.NAVER_STOCK_BASIC.format(code=code)
+    r = requests.get(url, headers=HEADERS, timeout=20)
+    r.raise_for_status()
+    row = r.json()
+    pct_raw = row.get("fluctuationsRatio")
+    if pct_raw in (None, ""):
+        pct_raw = row.get("changeRate")
+    price = fnum(row.get("closePrice") or row.get("currentPrice"))
+    pct = fnum(pct_raw)
+    stamp = _regular_quote_time(row, dt.datetime.now(KST), bounds)
+    returned_code = row.get("itemCode") or row.get("stockCode")
+    if (returned_code not in (None, "", code) or stamp is None or price is None
+            or price <= 0 or pct is None or abs(pct) > 100):
+        raise RuntimeError("종목 정규장 날짜·시각·수치 검증 실패")
+    return {"name": str(row.get("stockName") or row.get("itemName") or name),
+            "code": code, "price": price, "change_pct": pct,
+            "source_observed_at": stamp.isoformat(timespec="seconds")}
 
 
-def fetch_group(items: list[tuple[str, str]]) -> list[dict[str, Any]]:
+def fetch_group(items: list[tuple[str, str]], bounds: tuple[dt.datetime, dt.datetime]) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     for name, code in items:
         try:
-            out.append(fetch_quote(name, code))
+            out.append(fetch_quote(name, code, bounds))
         except Exception:
             out.append({"name": name, "code": code, "price": None, "change_pct": None})
     return out
 
 
 def group_stats(rows: list[dict[str, Any]], benchmark: float) -> dict[str, Any]:
-    vals = [float(r["change_pct"]) for r in rows if r.get("change_pct") is not None]
+    vals = [v for r in rows if (v := fnum(r.get("change_pct"))) is not None]
     if not vals:
         return {"avg": None, "positive": 0, "relative": None, "valid": 0, "confirmed": False}
     avg = sum(vals) / len(vals)
@@ -227,7 +296,7 @@ def quote_lines(rows: list[dict[str, Any]]) -> list[str]:
 def fmt_stats(label: str, s: dict[str, Any], benchmark: float) -> list[str]:
     if s.get("avg") is None:
         return [f"• {label}: 확인 실패"]
-    verdict = "확인" if s.get("confirmed") else "미확인"
+    verdict = "확인" if s.get("confirmed") else ("자료 부족" if int(s.get("valid") or 0) < 3 else "조건 미충족")
     return [
         f"• {label}: {int(s['positive'])}/{int(s['valid'])} 상승 · 평균 <b>{float(s['avg']):+.2f}%</b>",
         f"  ↳ KOSPI {benchmark:+.2f}% 대비 상대강도 <b>{float(s['relative']):+.2f}%p</b> · 로테이션 {verdict}",
@@ -237,9 +306,9 @@ def fmt_stats(label: str, s: dict[str, Any], benchmark: float) -> list[str]:
 def build_alert(
     now: dt.datetime,
     fx: dict[str, Any],
-    session_low: float,
-    rebound_krw: float,
-    rebound_pct: float,
+    session_low: float | None,
+    rebound_krw: float | None,
+    rebound_pct: float | None,
     daily_krw: float | None,
     daily_pct: float | None,
     kospi: dict[str, Any],
@@ -253,7 +322,7 @@ def build_alert(
     counter: dict[str, Any],
     level: int,
 ) -> str:
-    after_close = now.time() > MARKET_CLOSE
+    after_close = bool(fx.get("after_close"))
     confirmed_labels = [
         label for label, stats in (("조선", ship), ("방산", defense), ("자동차", auto))
         if stats.get("confirmed")
@@ -267,7 +336,7 @@ def build_alert(
         verdict = f"🟡 <b>부분 로테이션</b> — {confirmed} 상대강세 우선 확인"
 
     counter_note = ""
-    if counter.get("relative") is not None:
+    if counter.get("relative") is not None and int(counter.get("valid") or 0) >= 3:
         if float(counter["relative"]) <= COUNTER_RELATIVE_PPT:
             counter_note = "  ↳ 달러비용 민감 업종의 상대약세까지 동반 → 환율 설명력 보강"
         else:
@@ -288,11 +357,18 @@ def build_alert(
     lines += [
         "",
         "<b>원/달러 반등</b>",
-        f"• 표본 장중 저점 <b>{session_low:,.1f}원</b> → 현재 <b>{float(fx['value']):,.1f}원</b>",
-        f"• 저점 대비 <b>+{rebound_krw:,.1f}원 (+{rebound_pct:.2f}%)</b>",
+        f"• 환율 조회값 <b>{float(fx['value']):,.1f}원</b> · 기준일 {fx['date']}",
+        "• 원천 관측시각: " + (html.escape(str(fx.get("source_observed_at"))) if fx.get("source_time_verified") else "미제공 — 날짜가 확인된 조회 표본이며 주식과의 동시성 미검증"),
     ]
+    if session_low is not None and rebound_krw is not None and rebound_pct is not None:
+        lines.append(f"• 정규장 조회 표본 저점 {session_low:,.1f}원 대비 <b>{rebound_krw:+,.1f}원 ({rebound_pct:+.2f}%)</b> — 실제 장중 최저가 아님")
+    else:
+        lines.append("• 정규장 저점 표본 없음 — 저점 반등 조건 판정 보류")
+    if fx.get("sample_gap_minutes", 0) > 30:
+        lines.append(f"• 정규장 표본 최대 공백 {fx['sample_gap_minutes']:.0f}분 — 사이에 발생한 움직임은 미확인")
+    lines.append(f"• KOSPI 관측시각: {html.escape(str(kospi.get('source_observed_at') or '미확인'))}")
     if daily_krw is not None and daily_pct is not None:
-        lines.append(f"• 전일 서울 15:30 종가 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
+        lines.append(f"• 직전 서울 15:30 종가({fx.get('prev_date')}) 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
         if fx.get("basis_reused"):
             lines.append("  ↳ 서울 종가 원천 일시 조회 실패 → 시장 스트레스 감시에서 이미 검증한 동일 공식 기준값 재사용")
     elif fx.get("basis_error"):
@@ -335,8 +411,6 @@ def build_alert(
         "<b>원문</b>",
         f'• <a href="{html.escape(str(fx["source"]), quote=True)}">원/달러 시세</a>',
         f'• <a href="{html.escape(KOSPI_URL, quote=True)}">KOSPI 시세</a>',
-        f'• <a href="{html.escape(TODAY_FX_SOURCE, quote=True)}">환율 반등 사례 확인</a>',
-        f'• <a href="{html.escape(TODAY_SHIP_SOURCE, quote=True)}">조선주 반등 사례 확인</a>',
     ]
     if fx.get("prev_close_source"):
         lines.append(f'• <a href="{html.escape(str(fx["prev_close_source"]), quote=True)}">전일 서울 15:30 종가 근거</a>')
@@ -344,25 +418,85 @@ def build_alert(
     return "\n".join(lines)
 
 
+def _relative_lost(*groups: dict[str, Any]) -> bool:
+    # Missing is unknown, not zero or -999. Preserve the original 3-of-4 rule.
+    return all(int(g.get("valid") or 0) >= 3 and
+               (v := fnum(g.get("relative"))) is not None and
+               v < SECTOR_RELATIVE_PPT for g in groups)
+
+
+def _regular_samples(state: dict[str, Any], bounds: tuple[dt.datetime, dt.datetime]) -> list[dict[str, Any]]:
+    opened, closed = bounds
+    rows = []
+    for row in state.get("fx_samples") or []:
+        stamp = _source_time(row.get("ts"))
+        value = fnum(row.get("value"))
+        if stamp is not None and opened <= stamp <= closed and value is not None and 900 <= value <= 2500:
+            rows.append({"ts": stamp.isoformat(timespec="seconds"), "value": value})
+    return rows
+
+
+def _sample_low_and_gap(state: dict[str, Any], bounds: tuple[dt.datetime, dt.datetime],
+                        now: dt.datetime) -> tuple[float | None, float]:
+    opened, closed = bounds
+    rows = _regular_samples(state, bounds)
+    prior_low = state.get("regular_sample_low") or {}
+    stamp = _source_time(prior_low.get("ts"))
+    value = fnum(prior_low.get("value"))
+    if stamp is not None and opened <= stamp <= closed and value is not None and 900 <= value <= 2500:
+        rows.append({"ts": stamp.isoformat(timespec="seconds"), "value": value})
+    if rows:
+        best = min(rows, key=lambda x: x["value"])
+        state["regular_sample_low"] = best
+        low = best["value"]
+    else:
+        low = None
+    times = sorted(set(_source_time(r["ts"]) for r in rows))
+    end = min(now, closed)
+    timestamps = [opened] + [t for t in times if t is not None and opened <= t <= end] + [end]
+    gap = max((b-a).total_seconds()/60 for a,b in zip(timestamps, timestamps[1:]))
+    # Preserve measured gap even if early samples have since been compacted.
+    gap = max(gap, fnum(state.get("regular_max_gap_minutes")) or 0.0)
+    state["regular_max_gap_minutes"] = round(gap, 2)
+    return low, gap
+
+
+def _weakening_reason(fx: dict[str, Any], sig: dict[str, Any], ship: dict[str, Any],
+                     defense: dict[str, Any], auto: dict[str, Any]) -> list[str]:
+    peak, low, current = (fnum(sig.get("rebound_krw")),
+                          fnum(sig.get("session_low")), fnum(fx.get("value")))
+    reasons = []
+    if peak is not None and peak > 0 and low is not None and current is not None and current-low <= peak*0.5:
+        reasons.append("환율 반등폭 50% 이상 반납")
+    if _relative_lost(ship, defense, auto):
+        reasons.append("세 업종 모두 상대강도 +1%p 미달")
+    return reasons
+
+
 def build_weakening_alert(now: dt.datetime, fx: dict[str, Any], state: dict[str, Any], kospi_pct: float,
-                          ship: dict[str, Any], defense: dict[str, Any], auto: dict[str, Any]) -> str:
+                          ship: dict[str, Any], defense: dict[str, Any], auto: dict[str, Any],
+                          reasons: list[str]) -> str:
     sig = state.get("last_signal") or {}
-    peak = float(sig.get("rebound_krw") or 0.0)
-    low = float(sig.get("session_low") or fx["value"])
-    cur_rebound = float(fx["value"]) - low
-    return "\n".join([
+    peak, low = fnum(sig.get("rebound_krw")), fnum(sig.get("session_low"))
+    cur = fnum(fx.get("value"))
+    movement = "• 직전 신호 반등폭 또는 저점 자료 부족"
+    if peak is not None and low is not None and cur is not None:
+        movement = f"• 직전 반등폭 <b>{peak:+,.1f}원</b> → 같은 저점 대비 <b>{cur-low:+,.1f}원</b>"
+    lines = [
         "⚠️ <b>환율 민감 업종 로테이션 약화</b>",
-        f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>",
-        "",
-        f"• 직전 신호 반등폭 <b>+{peak:,.1f}원</b> → 현재 저점 대비 <b>+{cur_rebound:,.1f}원</b>",
-        f"• 조선 KOSPI 대비 상대강도: <b>{float(ship.get('relative') or 0):+.2f}%p</b>",
-        f"• 방산 KOSPI 대비 상대강도: <b>{float(defense.get('relative') or 0):+.2f}%p</b>",
-        f"• 자동차 KOSPI 대비 상대강도: <b>{float(auto.get('relative') or 0):+.2f}%p</b>",
-        f"• KOSPI: <b>{kospi_pct:+.2f}%</b>",
-        "• 판정: 환율 반등분 50% 이상 반납 또는 조선·방산·자동차 상대강도 소멸 — 직전 로테이션 신호의 설명력이 약해졌습니다.",
-        "",
-        VALIDATION_FOOTER,
-    ])
+        f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>", "", movement,
+    ]
+    for label, group in (("조선", ship), ("방산", defense), ("자동차", auto)):
+        relative = fnum(group.get("relative"))
+        if relative is None or int(group.get("valid") or 0) < 3:
+            lines.append(f"• {label} 상대강도: 확인 불가")
+        else:
+            lines.append(f"• {label} 상대강도: <b>{relative:+.2f}%p</b>")
+    lines += [f"• KOSPI: <b>{kospi_pct:+.2f}%</b>",
+              "• 판정: " + " / ".join(reasons),
+              "• 환율은 조회 표본 기준이며 원천 시각 미제공 시 주식과의 동시성 미검증",
+              "", VALIDATION_FOOTER]
+    return "\n".join(lines)
 
 
 def write_status(now: dt.datetime, text: str) -> None:
@@ -370,120 +504,161 @@ def write_status(now: dt.datetime, text: str) -> None:
     STATUS_PATH.write_text(f"# 환율 민감 업종 로테이션\n\n- 조회: {now:%Y-%m-%d %H:%M:%S} KST\n- 상태: {text}\n", encoding="utf-8")
 
 
-def main() -> int:
-    ALERT_PATH.unlink(missing_ok=True)
+def _regression_checks() -> None:
+    """Small deterministic target-only checks, no external calls or state writes."""
+    day = dt.date(2026, 11, 26)
+    op = dt.datetime.combine(day, dt.time(9), KST)
+    cl = dt.datetime.combine(day, dt.time(15, 30), KST)
+    bounds = (op, cl)
+    def check(condition, label):
+        if not condition:
+            raise AssertionError(label)
+    good = {"localTradedAt": "2026-11-26T15:30:00+09:00", "marketStatus": "CLOSE"}
+    check(_regular_quote_time(good, cl+dt.timedelta(hours=2), bounds) is not None, "regular close")
+    check(_regular_quote_time(dict(good, localTradedAt="2026-11-26T17:00:00+09:00"),
+                              cl+dt.timedelta(hours=2), bounds) is None, "aftermarket exclusion")
+    check(_regular_quote_time(dict(good, localTradedAt="2026-11-25T15:30:00+09:00"),
+                              cl+dt.timedelta(hours=2), bounds) is None, "previous date exclusion")
+    check(_regular_quote_time({"localTradedAt": "2026-11-26"}, cl, bounds) is None, "date-only exclusion")
+    check(_regular_quote_time({"localTradedAt": "2026-11-26T10:00:00+09:00"},
+                              op+dt.timedelta(hours=2), bounds) is None, "stale quote")
+    known = {"valid": 4, "relative": 0.0}
+    missing = {"valid": 0, "relative": None}
+    check(_relative_lost(known, known, known), "real zero relative strength")
+    check(not _relative_lost(known, known, missing), "missing is not weakening")
+    check(not _weakening_reason({"value": 1345}, {"rebound_krw": 10, "session_low": 1335},
+                                known, known, missing), "no false weakening")
+    check(group_stats([{"change_pct": float("nan")}, {"change_pct": 0.0}], 0)["valid"] == 1, "finite and zero")
+    state = {"fx_samples": [{"ts": "2026-11-26T11:00:00+09:00", "value": 1340.0},
+                            {"ts": "2026-11-26T19:00:00+09:00", "value": 1320.0}]}
+    low, gap = _sample_low_and_gap(state, bounds, cl+dt.timedelta(hours=4))
+    check(low == 1340 and gap == 270, "regular low and gap")
+    state["fx_samples"] = []
+    check(_sample_low_and_gap(state, bounds, cl)[0] == 1340, "persisted regular low")
+    print("fx_sector_rotation_regressions=11 passed; no Telegram or state writes")
+
+
+def _run() -> int:
     now = dt.datetime.now(KST)
     today = now.date().isoformat()
-    state = load_state(today)
-
-    if now.weekday() >= 5 or not (START <= now.time() <= END):
-        save_pending(state)
-        write_status(now, "감시 시간 외 — 평일 09:00~23:59만 감시")
+    bounds = session_bounds(now.date())
+    if bounds is None or now < bounds[0] or not (START <= now.time() <= END):
+        # No midnight/pre-open rewrite of a previously delivered day's keys.
+        write_status(now, "정규 거래일 감시시간 외 — 기존 상태 보존, 신규 발송 없음")
+        print("fx_sector_rotation=outside_session_window")
         return 0
 
-    fx = fetch_fx()
-    kospi = fetch_kospi()
+    state = load_state(today)
+    fx = fetch_fx(now)
+    kospi = fetch_kospi(bounds)
+    after_close = now >= bounds[1]
 
     samples = list(state.get("fx_samples") or [])
-    samples.append({"ts": now.isoformat(timespec="seconds"), "value": float(fx["value"])})
-    samples = samples[-80:]
-    state["fx_samples"] = samples
-    session_low = min(float(x["value"]) for x in samples)
-    rebound_krw = float(fx["value"]) - session_low
-    rebound_pct = (float(fx["value"]) / session_low - 1.0) * 100 if session_low else 0.0
-
-    daily_krw = None
-    daily_pct = None
+    samples.append({"ts": fx["queried_at"], "value": float(fx["value"])})
+    state["fx_samples"] = samples[-256:]
+    session_low, gap = _sample_low_and_gap(state, bounds, now)
+    fx["after_close"] = after_close
+    fx["sample_gap_minutes"] = round(gap, 2)
+    rebound_krw = float(fx["value"])-session_low if session_low is not None else None
+    rebound_pct = (float(fx["value"])/session_low-1)*100 if session_low is not None else None
+    daily_krw = daily_pct = None
     if fx.get("prev_close") is not None:
-        daily_krw = float(fx["value"]) - float(fx["prev_close"])
-        daily_pct = (float(fx["value"]) / float(fx["prev_close"]) - 1.0) * 100
+        daily_krw = float(fx["value"])-float(fx["prev_close"])
+        daily_pct = (float(fx["value"])/float(fx["prev_close"])-1)*100
 
-    ship_rows = fetch_group(SHIPBUILDING)
-    defense_rows = fetch_group(DEFENSE)
-    auto_rows = fetch_group(AUTOMOTIVE)
-    counter_rows = fetch_group(COUNTER)
+    ship_rows = fetch_group(SHIPBUILDING, bounds)
+    defense_rows = fetch_group(DEFENSE, bounds)
+    auto_rows = fetch_group(AUTOMOTIVE, bounds)
+    counter_rows = fetch_group(COUNTER, bounds)
     benchmark = float(kospi["change_pct"])
-    ship = group_stats(ship_rows, benchmark)
-    defense = group_stats(defense_rows, benchmark)
-    auto = group_stats(auto_rows, benchmark)
-    counter = group_stats(counter_rows, benchmark)
+    ship, defense, auto, counter = (group_stats(rows, benchmark)
+        for rows in (ship_rows, defense_rows, auto_rows, counter_rows))
 
-    fx_hit = rebound_krw >= FX_REBOUND_KRW or rebound_pct >= FX_REBOUND_PCT
-    strong_fx = bool(
-        (daily_krw is not None and daily_krw >= FX_STRONG_KRW)
-        or (daily_pct is not None and daily_pct >= FX_STRONG_PCT)
-    )
-    sectors_confirmed = (
-        int(bool(ship.get("confirmed")))
-        + int(bool(defense.get("confirmed")))
-        + int(bool(auto.get("confirmed")))
-    )
+    # A long quote collection may cross the close; never mix live and closed
+    # returns from different phases, nor large observation-time differences.
+    finished = dt.datetime.now(KST)
+    if (now < bounds[1] <= finished) or (not after_close and
+            (finished-now).total_seconds() > 5*60):
+        raise RuntimeError("정규장 종료 경계 또는 수집 시차 초과")
 
-    level = 0
-    if fx_hit and sectors_confirmed >= 1:
-        level = 1
+    fx_hit = bool((rebound_krw is not None and rebound_krw >= FX_REBOUND_KRW)
+                  or (rebound_pct is not None and rebound_pct >= FX_REBOUND_PCT))
+    strong_fx = bool((daily_krw is not None and daily_krw >= FX_STRONG_KRW)
+                     or (daily_pct is not None and daily_pct >= FX_STRONG_PCT))
+    sectors_confirmed = sum(int(bool(g.get("confirmed"))) for g in (ship, defense, auto))
+    level = 1 if fx_hit and sectors_confirmed >= 1 else 0
     if strong_fx and sectors_confirmed >= 2:
         level = 2
 
     sent_level = int(state.get("sent_level") or 0)
+    coverage = f"유효 종목 조선 {ship['valid']}/4·방산 {defense['valid']}/4·자동차 {auto['valid']}/4·반대편 {counter['valid']}/4"
+    if not fx["source_time_verified"]:
+        coverage += " / 환율 원천시각 미제공(동일일 조회 표본)"
+    if gap > 30:
+        coverage += f" / 정규장 표본 공백 최대 {gap:.0f}분"
+    if fx.get("basis_error"):
+        coverage += " / 직전 종가 미확인 — 강한 일간 신호 판정 보류"
+
     if level > sent_level:
         ALERT_PATH.write_text(
             build_alert(now, fx, session_low, rebound_krw, rebound_pct, daily_krw, daily_pct,
-                        kospi, ship_rows, defense_rows, auto_rows, counter_rows, ship, defense, auto, counter, level) + "\n",
-            encoding="utf-8",
-        )
+                        kospi, ship_rows, defense_rows, auto_rows, counter_rows,
+                        ship, defense, auto, counter, level)+"\n", encoding="utf-8")
+        # Pending only: the existing shared workflow commits after Telegram ack.
         state["sent_level"] = level
         state["sent_weakening"] = False
         state["last_signal"] = {
-            "time": now.isoformat(timespec="seconds"),
-            "level": level,
-            "session_low": session_low,
-            "fx_value": float(fx["value"]),
-            "rebound_krw": rebound_krw,
-            "ship_relative": ship.get("relative"),
-            "defense_relative": defense.get("relative"),
-            "auto_relative": auto.get("relative"),
-            "after_close": now.time() > MARKET_CLOSE,
+            "time": now.isoformat(timespec="seconds"), "level": level,
+            "session_low": session_low, "fx_value": float(fx["value"]),
+            "rebound_krw": rebound_krw, "ship_relative": ship.get("relative"),
+            "defense_relative": defense.get("relative"), "auto_relative": auto.get("relative"),
+            "after_close": after_close,
         }
-        write_status(now, f"신규 로테이션 레벨 {level} 감지")
+        decision = f"신규 로테이션 레벨 {level} 감지 — 전송 응답 대기"
     else:
         sig = state.get("last_signal") or {}
-        if sig and not state.get("sent_weakening"):
-            peak = float(sig.get("rebound_krw") or 0.0)
-            low = float(sig.get("session_low") or session_low)
-            cur_rebound = float(fx["value"]) - low
-            half_retrace = peak > 0 and cur_rebound <= peak * 0.5
-            rel_lost = (
-                float(ship.get("relative") or -999) < SECTOR_RELATIVE_PPT
-                and float(defense.get("relative") or -999) < SECTOR_RELATIVE_PPT
-                and float(auto.get("relative") or -999) < SECTOR_RELATIVE_PPT
-            )
-            if half_retrace or rel_lost:
-                ALERT_PATH.write_text(build_weakening_alert(now, fx, state, benchmark, ship, defense, auto) + "\n", encoding="utf-8")
-                state["sent_weakening"] = True
-                write_status(now, "직전 로테이션 신호 약화")
-            else:
-                write_status(now, "신규 상향 신호 없음")
+        reasons = _weakening_reason(fx, sig, ship, defense, auto) if sig and not state.get("sent_weakening") else []
+        if reasons:
+            ALERT_PATH.write_text(build_weakening_alert(now, fx, state, benchmark, ship, defense, auto, reasons)+"\n",
+                                  encoding="utf-8")
+            state["sent_weakening"] = True
+            decision = "직전 로테이션 신호 약화 — 전송 응답 대기"
+        elif any(g["valid"] < 3 for g in (ship, defense, auto)) or fx.get("basis_error"):
+            decision = "신규 확정 신호 없음 — 일부 자료 검증 부족, 해당 조건 판정 보류"
         else:
-            write_status(now, "신규 상향 신호 없음")
+            decision = "신규 상향 신호 없음"
 
     state["latest"] = {
         "checked_at": now.isoformat(timespec="seconds"),
-        "market_phase": "장마감 후" if now.time() > MARKET_CLOSE else "정규장",
-        "fx": fx,
-        "session_low": session_low,
-        "rebound_krw": rebound_krw,
-        "rebound_pct": rebound_pct,
-        "daily_krw": daily_krw,
-        "daily_pct": daily_pct,
-        "kospi_pct": benchmark,
-        "ship": ship,
-        "defense": defense,
-        "auto": auto,
-        "counter": counter,
+        "market_phase": "장마감 후" if after_close else "정규장",
+        "fx": fx, "session_low": session_low, "rebound_krw": rebound_krw,
+        "rebound_pct": rebound_pct, "daily_krw": daily_krw, "daily_pct": daily_pct,
+        "kospi_pct": benchmark, "ship": ship, "defense": defense,
+        "auto": auto, "counter": counter,
+        "kospi_source_observed_at": kospi.get("source_observed_at"),
     }
     save_pending(state)
+    write_status(now, decision+" / "+coverage)
+    print("fx_sector_rotation="+decision+" / "+coverage)
     return 0
+
+
+def main() -> int:
+    ALERT_PATH.unlink(missing_ok=True)
+    PENDING_PATH.unlink(missing_ok=True)
+    now = dt.datetime.now(KST)
+    try:
+        _regression_checks()
+        return _run()
+    except Exception as exc:
+        # No fresh/confirmed state or alert on source failure or invalid
+        # state; avoid suppressing other alerts in the shared workflow.
+        ALERT_PATH.unlink(missing_ok=True)
+        PENDING_PATH.unlink(missing_ok=True)
+        label = "자체 회귀검사 실패" if isinstance(exc, AssertionError) else "자료 조회·검증 또는 상태 처리 실패"
+        write_status(now, f"{label} ({type(exc).__name__}) — 로테이션 판정 보류, 기존 상태 보존")
+        print(f"fx_sector_rotation=unavailable reason={type(exc).__name__}; no delivery or state update")
+        return 0
 
 
 if __name__ == "__main__":
