@@ -47,6 +47,10 @@ QUERIES = [
     '(Iran OR Ukraine) (reconstruction OR rebuilding OR reconstruction fund OR infrastructure OR South Korea OR Korean companies) when:1d',
 ]
 
+# Keep the original broad core search list before specialised wrappers prepend queries.
+# The runtime may prioritise HTTP collection without changing parser/replay order.
+CORE_NEWS_QUERIES = tuple(QUERIES)
+
 PEACE = [
     "ceasefire", "peace talks", "peace agreement", "end the war", "ending the war", "end war",
     "peace deal", "negotiations", "talks resume", "summit", "trilateral", "withdrawal",
