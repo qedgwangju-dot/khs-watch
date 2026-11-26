@@ -3,20 +3,22 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Preparedness F… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 1,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 64,
+    "google_news_rate_limit_429": 1,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 118,
+    "raw_items": 117,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -873,16 +875,6 @@
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQNHplZ1hUdkl1Z3dGc1lvZWJRWmZGR2JVWUtncXhGdkVwMGtibzhGczVoblJTQUhyY25kXzZMVDdaeTZSWTBFVDVKZkE2YWh3dUtuRy01T0UyNlVtZWdYVDg5Y2k1cVdJZ2NDbUtlSTRQbGFBMGZDMG9wTkNkaHhJczFKX3dnc2wzUGxLbUZXNzBpLS05VUM1ZEZtQTFZUXpP0gGmAUFVX3lxTE1vTUV6US1MVUJ1U3FvcFFoMk51VWZBNm9VdTdqZlpGYldKRS1PdTdXN20wN3d3OGg0dkRYTDFscDZoM3dHbm8xbHlyUExUR2k5M1hJSXgtZUhGS01NaVFkYmpnbXJ4elUyZ2Y3YTU3WFBub29FRVV3VXNqNXRPVmI2Q182SnA5cGhTdzBtNld4a043TnUycERPcHZHbWlhZVFmcEJiWnc?oc=5",
       "vendor": "PHP 재단"
     },
-    "d6e6ec1384df0c56c95696f1": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T04:12:20.317409+00:00",
-      "published_at": "2026-10-21T22:36:26+00:00",
-      "severity": 3,
-      "source": "Amazon Web Services",
-      "title": "Amazon Threat Intelligence identifies PHP2Shell exploitation prior to public disclosure in MadPot - Amazon Web Services",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQVVWR2dJMXQ5N3plYkRnb1ZMdmVTWlNXS2JseFRMaTV5WmdZVkp3MVhyVk1FQ09XcFQzN3N3Rko3Vl9mTnF3dndiVVVaVU1Rem5Qdk1FU2VzcDJXZjhBeXhURUtRSFNIR3dOc0VadE14ZHQteGltSkd3VzhMbzNEcmhva2xteWVJM1N6T3J4eXc2VUU0VTE1LVhSNzFnRVRnMS12UDJoSFV3QXE5Mnl4VVVHcThUMmdvZEtvMmZ6RjBtVHo0RjdfNkg0UWlEaGN3Smc?oc=5",
-      "vendor": "PHP 재단"
-    },
     "dacc6cf46236f5bdd04db21e": {
       "category": "PHP 코어 취약점·공식 보안패치",
       "first_seen_at": "2026-10-25T21:23:23.198936+00:00",
@@ -1012,5 +1004,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-26T12:53:59+09:00"
+  "updated_at_kst": "2026-11-26T13:17:54+09:00"
 }
