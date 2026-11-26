@@ -3,23 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 2,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 63,
-    "google_news_rate_limit_429": 2,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 109,
+    "raw_items": 125,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -215,16 +212,6 @@
       "title": "Anthropic Research: coordinated vulnerability disclosure timelines",
       "url": "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
       "vendor": "Anthropic"
-    },
-    "2c125f4fe8714fe9eebfb768": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T15:54:36.269286+00:00",
-      "published_at": "2026-10-22T13:09:12+00:00",
-      "severity": 3,
-      "source": "BleepingComputer",
-      "title": "Amazon says PHP2Shell exploitation began 4 days before patches - BleepingComputer",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQZ2RULUR5d3hlak5UMkdEU1pfWUdNblVMeW9GNHdQUjRfY2NFY3VDWjFqUDd5dGtLY3ZRc1NTdEpsc0l0NExMTS1wSnlXbjdwRGp3YThTa3NjMnNDM1BodXc3dlhlNW12RlJIcE5wcGlYR3Q3NGFNQzZPWmtZOE9ldXhVaXhIcGp2V0oyMzRIRmQwb0dUdHk5dkFCdWRxckI1blNpX0RHRWdxT0lub19F0gG0AUFVX3lxTE5RSnJzd1VuY1dmWnJtb29hajNFR1o4R0NuOTdKaHkzalFQbmZrNkhlYkROcVNJaG02SnZYdWhZcjNiTnRqWU9oYUN0TmRFSXVxa05tNWxHbnliTDdlUUJydWxpaWdCX2k3WDN2Z1QxdU5LZ01ianFSS1lJZWl1Y3ZfSUxfZzBtVU15SDY0UDlPZndIQVo0ZlB1bGU3MGs5LW1UaUFreTkyOXVzTkJndHM5Y0ItNQ?oc=5",
-      "vendor": "PHP 재단"
     },
     "2e21cc4a69a61a07827dd976": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -586,16 +573,6 @@
       "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOLVdCLUxMajNxel9fVnMxUkpLbUZ6U2Q5NzMwWUJlZXFUQWdob0VfUlBCWGFwQUhDT1hKUEMtV09kNkd5S3JQMDVvNlZBTW93SGxkVkw3ejVLcTl6aWdWLS15YmFSUEhRbmhmS2Y2SmFqSEoxQnpma285U2FVM3hsQzYtaUg4Nzg2bkdBWFJfOUFUMXhHN3hKNzhjTFRIY094ZVh3T0V0Ylpick1jSHhZR0tWMDF4VjNfdWxKblZYUFdPQ0xFbnpXbjN1aGk?oc=5",
       "vendor": "PHP 재단"
     },
-    "a13afb10ee69417f867e3268": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T15:54:36.269286+00:00",
-      "published_at": "2026-10-22T12:20:23+00:00",
-      "severity": 3,
-      "source": "SecurityWeek",
-      "title": "Tech and Security Companies Respond to PHP2Shell Vulnerabilities - SecurityWeek",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTW1nbzFMUERKZEQyUGVEUk1ta3BjYjhTR0Y3TDhHdmVNeFYyV21CeUhNRDN2bWxHUFJsUEN1ampfVHpWSEZjUExuOGVaaEFBMlhzUktabmx3bnYxUkMwd2t3bnZKY3d6dmc1Tk9yQ0ljSHdVMlpwaGpMUW96Ukt1VEhyc3ZfT0tHbzNSWFFiSmNBZzBWaWNHLUdR0gGfAUFVX3lxTE1ueHhuS01fQlpGRll4eHB3OWpCVlhjaGZiLTJpdmhtTmdVQ1FBcUFxajNJYlNZWlQxSFBtNlpqSXpCc0NGMlF1ekV2amZad2ZVS3prYnBwRG9uRWF0SktreXU5bFY3OFlEb3d4SlYtdElDdjN1S2RiS0Zhd0tfM3F6WVdZNXBIcmVTRjJpOWp0Z25fMUNiTVNfQmhkWGhJRQ?oc=5",
-      "vendor": "PHP 재단"
-    },
     "a434b0bd518aa23a7d35a248": {
       "category": "데이터·개인정보",
       "first_seen_at": "2026-11-10T19:12:02.463933+00:00",
@@ -925,5 +902,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T00:38:09+09:00"
+  "updated_at_kst": "2026-11-27T01:03:33+09:00"
 }
