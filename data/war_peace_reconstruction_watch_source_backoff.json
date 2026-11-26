@@ -28,6 +28,13 @@
       "observed_epoch": 1795656524.3968627,
       "retry_at_epoch": 1795657424.3968627,
       "denials": 1
+    },
+    "news.google.com": {
+      "reason": "HTTPError",
+      "code": 429,
+      "observed_epoch": 1795656658.603,
+      "retry_at_epoch": 1795657558.603,
+      "denials": 1
     }
   }
 }
