@@ -165,7 +165,7 @@ def _denial_entry(exc, now, previous=None):
             'retry_at_epoch': now + delay, 'denials': denials}
 
 
-def _save_backoff(path, previous, report):
+def _save_backoff(path, previous, report, *, pending_path=None):
     if path is None or not isinstance(report.get('blocked_providers'), dict):
         return False
     # A cancelled/failed run may end before a previously denied host is
@@ -189,7 +189,7 @@ def _save_backoff(path, previous, report):
         return False
     if not providers and not path.exists():
         return False
-    _save(path, {'version': 1, 'providers': providers})
+    _save(pending_path or path, {'version': 1, 'providers': providers})
     return True
 
 
@@ -649,6 +649,8 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
     report_path = watch.OUT / 'war_peace_reconstruction_coverage.json'
     path_value = backoff_path or os.environ.get('WAR_SOURCE_BACKOFF_PATH')
     backoff_path = Path(path_value) if path_value else None
+    pending_backoff = watch.OUT / 'war_peace_reconstruction_source_backoff_pending.json'
+    pending_backoff.unlink(missing_ok=True)
     previous_backoff = _load_backoff(backoff_path)
     _save(report_path, {'complete': False, 'phase': 'starting', 'total_budget_seconds': total_seconds})
     process = mp.get_context('fork').Process(
@@ -670,7 +672,10 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
         report = {}
     report['total_budget_seconds'] = total_seconds
     if backoff_path is not None:
-        report['source_backoff_updated'] = _save_backoff(backoff_path, previous_backoff, report)
+        # Keep tracked files clean during earlier alert/ops git rebase steps.
+        # The existing workflow promotes only this pending operational file.
+        report['source_backoff_updated'] = _save_backoff(
+            backoff_path, previous_backoff, report, pending_path=pending_backoff)
     if timed_out or process.exitcode != 0 or report.get('complete') is not True:
         report.setdefault('failure_phase', report.get('phase'))
         if not report.get('rejected_artifacts'):
