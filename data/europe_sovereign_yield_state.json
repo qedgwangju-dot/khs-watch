@@ -1,12 +1,12 @@
 {
-  "last_checked_kst": "2026-11-26T12:13:35+09:00",
+  "last_checked_kst": "2026-11-26T21:51:43+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
     "fr10:above:5.0": false,
     "fr10:daymove:10.0": false,
     "fr10:5obs:25.0": false,
-    "de10:above:3.25": false,
+    "de10:above:3.25": true,
     "de10:above:3.5": false,
     "de10:above:3.75": false,
     "de10:daymove:10.0": false,
@@ -21,7 +21,7 @@
     "it10:above:5.0": false,
     "fr_de_market_spread:above:100.0": true,
     "fr_de_market_spread:above:125.0": true,
-    "fr_de_market_spread:above:150.0": true,
+    "fr_de_market_spread:above:150.0": false,
     "it10:daymove:10.0": false,
     "fr10:stress:5.1": false,
     "fr10:stress:5.25": false,
@@ -162,6 +162,10 @@
       {
         "date": "2026-11-25",
         "value": 4.731
+      },
+      {
+        "date": "2026-11-26",
+        "value": 4.745
       }
     ],
     "de10": [
@@ -308,6 +312,10 @@
       {
         "date": "2026-11-25",
         "value": 3.22
+      },
+      {
+        "date": "2026-11-26",
+        "value": 3.25
       }
     ],
     "uk10": [
@@ -454,13 +462,13 @@
       {
         "date": "2026-11-23",
         "value": 5.1793
+      },
+      {
+        "date": "2026-11-24",
+        "value": 5.1531
       }
     ],
     "fr_mkt": [
-      {
-        "date": "2026-10-08",
-        "value": 4.89
-      },
       {
         "date": "2026-10-09",
         "value": 4.87
@@ -616,6 +624,10 @@
       {
         "date": "2026-11-25",
         "value": 4.74
+      },
+      {
+        "date": "2026-11-26",
+        "value": 4.75
       }
     ],
     "de_mkt": [
@@ -762,6 +774,10 @@
       {
         "date": "2026-11-25",
         "value": 3.22
+      },
+      {
+        "date": "2026-11-26",
+        "value": 3.26
       }
     ],
     "it10": [
@@ -908,6 +924,10 @@
       {
         "date": "2026-11-25",
         "value": 4.36
+      },
+      {
+        "date": "2026-11-26",
+        "value": 4.35
       }
     ],
     "uk_mkt": [
@@ -1054,6 +1074,10 @@
       {
         "date": "2026-11-25",
         "value": 5.14
+      },
+      {
+        "date": "2026-11-26",
+        "value": 5.16
       }
     ]
   },
@@ -1066,27 +1090,27 @@
     "영국": true
   },
   "last_source_dates": {
-    "fr10": "2026-11-25",
-    "de10": "2026-11-25",
-    "uk10": "2026-11-23",
-    "fr_mkt": "2026-11-25",
-    "de_mkt": "2026-11-25",
-    "it10": "2026-11-25",
-    "uk_mkt": "2026-11-25"
+    "fr10": "2026-11-26",
+    "de10": "2026-11-26",
+    "uk10": "2026-11-24",
+    "fr_mkt": "2026-11-26",
+    "de_mkt": "2026-11-26",
+    "it10": "2026-11-26",
+    "uk_mkt": "2026-11-26"
   },
   "last_values": {
-    "fr10": 4.731,
-    "de10": 3.22,
-    "uk10": 5.1793,
-    "fr_mkt": 4.74,
-    "de_mkt": 3.22,
-    "it10": 4.36,
-    "uk_mkt": 5.14
+    "fr10": 4.745,
+    "de10": 3.25,
+    "uk10": 5.1531,
+    "fr_mkt": 4.75,
+    "de_mkt": 3.26,
+    "it10": 4.35,
+    "uk_mkt": 5.16
   },
   "last_change_basis": {
-    "fr10": "공식자료 이전 관측일 2026-11-24 대비",
-    "de10": "공식자료 이전 관측일 2026-11-24 대비",
-    "uk10": "공식자료 이전 관측일 2026-11-20 대비",
+    "fr10": "공식자료 이전 관측일 2026-11-25 대비",
+    "de10": "공식자료 이전 관측일 2026-11-25 대비",
+    "uk10": "공식자료 이전 관측일 2026-11-23 대비",
     "fr_mkt": "자료제공사가 명시한 전 거래일 대비",
     "de_mkt": "자료제공사가 명시한 전 거래일 대비",
     "it10": "자료제공사가 명시한 전 거래일 대비",
@@ -1096,7 +1120,7 @@
     "uk10"
   ],
   "last_photo_delivery": {
-    "checked_at_kst": "2026-11-26T10:12:25+09:00",
+    "checked_at_kst": "2026-11-26T21:51:43+09:00",
     "status": "confirmed",
     "width": 1500,
     "height": 1800,
@@ -1137,10 +1161,10 @@
       "sp_milestone:2026-11-27:D-3",
       "sp_milestone:2026-11-27:D-1"
     ],
-    "checked_at_kst": "2026-11-26T12:13:48+09:00",
-    "source_fail_streak": 223,
+    "checked_at_kst": "2026-11-26T21:51:46+09:00",
+    "source_fail_streak": 224,
     "sp_ministry_source_status": "historical_statement_verified",
-    "sp_ministry_last_checked_kst": "2026-11-26T12:13:48+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-26T21:51:46+09:00",
     "source_access": "access_restricted"
   }
 }
