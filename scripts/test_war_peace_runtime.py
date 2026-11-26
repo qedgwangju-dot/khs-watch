@@ -176,6 +176,56 @@ class RuntimeTests(unittest.TestCase):
         self.assertGreaterEqual(min(b - a for a, b in zip(stamps, stamps[1:])), 0.055)
         self.assertEqual(report['google_news_min_interval_seconds'], 0.08)
 
+    def test_broad_and_independent_queries_precede_historical_queries_without_reordering_replay(self):
+        from urllib.error import HTTPError
+        broad_original = 'site:ft.com (Iran OR Ukraine) (peace OR ceasefire) when:6h'
+        broad_current = broad_original.replace('when:6h', 'when:1d')
+        independent = 'direct-ukraine-president-rss'
+        queries = ['old-specialized-1', 'old-specialized-2', independent, broad_current]
+        watch = fake_watch(self.root, queries)
+        watch.CORE_NEWS_QUERIES = (broad_original,)
+        calls = mp.get_context('fork').Array('i', [0, 0, 0, 0])
+        def req(url, timeout=20):
+            if url.startswith('https://official.example/'):
+                with calls.get_lock():
+                    calls[3] += 1
+                return b'official'
+            with calls.get_lock():
+                calls[0] += 1
+                number = calls[0]
+            if number > 1:
+                raise HTTPError(url, 429, 'fixture rate limited', {}, None)
+            return b'first broad result'
+        def news(query):
+            if query == independent:
+                return [{'query': query, 'raw': watch.req('https://official.example/rss')}], None
+            try:
+                raw = watch.req('https://news.google.com/rss/search?q=' + str(queries.index(query)))
+            except Exception as exc:
+                return [], str(exc)
+            return [{'query': query, 'raw': raw}], None
+        watch.req, watch.google_news = req, news
+        report = {}
+        order, traces = runtime.prefetch(watch, report, watch.OUT/'coverage.json',
+                                         workers=1, seconds=3, google_interval=0,
+                                         allow_partial=True)
+        self.assertEqual(order, queries)
+        self.assertEqual(report['initial_dispatch_order'], [3, 2, 0, 1])
+        self.assertEqual(set(traces), {2, 3})
+        self.assertEqual(report['incomplete_query_indices'], [0, 1])
+        self.assertEqual(list(calls), [2, 0, 0, 1])
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, order, traces, missing_indices=[0, 1])
+        try:
+            rows = [watch.google_news(query)[0] for query in queries]
+            verify()
+        finally:
+            restore()
+        self.assertEqual(rows[:2], [[], []])
+        self.assertEqual(rows[2][0]['raw'], b'official')
+        self.assertEqual(rows[3][0]['raw'], b'first broad result')
+        self.assertEqual(watch.STATE.read_text(), '{"seen":["confirmed-old"]}')
+
     def test_all_queries_parallel_and_ordered_replay_preserves_parent_signals(self):
         watch = fake_watch(self.root, ['slow-deep', 'fast-normal', 'late-material'])
         bucket = []
