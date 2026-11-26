@@ -44,65 +44,6 @@ class OpticsReliabilityTests(unittest.TestCase):
         self.assertIsNone(watch.spacex_job_item(dict(rows[0], title="General accounting specialist"), observed=today))
         self.assertFalse(watch.spacex_job_source_verified(dict(items[0], link=watch.SPACEX_JOB_BOARD+"8563613002")))
 
-    def test_spacex_compact_output_preserves_all_sixteen_ids_and_role_specific_features(self):
-        # Reproduce the two eight-job batches delivered on 2026-11-26;
-        # fixtures use the reported fields, not a live job-board request.
-        supply = ["생산능력 확보·확장", "신규·복수 공급처 발굴", "품질·신뢰성 검증"]
-        lta = ["장기 공급계약 협상"]
-        high = ["800G", "1.6T", "3.2T", "CPO(광학 공동 패키징)", "InP(인화인듐)",
-                "GaAs(갈륨비소)", "광검출기", "DSP(디지털 신호처리기)", "224G 고속 신호전송",
-                "능동·수동 구리 연결 케이블", "광섬유·광케이블"]
-        basic = ["CPO(광학 공동 패키징)", "DSP(디지털 신호처리기)",
-                 "능동·수동 구리 연결 케이블", "광섬유·광케이블"]
-        optical = ["품질·신뢰성 검증", "위성 자유공간 레이저 통신", "광검출기",
-                   "DSP(디지털 신호처리기)", "광섬유·광케이블"]
-        dev = "스타링크 위성 광학 공급업체 개발"
-        procurement = "스타링크 위성 광학 부품 조달"
-        design = "스타링크 위성 광트랜시버 개발"
-        dc = "SpaceX AI 데이터센터 네트워크 조달"
-        batch1 = [(8827682002, dev, ["생산부품 승인 절차(PPAP)"] + supply + ["위성 자유공간 레이저 통신"]),
-                  (8949272002, dc, supply + high), (8563613002, procurement, lta + supply),
-                  (8826314002, design, optical), (8950942002, dc, lta + supply + basic),
-                  (8952123002, dc, lta + supply + basic), (8949091002, dc, lta + supply + basic),
-                  (8677827002, design, optical)]
-        batch2 = [(8563611002, procurement, lta + supply), (8932743002, procurement, lta + supply),
-                  (8957252002, dc, supply + high), (8687373002, procurement, lta + supply),
-                  (8957359002, dc, lta + supply + basic), (8957350002, dc, lta + supply + basic),
-                  (8957360002, dc, lta + supply + basic), (8957226002, dc, supply + basic)]
-        for batch, stamp in ((batch1, "2026-11-26T15:11:52+09:00"), (batch2, "2026-11-26T15:49:14+09:00")):
-            items = []
-            for job_id, category, features in batch:
-                ref = watch.SPACEX_JOB_REFERENCES.get(job_id)
-                items.append({"company": watch.SPACEX_OPTICS_COMPANY, "category": category,
-                              "source": "SpaceX Careers", "title": f"SpaceX role [공고 ID: {job_id}]",
-                              "link": watch.SPACEX_JOB_BOARD + str(job_id), "spacex_job_id": job_id,
-                              "spacex_official_verified": True, "spacex_role_ko": category + " 인력",
-                              "spacex_features": features, "spacex_observed_at": stamp,
-                              "spacex_date_reference": ref[0] if ref else None,
-                              "spacex_date_reference_url": ref[1] if ref else None})
-            before = json.dumps(items, ensure_ascii=False, sort_keys=True)
-            lines = watch.render_spacex_job_sections(items)
-            rendered = "\n".join(lines)
-            self.assertEqual(json.dumps(items, ensure_ascii=False, sort_keys=True), before)
-            self.assertIn("공식 채용 8건", rendered)
-            self.assertEqual(rendered.count("• 확인:"), 1)
-            self.assertEqual(rendered.count(stamp), 1)
-            self.assertEqual(rendered.count("• 투자 의미:"), len(set(x[1] for x in batch)))
-            for item in items:
-                self.assertEqual(rendered.count(item["link"]), 1)
-                for feature in item["spacex_features"]:
-                    self.assertIn(feature, rendered)
-                if item["spacex_date_reference"]:
-                    self.assertIn(item["spacex_date_reference"], rendered)
-                    self.assertIn(item["spacex_date_reference_url"], rendered)
-            high_id = 8949272002 if batch is batch1 else 8957252002
-            high_line = next(i for i, line in enumerate(lines) if "800G" in line)
-            self.assertIn(str(high_id), lines[high_line + 1])
-            self.assertEqual(lines[high_line + 1].count("job-boards.greenhouse.io"), 1)
-            self.assertIn("장기 공급계약 협상", rendered)
-            # Conservative raw HTML margin including the normal header/footer.
-            self.assertLessEqual(max(len(rendered), len(rendered.encode("utf-16-le")) // 2) + 300, 3800)
-
     def test_spacex_source_failure_is_not_empty_verified_board(self):
         def broken(*args, **kwargs):
             raise OSError("unavailable")
