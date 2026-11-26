@@ -1,9 +1,11 @@
 {
   "schema_version": 1,
   "batch_id": "958778ba4e0f92c6dde84f32ad068e2fd14fb8f744002a747ee6d9bcf97791fc",
-  "status": "sending",
+  "status": "confirmed",
   "total_parts": 1,
-  "message_ids": [],
+  "message_ids": [
+    228
+  ],
   "event_keys": [
     "630e5d0412f8350473c3fed14e20"
   ],
