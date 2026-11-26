@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import datetime as dt
 import html
+import io
 import json
 import math
 import os
@@ -16,6 +17,8 @@ import pathlib
 import tempfile
 import urllib.parse
 import urllib.request
+import urllib.error
+import uuid
 
 import requests
 from zoneinfo import ZoneInfo
@@ -27,6 +30,7 @@ STATE = ROOT / "data" / "us_tech_etf_proxy_state.json"
 OUT = ROOT / "out"
 RECEIPT = OUT / "us_tech_etf_proxy_receipt.json"
 CANDIDATE = OUT / "us_tech_etf_proxy_candidate.html"
+IMAGE_CANDIDATE = OUT / "us_tech_etf_proxy_candidate.png"
 FUNDS = {
     "IYW": {
         "label": "미국 기술주 ETF",
@@ -51,6 +55,14 @@ HIST_URL = ("https://www.ishares.com/varnish-api/blk-one01-product-data/"
 WINDOWS = ((21, "1개월"), (63, "3개월"))
 HISTORY_LIMIT = 110
 EXPECTED_BOT = "khs887900887900008879_bot"
+class DeliveryUnconfirmed(RuntimeError):
+    """A send was attempted but its exact outcome cannot safely be retried."""
+
+
+class DeliveryRejected(RuntimeError):
+    """Telegram explicitly rejected the request; no success key is recorded."""
+
+
 class OfficialPublicationPending(RuntimeError):
     """A newly closed U.S. market session has not yet appeared in iShares data."""
 
@@ -79,14 +91,21 @@ def save_state(state, path=STATE):
     os.replace(tmp, path)
 
 
+def exchange_sessions(start, end):
+    import exchange_calendars
+    cal = exchange_calendars.get_calendar("XNYS")
+    return [x.date().isoformat() for x in cal.sessions_in_range(start, end)]
+
+
 def latest_us_close(now):
     n = now.astimezone(ET)
     d = n.date()
     if n.time() < dt.time(18, 0):
         d -= dt.timedelta(days=1)
-    while d.weekday() > 4:
-        d -= dt.timedelta(days=1)
-    return d
+    sessions = exchange_sessions(d - dt.timedelta(days=14), d)
+    if not sessions:
+        raise ValueError("US exchange calendar has no completed session")
+    return dt.date.fromisoformat(sessions[-1])
 
 
 def collect(now=None, fetcher=ishares.get_ishares):
@@ -122,9 +141,8 @@ def collect(now=None, fetcher=ishares.get_ishares):
     if date > latest or (latest - date).days > 4:
         raise ValueError(f"ETF official data unavailable/stale: {date} vs US last close {latest}")
     if date < latest:
-        prev_day = latest - dt.timedelta(days=1)
-        while prev_day.weekday() >= 5:
-            prev_day -= dt.timedelta(days=1)
+        prev_sessions = exchange_sessions(latest - dt.timedelta(days=14), latest)
+        prev_day = dt.date.fromisoformat(prev_sessions[-2])
         if date == prev_day:
             raise OfficialPublicationPending(
                 f"iShares official observation {date} awaits latest completed US session {latest}")
@@ -300,7 +318,7 @@ def calculate(observations, state):
         period_days = None
         if old:
             period_days = (current_date - dt.date.fromisoformat(old["date"])).days
-            if 0 < period_days <= 4 and _consecutive_weekday_dates([old, {"date":today}]):
+            if 0 < period_days <= 4 and exchange_sessions(old["date"], today) == [old["date"], today]:
                 delta = row["shares"] - old["shares"]
         # SOXX officially announced a forward split effective November 5, 2026.
         # Freeze the comparison across this event until adjusted history exists.
@@ -388,8 +406,8 @@ def calculate(observations, state):
                 for i in range(1, 4)
             ]
             if all(x > 0 for x in increments):
-                ewy_amount = (recent[-1]["shares"] - recent[0]["shares"]) * recent[-1]["nav"]
-                if ewy_amount >= 150_000_000:
+                ewy_three = rolling_estimated_flows(recent, 3, "EWY")
+                if ewy_three is not None and ewy_three["net_usd"] >= 150_000_000:
                     signals.append("EWY 발행좌수 3거래일 연속 증가·누적 1억5천만달러 이상")
 
     a = movements["IYW"]["estimated_creation_value_usd"]
@@ -510,7 +528,172 @@ def render(result, fx, fx_date):
     return out
 
 
-def send_exact(text):
+
+def _flow_stats(result, ticker):
+    x = result["movements"].get(ticker)
+    if x is None:
+        return None, [None] * 4
+    daily = None if x["estimated_creation_value_usd"] is None else (
+        x["estimated_creation_value_usd"], x["outstanding_shares_change_pct"])
+    five = None if x["five_observations_creation_usd"] is None else (
+        x["five_observations_creation_usd"], x["five_observations_share_change_pct"])
+    periods = [daily, five]
+    for n, _ in WINDOWS:
+        q = x["rolling"].get(n)
+        periods.append(None if q is None else (q["net_usd"], q["share_pct"]))
+    return x, periods
+
+
+def _flow_direction(stat):
+    if stat is None:
+        return "확인 보류"
+    return "설정(유입)" if stat[0] > 0 else "환매(유출)" if stat[0] < 0 else "중립"
+
+
+def render_photo_caption(result, fx, fx_date):
+    lines = [f"<b>미국 ETF 자금 흐름 | {html.escape(result['date'])}</b>"]
+    for ticker in ("IYW", "SOXX", "EWY"):
+        _, periods = _flow_stats(result, ticker)
+        d, f = periods[:2]
+        def brief(stat):
+            return "보류" if stat is None else f"{_flow_direction(stat)} {money_krw(stat[0],fx)}"
+        lines.append(f"{ticker}: 오늘 {brief(d)} / 5일 {brief(f)}")
+    lines += ["설정=ETF 좌수 증가, 환매=좌수 감소에 따른 금액 추정.",
+              "투자자별 순매수 또는 한국거래소 외국인 매매와 다릅니다.",
+              f"환율 {fx:,.2f}원/달러 | {html.escape(str(fx_date))}",
+              '원천: <a href="'+FUNDS["IYW"]["url"]+'">IYW</a> · '
+              '<a href="'+FUNDS["SOXX"]["url"]+'">SOXX</a> · '
+              '<a href="'+OPTIONAL_KOREA_FUND["EWY"]["url"]+'">EWY</a>']
+    caption = "\n".join(lines)
+    if len(caption) > 1000:
+        raise ValueError("Photo caption exceeds safe length")
+    return caption
+
+
+def render_image(result, fx, fx_date):
+    """Deterministic, Korean-readable PNG from the exact validated alert values."""
+    from PIL import Image, ImageDraw, ImageFont
+    regular = pathlib.Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
+    bold = pathlib.Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc")
+    if not regular.is_file() or not bold.is_file():
+        raise RuntimeError("Korean report fonts unavailable")
+    fonts = {}
+    def font(size, strong=False):
+        key = (size, strong)
+        if key not in fonts:
+            fonts[key] = ImageFont.truetype(str(bold if strong else regular), size, index=1)
+        return fonts[key]
+    im = Image.new("RGB", (1200, 1760), "#F3F6FA")
+    draw = ImageDraw.Draw(im)
+    ink, muted, navy = "#14263C", "#566579", "#142E4A"
+    red, blue = "#B42333", "#2455A6"
+    def line(x, y, value, size=32, color=ink, strong=False, width=1100):
+        value = str(value)
+        while size > 19 and draw.textlength(value, font=font(size,strong)) > width:
+            size -= 1
+        if draw.textlength(value, font=font(size,strong)) > width:
+            raise ValueError("Image text exceeds allocated space")
+        draw.text((x,y), value, fill=color, font=font(size,strong), anchor="lt")
+    def box(x,y,w,h,fill,outline=None,r=18):
+        draw.rounded_rectangle((x,y,x+w,y+h),radius=r,fill=fill,outline=outline,width=2 if outline else 1)
+    box(0,0,1199,218,navy,r=0)
+    line(42,29,"미국 ETF 자금 흐름",51,"#FFFFFF",True)
+    line(44,94,f"공식 자료일 {result['date']}  |  추정 설정·환매",29,"#D8E4F1")
+    hit = [f"{k} {'일간' if '당일' in s else '5일' if '최근 5회' in s else '연속'}" for k in ("SOXX","IYW","EWY") for s in result["signals"] if s.startswith(k)]
+    summary = " · ".join(dict.fromkeys(hit)) or "설정·환매 방향 차이 감지"
+    line(44,146,"경보: "+summary,32,"#FFFFFF",True)
+    labels = {"IYW":"미국 기술주", "SOXX":"미국 반도체", "EWY":"한국 주식(미국 상장)"}
+    for i,ticker in enumerate(("IYW","SOXX","EWY")):
+        y = 238+i*435
+        x, periods = _flow_stats(result,ticker)
+        box(30,y,1140,416,"#FFFFFF","#DFE5ED")
+        line(53,y+18,ticker,38,navy,True)
+        line(200,y+24,labels[ticker],31,muted,True)
+        for j,(period,stat) in enumerate(zip(("오늘","최근 5거래일","1개월 · 21일","3개월 · 63일"),periods)):
+            a = 53+j*279
+            color = muted if stat is None or stat[0]==0 else red if stat[0]>0 else blue
+            bg = "#F4F6F8" if stat is None or stat[0]==0 else "#FFF1F2" if stat[0]>0 else "#EEF4FF"
+            box(a,y+73,263,187,bg,r=14)
+            line(a+12,y+86,period,26,muted,True,239)
+            line(a+12,y+126,_flow_direction(stat),26,color,True,239)
+            if stat is None:
+                reason = "분할·자료 확인" if ticker=="SOXX" else "연속 자료 부족"
+                line(a+12,y+171,reason,23,muted,False,239)
+            else:
+                amount,pct = stat
+                line(a+12,y+166,money_krw(amount,fx),33,color,True,239)
+                line(a+12,y+208,f"{amount/1e6:+,.1f}백만달러",22,muted,False,239)
+                line(a+12,y+235,f"좌수 {pct:+.2f}%",22,muted,False,239)
+        if x is None:
+            line(55,y+283,"공식값 또는 기준일 동기화 미확인 — 추정하지 않음",29,muted)
+        elif x["shares_delta"] is not None:
+            line(55,y+279,f"좌수 {x['previous_shares']:,.0f} → {x['shares']:,.0f}주  |  기준가 ${x['nav']:,.2f}",27,ink,False,1090)
+            asset = "" if x.get("asset_check_pct") is None else f"  |  순자산 검산 차이 {x['asset_check_pct']:.3f}%"
+            line(55,y+320,f"일간 {x['prev_date']} → {x['date']}"+asset,24,muted,False,1090)
+        else:
+            line(55,y+283,"일간 비교 보류 — 연속 자료 또는 분할 확인 필요",28,muted)
+        if x is not None:
+            ranges = []
+            if x.get("five_observations_from"):
+                ranges.append(f"5일 {x['five_observations_from'][5:]}~{result['date'][5:]}")
+            for n,label in WINDOWS:
+                r=x["rolling"].get(n)
+                if r:
+                    ranges.append(f"{label} {r['start'][5:]}~{r['end'][5:]}")
+            if ranges:
+                line(55,y+365,"  |  ".join(ranges),25,muted,False,1090)
+    box(30,1542,1140,192,"#E8EEF5")
+    line(52,1558,"읽는 법: 빨강 = 설정(유입)  /  파랑 = 환매(유출)",29,navy,True)
+    line(52,1599,"일별 좌수 증감 × 해당일 기준가격을 합산한 추정치입니다.",25,ink)
+    line(52,1633,"개인·기관 순매수 또는 한국거래소 외국인 매매가 아닙니다.",25,ink)
+    line(52,1667,"SOXX 11/05 3:1 분할 전후 비교 보류 · 출처 iShares",24,muted)
+    line(52,1701,f"환율 {fx:,.2f}원/달러  |  {fx_date}",23,muted)
+    buffer = io.BytesIO()
+    im.save(buffer,format="PNG",optimize=True)
+    png = buffer.getvalue()
+    if len(png)>9_500_000:
+        raise ValueError("Image too large for Telegram")
+    return png
+
+
+def _photo_request(token, chat_id, photo, caption):
+    boundary = "tech_etf_" + uuid.uuid4().hex
+    chunks = []
+    for name,value in (("chat_id",chat_id),("caption",caption),("parse_mode","HTML")):
+        chunks.append(f'--{boundary}\r\nContent-Disposition: form-data; name="{name}"\r\n\r\n{value}\r\n'.encode())
+    chunks.append(f'--{boundary}\r\nContent-Disposition: form-data; name="photo"; filename="etf-flow.png"\r\nContent-Type: image/png\r\n\r\n'.encode()+photo+b"\r\n")
+    chunks.append(f"--{boundary}--\r\n".encode())
+    return urllib.request.Request(f"https://api.telegram.org/bot{token}/sendPhoto",
+        data=b"".join(chunks),headers={"Content-Type":"multipart/form-data; boundary="+boundary},method="POST")
+
+
+def _send_response(request):
+    # Never retry a timeout, malformed acknowledgement or HTTP 5xx: the
+    # server might already have delivered the message.
+    try:
+        with urllib.request.urlopen(request,timeout=25) as response:
+            returned=json.load(response)
+    except urllib.error.HTTPError as exc:
+        try:
+            failure=json.load(exc)
+        except Exception:
+            failure={}
+        if 400<=exc.code<500 and failure.get("ok") is False:
+            description=str(failure.get("description","")).lower()
+            # Only a definitive photo/caption-format rejection permits text fallback.
+            if exc.code==400 and any(s in description for s in
+                    ("photo","image","caption","file too","media")):
+                raise DeliveryRejected("photo_format_rejected") from None
+            raise DeliveryRejected(f"Telegram explicitly rejected HTTP {exc.code}") from None
+        raise DeliveryUnconfirmed(f"Telegram HTTP {exc.code}; receipt unverified") from None
+    except Exception as exc:
+        raise DeliveryUnconfirmed(f"Telegram response unverified: {type(exc).__name__}") from None
+    if not isinstance(returned,dict):
+        raise DeliveryUnconfirmed("Telegram response is not an object")
+    return returned
+
+
+def send_exact(text, photo=None, caption=None):
     token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
     chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
     expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or EXPECTED_BOT).strip().lstrip("@")
@@ -529,15 +712,23 @@ def send_exact(text):
     request = urllib.request.Request(
         f"https://api.telegram.org/bot{token}/sendMessage",data=body,method="POST"
     )
-    with urllib.request.urlopen(request,timeout=25) as response:
-        returned=json.load(response)
+    if photo is not None:
+        try:
+            returned=_send_response(_photo_request(token,chat_id,photo,caption))
+        except DeliveryRejected as exc:
+            if str(exc)!="photo_format_rejected":
+                raise
+            print("tech_etf_photo_rejected_safe_text_fallback=true")
+            returned=_send_response(request)
+    else:
+        returned=_send_response(request)
     result = returned.get("result") or {}
     msg_id = result.get("message_id")
     actual_chat = result.get("chat") or {}
     if not returned.get("ok") or type(msg_id) is not int or msg_id < 1:
-        raise RuntimeError("Telegram send acknowledgement missing message_id")
+        raise DeliveryUnconfirmed("Telegram send acknowledgement missing message_id")
     if type(actual_chat.get("id")) is not int:
-        raise RuntimeError("Telegram response missing actual chat.id")
+        raise DeliveryUnconfirmed("Telegram response missing actual chat.id")
     if chat_id.lstrip("-").isdigit():
         matching_chat = actual_chat["id"] == int(chat_id)
     elif chat_id.startswith("@"):
@@ -545,7 +736,8 @@ def send_exact(text):
     else:
         raise RuntimeError("Unrecognized Telegram chat destination")
     if not matching_chat:
-        raise RuntimeError("Telegram acknowledged unexpected chat; do not advance state")
+        raise DeliveryUnconfirmed("Telegram acknowledged unexpected chat; do not advance state")
+    print("tech_etf_delivery_format="+("photo" if isinstance(result.get("photo"),list) and result["photo"] else "text"))
     return msg_id
 
 
@@ -579,8 +771,17 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     except Exception as e:
         return {"status":"source_withheld","reason":f"{type(e).__name__}: {str(e)[:220]}","telegram_sent":False}
     sent_keys = previously_sent_signal_keys(state)
+    pending=state.get("unconfirmed_deliveries",[])
+    if not isinstance(pending,list) or any(not isinstance(item,dict) or
+            not isinstance(item.get("keys"),list) for item in pending):
+        raise RuntimeError("Invalid unconfirmed ETF delivery state")
+    pending_keys={k for item in pending for k in item["keys"]}
+    blocked=[name for name in outcome["signals"] if outcome["date"]+"|"+name in pending_keys]
     fresh_signals = [name for name in outcome["signals"]
-                     if outcome["date"] + "|" + name not in sent_keys]
+                     if outcome["date"] + "|" + name not in sent_keys | pending_keys]
+    if blocked and not fresh_signals and not validate_only:
+        return {"status":"delivery_unconfirmed","date":outcome["date"],
+                "telegram_sent":False,"reason":"Prior send outcome requires reconciliation; no automatic resend"}
     if outcome["signals"] and not fresh_signals and not validate_only:
         if added:
             state["history"]=outcome["new_history"]
@@ -589,7 +790,8 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
         return {"status":"duplicate_suppressed","date":outcome["date"],
                 "history_backfilled":added,"telegram_sent":False}
     fx,fx_date=None,None
-    if fresh_signals:
+    preview_signals = outcome["signals"] if validate_only else fresh_signals
+    if preview_signals:
         try:
             q=ishares.get_usdkrw()
             fx=float(q["rate"])
@@ -598,18 +800,38 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
                 raise ValueError("invalid USDKRW quote")
         except Exception as e:
             return {"status":"fx_withheld","reason":type(e).__name__,"telegram_sent":False}
-    new_outcome = {**outcome, "signals":fresh_signals,
-                   "alert_key":outcome["date"] + "|" + "|".join(sorted(fresh_signals))}
-    if fresh_signals:
+    new_outcome = {**outcome, "signals":preview_signals,
+                   "alert_key":outcome["date"] + "|" + "|".join(sorted(preview_signals))}
+    photo,caption=None,None
+    if preview_signals:
         body=render(new_outcome,fx,fx_date)
         OUT.mkdir(parents=True,exist_ok=True)
         CANDIDATE.write_text(body+"\n",encoding="utf-8")
+        try:
+            png=render_image(new_outcome,fx,fx_date)
+            short=render_photo_caption(new_outcome,fx,fx_date)
+            IMAGE_CANDIDATE.write_bytes(png)
+            photo,caption=png,short
+        except Exception as exc:
+            print(f"tech_etf_image_unavailable={type(exc).__name__}; safe_text_fallback=true")
     if validate_only:
         return {"status":"validated","date":outcome["date"],"signals":outcome["signals"],
                 "historical_rows_added":added,
-                "movements":outcome["movements"],"telegram_sent":False}
+                "movements":outcome["movements"],"telegram_sent":False,
+                "image_preview":photo is not None}
     if fresh_signals:
-        message_id=send_exact(body)
+        try:
+            message_id=send_exact(body,photo=photo,caption=caption)
+        except DeliveryUnconfirmed as exc:
+            keys=[outcome["date"]+"|"+name for name in fresh_signals]
+            state["unconfirmed_deliveries"]=pending+[{
+                "date":outcome["date"],"keys":keys,"reason":str(exc)[:160],
+                "recorded_at_kst":dt.datetime.now(KST).isoformat(timespec="seconds")}]
+            state["history"]=outcome["new_history"]
+            state["last_update_date"]=outcome["date"]
+            save_state(state,state_path)
+            return {"status":"delivery_unconfirmed","date":outcome["date"],
+                    "telegram_sent":False,"reason":"Receipt unverified; held for reconciliation"}
         sent_keys.update(outcome["date"] + "|" + name for name in fresh_signals)
         state["sent_signal_keys"]=sorted(sent_keys)[-300:]
         state["last_alert"]={

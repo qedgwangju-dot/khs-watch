@@ -33,6 +33,9 @@ class TechEtfProxyTests(unittest.TestCase):
         self.state=Path(self.tmp.name)/"proxy.json"
         self.candidate=patch.object(w,"CANDIDATE",Path(self.tmp.name)/"message.html")
         self.receipt=patch.object(w,"RECEIPT",Path(self.tmp.name)/"receipt.json")
+        self.image=patch.object(w,"IMAGE_CANDIDATE",Path(self.tmp.name)/"message.png")
+        self.image.start()
+        self.addCleanup(self.image.stop)
         self.candidate.start();self.receipt.start()
         self.addCleanup(self.candidate.stop);self.addCleanup(self.receipt.stop)
 
@@ -499,6 +502,91 @@ class TechEtfProxyTests(unittest.TestCase):
         notice=w.render(result,1350,"2026-11-05")
         self.assertIn("2026-11-05 시행된 3대 1 주식분할",notice)
         self.assertNotIn("예정 주식분할",notice)
+
+
+
+    def test_holiday_is_not_a_new_us_close(self):
+        now=dt.datetime(2026,11,27,1,0,tzinfo=dt.timezone.utc)
+        self.assertEqual(w.latest_us_close(now),dt.date(2026,11,25))
+        self.assertEqual(w.exchange_sessions("2026-11-25","2026-11-27"),
+                         ["2026-11-25","2026-11-27"])
+        result=w.calculate(snap("2026-11-27"),prior_state("2026-11-25"))
+        self.assertIsNotNone(result["movements"]["IYW"]["shares_delta"])
+
+    def test_ewy_three_day_uses_each_nav_not_final_nav(self):
+        state=prior_state()
+        state["history"]["EWY"]=[
+            {"date":"2026-10-16","nav":100,"shares":100_000_000},
+            {"date":"2026-10-19","nav":100,"shares":100_500_000},
+            {"date":"2026-10-20","nav":100,"shares":101_000_000}]
+        current=snap()
+        current["EWY"]={"date":"2026-10-21","nav":200,"shares":101_300_000}
+        result=w.calculate(current,state)
+        self.assertIn("EWY 발행좌수 3거래일 연속 증가·누적 1억5천만달러 이상",result["signals"])
+        current["EWY"]["shares"]=101_200_000
+        result=w.calculate(current,state)
+        self.assertNotIn("EWY 발행좌수 3거래일 연속 증가·누적 1억5천만달러 이상",result["signals"])
+
+    def test_photo_preview_matches_calculation(self):
+        outcome=w.calculate(snap(),prior_state())
+        cap=w.render_photo_caption(outcome,1350,"2026-10-21")
+        self.assertIn("+6,818억원",cap)
+        self.assertIn("EWY: 오늘 보류",cap)
+        try:
+            png=w.render_image(outcome,1350,"2026-10-21")
+        except (ImportError,RuntimeError) as exc:
+            self.skipTest(str(exc))
+        from PIL import Image
+        self.assertEqual(Image.open(io.BytesIO(png)).size,(1200,1760))
+        self.assertTrue(png.startswith(b"\x89PNG"))
+
+    def test_photo_delivery_uses_single_verified_request(self):
+        env={"TELEGRAM_BOT_TOKEN":"test","TELEGRAM_CHAT_ID":"-1001234",
+             "EXPECTED_TELEGRAM_BOT_USERNAME":w.EXPECTED_BOT}
+        identity={"ok":True,"result":{"username":w.EXPECTED_BOT}}
+        correct={"ok":True,"result":{"message_id":500,"chat":{"id":-1001234},"photo":[{}]}}
+        with patch.dict(os.environ,env),patch.object(w.urllib.request,"urlopen",
+                side_effect=[io.BytesIO(json.dumps(x).encode()) for x in (identity,correct)]) as send:
+            self.assertEqual(w.send_exact("fallback",photo=b"png",caption="caption"),500)
+            self.assertEqual(send.call_count,2)
+            self.assertTrue(send.call_args.args[0].full_url.endswith("/sendPhoto"))
+            self.assertIn(b"filename=\"etf-flow.png\"",send.call_args.args[0].data)
+
+    def test_ambiguous_photo_response_does_not_fallback(self):
+        env={"TELEGRAM_BOT_TOKEN":"test","TELEGRAM_CHAT_ID":"-1001234",
+             "EXPECTED_TELEGRAM_BOT_USERNAME":w.EXPECTED_BOT}
+        identity={"ok":True,"result":{"username":w.EXPECTED_BOT}}
+        with patch.dict(os.environ,env),patch.object(w.urllib.request,"urlopen",
+                side_effect=[io.BytesIO(json.dumps(identity).encode()),TimeoutError()]) as send:
+            with self.assertRaises(w.DeliveryUnconfirmed):
+                w.send_exact("fallback",photo=b"png",caption="caption")
+            self.assertEqual(send.call_count,2)
+
+    def test_unconfirmed_not_success_and_not_retried(self):
+        w.save_state(prior_state(),self.state)
+        with patch.object(w,"send_exact",side_effect=w.DeliveryUnconfirmed("timeout")) as send,patch.object(
+                w,"render_image",return_value=b"png"),patch.object(w.ishares,"get_usdkrw",
+                return_value={"rate":1350,"date":"2026-10-21"}):
+            first=w.run(state_path=self.state,getter=lambda now:snap())
+            self.assertEqual(first["status"],"delivery_unconfirmed")
+            saved=w.load_state(self.state)
+            self.assertFalse(saved.get("sent_signal_keys"))
+            self.assertIsNone(saved["last_alert"])
+            self.assertTrue(saved["unconfirmed_deliveries"])
+            again=w.run(state_path=self.state,getter=lambda now:snap())
+            self.assertEqual(again["status"],"delivery_unconfirmed")
+            send.assert_called_once()
+
+    def test_render_failure_uses_original_text_once(self):
+        w.save_state(prior_state(),self.state)
+        with patch.object(w,"render_image",side_effect=RuntimeError("font")) as pic,patch.object(
+                w,"send_exact",return_value=500) as send,patch.object(w.ishares,"get_usdkrw",
+                return_value={"rate":1350,"date":"2026-10-21"}):
+            result=w.run(state_path=self.state,getter=lambda now:snap())
+            self.assertEqual(result["status"],"sent")
+            send.assert_called_once()
+            self.assertIsNone(send.call_args.kwargs["photo"])
+            self.assertIn("검산",send.call_args.args[0])
 
 
 if __name__=="__main__":
