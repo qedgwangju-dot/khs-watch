@@ -1590,7 +1590,7 @@ if quality_gate_ok and (updates or force or presentation_changed):
         else ("정정·보강" if correction else "신규 변화")
     )
     if presentation_changed and not updates and not DAILY_DIGEST:
-        event_label = "요약형 전환"
+        event_label = "이미지 알림 전환"
 
     # The full analysis is an artifact, outside the Telegram sending path.
     DETAIL.write_text(
@@ -1661,3 +1661,4 @@ if enrichment_changed and not PENDING.exists():
         encoding="utf-8",
     )
     print("us_positioning_enrichment_state_ready=true")
+
