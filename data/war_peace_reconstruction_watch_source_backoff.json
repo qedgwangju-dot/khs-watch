@@ -35,6 +35,13 @@
       "observed_epoch": 1795656658.603,
       "retry_at_epoch": 1795657558.603,
       "denials": 1
+    },
+    "news.err.ee": {
+      "reason": "HTTPError",
+      "code": 403,
+      "observed_epoch": 1795657055.416512,
+      "retry_at_epoch": 1795678655.416512,
+      "denials": 1
     }
   }
 }
