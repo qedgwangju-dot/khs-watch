@@ -168,64 +168,6 @@ jobs:
           done
           exit 1
 
-      - name: Ensure Korean fonts for the Telegram report image
-        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
-        run: |
-          if ! fc-match -f '%{family}' 'Noto Sans CJK KR' | grep -Eiq 'Noto (Sans|Serif) CJK' || ! fc-match -f '%{family}' 'Noto Color Emoji' | grep -Eiq 'Noto Color Emoji'; then
-            sudo apt-get update -qq
-            sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji
-          fi
-          fc-match -f '%{family}\n' 'Noto Sans CJK KR' | tee /tmp/us_positioning_korean_font.txt
-          grep -Eiq 'Noto (Sans|Serif) CJK' /tmp/us_positioning_korean_font.txt || { echo 'Korean Noto font unavailable; refusing an unreadable image'; exit 1; }
-
-      - name: Render Telegram report image
-        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
-        run: python scripts/us_positioning_telegram.py render --alert out/us_positioning_alert.html --image out/us_positioning_alert.png | tee -a "$GITHUB_STEP_SUMMARY"
-
-      - name: Persist Telegram photo attempt guard before sending
-        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != '' && hashFiles('out/us_positioning_alert.png') != ''
-        run: |
-          python scripts/us_positioning_telegram.py prepare-attempt \
-            --alert out/us_positioning_alert.html \
-            --image out/us_positioning_alert.png \
-            --guard data/us_positioning_delivery_guard.json \
-            --output out/us_positioning_telegram_attempt.json \
-            --run-id "$GITHUB_RUN_ID" \
-            --head-sha "$US_POSITIONING_CHECKOUT_SHA"
-          cp out/us_positioning_telegram_attempt.json /tmp/us_positioning_telegram_attempt.json
-          git config user.name "us-positioning-watch[bot]"
-          git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
-          persisted=false
-          for attempt in 1 2 3 4; do
-            git fetch origin main
-            git reset --hard origin/main
-            python - <<'PY'
-          import json, pathlib
-          target=pathlib.Path("data/us_positioning_delivery_guard.json")
-          candidate=json.loads(pathlib.Path("/tmp/us_positioning_telegram_attempt.json").read_text(encoding="utf-8"))
-          prior=json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
-          if prior.get("attempt_id")==candidate.get("attempt_id") and prior.get("status")=="unconfirmed":
-              print("photo_attempt_guard=already_persisted")
-          elif prior and prior.get("status") not in {"confirmed","retry_safe"}:
-              raise RuntimeError("Prior Telegram photo outcome is unresolved; refusing a new send")
-          else:
-              pathlib.Path("data").mkdir(exist_ok=True)
-              target.write_text(json.dumps(candidate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-              print("photo_attempt_guard=prepared")
-          PY
-            if [ -z "$(git status --porcelain -- data/us_positioning_delivery_guard.json)" ]; then
-              current_attempt=$(python -c 'import json;print(json.load(open("data/us_positioning_delivery_guard.json",encoding="utf-8")).get("attempt_id",""))')
-              if [ "$current_attempt" = "$(python -c 'import json;print(json.load(open("/tmp/us_positioning_telegram_attempt.json",encoding="utf-8")).get("attempt_id",""))')" ]; then persisted=true; break; fi
-              echo "Refusing to send because the attempt guard was not persisted" >&2
-              exit 1
-            fi
-            git add data/us_positioning_delivery_guard.json
-            git commit -m "Record US positioning Telegram photo attempt"
-            if git push origin HEAD:main; then persisted=true; break; fi
-            sleep $((attempt * 3))
-          done
-          test "$persisted" = true
-
       - name: Watchdog existing Treasury CTA route
         if: github.event_name == 'schedule' && github.event.schedule != '30 7 * * *' && github.event.schedule != '45 7 * * *'
         env:
@@ -295,6 +237,64 @@ jobs:
                   raise RuntimeError(f"CTA workflow dispatch unexpected status={r.status}")
           print(f"cta_watchdog=dispatched stale_age_minutes={age_min}")
           PY
+
+      - name: Ensure Korean fonts for the Telegram report image
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
+        run: |
+          if ! fc-match -f '%{family}' 'Noto Sans CJK KR' | grep -Eiq 'Noto (Sans|Serif) CJK' || ! fc-match -f '%{family}' 'Noto Color Emoji' | grep -Eiq 'Noto Color Emoji'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji
+          fi
+          fc-match -f '%{family}\n' 'Noto Sans CJK KR' | tee /tmp/us_positioning_korean_font.txt
+          grep -Eiq 'Noto (Sans|Serif) CJK' /tmp/us_positioning_korean_font.txt || { echo 'Korean Noto font unavailable; refusing an unreadable image'; exit 1; }
+
+      - name: Render Telegram report image
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
+        run: python scripts/us_positioning_telegram.py render --alert out/us_positioning_alert.html --image out/us_positioning_alert.png | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Persist Telegram photo attempt guard before sending
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != '' && hashFiles('out/us_positioning_alert.png') != ''
+        run: |
+          python scripts/us_positioning_telegram.py prepare-attempt \
+            --alert out/us_positioning_alert.html \
+            --image out/us_positioning_alert.png \
+            --guard data/us_positioning_delivery_guard.json \
+            --output out/us_positioning_telegram_attempt.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$US_POSITIONING_CHECKOUT_SHA"
+          cp out/us_positioning_telegram_attempt.json /tmp/us_positioning_telegram_attempt.json
+          git config user.name "us-positioning-watch[bot]"
+          git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
+          persisted=false
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json, pathlib
+          target=pathlib.Path("data/us_positioning_delivery_guard.json")
+          candidate=json.loads(pathlib.Path("/tmp/us_positioning_telegram_attempt.json").read_text(encoding="utf-8"))
+          prior=json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+          if prior.get("attempt_id")==candidate.get("attempt_id") and prior.get("status")=="unconfirmed":
+              print("photo_attempt_guard=already_persisted")
+          elif prior and prior.get("status") not in {"confirmed","retry_safe"}:
+              raise RuntimeError("Prior Telegram photo outcome is unresolved; refusing a new send")
+          else:
+              pathlib.Path("data").mkdir(exist_ok=True)
+              target.write_text(json.dumps(candidate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+              print("photo_attempt_guard=prepared")
+          PY
+            if [ -z "$(git status --porcelain -- data/us_positioning_delivery_guard.json)" ]; then
+              current_attempt=$(python -c 'import json;print(json.load(open("data/us_positioning_delivery_guard.json",encoding="utf-8")).get("attempt_id",""))')
+              if [ "$current_attempt" = "$(python -c 'import json;print(json.load(open("/tmp/us_positioning_telegram_attempt.json",encoding="utf-8")).get("attempt_id",""))')" ]; then persisted=true; break; fi
+              echo "Refusing to send because the attempt guard was not persisted" >&2
+              exit 1
+            fi
+            git add data/us_positioning_delivery_guard.json
+            git commit -m "Record US positioning Telegram photo attempt"
+            if git push origin HEAD:main; then persisted=true; break; fi
+            sleep $((attempt * 3))
+          done
+          test "$persisted" = true
 
       - name: Send Telegram report image
         if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != '' && hashFiles('out/us_positioning_alert.png') != ''
