@@ -3,20 +3,24 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 3,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 62,
+    "google_news_rate_limit_429": 3,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 121,
+    "raw_items": 120,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -892,5 +896,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T01:50:55+09:00"
+  "updated_at_kst": "2026-11-27T02:10:49+09:00"
 }
