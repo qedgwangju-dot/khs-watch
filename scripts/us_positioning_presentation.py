@@ -766,4 +766,3 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="ì‹ ê
     if len(message.strip()) > BRIEF_MAX_CHARS:
         raise ValueError("US positioning brief exceeds the single-message length budget")
     return message
-
