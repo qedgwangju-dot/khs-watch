@@ -5,6 +5,7 @@ import html
 import json
 import pathlib
 import re
+import subprocess
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -252,6 +253,56 @@ def fetch_official_nvidia() -> tuple[dict | None, list[str]]:
     return None, errors
 
 
+
+def read_oem_configurations(now: datetime) -> tuple[list[dict], list[str]]:
+    """Verify exact NVL72 product specs even when the news feed is throttled."""
+    items = []
+    errors = []
+    sources = [
+        ("Lenovo", "https://lenovopress.lenovo.com/lp2527-lenovo-nvidia-vera-rubin-nvl72",
+         "7DQQ", r"fixed configuration,\s*768\s*GB per processor"),
+        ("Supermicro", "https://www.supermicro.com/manuals/brochure/Brochure_NVIDIA-Vera-Rubin-Architecture-Solutions.pdf",
+         "SRS-VR-NVL72", r"each with up to 1\.5\s*TB LPDDR5X memory\s*\(\s*768\s*GB for standard configuration\s*\)"),
+    ]
+    for maker, url, model, pattern in sources:
+        try:
+            data = fetch(url)
+            if url.endswith(".pdf"):
+                if not data.startswith(b"%PDF-"):
+                    raise ValueError("공식 PDF 형식 불일치")
+                raw = subprocess.run(
+                    ["pdftotext", "-layout", "-", "-"], input=data,
+                    capture_output=True, check=True, timeout=25,
+                ).stdout.decode("utf-8", errors="replace")
+            else:
+                raw = data.decode("utf-8", errors="replace")
+            body = clean_text(raw)
+            match = re.search(pattern, body, re.I)
+            if not (model.lower() in body.lower() and match):
+                raise ValueError("모델 또는 CPU당 기본 구성 원문 확인 불가")
+            cap = {"module_gb": [], "cpu_gb": [768], "rack_tb": [27.648], "slots": []}
+            items.append({
+                "state_key": f"oem-cpu-memory-v1:{maker}:{model}:standard:768GB",
+                "evidence_id": evidence_id(model + ":768GB", url),
+                "title": f"{maker} {model} CPU당 기본 메모리",
+                "direct_link": url,
+                "source": maker,
+                "published_at_kst": "",
+                "observed_at_kst": now.isoformat(timespec="seconds"),
+                "capacity": cap,
+                "actors": [maker],
+                "actions": ["공식 기본 사양"],
+                "tier": "공식자료",
+                "verification": "제조사 공식 제품 문서",
+                "evidence": [{"source": maker, "url": url}],
+                "text": f"{maker} {model}",
+                "oem_spec": True,
+            })
+        except Exception as e:
+            errors.append(f"{maker} 공식 사양 미확인: {type(e).__name__}: {e}")
+    return items, errors
+
+
 def read_news(now: datetime) -> tuple[list[dict], list[str]]:
     items = []
     errors = []
@@ -448,6 +499,18 @@ def build_alert(now: datetime, official_change: dict | None, states: list[dict])
         cap = e["capacity"]
         actors = ", ".join(e.get("actors") or ["주체 미상"])
         actions = ", ".join(e.get("actions") or ["용량 상태 확인"])
+        if e.get("oem_spec"):
+            label = html.escape(e["source"])
+            link = html.escape(e["direct_link"], quote=True)
+            blocks += [
+                "",
+                f'<b>{label} 공식 NVL72 기본 사양</b>',
+                '• Vera CPU당 LPDDR5X(저전력 D램) 768GB. CPU 36개 기준 합산 27,648GB(약 28TB).',
+                '• NVIDIA 전체 플랫폼의 최대 1.5TB/CPU·54TB/랙과는 다른 기준입니다.',
+                '• 고객별 실제 출하 조합과 모듈 개수는 미공개입니다. 8개가 유지돼 192GB 대신 96GB가 들어가는 경우에만, 비트는 절반이고 랙당 기판은 288장 그대로입니다.',
+                f'• 근거: <a href="{link}">{label} 공식 제품 문서</a>',
+            ]
+            continue
         blocks += [
             "",
             "<b>신규 주제·사건 상태</b>",
@@ -509,8 +572,9 @@ def main() -> None:
     needs_state_model_migration = "known_topic_states" not in state
 
     official, official_errors = fetch_official_nvidia()
+    oem_states, oem_errors = read_oem_configurations(now)
     news, news_errors = read_news(now)
-    verified_states = verified_topic_states(news, now)
+    verified_states = oem_states + verified_topic_states(news, now)
     current_state_keys = {x["state_key"] for x in verified_states}
 
     official_change = None
@@ -524,10 +588,15 @@ def main() -> None:
     if not first_run and not needs_state_model_migration:
         new_topic_states = [x for x in verified_states if x["state_key"] not in previous_topic_states]
 
-    known_topic_states = previous_topic_states | current_state_keys
+    # Do not mark candidates beyond the emitted limit as delivered.
+    emitted_states = new_topic_states[:6]
+    confirmed_in_pending = (current_state_keys if first_run or needs_state_model_migration
+                            else {x["state_key"] for x in emitted_states})
+    known_topic_states = previous_topic_states | confirmed_in_pending
     evidence_ids = sorted({x["evidence_id"] for x in news})[-1500:]
 
     pending = {
+        **{key: state[key] for key in ("last_successful_delivery_kst", "telegram_message_id", "bot_username") if key in state},
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "monitoring_model": "topic_event_official_state_change_v2",
         "official_signature": current_official_sig,
@@ -536,7 +605,7 @@ def main() -> None:
         "known_topic_states": sorted(known_topic_states),
         "evidence_ids": evidence_ids,
         "fresh_hours": FRESH_HOURS,
-        "errors": (official_errors + news_errors)[-30:],
+        "errors": (official_errors + oem_errors + news_errors)[-30:],
         "verified_topic_states_now": len(verified_states),
         "new_topic_state_changes": len(new_topic_states),
     }
@@ -551,7 +620,7 @@ def main() -> None:
         )
     elif official_change or new_topic_states:
         (OUT / "rubin_socamm_capacity_alert.html").write_text(
-            build_alert(now, official_change, new_topic_states[:6]), encoding="utf-8"
+            build_alert(now, official_change, emitted_states), encoding="utf-8"
         )
 
     status = [
@@ -567,7 +636,7 @@ def main() -> None:
         f"- new_topic_state_changes: {len(new_topic_states)}",
         f"- errors: {len(official_errors) + len(news_errors)}",
     ]
-    for err in (official_errors + news_errors)[:12]:
+    for err in (official_errors + oem_errors + news_errors)[:12]:
         status.append(f"  - {err}")
     (OUT / "rubin_socamm_capacity_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
 
