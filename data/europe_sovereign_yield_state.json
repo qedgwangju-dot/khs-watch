@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-26T21:54:51+09:00",
+  "last_checked_kst": "2026-11-27T06:59:39+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -627,7 +627,7 @@
       },
       {
         "date": "2026-11-26",
-        "value": 4.75
+        "value": 4.74
       }
     ],
     "de_mkt": [
@@ -927,7 +927,7 @@
       },
       {
         "date": "2026-11-26",
-        "value": 4.35
+        "value": 4.32
       }
     ],
     "uk_mkt": [
@@ -1102,16 +1102,15 @@
     "fr10": 4.745,
     "de10": 3.25,
     "uk10": 5.1531,
-    "fr_mkt": 4.75,
+    "fr_mkt": 4.74,
     "de_mkt": 3.26,
-    "it10": 4.35,
+    "it10": 4.32,
     "uk_mkt": 5.16
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-11-25 대비",
     "de10": "공식자료 이전 관측일 2026-11-25 대비",
     "uk10": "공식자료 이전 관측일 2026-11-23 대비",
-    "fr_mkt": "자료제공사가 명시한 전 거래일 대비",
     "de_mkt": "자료제공사가 명시한 전 거래일 대비",
     "it10": "자료제공사가 명시한 전 거래일 대비",
     "uk_mkt": "자료제공사가 명시한 전 거래일 대비"
@@ -1161,10 +1160,10 @@
       "sp_milestone:2026-11-27:D-3",
       "sp_milestone:2026-11-27:D-1"
     ],
-    "checked_at_kst": "2026-11-26T21:54:53+09:00",
-    "source_fail_streak": 225,
+    "checked_at_kst": "2026-11-27T06:59:44+09:00",
+    "source_fail_streak": 226,
     "sp_ministry_source_status": "historical_statement_verified",
-    "sp_ministry_last_checked_kst": "2026-11-26T21:54:53+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-27T06:59:44+09:00",
     "source_access": "access_restricted"
   }
 }
