@@ -13,7 +13,7 @@ from us_positioning_context import checked_path, checked_composition, checked_op
 from us_positioning_amounts import checked_turnover, checked_turnover_comparisons, checked_reference, money_pair, average_money_pair, notional
 from us_positioning_fx import checked_fx
 
-PRESENTATION_VERSION = "us-positioning-auto-direction-20261016-v1"
+PRESENTATION_VERSION = "us-positioning-telegram-image-20261127-v1"
 BRIEF_MAX_CHARS = 3600
 
 
