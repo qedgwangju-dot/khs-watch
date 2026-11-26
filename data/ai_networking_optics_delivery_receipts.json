@@ -66,6 +66,36 @@
       "state_persisted": true,
       "status": "complete"
     },
+    "cc114d58f4471f954d8202e2f276dc9ecdadd66b5159060aea3d0bf0fbf6c11e": {
+      "bot_username": "khs88798879887988798879_bot",
+      "confirmed_at_kst": "2026-11-26T15:13:45+09:00",
+      "created_at_kst": "2026-11-26T15:13:44+09:00",
+      "part_hashes": [
+        "63660e1968b9786cb145f4641df92a6dbff849dfb312722095fe0a9813ab280d",
+        "d9acb19f3786f3415b7a651c45680585856eb226655679deb49ab8ce784e5aea"
+      ],
+      "receipts": {
+        "0": {
+          "chat_identity_verified": true,
+          "confirmed_at_kst": "2026-11-26T15:13:45+09:00",
+          "message_id": 568,
+          "source_sha": "030a63c379a95e432493a0a78a07fc7e6f70c0c1",
+          "status": "confirmed"
+        },
+        "1": {
+          "chat_identity_verified": true,
+          "confirmed_at_kst": "2026-11-26T15:13:45+09:00",
+          "message_id": 569,
+          "source_sha": "030a63c379a95e432493a0a78a07fc7e6f70c0c1",
+          "status": "confirmed"
+        }
+      },
+      "route_key": "e06789d08ffbc610316e034294fc31cc16aee21380f9465db7a03610b61897c0",
+      "source_sha": "030a63c379a95e432493a0a78a07fc7e6f70c0c1",
+      "state_ancestor_sha256": "9d9524667b6529cef43401aa0294b1cb3078690669c141ccc6539c7417fa960d",
+      "state_persisted": true,
+      "status": "complete"
+    },
     "fa1b10e2866c8e7f3efa1f02d36997006607c23214759bfd67dfdf136980f193": {
       "bot_username": "khs88798879887988798879_bot",
       "confirmed_at_kst": "2026-11-25T15:13:02+09:00",
@@ -124,11 +154,6 @@
     "44553873371:1": {
       "checked_at_kst": "2026-11-20T00:44:20+09:00",
       "fingerprint": "d1476e44bb81713de533036adab155721926a62649e3f2db33ffe86e8d816555",
-      "outcome": "no_send"
-    },
-    "44554269088:1": {
-      "checked_at_kst": "2026-11-20T00:44:19+09:00",
-      "fingerprint": "b739a498d780b4d24b27d74ed6c0aaf809d68b8b590b629be637430c53f44bf8",
       "outcome": "no_send"
     },
     "44557802188:1": {
@@ -3648,10 +3673,18 @@
       "started": "2026-11-25T15:17:25+00:00"
     },
     "45648788639:1": {
-      "checked_at_kst": "2026-11-26T01:08:55+09:00",
+      "checked_at_kst": "2026-11-26T15:13:43+09:00",
       "completed": "2026-11-25T15:49:40+00:00",
       "fingerprint": "5849e616d0b54ea647a761c2b3d81f2f2d06e31f50513d0ce7d6cfb8d09430bf",
-      "outcome": "attempted",
+      "outcome": "no_send",
+      "resolution": "verified_no_pending_payload_and_no_send",
+      "reviewed_no_send": {
+        "artifact_id": 15038513168,
+        "artifact_sha256": "ab248192937d389329f59161f155a72febcc4cee302f9ffbe7f43efa55bee034",
+        "fingerprint": "5849e616d0b54ea647a761c2b3d81f2f2d06e31f50513d0ce7d6cfb8d09430bf",
+        "job_id": 139327156301,
+        "started_at": "2026-11-25T15:49:39+00:00"
+      },
       "saved": false,
       "sent_success": true,
       "started": "2026-11-25T15:49:39+00:00"
@@ -3915,16 +3948,29 @@
       "checked_at_kst": "2026-11-26T14:47:24+09:00",
       "fingerprint": "7b2829249aef0070b25d95be9a4eb87ab01a541f5847869aa2261ee9c6952d1f",
       "outcome": "no_send"
+    },
+    "45763633507:1": {
+      "checked_at_kst": "2026-11-26T15:13:43+09:00",
+      "fingerprint": "8293aaf5a91aad1ee01fe6cc46a80f9089a7e3eb5223d390569b143b96740328",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {
     "45648788639:1": {
-      "checked_at_kst": "2026-11-26T14:47:24+09:00",
+      "checked_at_kst": "2026-11-26T15:13:43+09:00",
       "reason": "sender_attempted_but_state_or_receipt_commit_unconfirmed",
+      "resolution": "verified_no_pending_payload_and_no_send",
+      "reviewed_no_send": {
+        "artifact_id": 15038513168,
+        "artifact_sha256": "ab248192937d389329f59161f155a72febcc4cee302f9ffbe7f43efa55bee034",
+        "fingerprint": "5849e616d0b54ea647a761c2b3d81f2f2d06e31f50513d0ce7d6cfb8d09430bf",
+        "job_id": 139327156301,
+        "started_at": "2026-11-25T15:49:39+00:00"
+      },
       "run_attempt": 1,
       "run_id": 45648788639,
       "started_at": "2026-11-25T15:49:39+00:00",
-      "status": "unresolved",
+      "status": "reconciled",
       "url": "https://github.com/qedgwangju-dot/khs-watch/actions/runs/45648788639/attempts/1"
     }
   },
