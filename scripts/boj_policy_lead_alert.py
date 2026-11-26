@@ -16,6 +16,7 @@ import hashlib
 import html
 import io
 import json
+import os
 import pathlib
 import re
 import urllib.parse
@@ -43,6 +44,8 @@ WATCH = OUT / "boj_policy_lead_watch.md"
 MARKET = OUT / "boj_policy_market_context.json"
 PENDING = OUT / "boj_policy_lead_pending_state.json"
 CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
+ATTEMPT = OUT / "boj_policy_lead_delivery_attempt.json"
+REJECTED = OUT / "boj_policy_lead_delivery_rejected.json"
 SOURCE_HEALTH = {"rss_ok": 0, "official_index_ok": 0, "official_rss_ok": 0, "speech_fulltext_ok": 0, "speech_fulltext_pending": 0}
 
 
@@ -474,6 +477,8 @@ def member_event_kind(title: str) -> str:
 def same_member_event(signal: Signal, state: dict) -> bool:
     if not signal.speaker:
         return False
+    if member_event_id(signal.speaker, signal.published, signal.speech_event) in (state.get("delivered_member_events") or {}):
+        return True
     previous = state.get("signature") or {}
     previous_speaker = previous.get("speaker") or member_from_title(str(state.get("last_title") or ""))
     published = parse_state_time(state.get("last_published_at_kst"))
@@ -483,6 +488,79 @@ def same_member_event(signal: Signal, state: dict) -> bool:
     # A reported speech and its official PDF are one event. A separately identified
     # press conference remains a distinct event.
     return (previous_kind == "기자회견") == (signal.speech_event == "기자회견")
+
+
+
+def member_event_id(speaker: str, published: dt.datetime, kind: str) -> str:
+    return f"{published.astimezone(KST).date()}|{speaker}|{'conference' if kind == '기자회견' else 'speech'}"
+
+
+def delivery_event_id(signal: Signal) -> str:
+    if signal.speaker:
+        return member_event_id(signal.speaker, signal.published, signal.speech_event)
+    if signal.event_type == "decision":
+        return f"{signal.published.date()}|decision"
+    return f"{signal.published.date()}|{signal.event_type}|{normalize(signal.title)}"
+
+
+def delivery_is_unconfirmed(signal: Signal, state: dict) -> bool:
+    return delivery_event_id(signal) in (state.get("unconfirmed_deliveries") or {})
+
+
+def write_json_atomic(path: pathlib.Path, value: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def prepare_delivery_attempt(run_id: str, run_attempt: str, now: dt.datetime) -> dict:
+    """Persist the intent *before* making the non-idempotent sendMessage request.
+    The caller must push STATE successfully before calling Telegram.
+    """
+    payload = json.loads(DATA.read_text(encoding="utf-8"))
+    signal = signal_from_payload(payload)
+    state = load_state()
+    event_id = delivery_event_id(signal)
+    attempt_id = f"{run_id}:{run_attempt}:{signal.key}"
+    pending = dict(state.get("unconfirmed_deliveries") or {})
+    existing = pending.get(event_id)
+    # A rejected/ambiguous git push can have committed this intent. Reusing it is
+    # safe only inside this exact invocation BEFORE its one Telegram request.
+    if existing:
+        if existing.get("attempt_id") != attempt_id:
+            raise RuntimeError("BOJ delivery outcome unconfirmed; automatic retry blocked")
+        record = existing
+    else:
+        ok, reason = should_alert(signal, state, now)
+        if not ok:
+            raise RuntimeError("BOJ pre-send state changed: " + reason)
+        record = {
+            "status": "unconfirmed", "attempt_id": attempt_id,
+            "event_id": event_id, "signal_key": signal.key, "run_id": str(run_id),
+            "title": signal.title, "source": signal.source,
+            "published_at_kst": signal.published.isoformat(),
+            "prepared_at_kst": now.isoformat(timespec="seconds"),
+        }
+    pending[event_id] = record
+    state["unconfirmed_deliveries"] = pending
+    write_json_atomic(STATE, state)
+    write_json_atomic(ATTEMPT, record)
+    return record
+
+
+def valid_delivery_confirmation(confirmation: dict, attempt: dict) -> bool:
+    mid = confirmation.get("message_id")
+    return (
+        confirmation.get("status") == "confirmed"
+        and confirmation.get("lane") == "boj_policy"
+        and confirmation.get("attempt_id") == attempt.get("attempt_id")
+        and confirmation.get("signal_key") == attempt.get("signal_key")
+        and confirmation.get("bot_username") == "khs8879887988798879_bot"
+        and type(mid) is int and mid > 0
+        and bool(parse_state_time(confirmation.get("confirmed_at_kst")))
+    )
+
 
 
 def has_distinct_body(item: Item) -> bool:
@@ -1700,11 +1778,16 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
 
 
 def load_state() -> dict:
+    # A corrupted or missing production state must not silently reset deduplication.
     try:
         value = json.loads(STATE.read_text(encoding="utf-8"))
-        return value if isinstance(value, dict) else {}
-    except Exception:
-        return {}
+    except Exception as exc:
+        raise RuntimeError("BOJ delivery state unavailable; stop rather than replay alerts") from exc
+    if not isinstance(value, dict):
+        raise RuntimeError("BOJ delivery state invalid")
+    if not isinstance(value.get("unconfirmed_deliveries", {}), dict):
+        raise RuntimeError("BOJ unconfirmed delivery journal invalid")
+    return value
 
 
 def parse_state_time(value) -> dt.datetime | None:
@@ -1813,6 +1896,8 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
 
 
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
+    if delivery_is_unconfirmed(signal, state):
+        return False, "이전 Telegram 전송 결과 미확인 — 중복 위험으로 자동 재전송 보류"
     if signal.speaker:
         if same_member_event(signal, state):
             return False, "이미 발송한 동일 위원 발언 — 공식 원문과 보도 중복 제외"
@@ -2905,6 +2990,9 @@ def guard_pending_against_state(state_path: pathlib.Path) -> int:
 
     ok, reason = should_alert(signal, remote_state, dt.datetime.now(KST))
     if ok:
+        # Use the actual remote state, including any delivery intent, not the
+        # checkout snapshot when preparing a new request.
+        write_json_atomic(STATE, remote_state)
         print(f"BOJ_REMOTE_GUARD=allow reason={reason}")
         return 0
 
@@ -2920,7 +3008,7 @@ def guard_pending_against_state(state_path: pathlib.Path) -> int:
 
 
 def clear_outputs() -> None:
-    for path in (TITLE, BODY, DATA, MARKET, PENDING, CONFIRMED):
+    for path in (TITLE, BODY, DATA, MARKET, PENDING, CONFIRMED, ATTEMPT, REJECTED):
         try:
             path.unlink()
         except FileNotFoundError:
@@ -2928,16 +3016,54 @@ def clear_outputs() -> None:
 
 
 def finalize() -> int:
+    if not ATTEMPT.exists():
+        print("BOJ delivery: no Telegram request attempted.")
+        return 0
+    attempt = json.loads(ATTEMPT.read_text(encoding="utf-8"))
+    state = load_state()
+    pending = dict(state.get("unconfirmed_deliveries") or {})
+    event_id = attempt["event_id"]
+    if pending.get(event_id, {}).get("attempt_id") != attempt.get("attempt_id"):
+        raise RuntimeError("BOJ delivery journal mismatch; preserve remote state")
+    if REJECTED.exists():
+        rejection = json.loads(REJECTED.read_text(encoding="utf-8"))
+        if rejection.get("attempt_id") != attempt.get("attempt_id") or rejection.get("status") != "rejected":
+            raise RuntimeError("BOJ Telegram rejection mismatch")
+        pending.pop(event_id)
+        state["unconfirmed_deliveries"] = pending
+        state["last_delivery_rejection"] = rejection
+        write_json_atomic(STATE, state)
+        print("BOJ delivery explicitly rejected; no successful delivery recorded; eligible for safe retry.")
+        return 0
     if not PENDING.exists() or not CONFIRMED.exists():
-        print("BOJ policy Telegram confirmation missing; pending state not finalized.")
+        print("BOJ delivery unconfirmed; durable intent retained, no success recorded or automatic retry.")
         return 0
     confirmation = json.loads(CONFIRMED.read_text(encoding="utf-8"))
-    if confirmation.get("status") != "confirmed" or confirmation.get("lane") != "boj_policy":
-        print("BOJ policy Telegram confirmation mismatch; pending state not finalized.")
-        return 0
-    STATE.parent.mkdir(exist_ok=True)
-    STATE.write_text(PENDING.read_text(encoding="utf-8"), encoding="utf-8")
-    print(f"Finalized BOJ policy path state: {STATE}")
+    if not valid_delivery_confirmation(confirmation, attempt):
+        raise RuntimeError("BOJ Telegram receipt invalid; retain unconfirmed intent")
+    new_state = json.loads(PENDING.read_text(encoding="utf-8"))
+    if new_state.get("last_signal_key") != attempt.get("signal_key"):
+        raise RuntimeError("BOJ pending signal/Telegram receipt mismatch")
+    pending.pop(event_id)
+    # Keep older metadata and unresolved deliveries; update the successful
+    # baseline only after a positive, matching Telegram message_id.
+    prior_member = (state.get("signature") or {}).get("speaker") or member_from_title(str(state.get("last_title") or ""))
+    prior_date = parse_state_time(state.get("last_published_at_kst"))
+    seen = dict(state.get("delivered_member_events") or {})
+    if prior_member and prior_date and state.get("last_signal_key"):
+        prior_kind = (state.get("signature") or {}).get("speech_event") or member_event_kind(str(state.get("last_title") or ""))
+        seen.setdefault(member_event_id(prior_member, prior_date, prior_kind),
+                        {"signal_key": state["last_signal_key"], "confirmed_at_kst": state.get("last_alert_at_kst")})
+    if (new_state.get("signature") or {}).get("speaker"):
+        seen[event_id] = {"signal_key": attempt["signal_key"], "message_id": confirmation["message_id"],
+                          "confirmed_at_kst": confirmation["confirmed_at_kst"]}
+    state.update(new_state)
+    state["last_alert_at_kst"] = confirmation["confirmed_at_kst"]
+    state["unconfirmed_deliveries"] = pending
+    state["delivered_member_events"] = seen
+    state["last_delivery"] = confirmation
+    write_json_atomic(STATE, state)
+    print(f"Finalized BOJ policy path state: {STATE} message_id={confirmation['message_id']}")
     return 0
 
 
@@ -2967,6 +3093,9 @@ def main() -> int:
         raise RuntimeError("BOJ source outage: no successfully parsed RSS or BOJ official index")
 
     if not signals:
+        if not SOURCE_HEALTH.get("official_rss_ok") or not SOURCE_HEALTH.get("official_index_ok"):
+            WATCH.write_text(f"BOJ 공식 원천 조회 부분 장애 — 새 발표 없음 판정 보류 · {label_time(now)}\n", encoding="utf-8")
+            raise RuntimeError("BOJ official source verification pending")
         WATCH.write_text(
             f"BOJ 정책경로 변화 감지: 새 고신뢰 신호 없음 · 조회 {label_time(now)}\n",
             encoding="utf-8",
@@ -3054,6 +3183,13 @@ def main() -> int:
         encoding="utf-8",
     )
     if selected is None:
+        unresolved = [x for x in signals if delivery_is_unconfirmed(x, state)]
+        if unresolved:
+            with WATCH.open("a", encoding="utf-8") as handle:
+                handle.write("\nTelegram 전송 결과 미확인 — 동일 사건 자동 재시도 보류\n")
+            print(json.dumps({"alerted": False, "reason": "delivery_unconfirmed",
+                              "events": [x.title for x in unresolved]}, ensure_ascii=False))
+            raise RuntimeError("BOJ delivery unconfirmed; reconcile receipt before retry")
         pending_speech = [x for x in signals if x.speaker and not x.speech_verified
                           and now - x.published <= dt.timedelta(hours=MEDIA_POLICY_EVENT_MAX_AGE_HOURS)
                           and not same_member_event(x, state)
@@ -3061,7 +3197,7 @@ def main() -> int:
                                       and y.published.date() == x.published.date()
                                       and (y.speech_event == "기자회견") == (x.speech_event == "기자회견")
                                       for y in signals)]
-        if pending_speech or not SOURCE_HEALTH.get("official_rss_ok"):
+        if pending_speech or not SOURCE_HEALTH.get("official_rss_ok") or not SOURCE_HEALTH.get("official_index_ok"):
             with WATCH.open("a", encoding="utf-8") as handle:
                 handle.write("\n원천자료 부분 장애·본문 확인 대기 — 새 정책 없음으로 판정하지 않음\n")
             print(json.dumps({"alerted": False, "reason": "source_verification_pending",
