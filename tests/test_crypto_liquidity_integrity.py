@@ -108,7 +108,22 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
             final = alert_path.read_text(encoding="utf-8")
         self.assertIn("원화 환산 보류", final)
         self.assertIn("-65.4백만달러", final)
+        self.assertIn("-65.4백만달러 (원화 환산 확인 불가)", final)
+        self.assertEqual(final.count("(원화 환산 확인 불가)"), final.count("백만달러"))
         self.assertNotIn("약 -", final)
+
+    def test_final_guard_labels_each_usd_value_when_fx_is_unavailable(self):
+        # These amounts reproduce the USD-only values in the 2026-11-26 run #717 alert.
+        raw = (
+            "ETF -453.0백만달러 | 최근5 -2,505.6백만달러 | "
+            "1개월 -5,593.5백만달러"
+        )
+        final = fmt.ensure_krw_for_bare_usd(raw, None)
+        self.assertIn("-453.0백만달러 (원화 환산 확인 불가)", final)
+        self.assertIn("-2,505.6백만달러 (원화 환산 확인 불가)", final)
+        self.assertIn("-5,593.5백만달러 (원화 환산 확인 불가)", final)
+        self.assertEqual(final.count("(원화 환산 확인 불가)"), final.count("백만달러"))
+        self.assertEqual(fmt.ensure_krw_for_bare_usd(final, None), final)
 
     def test_final_alert_exposes_fx_failure_and_source_warning(self):
         state = {
