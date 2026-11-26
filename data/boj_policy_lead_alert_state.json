@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "e52d4e831333157a0e8213d0",
-  "last_alert_at_kst": "2026-11-19T10:20:23+09:00",
-  "last_published_at_kst": "2026-11-19T10:13:00+09:00",
-  "last_source": "Bank of Japan",
-  "last_title": "Statement by Governor UEDA concerning the Bank's Semiannual Report on Currency and Monetary Control (Committee on Financial Affairs, Senate)",
+  "last_signal_key": "c851b9e960f8a086abb0d89c",
+  "last_alert_at_kst": "2026-11-26T11:12:11+09:00",
+  "last_published_at_kst": "2026-11-26T10:15:00+09:00",
+  "last_source": "Reuters",
+  "last_title": "BOJ's Tamura signals chance of faster-pace interest rate hikes - Reuters",
   "signature": {
-    "level": 1,
-    "event_type": "official_speech",
+    "level": 2,
+    "event_type": "market_path",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -29,7 +29,7 @@
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": true,
+    "risk_channels": false,
     "rate_unchanged": false,
     "underlying_target_reached": false
   }
