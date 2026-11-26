@@ -70,9 +70,16 @@ def fmt_pct(value: float | None) -> str:
 
 
 def ensure_krw_for_bare_usd(text: str, rate: float | None) -> str:
-    """Final guard: no 백만달러 amount should be left without KRW when FX exists."""
+    """Pair each USD amount with current KRW or an explicit unavailable marker."""
     if rate is None:
-        return text
+        unavailable = re.compile(
+            r"(?P<amount>[+-]?\d[\d,]*(?:\.\d+)?)백만달러"
+            r"(?:\s*\((?:약\s[^)]*|원화 환산 확인 불가)\))?"
+        )
+        return unavailable.sub(
+            lambda m: f"{m.group('amount')}백만달러 (원화 환산 확인 불가)",
+            text,
+        )
     pattern = re.compile(r"(?P<amount>[+-]?\d[\d,]*(?:\.\d+)?)백만달러(?!\s*\(약)")
 
     def repl(m: re.Match[str]) -> str:
