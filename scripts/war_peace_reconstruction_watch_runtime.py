@@ -371,6 +371,58 @@ def _payload_retry_eligible(record, blocked):
     return True
 
 
+# These independent feeds/flash searches already run in the production chain.
+# Fetch them near the beginning so a Google News circuit or a slow specialist
+# search cannot consume the entire collection window before primary headlines.
+_EARLY_INDEPENDENT_QUERIES = frozenset((
+    '__WALTER_BLOOMBERG_WAR_PEACE_FLASH__',
+    '__BING_MIDDLE_EAST_EMERGENCY__',
+    '__AXIOS_DIRECT_WAR_PEACE__',
+    '__fnnews_international_rss__',
+    'direct-kremlin-telegram', 'direct-interfax-top', 'direct-tass-home',
+    'direct-bing-ukraine', 'direct-bing-iran',
+    'interfax-direct-top-stories',
+    'direct-ukraine-president-rss', 'direct-err-news-rss',
+))
+
+
+def _initial_collection_order(watch, queries):
+    """Prioritise current broad news, but retain all original query indices."""
+    core = getattr(watch, 'CORE_NEWS_QUERIES', ())
+    if not core:
+        return list(range(len(queries)))
+
+    # A later wrapper can extend the same broad query's freshness window.
+    # Match the actual search expression, not a stale time suffix or list index.
+    def expression(query):
+        return query.rsplit(' when:', 1)[0].strip()
+
+    broad = {expression(query) for query in core}
+    priority = set(_EARLY_INDEPENDENT_QUERIES)
+
+    def rank(index):
+        query = queries[index]
+        if expression(query) in broad:
+            return (0, index)
+        if query in priority:
+            return (1, index)
+        return (2, index)
+
+    # Interleave the first broad and independent jobs. With eight workers,
+    # important official/independent feeds start before the first Google
+    # throttle, without adding requests or changing the replay sequence.
+    broad_indices = [i for i in range(len(queries)) if rank(i)[0] == 0]
+    independent_indices = [i for i in range(len(queries)) if rank(i)[0] == 1]
+    others = [i for i in range(len(queries)) if rank(i)[0] == 2]
+    early = []
+    for offset in range(max(len(broad_indices), len(independent_indices))):
+        if offset < len(broad_indices):
+            early.append(broad_indices[offset])
+        if offset < len(independent_indices):
+            early.append(independent_indices[offset])
+    return early + others
+
+
 def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5,
              allow_partial=False, google_interval=None, previous_backoff=None):
     """Collect each query; retain failed queries as explicit gaps in partial mode."""
@@ -399,7 +451,8 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     next_google_at = context.RawValue('d', 0.0)
     active, processes, traces = {}, [], {}
     failed_transcripts = {}
-    pending_indices = list(range(len(queries)))
+    pending_indices = _initial_collection_order(watch, queries)
+    report['initial_dispatch_order'] = list(pending_indices)
     next_index = 0
     try:
         for _ in range(min(workers, len(queries))):
