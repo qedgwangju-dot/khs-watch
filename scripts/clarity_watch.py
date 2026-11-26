@@ -512,140 +512,261 @@ def collect_federal_register(errors):
 
 
 
+
 def parse_reginfo_review_text(text):
-    text = clean(text)
+    """Parse one complete card at a time; never span two AGENCY blocks."""
     pattern = re.compile(
-        r"AGENCY:\s*(?P<agency>.+?)\s+RIN:\s*(?P<rin>\d{4}-[A-Z]{2}\d+)\s+"
-        r"Status:\s*(?P<status>Pending Review|Concluded)\s+"
-        r"TITLE:\s*(?P<title>.+?)\s+"
-        r"STAGE:\s*(?P<stage>Prerule|Proposed Rule|Final Rule|Other)\s+"
+        r"^AGENCY:\s*(?P<agency>[^:]+?)\s+RIN:\s*(?P<rin>\d{4}-[A-Z]{2}\d+)\s+"
+        r"Status:\s*(?P<status>Pending Review|Concluded)(?:\s+for rule\s+\d{4}-[A-Z]{2}\d+)?"
+        r"(?:\s+Request EO Meeting(?:\s+for rule\s+\d{4}-[A-Z]{2}\d+)?)?\s+"
+        r"TITLE:\s*(?P<title>.+?)\s+STAGE:\s*(?P<stage>Prerule|Proposed Rule|Final Rule|Other)\s+"
         r"Economically Significant:\s*(?P<econ>.+?)\s+"
         r"(?:\*+\s*)?RECEIVED DATE:\s*(?P<received>\d{2}/\d{2}/\d{4})\s+"
-        r"LEGAL DEADLINE:\s*(?P<deadline>.*?)(?=\s+AGENCY:|$)",
-        re.I,
+        r"LEGAL DEADLINE:\s*(?P<deadline>.*)$", re.I,
     )
     rows = []
-    for m in pattern.finditer(text):
+    for segment in re.split(r"(?=\bAGENCY:\s*)", clean(text), flags=re.I):
+        m = pattern.match(segment.strip())
+        if not m:
+            continue
         econ_tokens = re.findall(r"\b(?:Yes|No)\b", m.group("econ"), re.I)
-        econ = econ_tokens[-1].title() if econ_tokens else ""
-        deadline = clean(m.group("deadline"))
-        if len(deadline) > 120:
-            deadline = deadline[:120]
+        deadline = re.match(r"(?:None|\d{2}/\d{2}/\d{4})\b", clean(m.group("deadline")), re.I)
         rows.append({
-            "agency": clean(m.group("agency")),
-            "rin": clean(m.group("rin")).upper(),
-            "status": clean(m.group("status")),
-            "title": clean(m.group("title")),
-            "stage": clean(m.group("stage")),
-            "economically_significant": econ,
-            "received_date": clean(m.group("received")),
-            "legal_deadline": deadline,
+            "agency": clean(m.group("agency")), "rin": m.group("rin").upper(),
+            "status": m.group("status").title(), "title": clean(m.group("title")),
+            "stage": m.group("stage").title(),
+            "economically_significant": econ_tokens[-1].title() if econ_tokens else "",
+            "received_date": m.group("received"),
+            "legal_deadline": deadline.group(0) if deadline else "",
         })
     return rows
+
+
+def reginfo_detail_url(href):
+    """Accept only a single official review record, not a search result or a guessed RIN."""
+    url = urllib.parse.urljoin("https://www.reginfo.gov/public/", href or "")
+    p = urllib.parse.urlsplit(url)
+    if p.scheme != "https" or p.netloc.lower() != "www.reginfo.gov" or p.path != "/public/do/eoDetails":
+        return ""
+    rrid = urllib.parse.parse_qs(p.query).get("rrid", [])
+    if len(rrid) != 1 or not re.fullmatch(r"\d+", rrid[0]):
+        return ""
+    return "https://www.reginfo.gov/public/do/eoDetails?rrid=" + rrid[0]
 
 
 def parse_reginfo_table_rows(soup):
     rows = []
     for tr in soup.find_all("tr"):
-        cells = [clean(td.get_text(" ", strip=True)) for td in tr.find_all(["td", "th"])]
-        if not cells:
+        # The site nests entire result tables inside outer layout tables.
+        # Descendant td searches combined AN66's RIN/date with AN48's longer title.
+        cells = tr.find_all("td", recursive=False)
+        if not 5 <= len(cells) <= 7 or any(c.find(["table", "tr"]) for c in cells):
             continue
-        joined = " | ".join(cells)
-        rin_match = re.search(r"\b(\d{4}-[A-Z]{2}\d+)\b", joined, re.I)
-        date_match = re.search(r"\b(\d{2}/\d{2}/\d{4})\b", joined)
-        status_match = re.search(r"\b(Pending Review|Concluded)\b", joined, re.I)
-        if not rin_match or not date_match or not status_match:
+        values = [clean(c.get_text(" ", strip=True)) for c in cells]
+        received, rin, agency, title, status = values[:5]
+        if not re.fullmatch(r"\d{2}/\d{2}/\d{4}", received):
             continue
-        rin = rin_match.group(1).upper()
-        title = ""
-        for cell in cells:
-            if rin in cell.upper() or re.fullmatch(r"\d{2}/\d{2}/\d{4}", cell) or "CFTC" in cell.upper() or "SEC" == cell.upper():
-                continue
-            if re.search(r"Pending Review|Concluded|Consistent", cell, re.I):
-                continue
-            if len(cell) > len(title):
-                title = cell
+        if not re.fullmatch(r"\d{4}-[A-Z]{2}\d+", rin, re.I):
+            continue
+        if not re.fullmatch(r"\d{4}-[A-Z0-9/ -]+", agency, re.I):
+            continue
+        if agency[:4] != rin[:4] or not title or re.search(r"\bAGENCY:|\bRIN:\s*\d", title, re.I):
+            continue
+        if status.lower() not in {"pending review", "concluded"}:
+            continue
+        urls = {reginfo_detail_url(a.get("href")) for c in (cells[1], cells[4]) for a in c.find_all("a", href=True)}
+        urls.discard("")
+        concluded = values[5] if len(values) > 5 else ""
         rows.append({
-            "agency": "",
-            "rin": rin,
-            "status": status_match.group(1).title(),
-            "title": title,
-            "stage": "",
-            "economically_significant": "",
-            "received_date": date_match.group(1),
-            "legal_deadline": "",
+            "agency": agency, "rin": rin.upper(), "status": status.title(),
+            "title": title, "stage": "", "economically_significant": "",
+            "received_date": received, "legal_deadline": "",
+            "concluded_date": concluded if re.fullmatch(r"\d{2}/\d{2}/\d{4}", concluded) else "",
+            "detail_url": next(iter(urls)) if len(urls) == 1 else "",
         })
     return rows
 
 
+def parse_reginfo_card_rows(soup):
+    """Associate a detail link only with a DOM container holding one card."""
+    rows = []
+    for link in soup.find_all("a", href=True):
+        url = reginfo_detail_url(link.get("href"))
+        if not url:
+            continue
+        for parent in link.parents:
+            if parent.name in {"body", "html", "[document]"}:
+                break
+            text = clean(parent.get_text(" ", strip=True))
+            count = len(re.findall(r"\bAGENCY:\s*", text, re.I))
+            if count > 1:
+                break
+            if count != 1:
+                continue
+            matches = parse_reginfo_review_text(text)
+            if len(matches) != 1:
+                continue
+            urls = {reginfo_detail_url(a.get("href")) for a in parent.find_all("a", href=True)}
+            urls.discard("")
+            if urls != {url}:
+                break
+            rows.append(dict(matches[0], detail_url=url))
+            break
+    return rows
+
+
+def parse_reginfo_detail(soup):
+    """Read the fields from the single EO review record, not the agenda stage or listing."""
+    text = clean(soup.get_text(" ", strip=True))
+    rin = re.findall(r"\bRIN:\s*(\d{4}-[A-Z]{2}\d+)\b", text, re.I)
+    if len(set(x.upper() for x in rin)) != 1:
+        raise ValueError("missing or conflicting detail RIN")
+    def field(pattern):
+        m = re.search(pattern, text, re.I)
+        return clean(m.group(1)) if m else ""
+    title = field(r"\bTitle:\s*(.+?)\s+Agency/Subagency:")
+    received = field(r"\bReceived Date:\s*(\d{2}/\d{2}/\d{4})")
+    agency = field(r"\bAgency/Subagency:\s*(.+?)\s+Stage:")
+    stage = field(r"\bStage:\s*(Prerule|Proposed Rule|Final Rule|Other)\b").title()
+    concluded = field(r"\bConcluded Date:\s*(\d{2}/\d{2}/\d{4})")
+    action = field(r"\bConcluded Action:\s*(.+?)\s+Concluded Date:")
+    econ = field(r"\bEconomically Significant:\s*(Yes|No)\b").title()
+    deadline = field(r"\bLegal Deadline:\s*(None|\d{2}/\d{2}/\d{4})\b")
+    if re.search(r"Pending EO 12866 Regulatory Review", text, re.I):
+        status = "Pending Review"
+    elif re.search(r"OIRA Conclusion of EO 12866 Regulatory Review", text, re.I):
+        status = "Concluded"
+    else:
+        raise ValueError("unrecognized EO review status")
+    if not (title and received and agency and stage) or (status == "Concluded" and not concluded):
+        raise ValueError("incomplete single-record review details")
+    return {
+        "rin": rin[0].upper(), "title": title, "agency": agency, "stage": stage,
+        "received_date": received, "status": status, "concluded_date": concluded,
+        "concluded_action": action, "economically_significant": econ, "legal_deadline": deadline,
+    }
+
+
+def reginfo_relevant(title):
+    return bool(CRYPTO_RE.search(title) or re.search(
+        r"\b(?:CLARITY\s+(?:Act|Bill)|H\.?\s*R\.?\s*3633|Digital Asset Market Clarity)\b",
+        title, re.I,
+    ))
+
+
+def reginfo_source_match(row, record, agency, code):
+    return (
+        row["rin"] == record["rin"] and record["rin"].startswith(code + "-")
+        and clean(record["agency"]).upper() == agency
+        and row["received_date"] == record["received_date"]
+        and clean(row["title"]).casefold() == clean(record["title"]).casefold()
+        and row["status"].casefold() == record["status"].casefold()
+        and (not row.get("stage") or row["stage"].casefold() == record["stage"].casefold())
+        and (not row.get("concluded_date") or row["concluded_date"] == record["concluded_date"])
+        and reginfo_relevant(record["title"])
+    )
+
+
+def reginfo_event_keys(event):
+    """Use review identity, not changing search URL or display text, for deduplication."""
+    if not event.source.startswith("OIRA/RegInfo — ") or "Verified EO review: Yes" not in event.detail:
+        return {event.key}, set()
+    def val(label):
+        m = re.search(r"(?:^|\s\|\s)" + re.escape(label) + r"\s*([^|]+)", event.detail, re.I)
+        return clean(m.group(1)) if m else ""
+    rin = val("RIN ")
+    status = val("Status:")
+    stage = val("Stage:")
+    received = val("Received Date:")
+    concluded = val("Concluded Date:")
+    econ = val("Economically Significant:")
+    deadline = val("Legal Deadline:")
+    if not (rin and status and received):
+        return {event.key}, set()
+    identity = hashlib.sha256(
+        f"clarity-reginfo-v1|{rin}|{received}|{status}|{concluded}".encode("utf-8")
+    ).hexdigest()
+    # Existing checkpoints must remain valid. Recognize the old, correctly
+    # matched row/card representation; never match a different RIN or date.
+    legacy = set()
+    code = rin[:4]
+    agency = event.source.split(" — ")[-1]
+    urls = (
+        f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={code}",
+        "https://www.reginfo.gov/public/Forward?"
+        f"Image61.x=0&Image61.y=0&SearchTarget=RegReview&textfield={code}",
+    )
+    for url in urls:
+        for old_stage in (stage, "OIRA review"):
+            for old_econ in {econ, ""}:
+                for old_deadline in {deadline, ""}:
+                    bits = [f"RIN {rin}", f"Status: {status}", f"Stage: {old_stage}"]
+                    if old_econ:
+                        bits.append(f"Economically Significant: {old_econ}")
+                    if old_deadline:
+                        bits.append(f"Legal Deadline: {old_deadline}")
+                    legacy.add(Event(event.source, f"{agency} OIRA 규제검토 — {old_stage}",
+                                     event.title, url, received, " | ".join(bits)).key)
+    return {event.key, identity}, legacy
+
+
 def collect_reginfo_reviews(errors):
     events = []
-    agencies = [
-        ("CFTC", "3038"),
-        ("SEC", "3235"),
-    ]
-    for agency_name, agency_code in agencies:
-        pending_url = f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={agency_code}"
+    for agency, code in (("CFTC", "3038"), ("SEC", "3235")):
+        pending_url = f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={code}"
         search_url = (
             "https://www.reginfo.gov/public/Forward?"
-            f"Image61.x=0&Image61.y=0&SearchTarget=RegReview&textfield={agency_code}"
+            f"Image61.x=0&Image61.y=0&SearchTarget=RegReview&textfield={code}"
         )
-        rows_by_key = {}
+        candidates = {}
+        unresolved = set()
         for url in (pending_url, search_url):
             try:
-                raw = fetch(url).decode("utf-8", "ignore")
-                soup = BeautifulSoup(raw, "html.parser")
-                page_text = clean(soup.get_text(" ", strip=True))
-                rows = parse_reginfo_review_text(page_text)
-                rows.extend(parse_reginfo_table_rows(soup))
-                for row in rows:
-                    title = clean(row.get("title") or "")
-                    signal = f"{title} {row.get('rin','')}"
-                    if not (TOPIC_RE.search(signal) or CRYPTO_RE.search(signal)):
+                soup = BeautifulSoup(fetch(url).decode("utf-8", "ignore"), "html.parser")
+                cards = parse_reginfo_review_text(soup.get_text(" ", strip=True))
+                rows = parse_reginfo_table_rows(soup) + parse_reginfo_card_rows(soup)
+                if not rows and not cards and not re.search(
+                    r"Number Of Records Found:\s*0\b|No (?:records|submissions) found", soup.get_text(" ", strip=True), re.I
+                ):
+                    raise ValueError("no recognizable EO review rows or explicit empty result")
+                for row in rows + cards:
+                    if not row["rin"].startswith(code + "-") or not reginfo_relevant(row["title"]):
                         continue
-                    key = (
-                        clean(row.get("rin") or "").upper(),
-                        clean(row.get("status") or "").lower(),
-                    )
-                    if not key[0]:
-                        continue
-                    prior = rows_by_key.get(key)
-                    prior_score = 0 if prior is None else sum(bool(clean(prior.get(k) or "")) for k in ("stage", "economically_significant", "legal_deadline", "title"))
-                    row_score = sum(bool(clean(row.get(k) or "")) for k in ("stage", "economically_significant", "legal_deadline", "title"))
-                    if prior is None or row_score > prior_score:
-                        row = dict(row)
-                        row["source_url"] = url
-                        rows_by_key[key] = row
+                    key = (row["rin"], row["received_date"], row["status"].casefold())
+                    unresolved.add(key)
+                    detail_url = row.get("detail_url")
+                    if detail_url:
+                        candidates.setdefault(key, {})[detail_url] = row
             except Exception as exc:
-                errors.append(f"RegInfo {agency_name} {url}: {exc}")
-
-        for row in rows_by_key.values():
-            title = clean(row.get("title") or "")
-            stage = clean(row.get("stage") or "") or "OIRA review"
-            status = clean(row.get("status") or "")
-            rin = clean(row.get("rin") or "")
-            received = clean(row.get("received_date") or "")
-            econ = clean(row.get("economically_significant") or "")
-            deadline = clean(row.get("legal_deadline") or "")
-            detail_parts = [
-                f"RIN {rin}",
-                f"Status: {status}",
-                f"Stage: {stage}",
-            ]
-            if econ:
-                detail_parts.append(f"Economically Significant: {econ}")
-            if deadline:
-                detail_parts.append(f"Legal Deadline: {deadline}")
-            events.append(Event(
-                f"OIRA/RegInfo — {agency_name}",
-                f"{agency_name} OIRA 규제검토 — {stage}",
-                title,
-                clean(row.get("source_url") or pending_url),
-                date=received,
-                detail=" | ".join(detail_parts),
-            ))
+                errors.append(f"RegInfo {agency} {url}: {exc}")
+        for key in sorted(unresolved):
+            found = False
+            for detail_url, row in candidates.get(key, {}).items():
+                try:
+                    record = parse_reginfo_detail(BeautifulSoup(fetch(detail_url).decode("utf-8", "ignore"), "html.parser"))
+                    if not reginfo_source_match(row, record, agency, code):
+                        raise ValueError("listing and single-record RIN/title/date/status/agency/stage do not match")
+                    if found:
+                        continue
+                    bits = [f"RIN {record['rin']}", f"Status: {record['status']}",
+                            f"Stage: {record['stage']}", f"Received Date: {record['received_date']}"]
+                    for field_name, label in (("concluded_date", "Concluded Date"), ("concluded_action", "Concluded Action"),
+                                               ("economically_significant", "Economically Significant"), ("legal_deadline", "Legal Deadline")):
+                        if record.get(field_name):
+                            bits.append(f"{label}: {record[field_name]}")
+                    bits.append("Verified EO review: Yes")
+                    events.append(Event(
+                        f"OIRA/RegInfo — {agency}", f"{agency} OIRA 규제검토 — {record['stage']}",
+                        record["title"], detail_url,
+                        date=record["concluded_date"] if record["status"] == "Concluded" else record["received_date"],
+                        detail=" | ".join(bits),
+                    ))
+                    found = True
+                except Exception as exc:
+                    errors.append(f"RegInfo {agency} {key[0]} detail {detail_url}: {exc}")
+            if not found:
+                errors.append(f"RegInfo {agency} {key[0]}: single-record review verification incomplete")
     return list({e.key: e for e in events}.values())
-
 
 def collect_sec_newsroom_crypto_orders(errors):
     events = []
@@ -1222,8 +1343,9 @@ def main():
         print("source_errors=" + " || ".join(errors))
         return 2
     seen = set(state.get("seen_event_keys") or [])
-    new_events = [] if baseline else [e for e in events if e.key not in seen]
-    merged = sorted(set(state.get("seen_event_keys") or []) | {e.key for e in events})
+    checked_keys = [(e, *reginfo_event_keys(e)) for e in events]
+    new_events = [] if baseline else [e for e, keys, legacy in checked_keys if not seen.intersection(keys | legacy)]
+    merged = sorted(seen | {k for _, keys, _ in checked_keys for k in keys})
     if len(merged) > 2000:
         merged = merged[-2000:]
     pending = {
@@ -1238,6 +1360,10 @@ def main():
         "collection_complete": not errors,
         "last_complete_check_kst": now_kst().isoformat(timespec="seconds") if not errors else state.get("last_complete_check_kst"),
     }
+    # No-send runs must not erase the last independently confirmed delivery receipt.
+    for field in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username", "telegram_format"):
+        if field in state:
+            pending[field] = state[field]
     (OUT_DIR / "clarity_watch_pending_state.json").write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rebaseline_path = OUT_DIR / "clarity_watch_rebaseline.txt"
     if baseline:

@@ -146,12 +146,91 @@ def format_event_date_korean(value):
     return f"{parsed.year}년 {parsed.month}월 {parsed.day}일", False
 
 
+
+def is_oira_event(event):
+    return clean(event.get("source", "")).startswith("OIRA/RegInfo — ")
+
+
+def oira_fields(event):
+    detail = clean(event.get("detail", ""))
+    def get(pattern):
+        m = re.search(pattern, detail, re.I)
+        return clean(m.group(1)) if m else ""
+    return {
+        "rin": get(r"\bRIN\s+(\d{4}-[A-Z]{2}\d+)"),
+        "status": get(r"\bStatus:\s*(Pending Review|Concluded)"),
+        "stage": get(r"\bStage:\s*(Prerule|Proposed Rule|Final Rule|Other)\b"),
+        "received": get(r"\bReceived Date:\s*(\d{2}/\d{2}/\d{4})"),
+        "concluded": get(r"\bConcluded Date:\s*(\d{2}/\d{2}/\d{4})"),
+        "action": get(r"\bConcluded Action:\s*([^|]+)"),
+        "econ": get(r"\bEconomically Significant:\s*(Yes|No)"),
+        "deadline": get(r"\bLegal Deadline:\s*(None|\d{2}/\d{2}/\d{4})"),
+    }
+
+
+def is_af80_initial_review(event):
+    fields = oira_fields(event)
+    return (is_oira_event(event) and fields["rin"] == "3038-AF80"
+            and fields["status"].lower() == "pending review" and fields["stage"].lower() == "prerule"
+            and (fields["received"] or clean(event.get("date", ""))) in {"09/17/2026", "2026-09-17"})
+
+
+def oira_title(event):
+    title = clean(event.get("title", ""))
+    rin = oira_fields(event)["rin"]
+    known = {
+        ("3235-AN48", "Amendments to Broker-Dealer Financial Responsibility and Recordkeeping and Reporting Rules Regarding Crypto Assets"):
+            "암호자산 관련 증권중개업자의 재무책임·기록관리·보고 규칙 개정",
+        ("3038-AF80", "Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets"):
+            "암호자산 거래 및 암호자산 시장 규제",
+        ("3235-AN38", "Crypto Assets"): "암호자산 규제",
+        ("3235-AN49", "Crypto Market Structure Amendments"): "암호자산 시장구조 규칙 개정",
+    }
+    return known.get((rin, title)) or translate_ko(title) or title or "규제 제목 미확인"
+
+
+def oira_fact_lines(event):
+    fields = oira_fields(event)
+    stage = {"prerule": "Prerule(사전규칙 단계)", "proposed rule": "Proposed Rule(제안규칙안 심사 단계)",
+             "final rule": "Final Rule(최종규칙안 심사 단계)", "other": "기타"}.get(fields["stage"].lower(), "규칙 단계 미확인")
+    status = {"pending review": "Pending Review(검토 중)", "concluded": "Concluded(검토 종료)"}.get(fields["status"].lower(), "검토 상태 미확인")
+    received = fields["received"] or (event.get("date", "") if fields["status"].lower() == "pending review" else "")
+    received_label = format_event_date_korean(received)[0] if received else "미확인"
+    timing = "OIRA 접수일: " + received_label
+    if fields["concluded"]:
+        timing += " · 검토 종료일: " + format_event_date_korean(fields["concluded"])[0]
+    if fields["action"]:
+        timing += " · 종료 유형: " + {"consistent with change": "수정 후 적합", "consistent without change": "수정 없이 적합"}.get(fields["action"].lower(), fields["action"])
+    flags = []
+    if fields["econ"]:
+        flags.append("경제적으로 중대한 규제: " + ("예" if fields["econ"].lower() == "yes" else "아니오"))
+    if fields["deadline"]:
+        flags.append("법정 처리기한: " + ("없음" if fields["deadline"].lower() == "none" else fields["deadline"]))
+    return [
+        "RIN " + (fields["rin"] or "미확인") + " · " + oira_title(event),
+        status + " · " + stage + " · " + timing,
+        (" · ".join(flags) + " · " if flags else "") + "OIRA의 검토 상태이며 규칙의 공개·확정·시행과는 별개입니다.",
+    ]
+
+
+def oira_meaning(event):
+    fields = oira_fields(event)
+    concluded = fields["status"].lower() == "concluded"
+    timing = ("백악관 규제정보·심사국(OIRA)의 검토가 종료됐다는 뜻입니다."
+              if concluded else "백악관 규제정보·심사국(OIRA)이 제출된 규칙안을 검토하는 단계입니다.")
+    if fields["rin"] == "3235-AN48":
+        return timing + " 증권중개업자의 암호자산 관련 자기자본·고객자산 보호·기록 및 보고 요건이 검토 대상이며, 실제 의무 변경은 SEC의 공개 문안을 확인해야 합니다."
+    return timing + " 공개된 식별번호와 규제 제목은 확인됐지만, 이 상태만으로 기관의 최종 규칙 채택이나 법적 효력 발생을 단정할 수 없습니다."
+
+
 def is_oira_prerule(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     return ("oira" in signal or "reginfo" in signal) and ("prerule" in signal or "pre-rule" in signal)
 
 
 def rule_stage(event):
+    if is_oira_event(event):
+        return "prerule" if is_af80_initial_review(event) else "oira_review"
     if is_vs_trust_3x_registration_effect(event):
         return "registration_effective"
     if is_vs_trust_3x_final_prospectus(event):
@@ -289,6 +368,9 @@ def is_sec_statement(event):
 
 
 def semantic_group(event):
+    if is_oira_event(event):
+        fields = oira_fields(event)
+        return ("oira_review", fields["rin"], fields["received"] or clean(event.get("date", "")), fields["status"], fields["concluded"])
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     when = parse_event_date(event.get("date", ""))
@@ -431,6 +513,11 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_oira_event(event) and not is_af80_initial_review(event):
+        fields = oira_fields(event)
+        label = "검토 종료" if fields["status"].lower() == "concluded" else ("검토 중" if fields["status"].lower() == "pending review" else "검토 상태 미확인")
+        return ("OIRA " + label + " — " + oira_title(event) + " (RIN " + (fields["rin"] or "미확인") + ")",
+                " ".join(oira_fact_lines(event)))
     if is_vs_trust_3x_registration_effect(event):
         return (
             "VS Trust, BITH·ETHK 등록서류 효력 발생",
@@ -495,7 +582,7 @@ def special_translation(event):
             "규제 펀드는 securities or similar investments(증권 또는 유사 투자자산)에 해당하는 범위가 핵심입니다. "
             "File No. S7-2026-35, Release No. IA-7023 / IC-36353입니다." + doc_text + due_text,
         )
-    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+    if is_af80_initial_review(event):
         return (
             "CFTC, 암호자산 거래·시장 규제안 RIN 3038-AF80을 백악관 규제검토에 제출",
             "미 백악관 규제정보·심사국(OIRA)의 RegInfo에는 CFTC RIN 3038-AF80 ‘Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets(암호자산 거래 및 암호자산 시장 규제)’가 2026년 9월 17일 접수돼 Pending Review(검토 중)로 표시돼 있습니다. 규칙제정 단계는 Prerule(사전규칙 단계)이고, Economically Significant(경제적으로 중대한 규제 여부)는 No(아니오), Legal Deadline(법정 처리기한)은 None(없음)으로 표시됩니다. 공개된 규칙 본문·적용 자산·거래소 의무는 아직 없어 Proposed Rule(제안규칙)이나 Final Rule(최종규칙)로 보면 안 됩니다.",
@@ -566,6 +653,8 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_oira_event(event) and not is_af80_initial_review(event):
+        return oira_meaning(event)
     if is_senate_banking_leadership(event):
         return (
             "쉽게 말하면, 민주당이 상원 다수당을 확보하면서 암호자산 규칙과 금융당국을 감독하는 "
@@ -593,7 +682,7 @@ def easy_meaning(event, body_ko):
             "쉽게 말하면, Cboe BZX가 CME 비트코인·이더 선물 벤치마크의 하루 수익률을 3배 추종하는 BITH·ETHK를 상장할 수 있도록 SEC가 거래소 규칙을 승인한 것입니다. "
             "현물 BTC·ETH를 3배 보유하는 상품이 아니고 매일 목표 배율을 재설정하므로, 며칠 이상 보유한 누적수익률은 기초자산 누적수익률의 정확한 3배가 아닙니다."
         )
-    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+    if is_af80_initial_review(event):
         return (
             "한마디로, CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고 현재 가진 권한으로 미국 암호자산 시장 규칙을 먼저 만들기 시작했다는 뜻입니다. "
             "CFTC가 공식적으로 밝힌 방향은 기존 등록사와 일부 비등록 암호자산 거래소를 CFTC 감독의 ‘암호자산 시장’형 지정계약시장(DCM)으로 편입해 "
@@ -624,6 +713,15 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_oira_event(event) and not is_af80_initial_review(event):
+        fields = oira_fields(event)
+        context = ("증권중개업자의 자기자본·고객자산 보호·기록보고 의무의 실제 변경 여부" if fields["rin"] == "3235-AN48" else oira_title(event) + "의 실제 적용 대상·의무")
+        return [
+            "돈 버는 능력: " + context + "가 공개돼야 비용·사업 범위의 영향을 평가할 수 있습니다. 현재 실적 변화는 확인되지 않았습니다.",
+            "할인율: 실제 규제 비용 또는 불확실성 변화는 공개 문안에 달려 있습니다.",
+            "수급: 기관 자금 유입·유출 또는 BTC·COIN·CRCL 주가의 직접 효과는 아직 확인되지 않았습니다.",
+            "시간표: " + ("검토 종료 후 해당 기관의 공식 문안 공개·법적 단계·시행일 확인." if fields["status"].lower() == "concluded" else "OIRA 검토 종료 → SEC/CFTC 공식 문안 공개 및 실제 제안·확정 여부 확인."),
+        ]
     if is_senate_banking_leadership(event):
         return [
             "돈 버는 능력: 이번 인선 전망만으로 COIN·CRCL·BTC 관련 실제 매출·수수료가 변경되지는 않습니다.",
@@ -673,7 +771,7 @@ def investment_lines(event):
             "BTC·ETH: 이번 규칙이 모든 암호자산에 자동 적용되는 것은 아니므로 ‘BTC·ETH 기관자금 유입 확정’으로 해석하면 안 됩니다. 실제 적용 범위와 최종 문구를 확인해야 합니다.",
             "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·Final Rule(최종규칙) 채택 여부를 확인합니다.",
         ]
-    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+    if is_af80_initial_review(event):
         return [
             "돈 버는 능력: 지금 당장 매출이 바뀌는 단계는 아닙니다. 실제 수혜 여부는 향후 문안이 Coinbase 같은 미국 거래소의 파생상품·무기한 선물(perpetual)·레버리지·마진 거래와 등록 경로를 얼마나 넓히는지에 달려 있습니다. Circle은 USDC가 담보·결제 자산으로 명시될 때 직접 연결됩니다.",
             "할인율: CLARITY 부결에도 CFTC가 별도 행정 규칙 경로를 가동했다는 점은 ‘아무 규칙도 없는 공백’ 위험을 낮추지만, 세부 문안이 아직 없어 규제가 완화될지 새 준수비용이 생길지는 미확정입니다.",
@@ -762,6 +860,8 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_oira_event(event) and not is_af80_initial_review(event):
+        return oira_meaning(event)
     if is_senate_banking_leadership(event):
         return (
             "민주당의 상원 다수당 확보 후 워런의 상원 은행위원장 인선 가능성이 신뢰매체에서 보도됐지만 "
@@ -799,7 +899,7 @@ def core_summary(event):
             "COIN에는 state trust company 수탁 경로가 기회가 될 수 있지만 self-custody(자체 수탁)가 외부 수탁 수요를 일부 상쇄할 수 있고, "
             "CRCL도 Circle New York Trust를 통해 제도상 연결 가능성이 있으나 실제 제3자 수탁 매출은 미확정이며, BTC·ETH는 적용 범위가 자산의 법적 성격에 따라 달라집니다."
         )
-    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+    if is_af80_initial_review(event):
         return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review(검토 중)·Prerule(사전규칙 단계)이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
     if "innovation exemption" in signal and "tokenized" in signal:
         return "SEC의 5년 한시 Innovation Exemption은 CLARITY 부결 직후 토큰화 미국주식의 온체인 거래 통로를 실제로 연 조치로, HOOD·COIN·SECZ의 상품화 시간표와 규제 할인율에는 긍정적이고 CRCL에는 간접적이며, 한시 면제·종목/거래량 제한·발행사 거부권·향후 소송 또는 정책 반전이 최대 실패 경로입니다."

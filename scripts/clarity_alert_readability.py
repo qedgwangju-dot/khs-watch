@@ -172,6 +172,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_oira_event(event):
+        return "규제 검토 시간표 변화 · 실제 의무·현재 실적은 미확정"
     if FMT.is_senate_banking_leadership(event):
         return "규제 할인율 △ · 2027년 심의 시간표 변동 가능 · 현재 매출 →"
     if FMT.is_vs_trust_3x_registration_effect(event):
@@ -214,6 +216,8 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_oira_event(event):
+        return FMT.oira_fact_lines(event)
     if FMT.is_senate_banking_leadership(event):
         return [
             "2026년 11월 3일 중간선거 이후 민주당의 차기 상원 다수당 확보 보도.",
@@ -275,6 +279,13 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_oira_event(event):
+        fields = FMT.oira_fields(event)
+        if fields["status"].lower() == "concluded":
+            return "🟡 OIRA 검토 종료 — 규칙 채택·시행 확정과 구분."
+        if fields["status"].lower() == "pending review":
+            return "🟡 OIRA 검토 중 — 규칙 공개·확정·시행과 구분."
+        return "🟡 OIRA 검토 상태 미확인 — 확정으로 해석하지 않습니다."
     if FMT.is_senate_banking_leadership(event):
         if "선임 보도" in clean(event.get("event_type", "")):
             return "🟡 선임 보도 — 공식 상원 은행위원회 명단 대조 전; 취임 완료 아님."
@@ -341,6 +352,11 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_oira_event(event):
+        fields = FMT.oira_fields(event)
+        if fields["status"].lower() == "concluded":
+            return ["해당 기관의 실제 규칙 문안 공개", "Federal Register 문서번호·발행일·법적 단계", "실제 적용 대상·의무·시행일"]
+        return ["OIRA Pending Review(검토 중) 종료", "SEC/CFTC 공개 문안 및 공식 제안·최종규칙 여부", "실제 적용 범위·준수기한"]
     if FMT.is_senate_banking_leadership(event):
         return [
             "상원 민주당 지도부의 위원장 배정 및 상원 은행위원회 공식 명단",
