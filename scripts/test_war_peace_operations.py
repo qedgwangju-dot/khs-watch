@@ -140,6 +140,53 @@ class OperationsWarningTests(unittest.TestCase):
 
         self.assertEqual(self.prepare(self.now + dt.timedelta(hours=6)), 'send')
 
+    def test_material_coverage_halving_bypasses_six_hour_throttle(self):
+        last_warning = self.now - dt.timedelta(minutes=5)
+        self.state.write_text(json.dumps({
+            'active': True,
+            'first_seen_at': (self.now - dt.timedelta(days=1)).isoformat(timespec='seconds'),
+            'last_seen_at': last_warning.isoformat(timespec='seconds'),
+            'last_warning_sent_at': last_warning.isoformat(timespec='seconds'),
+            'last_failure': {
+                'query_total': 228,
+                'query_complete': 43,
+                'query_incomplete': 185,
+                'statuses': {'error': 181, 'ok': 43, 'partial': 4},
+                'causes': {'원천 접근 제한으로 조회 중단': 182},
+            },
+        }), encoding='utf-8')
+        report = {
+            'complete': True,
+            'phase': 'verified',
+            'source_coverage_complete': False,
+            'coverage_level': 'partial',
+            'news': ([{'status': 'ok'} for _ in range(21)]
+                     + [{'status': 'error', 'http': [{'status': 'error',
+                         'error': 'RecordedSourceError: provider access circuit is open'}]}
+                        for _ in range(205)]
+                     + [{'status': 'partial', 'coverage_issue': {
+                         'reason': 'fallback_scope_not_verified'}} for _ in range(4)]),
+        }
+        self.write_coverage(report)
+
+        # Observed production transition: 43/228 -> 21/230 fully checked.
+        self.assertEqual(self.prepare(), 'send')
+        text = self.warning.read_text(encoding='utf-8')
+        self.assertIn('완전 확인: 21/230개 질의', text)
+        self.assertIn('미완료: 209개', text)
+        pending = json.loads(self.pending.read_text(encoding='utf-8'))
+        self.assertEqual(pending['last_warning_sent_at'], self.now.isoformat(timespec='seconds'))
+        self.assertEqual(pending['last_failure']['query_incomplete'], 209)
+
+        self.write_matching_delivery()
+        self.assertTrue(self.finalize())
+        self.assertEqual(self.prepare(self.now + dt.timedelta(minutes=5)), 'throttled')
+
+    def test_coverage_halving_is_not_compared_across_different_query_scopes(self):
+        previous = {'query_total': 228, 'query_complete': 43}
+        materially_different_scope = {'query_total': 180, 'query_complete': 21}
+        self.assertFalse(operations._materially_worsened(previous, materially_different_scope))
+
     def test_semantic_verification_failure_does_not_create_source_warning(self):
         self.write_coverage({
             'complete': False,

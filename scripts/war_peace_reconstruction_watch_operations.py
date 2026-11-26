@@ -126,6 +126,32 @@ def _failure_details(report):
     return stable_summary
 
 
+def _materially_worsened(previous, current):
+    """Detect a halving of verified coverage within a comparable query scope."""
+    if not isinstance(previous, dict) or not isinstance(current, dict):
+        return False
+    previous_total = previous.get('query_total')
+    current_total = current.get('query_total')
+    previous_complete = previous.get('query_complete')
+    current_complete = current.get('query_complete')
+    if any(type(value) is not int for value in
+           (previous_total, current_total, previous_complete, current_complete)):
+        return False
+    if previous_total <= 0 or current_total <= 0:
+        return False
+    if previous_complete < 0 or previous_complete > previous_total:
+        return False
+    if current_complete < 0 or current_complete > current_total:
+        return False
+    # Avoid comparing different query scopes: small configuration changes are
+    # tolerated, but a larger denominator shift makes the ratio incomparable.
+    if abs(current_total - previous_total) / previous_total > 0.10:
+        return False
+    previous_ratio = previous_complete / previous_total
+    current_ratio = current_complete / current_total
+    return previous_ratio > 0 and current_ratio <= previous_ratio * 0.5
+
+
 def _render_warning(details, first_seen_at, now, *, partial_mode=False):
     displayed = []
     for label, count in details['causes'].items():
@@ -206,7 +232,9 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
 
     first_seen = state.get('first_seen_at') if state.get('active') is True else now.isoformat(timespec='seconds')
     last_warning = _parse_time(state.get('last_warning_sent_at'))
-    due = last_warning is None or now - last_warning >= WARNING_INTERVAL
+    interval_due = last_warning is None or now - last_warning >= WARNING_INTERVAL
+    materially_worsened = _materially_worsened(state.get('last_failure'), details)
+    due = interval_due or materially_worsened
     state.update(active=True, first_seen_at=first_seen, last_seen_at=now.isoformat(timespec='seconds'),
                  last_failure=details, **execution)
     # The partial situation alert already tells the recipient that collection
@@ -221,6 +249,8 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
     _write_json(pending_path, state)
     outcome = ('partial_alert' if partial_verified and alert_path.is_file()
                else 'send' if due else 'throttled')
+    if materially_worsened and not interval_due and outcome == 'send':
+        print('operational_warning_cooldown_bypassed=verified_coverage_halved')
     incomplete = details['query_incomplete']
     total = details['query_total']
     print(f'operational_warning={outcome} incomplete_queries={incomplete}/{total}' if total is not None
