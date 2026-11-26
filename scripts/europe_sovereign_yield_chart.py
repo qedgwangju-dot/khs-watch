@@ -17,6 +17,7 @@ import subprocess
 import sys
 import urllib.request
 import uuid
+import warnings
 
 from scripts import europe_sovereign_yield_watch as base
 from scripts.europe_sovereign_yield_telegram_html import verified_telegram_message_id
@@ -26,7 +27,9 @@ PNG = OUT / "europe_sovereign_yield_chart.png"
 RECEIPT = OUT / "europe_sovereign_yield_photo_status.json"
 MARKETS = ("uk_mkt", "fr_mkt", "it10", "de_mkt")
 LABELS_KO = {"uk_mkt": "영국", "fr_mkt": "프랑스", "it10": "이탈리아", "de_mkt": "독일"}
-LABELS_EN = {"uk_mkt": "UK", "fr_mkt": "France", "it10": "Italy", "de_mkt": "Germany"}
+# All modern Hangul syllables must be supported by the actual normal/bold faces.
+HANGUL_GLYPHS = frozenset(range(0xAC00, 0xD7A4))
+NANUM_DIR = pathlib.Path("/usr/share/fonts/truetype/nanum")
 
 
 def load(path):
@@ -107,23 +110,75 @@ def text_receipt(path, expected):
     return ids[-1]
 
 
+class KoreanFontUnavailable(RuntimeError):
+    pass
+
+
 def choose_font():
-    """Use a Korean font if the runner has one; otherwise clear English labels."""
+    """Select an actual Hangul-capable normal and bold font; never fall back to English."""
     from matplotlib import font_manager as fm
+    from matplotlib.ft2font import FT2Font
+
+    def covers(path):
+        return HANGUL_GLYPHS.issubset(FT2Font(str(path)).get_charmap())
+
+    # Ubuntu fonts-nanum ships distinct normal and bold TTFs. Register both
+    # explicitly even if Matplotlib's cache was built before package install.
+    preferred = [NANUM_DIR / "NanumGothic.ttf", NANUM_DIR / "NanumGothicBold.ttf",
+                 NANUM_DIR / "NanumBarunGothic.ttf", NANUM_DIR / "NanumBarunGothicBold.ttf"]
+    candidates = list(preferred)
     try:
         result = subprocess.run(["fc-list", ":lang=ko", "-f", "%{file}\n"],
-                                capture_output=True, text=True, check=True, timeout=5)
-        candidates = result.stdout.splitlines()
-        for path in candidates:
-            if path and pathlib.Path(path).is_file():
-                try:
-                    fm.fontManager.addfont(path)
-                    return fm.FontProperties(fname=path).get_name(), True
-                except Exception:
-                    continue
+                                capture_output=True, text=True, check=True, timeout=8)
+        candidates += [pathlib.Path(p) for p in result.stdout.splitlines() if p]
     except (OSError, subprocess.SubprocessError):
         pass
-    return "DejaVu Sans", False
+    families = []
+    for path in dict.fromkeys(candidates):
+        if not path.is_file():
+            continue
+        try:
+            if not covers(path):
+                continue
+            fm.fontManager.addfont(str(path))
+            family = fm.FontProperties(fname=str(path)).get_name()
+            if family not in families:
+                families.append(family)
+        except (OSError, ValueError, RuntimeError):
+            continue
+
+    for family in families:
+        try:
+            resolved = [fm.findfont(fm.FontProperties(family=[family], weight=w),
+                                    fallback_to_default=False)
+                        for w in ("normal", "bold")]
+            if all(covers(path) for path in resolved):
+                return family
+        except (OSError, ValueError, RuntimeError):
+            continue
+    raise KoreanFontUnavailable("No validated Korean normal/bold font")
+
+
+def ensure_korean_font():
+    """Install the free Ubuntu Korean font only when the existing runner needs it."""
+    try:
+        return choose_font()
+    except KoreanFontUnavailable:
+        pass
+    # This is the existing disposable GitHub-hosted Ubuntu runner; no external
+    # credentials or new runner permissions. A failure is handled as photo-only.
+    commands = (
+        ["sudo", "-n", "apt-get", "-o", "Acquire::Retries=2",
+         "-o", "Acquire::http::Timeout=20", "update", "-qq"],
+        ["sudo", "-n", "apt-get", "-o", "Acquire::Retries=2",
+         "-o", "Acquire::http::Timeout=20", "install", "-y", "--no-install-recommends", "fonts-nanum"],
+    )
+    try:
+        for command in commands:
+            subprocess.run(command, timeout=90, check=True)
+    except (OSError, subprocess.SubprocessError) as exc:
+        raise KoreanFontUnavailable("Korean font installation failed") from exc
+    return choose_font()
 
 
 def render(state, output):
@@ -131,9 +186,9 @@ def render(state, output):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
-    font, korean = choose_font()
+    font = ensure_korean_font()
     plt.rcParams.update({"font.family": font, "axes.unicode_minus": False, "font.size": 12})
-    labels = LABELS_KO if korean else LABELS_EN
+    labels = LABELS_KO
     data = {k: market_rows(state, k) for k in MARKETS}
     if not any(data.values()):
         raise ValueError("No actual market observations for chart")
@@ -145,26 +200,25 @@ def render(state, output):
     gs = fig.add_gridspec(2, 1, height_ratios=[1.2, 1], left=.10, right=.78,
                           top=.76, bottom=.12, hspace=.32)
     ax, bx = fig.add_subplot(gs[0]), fig.add_subplot(gs[1])
-    title = "유럽 국채금리 경보" if korean else "European sovereign yield alert"
+    title = "유럽 국채금리 경보"
     fig.text(.065, .963, title, fontsize=25, weight="bold", va="top")
     stamp = dt.datetime.fromisoformat(state["last_checked_kst"]).strftime("%Y.%m.%d %H:%M")
-    fig.text(.065, .922, stamp+" KST", fontsize=13, va="top")
+    fig.text(.065, .922, stamp+" 한국시간", fontsize=13, va="top")
     def official(k, label):
         point = current(state, k)
         if point:
             return f"{label} {point[1]:.3f}% ({point[0]:%m/%d})"
-        return label + (" 확인 불가/후행" if korean else " unavailable/stale")
-    f = official("fr10", "프랑스 공식 TEC10" if korean else "France official TEC10")
-    g = official("de10", "독일 공식 10년" if korean else "Germany official 10Y")
+        return label + " 확인 불가/후행"
+    f = official("fr10", "프랑스 공식 TEC10")
+    g = official("de10", "독일 공식 10년")
     fig.text(.065, .881, f, fontsize=19, weight="bold", va="top")
     fig.text(.065, .844, g, fontsize=13, va="top")
     fd = live_spread(state, "fr_mkt", "de_mkt")
     it = live_spread(state, "it10", "de_mkt")
-    missing = "확인 불가" if korean else "unavailable"
+    missing = "확인 불가"
     fs = f"{fd:.1f}bp" if fd is not None else missing
     ins = f"{it:.1f}bp" if it is not None else missing
-    fig.text(.065, .808, (f"프랑스-독일 {fs}  |  이탈리아-독일 {ins}" if korean else
-                            f"France-Germany {fs}  |  Italy-Germany {ins}"), fontsize=14, va="top")
+    fig.text(.065, .808, f"프랑스-독일 {fs}  |  이탈리아-독일 {ins}", fontsize=14, va="top")
     colors = dict(zip(MARKETS, plt.rcParams["axes.prop_cycle"].by_key()["color"]))
     for k, rows in data.items():
         if not rows:
@@ -174,17 +228,17 @@ def render(state, output):
         point = current(state, k)
         current_label = (f"{ys[-1]:.3f}%" if point and point[0] == xs[-1] and
                          math.isclose(point[1], ys[-1], abs_tol=1e-8)
-                         else ("후행/과거" if korean else "historical"))
+                         else "후행/과거")
         ax.annotate(f"{labels[k]} {current_label}\n{xs[-1]:%m/%d}", (xs[-1], ys[-1]),
                     xytext=(8, 0), textcoords="offset points", va="center",
                     fontsize=11, weight="bold", color=colors[k], annotation_clip=False)
-    ax.set_title("국가별 10년 시장수익률 (%)" if korean else "10-year market yields (%)",
+    ax.set_title("국가별 10년 시장수익률 (%)",
                  loc="left", weight="bold", fontsize=16, pad=10)
     ax.axhline(5.50, color="0.6", ls=":", lw=1)
-    ax.text(start, 5.50, "영국 감시선 5.50%" if korean else "UK watch 5.50%", fontsize=10, color="0.4", va="bottom")
+    ax.text(start, 5.50, "영국 감시선 5.50%", fontsize=10, color="0.4", va="bottom")
     spread_series = (
-        ("프랑스-독일" if korean else "France-Germany", "fr_mkt", fd),
-        ("이탈리아-독일" if korean else "Italy-Germany", "it10", it),
+        ("프랑스-독일", "fr_mkt", fd),
+        ("이탈리아-독일", "it10", it),
     )
     has_spread = False
     for label, k, val in spread_series:
@@ -194,17 +248,17 @@ def render(state, output):
         has_spread = True
         xs, ys = zip(*rows)
         bx.plot(xs, ys, marker="o", markersize=3.3, linewidth=2, color=colors[k])
-        current_label = f"{val:.1f}bp" if val is not None and math.isclose(val, ys[-1], abs_tol=1e-8) else ("과거" if korean else "historical")
+        current_label = f"{val:.1f}bp" if val is not None and math.isclose(val, ys[-1], abs_tol=1e-8) else "과거"
         bx.annotate(f"{label}\n{current_label}", (xs[-1], ys[-1]), xytext=(8, 0),
                     textcoords="offset points", va="center", color=colors[k],
                     fontsize=11, weight="bold", annotation_clip=False)
     if not has_spread:
-        bx.text(.5, .3, "동일 기준일 자료 없음" if korean else "No comparable dates", transform=bx.transAxes, ha="center")
+        bx.text(.5, .3, "동일 기준일 자료 없음", transform=bx.transAxes, ha="center")
     for y in (150, 170):
         bx.axhline(y, color="0.55", ls="--", lw=.8)
-        bx.text(start, y, (f"감시선 {y}bp" if korean else f"Watch {y}bp"),
+        bx.text(start, y, f"감시선 {y}bp",
                 fontsize=10, color="0.4", va="bottom")
-    bx.set_title("독일 대비 금리차 (bp)" if korean else "Spread to Germany (bp)",
+    bx.set_title("독일 대비 금리차 (bp)",
                  loc="left", weight="bold", fontsize=16, pad=10)
     for panel in (ax, bx):
         panel.set_xlim(start-dt.timedelta(days=.5), end+dt.timedelta(days=.6))
@@ -215,13 +269,18 @@ def render(state, output):
         panel.tick_params(length=0, pad=7)
     footer = ("자료: 기존 알림과 동일한 Trading Economics 시장 관측값.\n"
               "금리차는 동일 기준일 자료만 계산. 장중 제공값은 확정 종가 아님.\n"
-              "공식 중앙은행 수익률과 시장수익률은 별도 지표. 감시선은 내부 기준."
-              if korean else "Source: same Trading Economics observations as the text alert.\n"
-              "Spreads use matched dates only. Market quotes are not final closes.\n"
-              "Official yields and market yields are distinct. Watch lines are internal.")
+              "공식 중앙은행 수익률과 시장수익률은 별도 지표. 감시선은 내부 기준.")
     fig.text(.065, .075, footer, fontsize=11, va="top", linespacing=1.45)
-    fig.savefig(output, dpi=150, facecolor="white")
-    plt.close(fig)
+    try:
+        # A partially broken Hangul image is not an acceptable fallback.
+        with warnings.catch_warnings():
+            warnings.filterwarnings("error", message=r"Glyph .* missing from font", category=UserWarning)
+            fig.savefig(output, dpi=150, facecolor="white")
+    except UserWarning as exc:
+        output.unlink(missing_ok=True)
+        raise KoreanFontUnavailable("Chart has missing glyphs") from exc
+    finally:
+        plt.close(fig)
     if not output.is_file() or output.stat().st_size > 10_000_000:
         raise ValueError("PNG missing or too large")
     with output.open("rb") as fobj:
@@ -231,7 +290,7 @@ def render(state, output):
     width, height = struct.unpack(">II", prefix[16:24])
     if not (width > 0 and height > 0 and width+height <= 10000 and max(width/height, height/width) <= 20):
         raise ValueError("PNG dimensions outside Telegram limits")
-    return {"width": width, "height": height, "font_language": "ko" if korean else "en"}
+    return {"width": width, "height": height, "font_language": "ko"}
 
 
 def multipart(fields, png):
@@ -276,6 +335,9 @@ def main():
             subprocess.run([sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
                             "matplotlib==3.10.8"], timeout=150, check=True)
         status.update(render(state, PNG))
+        if status.get("font_language") != "ko":
+            raise KoreanFontUnavailable("Non-Korean chart blocked")
+        print("europe_chart_font_language=ko")
         if mid is None:
             status["status"] = "preview_only_no_text_alert"
             save(RECEIPT, status)
@@ -284,7 +346,7 @@ def main():
         token, chat = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip(), os.environ.get("TELEGRAM_CHAT_ID", "").strip()
         if not token or not chat or not expected:
             raise ValueError("Missing existing Telegram configuration")
-        caption = "유럽 국채금리·금리차 추세 (" + state["last_checked_kst"][:16].replace("T", " ") + " KST)\n기존 텍스트 경보와 동일 관측값 · 시장 제공값은 확정 종가 아님"
+        caption = "유럽 국채금리·금리차 추세 (" + state["last_checked_kst"][:16].replace("T", " ") + " 한국시간)\n기존 텍스트 경보와 동일 관측값 · 시장 제공값은 확정 종가 아님"
         status["status"] = "send_unconfirmed"
         save(RECEIPT, status)
         photo_id = send_photo(token, chat, expected, mid, PNG.read_bytes(), caption)
