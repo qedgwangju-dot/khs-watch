@@ -44,6 +44,10 @@ def compact(s):
     return re.sub(r"\s+"," ",s or "").strip()
 
 def category(title):
+    # A customer efficiency/consulting campaign is not a tariff decision.
+    # Do not suppress an actual tariff or fuel-adjustment decision in the same title.
+    if re.search(r"전기요금\s*절감\s*(?:컨설팅|서비스)|전기요금\s*절약\s*(?:컨설팅|서비스)",title) and not re.search(r"조정단가|요금\s*(?:인상|인하|동결|조정|개정|확정)|공급약관",title):
+        return None
     for name, pattern in CATEGORIES.items():
         if re.search(pattern,title,re.I):
             return name
@@ -247,7 +251,9 @@ def main():
         else:
             state["sources"].pop(key,None)
     BASELINE.write_text(json.dumps(previous,ensure_ascii=False)+"\n",encoding="utf-8")
-    state["source_health"]={"ok":sorted(fetched),"failed":failed,"complete":not bool(failed)}
+    state["source_health"]={"ok":sorted(set(fetched)-set(failed)),
+                            "partial":sorted(set(fetched)&set(failed)),
+                            "failed":failed,"complete":not bool(failed)}
     PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     ALERT.unlink(missing_ok=True)
     if items and not args.no_alert:
@@ -255,7 +261,8 @@ def main():
     summary=[
         f"# 에너지 가격통제·재정부담 감시 {now.isoformat(timespec='seconds')}",
         f"- 최초 기준선 구축: {'예' if not previous.get('initialized') else '아니오'}",
-        f"- 공식 원천 목록 성공: {len(fetched)}/{len(SOURCES)}",
+        f"- 공식 원천 전체 조회 성공: {len(set(fetched)-set(failed))}/{len(SOURCES)}",
+        f"- 일부 자료만 확인된 원천: {sorted(set(fetched)&set(failed)) or '없음'}",
         f"- 미확인 원천: {failed or '없음'}",
         f"- 발송 대기 공식 문서: {len(items)}",
         f"- 발송 미확인/보류: {sum(v.get('status')!='queued' for v in state.get('pending_delivery',{}).values())}",

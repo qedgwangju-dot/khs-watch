@@ -54,17 +54,21 @@ jobs:
         run: |
           python - <<'PY'
           import os,requests
+          from scripts.energy_price_fiscal_watch import resolve_chat
           token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
           expected=os.environ["EXPECTED_BOT"]
-          if not token or not chat: raise RuntimeError("에너지 전용 Telegram Secret 없음: 다른 봇으로 대체 전송하지 않음")
-          r=requests.get(f"https://api.telegram.org/bot{token}/getMe",timeout=20)
-          r.raise_for_status()
-          result=r.json()
-          actual=str((result.get("result") or {}).get("username") or "")
-          if not result.get("ok") or actual.lower()!=expected.lower():
-              raise RuntimeError(f"잘못된 텔레그램 봇: expected @{expected}, got @{actual}")
-          print(f"telegram_route_valid=true bot=@{actual}")
+          if not token or not chat: raise RuntimeError("기존 Telegram 설정 누락")
+          try:
+              r=requests.get(f"https://api.telegram.org/bot{token}/getMe",timeout=20)
+              result=r.json()
+              actual=str((result.get("result") or {}).get("username") or "")
+              if not r.ok or result.get("ok") is not True or actual.lower()!=expected.lower():
+                  raise ValueError()
+          except Exception:
+              raise RuntimeError("기존 에너지 Telegram 봇 인증 실패") from None
+          resolve_chat(token,chat)
+          print("telegram_route_valid=true telegram_chat_resolved=true no_test_message=true")
           PY
       - name: 공식자료 조회 및 신규 변화 판정
         id: scan

@@ -14,6 +14,11 @@ class PriceFiscalTests(unittest.TestCase):
         self.assertEqual(w.category("한전, ’26년 3분기(누계, 1~9월) 결산실적 발표"),"kepco_financial")
         self.assertIsNone(w.category("행복나눔 프로그램에 임직원 참여"))
 
+    def test_tariff_consulting_is_not_tariff_decision(self):
+        self.assertIsNone(w.category("한전, 전력데이터 · AI기반 ‘소상공인 전기요금 절감 컨설팅 서비스’ 본격 확대"))
+        self.assertEqual(w.category("2027년 1분기 전기요금 동결 및 절감 컨설팅 지원"),"electric_tariff")
+        self.assertEqual(w.category("2027년 1분기 연료비조정단가 산정내역"),"electric_tariff")
+
     def test_legal_state_before_numbers(self):
         x={"category":"oil_compensation","title":"석유 최고가격제 손실보전 재정지원 금액은 아직 결정되지 않았습니다"}
         self.assertIn("미확정",w.stage(x))
