@@ -6,6 +6,12 @@
       "motir:ATCL3f49a5a8c:172406"
     ],
     "motir_clarification": [
+      "motir:ATCLe0854704d:172160",
+      "motir:ATCLe0854704d:172198",
+      "motir:ATCLe0854704d:172211",
+      "motir:ATCLe0854704d:172299",
+      "motir:ATCLe0854704d:172311",
+      "motir:ATCLe0854704d:172329",
       "motir:ATCLe0854704d:172347",
       "motir:ATCLe0854704d:172392",
       "motir:ATCLe0854704d:172393"
@@ -19,28 +25,28 @@
   },
   "sources": {
     "motir_press": {
-      "last_ok_kst": "2026-11-26T19:47:47+09:00",
+      "last_ok_kst": "2026-11-27T06:26:14+09:00",
       "matched": 0
     },
     "motir_clarification": {
-      "last_ok_kst": "2026-11-26T19:47:47+09:00",
-      "matched": 3
+      "last_ok_kst": "2026-11-27T06:26:14+09:00",
+      "matched": 9
     },
     "kepco_notice": {
-      "last_ok_kst": "2026-11-26T19:47:47+09:00",
+      "last_ok_kst": "2026-11-27T06:26:14+09:00",
       "matched": 0
     },
     "kogas_press": {
-      "last_ok_kst": "2026-11-26T19:47:47+09:00",
+      "last_ok_kst": "2026-11-27T06:26:14+09:00",
       "matched": 0
     },
     "kepco_press": {
-      "last_ok_kst": "2026-11-26T19:47:47+09:00",
-      "matched": 1
+      "last_ok_kst": "2026-11-27T06:26:14+09:00",
+      "matched": 0
     }
   },
   "seeded_date": "2026-11-16",
-  "updated_at_kst": "2026-11-26T19:47:47+09:00",
+  "updated_at_kst": "2026-11-27T06:26:14+09:00",
   "source_health": {
     "ok": [
       "kepco_notice",
@@ -49,7 +55,10 @@
       "motir_clarification",
       "motir_press"
     ],
+    "partial": [],
     "failed": {},
     "complete": true
-  }
+  },
+  "pending_delivery": {},
+  "delivery_receipts": {}
 }
