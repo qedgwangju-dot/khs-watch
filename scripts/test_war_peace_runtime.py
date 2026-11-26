@@ -708,6 +708,71 @@ class RuntimeTests(unittest.TestCase):
         self.assertTrue(all(x['status'] == 'error' for x in report['news'][:-1]))
         self.assertNotIn('payload_retry_queries', report)
 
+    def test_provider_cooldown_is_persisted_across_runs_without_extending_it(self):
+        from urllib.error import HTTPError
+        blocked_url = 'https://news.google.com/rss/search?q=fixture'
+        other_url = 'https://independent.example/feed'
+        watch = fake_watch(self.root, [blocked_url, other_url])
+        calls = mp.get_context('fork').Array('i', [0, 0])
+        def req(url, timeout=20):
+            if url == blocked_url:
+                with calls.get_lock():
+                    calls[0] += 1
+                raise HTTPError(url, 429, 'rate limited', {'Retry-After': '3600'}, None)
+            with calls.get_lock():
+                calls[1] += 1
+            return b'independent material'
+        watch.req = req
+        state_path = self.root / 'provider-backoff.json'
+        def collect(previous):
+            report = {}
+            runtime.prefetch(watch, report, watch.OUT/'coverage.json',
+                             seconds=3, workers=1, allow_partial=True,
+                             google_interval=0, previous_backoff=previous)
+            return report
+        first = collect({})
+        entry = first['blocked_providers']['news.google.com']
+        self.assertEqual(entry['code'], 429)
+        self.assertGreaterEqual(entry['retry_at_epoch'] - entry['observed_epoch'], 3600)
+        self.assertEqual(first['incomplete_query_indices'], [0])
+        self.assertTrue(runtime._save_backoff(state_path, {}, first))
+        saved = runtime._load_backoff(state_path)
+        self.assertEqual(saved['news.google.com'], entry)
+        again = collect(saved)
+        self.assertEqual(list(calls), [1, 2])
+        self.assertEqual(again['provider_cooldown_carried_over'], ['news.google.com'])
+        self.assertEqual(again['news'][0]['http'][0]['request_disposition'], 'skipped_provider_cooldown')
+        self.assertEqual(again['incomplete_query_indices'], [0])
+        self.assertEqual(again['blocked_providers']['news.google.com'], entry)
+        self.assertFalse(runtime._save_backoff(state_path, saved, again))
+        self.assertEqual(runtime._load_backoff(state_path), saved)
+        self.assertEqual(watch.STATE.read_text(), '{"seen":["confirmed-old"]}')
+
+    def test_provider_cooldown_expiry_permits_same_source_recovery(self):
+        from urllib.error import HTTPError
+        from email.utils import format_datetime
+        now = time.time()
+        url = 'https://news.google.com/rss/search?q=fixture'
+        previous = {'news.google.com': runtime._denial_entry(
+            HTTPError(url, 429, 'rate limited', {}, None), now - 1000)}
+        header = format_datetime(dt.datetime.fromtimestamp(now + 4000, dt.timezone.utc))
+        next_entry = runtime._denial_entry(
+            HTTPError(url, 429, 'rate limited', {'Retry-After': header}, None),
+            now, previous['news.google.com'])
+        self.assertEqual(next_entry['denials'], 2)
+        self.assertGreaterEqual(next_entry['retry_at_epoch'] - now, 3999)
+        watch = fake_watch(self.root, [url])
+        watch.req = lambda url, timeout=20: b'fresh material'
+        path = self.root/'backoff.json'
+        runtime._save(path, {'version': 1, 'providers': previous})
+        report = {}
+        runtime.prefetch(watch, report, watch.OUT/'coverage.json',
+                         seconds=3, workers=1, google_interval=0, previous_backoff=previous)
+        self.assertTrue(report['source_coverage_complete'])
+        self.assertEqual(report['provider_cooldown_carried_over'], [])
+        self.assertTrue(runtime._save_backoff(path, previous, report))
+        self.assertEqual(runtime._load_backoff(path), {})
+
     def test_mixed_malformed_payload_and_access_denial_never_retries_query(self):
         from urllib.error import HTTPError
         watch = fake_watch(self.root, ['mixed'])
