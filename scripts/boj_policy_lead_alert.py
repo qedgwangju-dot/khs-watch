@@ -538,6 +538,7 @@ def prepare_delivery_attempt(run_id: str, run_attempt: str, now: dt.datetime) ->
         record = {
             "status": "unconfirmed", "attempt_id": attempt_id,
             "event_id": event_id, "signal_key": signal.key, "run_id": str(run_id),
+            "baseline_signal_key": state.get("last_signal_key"),
             "title": signal.title, "source": signal.source,
             "published_at_kst": signal.published.isoformat(),
             "prepared_at_kst": now.isoformat(timespec="seconds"),
@@ -577,6 +578,7 @@ def member_policy_details(body: str) -> dict:
     sentences = re.split(r"(?<=[.!?])\s+", lower)
     acceleration = False
     condition = False
+    inflation_condition = False
     neutral = False
     easing = False
     further = False
@@ -594,9 +596,11 @@ def member_policy_details(body: str) -> dict:
                 continue
             if re.search(r"\b(?:if|should|may|might|could|need|needs|required|necessary|must|believe|consider|signals? chance|possible)\b", line):
                 acceleration = further = True
-                condition = condition or bool(re.search(
-                    r"\b(?:if|signs of an upward deviation|overshoot\w*|upside risks?|deviat\w* upward|upward deviation|condition\w*)\b", line
+                inflation_condition = inflation_condition or bool(re.search(
+                    r"\b(?:signs of an upward deviation in prices|inflation overshoot\w*|upside risks? to prices|prices? deviat\w* upward|upward deviation in prices)\b"
+                    r"|inflation.{0,55}\b(?:above|exceed\w*|overshoot\w*)\b", line
                 ))
+                condition = condition or inflation_condition or bool(re.search(r"\b(?:if|provided that|depending on|conditional on)\b", line))
         if re.search(
             r"\b(?:bring|move|raise|adjust)\b.{0,100}\b(?:policy (?:interest )?rate|policy rate|interest rates?)\b"
             r".{0,100}\b(?:neutral (?:interest rate|level|rate)|neutral)\b", line
@@ -608,7 +612,9 @@ def member_policy_details(body: str) -> dict:
         if re.search(r"\b(?:no rush|no need to hurry|wait and see|delay further|slow the pace)\b", line) and re.search(r"\b(?:rate hikes|raising rates|interest rates|tightening)\b", line):
             easing = True
     if acceleration:
-        facts.append("기조물가가 목표를 웃돌 조짐이 나타나면 인상 속도를 높여야 한다는 의견" if condition else "금리 인상 속도를 높일 가능성을 명시적으로 언급")
+        facts.append("물가가 목표를 웃돌 조짐이 나타나면 인상 속도를 높여야 한다는 의견" if inflation_condition
+                     else ("조건부로 금리 인상 속도를 높일 가능성을 언급" if condition
+                           else "금리 인상 속도를 높일 가능성을 명시적으로 언급"))
     if neutral:
         facts.append("정책금리를 경기 중립 수준으로 높일 필요가 있다는 의견")
     neutral_value = re.search(
@@ -1898,6 +1904,10 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
     if delivery_is_unconfirmed(signal, state):
         return False, "이전 Telegram 전송 결과 미확인 — 중복 위험으로 자동 재전송 보류"
+    rejection = state.get("last_delivery_rejection") or {}
+    retry_at = parse_state_time(rejection.get("retry_not_before_kst"))
+    if rejection.get("event_id") == delivery_event_id(signal) and retry_at and now < retry_at:
+        return False, "Telegram 명시적 전송 거절 — 안전 재시도 대기"
     if signal.speaker:
         if same_member_event(signal, state):
             return False, "이미 발송한 동일 위원 발언 — 공식 원문과 보도 중복 제외"
@@ -2380,7 +2390,10 @@ def first_glance_policy(signal: Signal) -> dict[str, str]:
     if signal.speaker:
         why = signal.speech_evidence[0] if signal.speech_evidence else "본문 확인 대기"
         if signal.level == 2:
-            future = "물가 상방 위험이 커지면 인상 속도를 높일 수 있다는 개인 의견" if signal.speech_conditional else "인상 속도를 높이자는 개인 의견"
+            future = ("물가 상방 위험이 커지면 인상 속도를 높일 수 있다는 개인 의견"
+                      if any("물가가 목표를 웃돌" in x for x in signal.speech_evidence)
+                      else ("조건부로 인상 속도를 높일 수 있다는 개인 의견" if signal.speech_conditional
+                            else "인상 속도를 높이자는 개인 의견"))
             short = "조건부 인상 가속 의견" if signal.speech_conditional else "인상 가속 의견"
             market = "인상 기대가 실제로 높아질 경우 엔화 강세·일본 단기금리 상승·주식 부담 가능"
         elif signal.level == 0:
@@ -3024,6 +3037,17 @@ def finalize() -> int:
     pending = dict(state.get("unconfirmed_deliveries") or {})
     event_id = attempt["event_id"]
     if pending.get(event_id, {}).get("attempt_id") != attempt.get("attempt_id"):
+        # A push may have succeeded even if its local acknowledgment was lost.
+        if CONFIRMED.exists():
+            receipt = json.loads(CONFIRMED.read_text(encoding="utf-8"))
+            if valid_delivery_confirmation(receipt, attempt) and state.get("last_delivery") == receipt:
+                print("BOJ receipt already finalized; no state change.")
+                return 0
+        if REJECTED.exists():
+            rejection = json.loads(REJECTED.read_text(encoding="utf-8"))
+            if rejection.get("attempt_id") == attempt.get("attempt_id") and state.get("last_delivery_rejection") == rejection:
+                print("BOJ explicit rejection already finalized.")
+                return 0
         raise RuntimeError("BOJ delivery journal mismatch; preserve remote state")
     if REJECTED.exists():
         rejection = json.loads(REJECTED.read_text(encoding="utf-8"))
@@ -3044,6 +3068,8 @@ def finalize() -> int:
     new_state = json.loads(PENDING.read_text(encoding="utf-8"))
     if new_state.get("last_signal_key") != attempt.get("signal_key"):
         raise RuntimeError("BOJ pending signal/Telegram receipt mismatch")
+    if state.get("last_signal_key") != attempt.get("baseline_signal_key"):
+        raise RuntimeError("BOJ successful baseline changed; receipt retained for reconciliation")
     pending.pop(event_id)
     # Keep older metadata and unresolved deliveries; update the successful
     # baseline only after a positive, matching Telegram message_id.
@@ -3093,6 +3119,9 @@ def main() -> int:
         raise RuntimeError("BOJ source outage: no successfully parsed RSS or BOJ official index")
 
     if not signals:
+        if state.get("unconfirmed_deliveries"):
+            WATCH.write_text("Telegram 전송 결과 미확인 — 원천자료 유효기간 경과 여부와 별개로 확인 필요\n", encoding="utf-8")
+            raise RuntimeError("BOJ delivery unconfirmed; reconcile receipt before retry")
         if not SOURCE_HEALTH.get("official_rss_ok") or not SOURCE_HEALTH.get("official_index_ok"):
             WATCH.write_text(f"BOJ 공식 원천 조회 부분 장애 — 새 발표 없음 판정 보류 · {label_time(now)}\n", encoding="utf-8")
             raise RuntimeError("BOJ official source verification pending")
@@ -3141,6 +3170,7 @@ def main() -> int:
 
     runtime_health = {
         "official_statement_detail_verified": bool(top.official_statement_detail_verified),
+        "unconfirmed_delivery_count": len(state.get("unconfirmed_deliveries") or {}),
         "top_event_type": top.event_type,
         "top_source": top.source,
         "top_speaker": top.speaker,
@@ -3172,7 +3202,7 @@ def main() -> int:
         (
             f"BOJ 정책경로 변화 감지: 후보 {LEVEL_EMOJI[top.level]} {LEVEL_LABEL[top.level]}\n"
             f"최신 이벤트: {EVENT_LABEL.get(top.event_type, top.event_type)} / {top.source}\n"
-            f"공식 성명 상세 검증: {'완료' if top.official_statement_detail_verified else '대기'}\n"
+            f"공식 원문 상세 검증: {'완료' if (top.official_statement_detail_verified or (top.speaker and top.speech_verified and top.source == 'Bank of Japan')) else '대기'}\n"
             f"시장 교차확인: {', '.join(market_ok) or '없음'}"
             + (f" / 확인 불가: {', '.join(market_missing)}" if market_missing else "")
             + "\n"
@@ -3183,13 +3213,19 @@ def main() -> int:
         encoding="utf-8",
     )
     if selected is None:
-        unresolved = [x for x in signals if delivery_is_unconfirmed(x, state)]
+        unresolved = state.get("unconfirmed_deliveries") or {}
         if unresolved:
             with WATCH.open("a", encoding="utf-8") as handle:
                 handle.write("\nTelegram 전송 결과 미확인 — 동일 사건 자동 재시도 보류\n")
             print(json.dumps({"alerted": False, "reason": "delivery_unconfirmed",
-                              "events": [x.title for x in unresolved]}, ensure_ascii=False))
+                              "events": [x.get("title") for x in unresolved.values()]}, ensure_ascii=False))
             raise RuntimeError("BOJ delivery unconfirmed; reconcile receipt before retry")
+        blocked_retry = state.get("last_delivery_rejection") or {}
+        retry_at = parse_state_time(blocked_retry.get("retry_not_before_kst"))
+        if retry_at and now < retry_at and any(delivery_event_id(x) == blocked_retry.get("event_id") for x in signals):
+            with WATCH.open("a", encoding="utf-8") as handle:
+                handle.write("\nTelegram 명시적 거절 — 안전 재시도 대기\n")
+            raise RuntimeError("BOJ delivery explicitly rejected; backoff active")
         pending_speech = [x for x in signals if x.speaker and not x.speech_verified
                           and now - x.published <= dt.timedelta(hours=MEDIA_POLICY_EVENT_MAX_AGE_HOURS)
                           and not same_member_event(x, state)
