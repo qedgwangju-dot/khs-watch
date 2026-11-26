@@ -1497,5 +1497,97 @@ class NvidiaModelSupplyReportTests(unittest.TestCase):
         self.assertEqual(w.gpu_followup_ranges("NVIDIA new orders. Commercial Times B300 28-42 weeks GB300 14-26 weeks. B300 29-44 weeks."),{})
 
 
+
+class FcbgaEquipmentLeadTimeTests(unittest.TestCase):
+    KO = ("FC-BGA 기판 생산을 위한 일부 가공 장비 납기가 평시 대비 5배 가까이 늘어난 것으로 파악됐다. "
+          "구매주문(PO) 후 6개월 안팎이면 납품받을 수 있던 장비를 약 30개월 기다려야 받을 수 있는 수준이다. "
+          "한 FC-BGA 접합 장비 업체 대표는 평소라면 당장 구매할 수 있는 일본산 부품이 최근에는 반년 정도 기다려야 받을 수 있다고 밝혔다. "
+          "접합·절단·금속화 장비, 정밀모터·서보모터·컨트롤러. 구매의향서·선수금.")
+    EN = ("Delivery lead times for certain processing equipment used to produce FC-BGA substrates have increased. "
+          "Equipment that previously could be delivered within approximately six months of placing a purchase order (PO) now requires a wait of about 30 months. "
+          "Japanese-made components that would normally be available for immediate purchase now require a wait of about six months.")
+    TF = ("According to ETNews, lead times for certain equipment used in FC-BGA substrate production have increased nearly fivefold, "
+          "from around six months after order placement to approximately 30 months. "
+          "An FC-BGA bonding equipment manufacturer notes that previously readily available Japanese components now take around six months to procure.")
+
+    def test_report_wording_separate_equipment_and_parts(self):
+        for body in (self.KO,self.EN,self.TF):
+            self.assertEqual(w.fcbga_equipment_pair(body),(6,30))
+            self.assertEqual(w.fcbga_parts_months(body),6)
+
+    def test_wrong_scope_forecast_and_conflict_blocked(self):
+        for body in (
+            "FC-BGA substrates lead times for some products rose from 6 months to 30 months.",
+            "FC-BGA substrate equipment. Some Japanese components went from 6 months to 30 months.",
+            "Certain FC-BGA substrate equipment lead times may reach 30 months from 6 months.",
+            "FC-BGA 기판 일부 장비 납기가 30주에서 36주로 늘었다.",
+            "Some FC-BGA substrate equipment lead times rose from 6 months to 30 months. Certain FC-BGA substrate equipment lead times rose from 6 months to 32 months.",
+        ):
+            self.assertEqual(w.fcbga_equipment_pair(body),(),body)
+        self.assertIsNone(w.fcbga_parts_months("FC-BGA substrate equipment now takes 6 months to procure."))
+
+    def test_fallback_and_reprint_deduplication(self):
+        def body(url):
+            if url==w.FCBGA_EQUIPMENT_SOURCES[0]:
+                raise TimeoutError("blocked")
+            return self.EN
+        state,alerts=w.fcbga_equipment_update({},"2026-11-26",body,lambda *a:[])
+        self.assertEqual(len(alerts),2)
+        self.assertEqual(state["observations"]["equipment"]["reported_months"],30)
+        self.assertEqual(state["observations"]["japanese_parts"]["reported_months"],6)
+        self.assertEqual(state["seed_health"]["status"],"verified")
+        self.assertEqual(len(state["seed_health"]["failed_sources"]),1)
+        self.assertNotIn("components",state)
+        self.assertNotIn("ubs_project_leadtime_baseline",state)
+        before=json.loads(json.dumps(state))
+        after,again=w.fcbga_equipment_update(state,"2026-11-27",body,lambda *a:[])
+        self.assertEqual(again,[])
+        self.assertEqual(state,before)
+        self.assertEqual(after["seen_event_keys"],state["seen_event_keys"])
+
+    def test_partial_lookup_retry_without_duplicate(self):
+        def down(*args):
+            raise TimeoutError("blocked")
+        state,alerts=w.fcbga_equipment_update({},"2026-11-26",down,down)
+        self.assertEqual(alerts,[])
+        self.assertEqual(state["seen_event_keys"],[])
+        self.assertEqual(state["seed_health"]["status"],"lookup_failed")
+        self.assertEqual(state["followup_health"]["status"],"lookup_failed")
+        partial,alerts=w.fcbga_equipment_update(state,"2026-11-26",
+            lambda u:"Some FC-BGA substrate equipment lead times rose from 6 months to 30 months.",lambda *a:[])
+        self.assertEqual(len(alerts),1)
+        self.assertEqual(partial["seed_health"]["status"],"partial")
+        recovered,alerts=w.fcbga_equipment_update(partial,"2026-11-26",lambda u:self.TF,lambda *a:[])
+        self.assertEqual(len(alerts),1)
+        self.assertIn("상류 부품",alerts[0])
+        self.assertEqual(len(recovered["seen_event_keys"]),2)
+
+    def test_followup_dates_hosts_changes_and_units(self):
+        state,_=w.fcbga_equipment_update({},"2026-11-26",lambda u:self.KO,lambda *a:[])
+        url="https://www.trendforce.com/news/2026/11/27/substrate-equipment-update/"
+        self.assertFalse(w.fcbga_equipment_url("https://www.etnews.com/news/section.html","2026-11-27"))
+        self.assertFalse(w.fcbga_equipment_url("https://evil.example/news/2026/11/27/substrate/","2026-11-27"))
+        self.assertFalse(w.fcbga_equipment_url(url,"2026-11-26"))
+        self.assertEqual(w.fcbga_equipment_url("https://www.etnews.com/20261127000352","2026-11-27")[0],"2026-11-27")
+        feed=lambda *a:[{"link":url},{"link":url+"?utm_source=x"}]
+        same,alerts=w.fcbga_equipment_update(state,"2026-11-27",lambda u:self.TF,feed)
+        self.assertEqual(alerts,[])
+        updated,alerts=w.fcbga_equipment_update(same,"2026-11-27",
+            lambda u:"Some FC-BGA substrate equipment lead times rose from 30 months to 36 months.",feed)
+        self.assertEqual(len(alerts),1)
+        self.assertEqual(updated["observations"]["equipment"]["reported_months"],36)
+        self.assertEqual(updated["observations"]["japanese_parts"]["reported_months"],6)
+        _,again=w.fcbga_equipment_update(updated,"2026-11-28",
+            lambda u:"Some FC-BGA substrate equipment lead times rose from 30 months to 36 months.",feed)
+        self.assertEqual(again,[])
+        next_url="https://www.etnews.com/20261128000352"
+        updated,alerts=w.fcbga_equipment_update(updated,"2026-11-28",
+            lambda u:"FC-BGA 기판. 일본산 부품이 과거 당장 구매 가능했으나 이제 8개월 기다려야 한다.",
+            lambda *a:[{"link":next_url}])
+        self.assertEqual(len(alerts),1)
+        self.assertEqual(updated["observations"]["japanese_parts"]["reported_months"],8)
+        self.assertEqual(updated["observations"]["equipment"]["reported_months"],36)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -2356,6 +2356,175 @@ def gpu_report_update(previous: dict, today: str, read_body=None, read_feed=None
     return record, alerts
 
 
+
+# Equipment and upstream components use months, not the weekly ABF product clock.
+FCBGA_EQUIPMENT_DATE = "2026-11-25"
+FCBGA_EQUIPMENT_SOURCES = (
+    "https://www.etnews.com/20261125000352",
+    "https://en.etnews.com/20261126200009",
+    "https://www.trendforce.com/news/2026/11/26/news-fc-bga-equipment-lead-times-reportedly-jump-fivefold-to-30-months-amid-surging-ai-substrate-demand/",
+)
+FCBGA_EQUIPMENT_QUERIES = (
+    'site:etnews.com "FC-BGA" 장비 납기 개월',
+    'site:trendforce.com/news "FC-BGA" equipment "lead times" months',
+)
+
+
+def fcbga_equipment_pair(body: str) -> tuple:
+    """Accept only explicit before/after month pairs for some FC-BGA production equipment."""
+    low = clean_text(body).lower()
+    clauses = re.split(r"(?<=[.!?。！？；;])\s*", low)
+    num = r"(?:\d{1,2}|six)"
+    month = r"\s*months?\b"
+    approx = r"(?:around|about|approximately|roughly|nearly|up to|as much as)?\s*"
+    patterns = (
+        rf"\bfrom\s+{approx}(?P<a>{num}){month}[^.!?;]{{0,100}}?\bto\s+{approx}(?P<b>{num}){month}",
+        rf"(?<!\w)(?P<a>{num}){month}[^.!?;]{{0,125}}?\bnow\b[^.!?;]{{0,70}}?(?P<b>{num}){month}",
+        r"(?<!\d)(?P<a>\d{1,2})\s*개월\s*(?:안팎|가량|정도)?\s*(?:이면\s*)?(?:납품받을\s*수\s*있던\s*장비를|에서|대비)\s*(?:약|최대|현재)?\s*(?P<b>\d{1,2})\s*개월[^.!?。;]{0,55}(?:기다려|늘어|늘었|증가|줄어|줄었|감소|단축|연장|걸린)",
+    )
+    found = set()
+    for i, clause in enumerate(clauses):
+        if not re.search(r"\bequipment\b|장비", clause):
+            continue
+        if re.search(r"japanese.{0,45}components|일본산.{0,35}부품|서보모터|servo motors?|controllers?|드라이버|정밀모터", clause):
+            continue
+        if re.search(r"expected to|may (?:rise|reach|increase|decrease)|could (?:rise|reach|increase|decrease)|전망|예상|가능성", clause):
+            continue
+        context = " ".join(clauses[max(0,i-1):i+1])
+        if not (re.search(r"fc\s*[-–]?\s*bga", context)
+                and re.search(r"\b(?:some|certain)\b|일부", context)
+                and re.search(r"lead times?|납기|납품받", context)
+                and re.search(r"substrate|기판", context)):
+            continue
+        for pattern in patterns:
+            for m in re.finditer(pattern, clause):
+                a,b = (6 if v == "six" else int(v) for v in (m["a"], m["b"]))
+                if 1 <= a <= 99 and 1 <= b <= 99 and a != b:
+                    found.add((a,b))
+    return next(iter(found)) if len(found)==1 else ()
+
+
+def fcbga_parts_months(body: str) -> int | None:
+    low = clean_text(body).lower()
+    if not re.search(r"fc\s*[-–]?\s*bga", low):
+        return None
+    found = set()
+    for clause in re.split(r"(?<=[.!?。！？；;])\s*", low):
+        if not (re.search(r"japanese(?:-made)?[^.!?;]{0,60}components|일본산[^.!?;]{0,35}부품", clause)
+                and re.search(r"readily available|immediate purchase|당장 구매|즉시 구매|바로 구매", clause)
+                and re.search(r"procure|wait|기다려|조달", clause)):
+            continue
+        if re.search(r"expected to|may (?:rise|reach|increase)|could (?:rise|reach|increase)|전망|예상|가능성", clause):
+            continue
+        for m in re.finditer(r"(?<!\w)(\d{1,2}|six)\s*months?\b|(?<!\d)(\d{1,2})\s*개월|(반년)", clause):
+            v = next(x for x in m.groups() if x is not None)
+            n = 6 if v in ("six", "반년") else int(v)
+            if 1 <= n <= 99:
+                found.add(n)
+    return next(iter(found)) if len(found)==1 else None
+
+
+def fcbga_equipment_url(raw: str, today: str) -> tuple:
+    parsed=urlparse(raw)
+    if parsed.scheme!="https" or parsed.username or parsed.password:
+        return ()
+    host=parsed.hostname
+    if host in ("www.etnews.com","etnews.com","en.etnews.com"):
+        m=re.fullmatch(r"/(20\d{2})(\d{2})(\d{2})\d{6}/?", parsed.path)
+    elif host in ("www.trendforce.com","trendforce.com"):
+        m=re.fullmatch(r"/news/(20\d{2})/(\d{2})/(\d{2})/[^/]+/?", parsed.path)
+    else:
+        return ()
+    if not m:
+        return ()
+    date="-".join(m.groups())
+    return (date, f"https://{host}{parsed.path}") if FCBGA_EQUIPMENT_DATE<=date<=today else ()
+
+
+def fcbga_equipment_update(previous: dict, today: str, read_body=None, read_feed=None) -> tuple[dict,list[str]]:
+    read_body=read_body or optical_source_body
+    read_feed=read_feed or read_rss
+    record=copy.deepcopy(previous or {})
+    seen=set(record.get("seen_event_keys") or [])
+    obs=copy.deepcopy(record.get("observations") or {})
+    evidence=copy.deepcopy(record.get("seed_evidence") or {})
+    alerts=[]
+    if today<FCBGA_EQUIPMENT_DATE:
+        return record, alerts
+    eq="fcbga|2026-11-25|equipment|6-to-30-months"
+    part="fcbga|2026-11-25|japanese-parts|immediate-to-6-months"
+    missing={eq,part}-seen
+    if missing:
+        failed=[]; incomplete=[]
+        for url in FCBGA_EQUIPMENT_SOURCES:
+            try:
+                body=read_body(url)
+                if not isinstance(body,str) or not body.strip():
+                    raise ValueError("empty source")
+            except Exception:
+                failed.append(url); continue
+            low=clean_text(body).lower()
+            matched=False
+            link=f'<a href="{html.escape(url,quote=True)}">보도 근거</a> (전자신문 원출처 계열)'
+            if eq in missing and fcbga_equipment_pair(body)==(6,30):
+                obs["equipment"]={"as_of":FCBGA_EQUIPMENT_DATE,"normal_months":6,"reported_months":30,"scope":"some_fcbga_production_equipment","source":url,"official_numeric_confirmation":False}
+                lines=["<b>FC-BGA 생산장비 납기 급등 — 11/25 전자신문 보도</b>", "• 일부 가공장비: 약 6개월 → 약 30개월(+24개월, 5배). 전체 장비 평균·기판 납기 아님."]
+                if all(re.search(p,low) for p in (r"letters of intent|\blois?\b|구매의향서",r"advance payments?|선수금|선급금")):
+                    lines.append("• 구매의향서·선급금으로 장비 선점 시도. 정식 발주·공급 확약·실제 장비 인도와 구분.")
+                if all(re.search(p,low) for p in (r"bonding|접합",r"cutting|절단",r"metallization|금속화")):
+                    lines.append("• 접합·절단·금속화 장비군 공급 제약; 개별 모델의 30개월 납기는 미확인.")
+                lines.extend(["• 후속 확인: 장비 반입·검수·양산 일정. 기존 발주분에 신규 보도 납기를 일괄 적용하지 않음.",link])
+                alerts.append("\n".join(lines)); seen.add(eq); missing.remove(eq); evidence[eq]=url; matched=True
+            if part in missing and fcbga_parts_months(body)==6:
+                obs["japanese_parts"]={"as_of":FCBGA_EQUIPMENT_DATE,"prior":"immediate_purchase","reported_months":6,"scope":"unspecified_japanese_parts_for_fcbga_equipment","source":url,"official_numeric_confirmation":False}
+                lines=["<b>FC-BGA 상류 부품 조달 병목 — 동일 보도</b>","• 일부 일본산 장비 부품: 즉시 구매 가능 → 약 6개월 조달. 완성 장비 30개월과 별도."]
+                if all(re.search(p,low) for p in (r"precision motors?|정밀모터",r"servo motors?|서보모터",r"controllers?|컨트롤러")):
+                    lines.append("• 정밀모터·구동부품·서보모터·제어기 등; 특정 부품사·계약·부품별 납기 미확인.")
+                alerts.append("\n".join(lines+[link])); seen.add(part); missing.remove(part); evidence[part]=url; matched=True
+            if not matched: incomplete.append(url)
+            if not missing: break
+        record["seed_health"]={"checked_date":today,"failed_sources":failed,"incomplete_sources":incomplete,"status":"verified" if not missing else "partial" if {eq,part}&seen else "content_incomplete" if incomplete else "lookup_failed"}
+    ok=failed=bad=0; urls={}
+    for query in FCBGA_EQUIPMENT_QUERIES:
+        try:
+            items=read_feed("bing_web",query); ok+=1
+        except Exception:
+            failed+=1; continue
+        for item in items[:10]:
+            candidate=fcbga_equipment_url(str(item.get("link") or ""),today)
+            if candidate:
+                date,url=candidate
+                if date>FCBGA_EQUIPMENT_DATE and url not in FCBGA_EQUIPMENT_SOURCES:
+                    urls[url]=date
+    candidates={}
+    for url,date in sorted(urls.items(),key=lambda x:(x[1],x[0]))[-6:]:
+        if not any(date>str(v.get("as_of","")) for v in obs.values()): continue
+        try:
+            body=read_body(url)
+            if not isinstance(body,str) or not body.strip(): raise ValueError("empty source")
+        except Exception:
+            bad+=1; continue
+        pair=fcbga_equipment_pair(body); months=fcbga_parts_months(body)
+        if not pair and not months: bad+=1; continue
+        for kind,value in (("equipment",pair),("japanese_parts",months)):
+            if value and kind in obs and date>obs[kind]["as_of"]:
+                candidates.setdefault((date,kind),{})[value]=url
+    for (date,kind),values in sorted(candidates.items()):
+        if len(values)!=1: bad+=1; continue
+        value,url=next(iter(values.items())); prior=obs[kind]; new=value[1] if kind=="equipment" else value
+        if new==prior["reported_months"]: continue
+        if kind=="equipment" and value[0] not in (prior["reported_months"],prior["normal_months"]): bad+=1; continue
+        key=f"fcbga|{date}|{kind}|{new}-months"
+        if key in seen: continue
+        label="일부 기판 가공장비" if kind=="equipment" else "일부 일본산 장비 부품"
+        alerts.append("\n".join([f"<b>FC-BGA 공급망 후속 납기 보도 — {date}</b>",f'• {label}: 직전 확인 보도 약 {prior["reported_months"]}개월 → 이번 보도 약 {new}개월.', "• 동일 모델·부품·공급사·계약 기준 확인 전. 산업 평균 기판 납기와 합산하지 않음.",f'<a href="{html.escape(url,quote=True)}">후속 보도</a>']))
+        obs[kind]={**prior,"as_of":date,"reported_months":new,"source":url}; seen.add(key)
+    record["seen_event_keys"]=sorted(seen); record["observations"]=obs; record["seed_evidence"]=evidence
+    record["followup_health"]={"checked_date":today,"feed_success":ok,"feed_failure":failed,"candidate_count":len(urls),"article_failure_or_ambiguous":bad,"status":"lookup_failed" if not ok else "partial" if failed or bad else "checked"}
+    # Candidate keys only: existing receipt transaction promotes them after acknowledgement.
+    return record,alerts
+
+
 def main(include_optical_signals: bool = False) -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
@@ -2748,6 +2917,12 @@ def main(include_optical_signals: bool = False) -> None:
         for block in gpu_alerts:
             notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
 
+    equipment_state = copy.deepcopy(previous.get("fcbga_equipment_watch") or {})
+    if include_optical_signals:
+        equipment_state, equipment_alerts = fcbga_equipment_update(equipment_state, now.date().isoformat())
+        for block in equipment_alerts:
+            notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
+
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
@@ -2775,6 +2950,7 @@ def main(include_optical_signals: bool = False) -> None:
         "caspa_panel_watch": caspa_state,
         **({"optical_supply_capital_watch": optical_state} if optical_state else {}),
         **({"gpu_model_supply_watch": gpu_state} if gpu_state else {}),
+        **({"fcbga_equipment_watch": equipment_state} if equipment_state else {}),
         "image_verified_issue": ("weekly-radar-011-user-image-unchanged" if (
                                      latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
                                      and all(canonical_component(latest_components.get(name) or {})
