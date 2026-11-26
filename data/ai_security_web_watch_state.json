@@ -3,20 +3,23 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) \"tens of thousands\" security inci… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 2,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 63,
+    "google_news_rate_limit_429": 2,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 125,
+    "raw_items": 120,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -713,16 +716,6 @@
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SRFR0ajk2VTVnVXZTVkRHVzZjYWplYmJHSmRRdk8tZjRGcVVFcWtBdG55bWFfdzQ3ZDhIME5IX2ZIZXVPN0w1a3ZubGpJM1BOZDU2SkpQQnZ1TTg5UHdZWU1Edw?oc=5",
       "vendor": "PHP 재단"
     },
-    "c37d1c122283f83f6c7c34af": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T16:20:02.925647+00:00",
-      "published_at": "2026-10-22T14:13:56+00:00",
-      "severity": 3,
-      "source": "GitGuardian Blog",
-      "title": "Responding to php2shell PHP Vulnerability When You Don’t Know What Secrets Are Deployed - GitGuardian Blog",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xRGVqQzFoSU5vUk12Y19oNFhMU3JiTGZKN2lNZ0IwakU2WU1LZFdFWC1wVm00ZkEwS1J4UUQ4Z0swXzc5TDVsall2VHFVeGIxal8tR2U1Y0ZfcVA5SFBlTV95NDV4dGtpcnpFMHFNZ1E4RFU?oc=5",
-      "vendor": "PHP 재단"
-    },
     "c69db8c6d73f7c1a0eddbd65": {
       "category": "PHP 취약점 실전 악용 보도·추가 검증",
       "first_seen_at": "2026-10-26T12:17:12.986969+00:00",
@@ -902,5 +895,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T01:03:33+09:00"
+  "updated_at_kst": "2026-11-27T01:22:53+09:00"
 }
