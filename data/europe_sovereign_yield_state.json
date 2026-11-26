@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-26T10:12:25+09:00",
+  "last_checked_kst": "2026-11-26T12:13:35+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -1087,6 +1087,7 @@
     "fr10": "공식자료 이전 관측일 2026-11-24 대비",
     "de10": "공식자료 이전 관측일 2026-11-24 대비",
     "uk10": "공식자료 이전 관측일 2026-11-20 대비",
+    "fr_mkt": "자료제공사가 명시한 전 거래일 대비",
     "de_mkt": "자료제공사가 명시한 전 거래일 대비",
     "it10": "자료제공사가 명시한 전 거래일 대비",
     "uk_mkt": "자료제공사가 명시한 전 거래일 대비"
@@ -1136,10 +1137,10 @@
       "sp_milestone:2026-11-27:D-3",
       "sp_milestone:2026-11-27:D-1"
     ],
-    "checked_at_kst": "2026-11-26T10:12:39+09:00",
-    "source_fail_streak": 222,
+    "checked_at_kst": "2026-11-26T12:13:48+09:00",
+    "source_fail_streak": 223,
     "sp_ministry_source_status": "historical_statement_verified",
-    "sp_ministry_last_checked_kst": "2026-11-26T10:12:39+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-26T12:13:48+09:00",
     "source_access": "access_restricted"
   }
 }
