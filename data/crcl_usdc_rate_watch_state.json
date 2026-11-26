@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-26T09:47:38+09:00",
+  "updated_at_kst": "2026-11-26T09:59:51+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -82,5 +82,8 @@
   },
   "crcl_last_alerted_close_date": "2026-11-25",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "crcl: CRCL cross-source close date mismatch: ChartExchange=2026-11-25 Yahoo=2026-11-24",
+    "tbx: source date regressed 2026-11-24 < 2026-11-25; previous snapshot kept"
+  ]
 }
