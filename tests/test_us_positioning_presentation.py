@@ -318,7 +318,7 @@ class OperatingIntegrationTests(unittest.TestCase):
         unchanged = copy.deepcopy(prior)
         first = self.run_operating_tail(values, prior)
         self.assertEqual(first["updates"], 0)
-        self.assertIn("요약형 전환", first["alert"])
+        self.assertIn("이미지 알림 전환", first["alert"])
         self.assertEqual(first["pending"]["seen"], prior["seen"])
         self.assertEqual(first["pending"]["values"], prior["values"])
         self.assertEqual(prior, unchanged)
@@ -347,3 +347,4 @@ class OperatingIntegrationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
