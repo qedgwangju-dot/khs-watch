@@ -651,8 +651,16 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
     backoff_path = Path(path_value) if path_value else None
     pending_backoff = watch.OUT / 'war_peace_reconstruction_source_backoff_pending.json'
     pending_backoff.unlink(missing_ok=True)
-    previous_backoff = _load_backoff(backoff_path)
     _save(report_path, {'complete': False, 'phase': 'starting', 'total_budget_seconds': total_seconds})
+    try:
+        previous_backoff = _load_backoff(backoff_path)
+    except (OSError, ValueError, TypeError) as exc:
+        # Do not use stale coverage or erase access restrictions on corrupt state.
+        _save(report_path, {'complete': False, 'phase': 'failed',
+                            'failure_phase': 'collection', 'query_count': len(watch.QUERIES),
+                            'error': 'provider cooldown state unavailable: ' + str(exc)})
+        print('war_collection_incomplete=provider cooldown state unavailable', flush=True)
+        return 1
     process = mp.get_context('fork').Process(
         target=_child_run, args=(watch, run_and_verify, report_path, collection_seconds,
                                  workers, allow_partial, previous_backoff))
