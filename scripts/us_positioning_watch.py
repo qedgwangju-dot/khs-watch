@@ -1661,4 +1661,3 @@ if enrichment_changed and not PENDING.exists():
         encoding="utf-8",
     )
     print("us_positioning_enrichment_state_ready=true")
-
