@@ -79,6 +79,9 @@ def _cause_counts(news):
         for message in messages:
             if not message:
                 continue
+            if 'provider access circuit is open' in message:
+                record_causes.add('원천 접근 제한으로 조회 중단')
+                continue
             code_match = re.search(r'HTTP\s+Error\s+(401|403|429)|\b(401|403|429)\b', message, re.I)
             if code_match:
                 code = next(group for group in code_match.groups() if group)
@@ -142,7 +145,7 @@ def _render_warning(details, first_seen_at, now, *, partial_mode=False):
         f'🕒 확인 {now_kst}',
         coverage_line,
         incomplete_line,
-        *displayed[:6],
+        *displayed,
         f'장애 최초 확인: {first_seen_kst}',
         ('이번 실행에서는 새로 발송할 검증된 상황이 없으며 원천 범위도 미완료입니다.'
          if partial_mode else '전쟁 상황 알림은 원천 범위가 완전히 확인될 때까지 보류 중입니다.'),
