@@ -550,4 +550,3 @@ jobs:
             out/us_equity_cta_scenario_pending.json
           if-no-files-found: ignore
           retention-days: 14
-
