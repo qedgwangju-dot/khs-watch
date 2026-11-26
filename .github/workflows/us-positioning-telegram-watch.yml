@@ -11,6 +11,8 @@ on:
       - "scripts/us_positioning_context.py"
       - "scripts/us_positioning_amounts.py"
       - "scripts/us_positioning_fx.py"
+      - "scripts/us_positioning_telegram.py"
+      - "tests/test_us_positioning_telegram.py"
       - "scripts/us_positioning_etf_short_interest.py"
       - "tests/test_us_positioning_etf_short_interest.py"
       - "scripts/us_equity_cta_scenario_watch.py"
@@ -126,10 +128,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Check unresolved Telegram image delivery
+        id: delivery_guard
+        run: python scripts/us_positioning_telegram.py check-guard --guard data/us_positioning_delivery_guard.json --status out/us_positioning_delivery_status.md
+
       - name: Install dependencies
+        if: steps.delivery_guard.outputs.blocked != 'true'
         run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright "exchange_calendars>=4.5,<5"
 
       - name: Verify exact Telegram route
+        if: steps.delivery_guard.outputs.blocked != 'true'
         run: |
           test -n "${TELEGRAM_BOT_TOKEN:-}" || { echo "Telegram token missing"; exit 1; }
           test -n "${TELEGRAM_CHAT_ID:-}" || { echo "Telegram chat id missing"; exit 1; }
@@ -146,10 +154,11 @@ jobs:
           PY
 
       - name: Query positioning sources
+        if: steps.delivery_guard.outputs.blocked != 'true'
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_delivery.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_delivery.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py scripts/us_positioning_telegram.py
           for attempt in 1 2 3; do
-            rm -f out/us_positioning_alert.html out/us_positioning_status.md out/us_positioning_pending_state.json out/us_positioning_telegram_confirmed.json
+            rm -f out/us_positioning_alert.html out/us_positioning_alert.png out/us_positioning_status.md out/us_positioning_pending_state.json out/us_positioning_telegram_confirmed.json out/us_positioning_telegram_attempt.json out/us_positioning_telegram_rejected.json out/us_positioning_telegram_unconfirmed.json
             if python scripts/us_positioning_watch.py; then
               cat out/us_positioning_status.md >> "$GITHUB_STEP_SUMMARY"
               exit 0
@@ -158,6 +167,64 @@ jobs:
             sleep $((attempt * 4))
           done
           exit 1
+
+      - name: Ensure Korean fonts for the Telegram report image
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
+        run: |
+          if ! fc-match -f '%{family}' 'Noto Sans CJK KR' | grep -Eiq 'Noto (Sans|Serif) CJK' || ! fc-match -f '%{family}' 'Noto Color Emoji' | grep -Eiq 'Noto Color Emoji'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji
+          fi
+          fc-match -f '%{family}\n' 'Noto Sans CJK KR' | tee /tmp/us_positioning_korean_font.txt
+          grep -Eiq 'Noto (Sans|Serif) CJK' /tmp/us_positioning_korean_font.txt || { echo 'Korean Noto font unavailable; refusing an unreadable image'; exit 1; }
+
+      - name: Render Telegram report image
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != ''
+        run: python scripts/us_positioning_telegram.py render --alert out/us_positioning_alert.html --image out/us_positioning_alert.png | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Persist Telegram photo attempt guard before sending
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != '' && hashFiles('out/us_positioning_alert.png') != ''
+        run: |
+          python scripts/us_positioning_telegram.py prepare-attempt \
+            --alert out/us_positioning_alert.html \
+            --image out/us_positioning_alert.png \
+            --guard data/us_positioning_delivery_guard.json \
+            --output out/us_positioning_telegram_attempt.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$US_POSITIONING_CHECKOUT_SHA"
+          cp out/us_positioning_telegram_attempt.json /tmp/us_positioning_telegram_attempt.json
+          git config user.name "us-positioning-watch[bot]"
+          git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
+          persisted=false
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json, pathlib
+          target=pathlib.Path("data/us_positioning_delivery_guard.json")
+          candidate=json.loads(pathlib.Path("/tmp/us_positioning_telegram_attempt.json").read_text(encoding="utf-8"))
+          prior=json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+          if prior.get("attempt_id")==candidate.get("attempt_id") and prior.get("status")=="unconfirmed":
+              print("photo_attempt_guard=already_persisted")
+          elif prior and prior.get("status") not in {"confirmed","retry_safe"}:
+              raise RuntimeError("Prior Telegram photo outcome is unresolved; refusing a new send")
+          else:
+              pathlib.Path("data").mkdir(exist_ok=True)
+              target.write_text(json.dumps(candidate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+              print("photo_attempt_guard=prepared")
+          PY
+            if [ -z "$(git status --porcelain -- data/us_positioning_delivery_guard.json)" ]; then
+              current_attempt=$(python -c 'import json;print(json.load(open("data/us_positioning_delivery_guard.json",encoding="utf-8")).get("attempt_id",""))')
+              if [ "$current_attempt" = "$(python -c 'import json;print(json.load(open("/tmp/us_positioning_telegram_attempt.json",encoding="utf-8")).get("attempt_id",""))')" ]; then persisted=true; break; fi
+              echo "Refusing to send because the attempt guard was not persisted" >&2
+              exit 1
+            fi
+            git add data/us_positioning_delivery_guard.json
+            git commit -m "Record US positioning Telegram photo attempt"
+            if git push origin HEAD:main; then persisted=true; break; fi
+            sleep $((attempt * 3))
+          done
+          test "$persisted" = true
 
       - name: Watchdog existing Treasury CTA route
         if: github.event_name == 'schedule' && github.event.schedule != '30 7 * * *' && github.event.schedule != '45 7 * * *'
@@ -229,90 +296,39 @@ jobs:
           print(f"cta_watchdog=dispatched stale_age_minutes={age_min}")
           PY
 
-      - name: Send Telegram update
-        if: github.event_name != 'push' && hashFiles('out/us_positioning_alert.html') != ''
+      - name: Send Telegram report image
+        if: github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_alert.html') != '' && hashFiles('out/us_positioning_alert.png') != ''
+        run: python scripts/us_positioning_telegram.py send-photo --alert out/us_positioning_alert.html --image out/us_positioning_alert.png --guard data/us_positioning_delivery_guard.json --receipt out/us_positioning_telegram_confirmed.json --rejection out/us_positioning_telegram_rejected.json --unconfirmed out/us_positioning_telegram_unconfirmed.json
+
+      - name: Record Telegram photo rejection as safe to retry
+        if: always() && github.event_name != 'push' && steps.delivery_guard.outputs.blocked != 'true' && hashFiles('out/us_positioning_telegram_rejected.json') != ''
         run: |
-          python - <<'PY'
-          import json, os, pathlib, time, urllib.parse, urllib.request
-          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id=os.environ["TELEGRAM_CHAT_ID"].strip()
-          expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
-          confirm=pathlib.Path("out/us_positioning_telegram_confirmed.json")
-          confirm.unlink(missing_ok=True)
-
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
-              ident=json.loads(r.read().decode())
-          actual=str((ident.get("result") or {}).get("username") or "")
-          if not ident.get("ok") or actual.lower()!=expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-
-          text=pathlib.Path("out/us_positioning_alert.html").read_text(encoding="utf-8").strip()
-          # Split only on line boundaries so HTML tags are never cut in half.
-          chunks=[]
-          current=[]
-          current_len=0
-          for line in text.splitlines():
-              add=len(line)+(1 if current else 0)
-              if len(line)>3800:
-                  raise RuntimeError(f"US positioning single line too long: {len(line)}")
-              if current and current_len+add>3800:
-                  chunks.append("\n".join(current))
-                  current=[line]
-                  current_len=len(line)
-              else:
-                  current.append(line)
-                  current_len+=add
-          if current:
-              chunks.append("\n".join(current))
-          if not chunks:
-              raise RuntimeError("US positioning Telegram message is empty")
-
-          ids=[]
-          for idx,chunk in enumerate(chunks, start=1):
-              # Telegram sendMessage has no delivery idempotency key: a timeout
-              # after acceptance must NOT automatically resend the same chunk.
-              data=urllib.parse.urlencode({
-                  "chat_id":chat_id,
-                  "text":chunk,
-                  "parse_mode":"HTML",
-                  "disable_web_page_preview":"true",
-              }).encode()
-              req=urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=data,
-                  method="POST",
-              )
-              with urllib.request.urlopen(req,timeout=30) as r:
-                  j=json.loads(r.read().decode())
-              msg=j.get("result") or {}
-              message_id=msg.get("message_id")
-              target=msg.get("chat") or {}
-              returned_id=target.get("id")
-              if not j.get("ok") or type(message_id) is not int or message_id <= 0:
-                  raise RuntimeError("Telegram response missing valid delivery message_id")
-              if type(returned_id) is not int:
-                  raise RuntimeError("Telegram response missing valid chat.id")
-              if chat_id.lstrip("-").isdigit():
-                  recipient_matches=(str(returned_id)==chat_id)
-              elif chat_id.startswith("@"):
-                  recipient_matches=(str(target.get("username") or "").lower()==chat_id[1:].lower())
-              else:
-                  recipient_matches=False
-              if not recipient_matches:
-                  raise RuntimeError("Telegram response recipient does not match configured chat")
-              ids.append(message_id)
-
-          confirm.write_text(
-              json.dumps({
-                  "bot_username":actual,
-                  "message_ids":ids,
-                  "message_count":len(ids),
-                  "chat_id_match":True,
-              },ensure_ascii=False,indent=2)+"\n",
-              encoding="utf-8",
-          )
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}")
+          python scripts/us_positioning_telegram.py mark-retry-safe --guard data/us_positioning_delivery_guard.json --rejection out/us_positioning_telegram_rejected.json
+          cp data/us_positioning_delivery_guard.json /tmp/us_positioning_delivery_guard.json
+          git config user.name "us-positioning-watch[bot]"
+          git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
+          persisted=false
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json, pathlib
+          target=pathlib.Path("data/us_positioning_delivery_guard.json")
+          desired=json.loads(pathlib.Path("/tmp/us_positioning_delivery_guard.json").read_text(encoding="utf-8"))
+          if not target.exists():
+              raise RuntimeError("Delivery guard disappeared before rejection could be recorded")
+          current=json.loads(target.read_text(encoding="utf-8"))
+          if current.get("attempt_id")!=desired.get("attempt_id") or current.get("status") not in {"unconfirmed","retry_safe"}:
+              raise RuntimeError("Delivery guard changed; refusing to overwrite another attempt")
+          target.write_text(json.dumps(desired,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
+            git add data/us_positioning_delivery_guard.json
+            if git diff --cached --quiet; then persisted=true; break; fi
+            git commit -m "Record rejected US positioning Telegram photo"
+            if git push origin HEAD:main; then persisted=true; break; fi
+            sleep $((attempt * 3))
+          done
+          test "$persisted" = true
 
       - name: Persist state after successful delivery
         if: github.event_name != 'push' && success() && hashFiles('out/us_positioning_pending_state.json') != ''
@@ -322,9 +338,24 @@ jobs:
           alert=pathlib.Path("out/us_positioning_alert.html")
           confirmed=pathlib.Path("out/us_positioning_telegram_confirmed.json")
           pending=pathlib.Path("out/us_positioning_pending_state.json")
+          image=pathlib.Path("out/us_positioning_alert.png")
+          receipt=pathlib.Path("out/us_positioning_telegram_confirmed.json")
+          guard=pathlib.Path("data/us_positioning_delivery_guard.json")
           target=pathlib.Path("data/us_positioning_state.json")
+          if alert.exists():
+              if not image.exists() or not receipt.exists() or not guard.exists():
+                  raise RuntimeError("US positioning image or Telegram photo receipt is missing; state will not advance")
+              import json, subprocess
+              receipt_data=json.loads(receipt.read_text(encoding="utf-8"))
+              if receipt_data.get("delivery_method")!="sendPhoto":
+                  raise RuntimeError("Telegram receipt is not for sendPhoto; state will not advance")
+              subprocess.run([
+                  "python","scripts/us_positioning_telegram.py","confirm-guard",
+                  "--guard",str(guard),"--receipt",str(receipt),
+              ],check=True)
+              confirmed.write_text(json.dumps(receipt_data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           if alert.exists() and not confirmed.exists():
-              raise RuntimeError("US positioning alert generated but Telegram delivery is unconfirmed")
+              raise RuntimeError("US positioning alert generated but Telegram photo delivery is unconfirmed")
           if pending.exists():
               target.write_text(pending.read_text(encoding="utf-8"),encoding="utf-8")
           PY
@@ -335,12 +366,27 @@ jobs:
           git config user.name "us-positioning-watch[bot]"
           git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
           cp data/us_positioning_state.json /tmp/us_positioning_state.json
+          if [ -f data/us_positioning_delivery_guard.json ]; then cp data/us_positioning_delivery_guard.json /tmp/us_positioning_delivery_guard.json; else rm -f /tmp/us_positioning_delivery_guard.json; fi
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
             mkdir -p data
             cp /tmp/us_positioning_state.json data/us_positioning_state.json
+            if [ -f /tmp/us_positioning_delivery_guard.json ]; then
+              python - <<'PY'
+          import json, pathlib
+          target=pathlib.Path("data/us_positioning_delivery_guard.json")
+          desired=json.loads(pathlib.Path("/tmp/us_positioning_delivery_guard.json").read_text(encoding="utf-8"))
+          if not target.exists():
+              raise RuntimeError("Delivery guard disappeared before state commit")
+          current=json.loads(target.read_text(encoding="utf-8"))
+          if current.get("attempt_id")!=desired.get("attempt_id") or current.get("status") not in {"unconfirmed","confirmed"}:
+              raise RuntimeError("Delivery guard changed; refusing to overwrite another attempt")
+          target.write_text(json.dumps(desired,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            fi
             git add data/us_positioning_state.json
+            if [ -f data/us_positioning_delivery_guard.json ]; then git add data/us_positioning_delivery_guard.json; fi
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update US positioning watch state"
             if git push origin HEAD:main; then exit 0; fi
@@ -356,11 +402,17 @@ jobs:
           path: |
             out/us_positioning_status.md
             out/us_positioning_alert.html
+            out/us_positioning_alert.png
             out/us_positioning_detail.html
             out/us_positioning_pending_state.json
             out/us_positioning_telegram_confirmed.json
+            out/us_positioning_telegram_attempt.json
+            out/us_positioning_telegram_rejected.json
+            out/us_positioning_telegram_unconfirmed.json
+            out/us_positioning_delivery_status.md
             out/us_positioning_source_evidence.json
             out/us_positioning_sources/
+            data/us_positioning_delivery_guard.json
           if-no-files-found: ignore
           retention-days: 14
 
@@ -498,3 +550,4 @@ jobs:
             out/us_equity_cta_scenario_pending.json
           if-no-files-found: ignore
           retention-days: 14
+
