@@ -1,9 +1,9 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "00a078b51590e2a418948361ada88f17b700bd7e2b10d37cd38584600912a7c4",
+    "Nasdaq SOX|sox": "7dea72d4e0ecc37680fab7fd61be0851ca6fa69b37bb6da83a5ac7d2077ed07e",
     "Cboe|options": "149eb04bbad4d5f29c8deb77776a53af8556b5a543a98ed8d24761d14687431f",
     "CFTC|cot": "3d173fc52715d9aa837ca85d48a5655f1df70ce8f6c4db6313305f6ea006c878",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "7b7720d71f2017f996404f9cd48909bb89c8b1ce0b5fa52229c76bc313045e2a"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "7138b16043aa241b7b4e908a453b9c986177d7b241f09d22daec4343f72013a5"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -18,7 +18,7 @@
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
         "pct": -0.6525898669685781,
         "d1_pct": -0.6525898669685781,
-        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-15&todate=2026-11-25&limit=200",
+        "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
         "crosscheck_close_diff": -0.0003515624994179234,
@@ -504,8 +504,8 @@
           ]
         }
       },
-      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-15&todate=2026-11-25&limit=200",
-      "fingerprint": "00a078b51590e2a418948361ada88f17b700bd7e2b10d37cd38584600912a7c4"
+      "url": "https://indexes.nasdaq.com/Index/History/SOX",
+      "fingerprint": "7dea72d4e0ecc37680fab7fd61be0851ca6fa69b37bb6da83a5ac7d2077ed07e"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -761,95 +761,11 @@
             "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-05-19&todate=2026-11-25&limit=200",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=6mo&interval=1d",
             "returns": {
-              "status": "verified",
+              "status": "unavailable",
               "symbol": "NDX",
               "end_date": "2026-11-25",
-              "windows": {
-                "1d": {
-                  "status": "verified",
-                  "base_date": "2026-11-24",
-                  "end_date": "2026-11-25",
-                  "base_primary": 26214.17,
-                  "base_secondary": 26214.169921875,
-                  "end_primary": 26046.9,
-                  "end_secondary": 26046.900390625,
-                  "return_pct": -0.6380900100975806
-                },
-                "3d": {
-                  "status": "verified",
-                  "base_date": "2026-11-20",
-                  "end_date": "2026-11-25",
-                  "base_primary": 25028.98,
-                  "base_secondary": 25028.98046875,
-                  "end_primary": 26046.9,
-                  "end_secondary": 26046.900390625,
-                  "return_pct": 4.0669655735072086
-                },
-                "5d": {
-                  "status": "verified",
-                  "base_date": "2026-11-18",
-                  "end_date": "2026-11-25",
-                  "base_primary": 27116.26,
-                  "base_secondary": 27116.259765625,
-                  "end_primary": 26046.9,
-                  "end_secondary": 26046.900390625,
-                  "return_pct": -3.9436116927629272
-                },
-                "1m": {
-                  "status": "verified",
-                  "base_date": "2026-10-23",
-                  "end_date": "2026-11-25",
-                  "base_primary": 28957.53,
-                  "base_secondary": 28957.529296875,
-                  "end_primary": 26046.9,
-                  "end_secondary": 26046.900390625,
-                  "return_pct": -10.051375238150484
-                },
-                "3m": {
-                  "status": "verified",
-                  "base_date": "2026-08-25",
-                  "end_date": "2026-11-25",
-                  "base_primary": 29209.23,
-                  "base_secondary": 29209.23046875,
-                  "end_primary": 26046.9,
-                  "end_secondary": 26046.900390625,
-                  "return_pct": -10.826475056001128
-                }
-              },
-              "close": 26046.9,
-              "peer_close": 26046.900390625,
-              "operands": [
-                [
-                  "2026-08-25",
-                  29209.23,
-                  29209.23046875
-                ],
-                [
-                  "2026-10-23",
-                  28957.53,
-                  28957.529296875
-                ],
-                [
-                  "2026-11-18",
-                  27116.26,
-                  27116.259765625
-                ],
-                [
-                  "2026-11-20",
-                  25028.98,
-                  25028.98046875
-                ],
-                [
-                  "2026-11-24",
-                  26214.17,
-                  26214.169921875
-                ],
-                [
-                  "2026-11-25",
-                  26046.9,
-                  26046.900390625
-                ]
-              ]
+              "windows": {},
+              "reason": "현재 종가 누락·제공처 불일치"
             }
           },
           "SPX": {
@@ -1412,11 +1328,11 @@
                 ],
                 [
                   "2026-05-29",
-                  207.24534606933594
+                  207.24533081054688
                 ],
                 [
                   "2026-06-01",
-                  207.62245178222656
+                  207.62246704101562
                 ],
                 [
                   "2026-06-02",
@@ -1456,7 +1372,7 @@
                 ],
                 [
                   "2026-06-15",
-                  211.26461791992188
+                  211.2646026611328
                 ],
                 [
                   "2026-06-16",
@@ -2459,7 +2375,7 @@
                 ],
                 [
                   "2026-05-27",
-                  746.677490234375
+                  746.6774291992188
                 ],
                 [
                   "2026-05-28",
@@ -2471,7 +2387,7 @@
                 ],
                 [
                   "2026-06-01",
-                  754.7167358398438
+                  754.7166748046875
                 ],
                 [
                   "2026-06-02",
@@ -2495,7 +2411,7 @@
                 ],
                 [
                   "2026-06-09",
-                  733.3350219726562
+                  733.3350830078125
                 ],
                 [
                   "2026-06-10",
@@ -24060,10 +23976,10 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "7b7720d71f2017f996404f9cd48909bb89c8b1ce0b5fa52229c76bc313045e2a"
+      "fingerprint": "7138b16043aa241b7b4e908a453b9c986177d7b241f09d22daec4343f72013a5"
     }
   },
-  "updated_at_kst": "2026-11-26T14:04:33.488984+09:00",
+  "updated_at_kst": "2026-11-26T14:21:09.586011+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
   "daily_digest_sent_date_kst": "2026-11-26",
   "last_verified_context_fx": {
