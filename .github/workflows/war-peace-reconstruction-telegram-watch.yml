@@ -122,6 +122,8 @@ jobs:
       - name: Check war peace reconstruction conditions
         id: check_conditions
         if: env.DRY_RUN != 'true'
+        env:
+          WAR_SOURCE_BACKOFF_PATH: data/war_peace_reconstruction_watch_source_backoff.json
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
             python scripts/war_peace_reconstruction_watch_integrity.py --telegram-test
@@ -307,6 +309,26 @@ jobs:
               exit 1
             fi
           fi
+      - name: Commit source access cooldown state
+        if: always() && env.DRY_RUN != 'true' && env.TELEGRAM_TEST != 'true' && hashFiles('out/war_peace_reconstruction_source_backoff_pending.json') != ''
+        run: |
+          cp out/war_peace_reconstruction_source_backoff_pending.json data/war_peace_reconstruction_watch_source_backoff.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/war_peace_reconstruction_watch_source_backoff.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update war source access cooldown state"
+            ok=false
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then ok=true; break; fi
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep $((attempt * 2))
+            done
+            if [ "$ok" != "true" ]; then
+              echo "source_backoff_state_push_failed=true"
+              exit 1
+            fi
+          fi
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v7
@@ -325,6 +347,8 @@ jobs:
             data/war_peace_reconstruction_watch_state.json
             out/war_peace_reconstruction_ops_warning.txt
             data/war_peace_reconstruction_watch_ops_state.json
+            data/war_peace_reconstruction_watch_source_backoff.json
+            out/war_peace_reconstruction_source_backoff_pending.json
           if-no-files-found: ignore
           retention-days: 7
 
