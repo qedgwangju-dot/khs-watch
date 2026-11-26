@@ -29,6 +29,73 @@ def article(title, *, source='파이낸셜뉴스', link='https://www.fnnews.com/
             'published': format_datetime(NOW - dt.timedelta(minutes=20)), 'body_checked': True}
 
 
+class IndependentPublisherFeedTests(unittest.TestCase):
+    """Network-free fixtures: separate source scope, no fabricated live facts."""
+
+    def test_ukraine_official_feed_keeps_exact_title_timestamp_and_publisher(self):
+        name = 'direct-ukraine-president-rss'
+        url = integrity._DIRECT_PUBLISHER_FEEDS[name][0]
+        raw = b'''<rss version="2.0"><channel><title>President of Ukraine</title>
+            <item><title>President discusses peace talks and security guarantees</title>
+            <link>https://www.president.gov.ua/en/news/fixture-peace</link>
+            <pubDate>Thu, 26 Nov 2026 01:00:00 GMT</pubDate>
+            <description>Fixture only</description></item>
+            <item><title>President congratulates an athlete</title>
+            <link>https://www.president.gov.ua/en/news/fixture-other</link>
+            <pubDate>Thu, 26 Nov 2026 01:01:00 GMT</pubDate></item>
+            </channel></rss>'''
+        with patch.object(watch, 'req', return_value=raw) as request:
+            rows, err = watch.google_news(name)
+        request.assert_called_once_with(url)
+        self.assertIsNone(err)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['source'], 'President of Ukraine')
+        self.assertEqual(rows[0]['source_url'], url)
+        self.assertEqual(rows[0]['title_original'], 'President discusses peace talks and security guarantees')
+        self.assertEqual(rows[0]['published'], 'Thu, 26 Nov 2026 01:00:00 GMT')
+        self.assertFalse(rows[0]['body_verified'])
+        self.assertIn(name, watch.QUERIES)
+
+    def test_baltic_feed_retains_security_event_but_not_unrelated_headlines(self):
+        name = 'direct-err-news-rss'
+        raw = b'''<rss version="2.0"><channel><title>ERR News</title>
+            <item><title>NATO discusses Russian airspace violation in Poland</title>
+            <link>https://news.err.ee/fixture-security</link>
+            <pubDate>Thu, 26 Nov 2026 01:00:00 GMT</pubDate></item>
+            <item><title>Finland and Estonia exchange art exhibitions</title>
+            <link>https://news.err.ee/fixture-art</link>
+            <pubDate>Thu, 26 Nov 2026 01:01:00 GMT</pubDate></item>
+            </channel></rss>'''
+        with patch.object(watch, 'req', return_value=raw):
+            rows, err = watch.google_news(name)
+        self.assertIsNone(err)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['source'], 'ERR News')
+        self.assertEqual(rows[0]['link'], 'https://news.err.ee/fixture-security')
+        self.assertFalse(rows[0]['body_verified'])
+        self.assertIn(name, watch.QUERIES)
+
+    def test_direct_feed_errors_never_become_successful_empty_searches(self):
+        name = 'direct-ukraine-president-rss'
+        invalid = (
+            b'<html>access denied</html>',
+            b'<rss><channel><title>President of Ukraine</title></channel></rss>',
+            b'<rss><channel><title>President of Ukraine</title><item><title>Peace talks</title><link>https://example.com/fixture</link><pubDate>Thu, 26 Nov 2026 01:00:00 GMT</pubDate></item></channel></rss>',
+            b'<rss><channel><title>President of Ukraine</title><item><title>Peace talks</title><link>https://www.president.gov.ua/en/news/fixture</link></item></channel></rss>',
+        )
+        for raw in invalid:
+            with self.subTest(raw=raw), patch.object(watch, 'req', return_value=raw):
+                rows, err = watch.google_news(name)
+                self.assertEqual(rows, [])
+                self.assertTrue(err)
+        from urllib.error import HTTPError
+        with patch.object(watch, 'req', side_effect=HTTPError(
+                integrity._DIRECT_PUBLISHER_FEEDS[name][0], 429, 'fixture denied', {}, None)):
+            rows, err = watch.google_news(name)
+        self.assertEqual(rows, [])
+        self.assertIn('429', err)
+
+
 class UnconfirmedExplosionRegression(unittest.TestCase):
     def test_hormuz_explosion_sounds_unverified_not_attack(self):
         row=article('美·이란 협상 진전에도 호르무즈선 폭발음…중간선거 앞두고 중동 긴장 고조 - 헤럴드경제')
