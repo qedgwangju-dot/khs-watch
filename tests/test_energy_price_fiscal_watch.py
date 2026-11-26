@@ -133,6 +133,20 @@ class DeliverySafetyTests(unittest.TestCase):
         nxt,queue=w.prepare_operational_state(state,{},self.now)
         self.assertEqual(queue,[self.doc])
         self.assertIn("old",nxt["seen"]["motir_press"])
+    def test_route_failure_keeps_discovery_and_never_sends(self):
+        from unittest.mock import patch
+        import json
+        state,_=w.prepare_operational_state(self.old,{"motir_press":[self.doc]},self.now)
+        with patch.object(w,"BASELINE") as baseline, patch.object(w,"PENDING") as pending, \
+             patch.object(w,"persist_state") as save, patch.object(w.requests,"post") as send, \
+             patch.dict(w.os.environ,{"TELEGRAM_ROUTE_VALID":"false"}):
+            baseline.read_text.return_value=json.dumps(self.old)
+            pending.read_text.return_value=json.dumps(state)
+            with self.assertRaises(RuntimeError):
+                w.deliver_pending()
+            save.assert_called_once_with(self.old,state)
+            send.assert_not_called()
+
     def test_interrupted_send_never_replays(self):
         state,_=w.prepare_operational_state(self.old,{"motir_press":[self.doc]},self.now)
         state["pending_delivery"]["new"]["status"]="sending"

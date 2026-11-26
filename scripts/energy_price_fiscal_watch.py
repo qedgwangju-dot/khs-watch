@@ -391,6 +391,9 @@ def deliver_pending():
     prior=json.loads(BASELINE.read_text(encoding="utf-8"))
     state=json.loads(PENDING.read_text(encoding="utf-8"))
     persist_state(prior,state)
+    # Discovery survives a Telegram outage, but no send may bypass route verification.
+    if os.getenv("TELEGRAM_ROUTE_VALID")!="true":
+        raise RuntimeError("Telegram 경로 미검증: 신규 문서는 대기 상태 보존, 전송 금지")
     pending=state.get("pending_delivery",{})
     docs=[v["document"] for v in pending.values() if v.get("status")=="queued"]
     docs.sort(key=lambda d:(d.get("published",""),d["id"]))

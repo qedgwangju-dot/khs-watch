@@ -51,6 +51,8 @@ jobs:
           python -m py_compile scripts/energy_price_fiscal_watch.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_energy_price_fiscal_watch.py' -v
       - name: 기존 에너지 Telegram 경로 검증
+        id: route
+        continue-on-error: true
         run: |
           python - <<'PY'
           import os,requests
@@ -87,17 +89,23 @@ jobs:
       - name: 신규 공식 발표 전달 및 상태 검증
         id: send
         if: github.event_name != 'push' && steps.scan.conclusion == 'success'
+        env:
+          TELEGRAM_ROUTE_VALID: ${{ steps.route.outcome == 'success' }}
         run: python scripts/energy_price_fiscal_watch.py --deliver
-      - name: 공식 원천 조회 실패 표시
+      - name: 공식 원천 및 전송 경로 실패 표시
         if: always() && steps.scan.conclusion == 'success'
+        env:
+          TELEGRAM_ROUTE_VALID: ${{ steps.route.outcome == 'success' }}
         run: |
           python - <<'PY'
-          import json
+          import json,os
           from pathlib import Path
           p=Path("out/energy_price_fiscal_pending.json")
           s=json.loads(p.read_text(encoding="utf-8"))
           if not s["source_health"]["complete"]:
               raise RuntimeError("일부 공식 원천 조회 실패: 신규 발표 없음으로 판정하지 않음")
+          if os.getenv("TELEGRAM_ROUTE_VALID")!="true":
+              raise RuntimeError("Telegram 경로 확인 실패: 전송 금지 및 발견 문서 보존")
           PY
       - name: 감사 기록 저장
         if: always()
