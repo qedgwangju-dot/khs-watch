@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-26T07:31:53+09:00",
-  "last_scan_count": 8,
+  "updated_at_kst": "2026-11-26T13:24:57+09:00",
+  "last_scan_count": 10,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,11 +132,13 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 2,
+  "last_held_count": 1,
   "seen_fingerprints": [
+    "0d663df29e83195c102df2a8",
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
     "1a3e5915b65cf2f57776be9e",
+    "1b35cc1527b35d85bfb16c74",
     "29a0ad5be1d0bdb75add8470",
     "2ae1e9765b7f711072162d1c",
     "2b04eb17a0ebb0a08a2d3235",
@@ -147,6 +149,7 @@
     "2ff967f0a83d4f9d09737f69",
     "305d1d885ff5dbd87c0680db",
     "3547810262aea5ccef036765",
+    "3672a9e74fdec3c28313e367",
     "37036291af05847d86890445",
     "3721dcaa772b61f44f972d28",
     "3898ddc3349f7aa8502740b4",
@@ -186,6 +189,7 @@
     "b143449cefc5c9d01e8e5870",
     "b348ad50bec5d2084e520a59",
     "b5425de8af685ae3b9dd2724",
+    "b8a0f676175e05517cc9e26b",
     "bbf6d84c3fbe067d2860a715",
     "c21f43569955742f3d6b1742",
     "c579cb29ce77119cfbcdf008",
@@ -219,12 +223,6 @@
       "source": "BigGo Finance",
       "reason": "출처 신뢰도 부족",
       "published_kst": "2026-11-25T20:55:00+09:00"
-    },
-    {
-      "event_key": "taiwan|diversification|ASE|core",
-      "source": "BigGo Finance",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-25T15:56:00+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-25T21:46:58+09:00",
