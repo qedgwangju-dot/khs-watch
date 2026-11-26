@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "providers": {
+    "truthsocial.com": {
+      "reason": "HTTPError",
+      "code": 403,
+      "observed_epoch": 1795656407.1183796,
+      "retry_at_epoch": 1795678007.1183796,
+      "denials": 1
+    },
+    "apnews.com": {
+      "reason": "HTTPError",
+      "code": 403,
+      "observed_epoch": 1795656503.4331546,
+      "retry_at_epoch": 1795678103.4331546,
+      "denials": 1
+    },
+    "reuters.com": {
+      "reason": "HTTPError",
+      "code": 401,
+      "observed_epoch": 1795656520.6230624,
+      "retry_at_epoch": 1795678120.6230624,
+      "denials": 1
+    },
+    "api.gdeltproject.org": {
+      "reason": "HTTPError",
+      "code": 429,
+      "observed_epoch": 1795656524.3968627,
+      "retry_at_epoch": 1795657424.3968627,
+      "denials": 1
+    }
+  }
+}
