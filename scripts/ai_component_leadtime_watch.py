@@ -2149,7 +2149,10 @@ def gpu_seed_matches(kind: str, body: str) -> bool:
         # Commercial Times attribution; a maximum in a headline is insufficient.
         if not any(x in low for x in ("commercial times", "china times", "工商時報", "工商时报")):
             return False
-        if not any(x in low for x in ("new orders", "new order", "新訂單", "新订单", "新單")):
+        if not (
+            re.search(r"\bnew\s+(?:(?:b300|gb300)\s+(?:gpu\s+)?)?orders?\b", low)
+            or any(x in low for x in ("新訂單", "新订单", "新單"))
+        ):
             return False
         # The English report puts the GB300 name after the range; the
         # Taiwanese copy uses Chinese units on both ends. Do not let the
@@ -2160,9 +2163,11 @@ def gpu_seed_matches(kind: str, body: str) -> bool:
         gb300 = r"(?<![a-z0-9])gb300(?![a-z0-9])"
         b_range = rf"(?<!\d)26{sep}40\s*{unit}"
         gb_range = rf"(?<!\d)14{sep}26\s*{unit}"
-        b_match = re.search(rf"{b300}[^.!?。；;]{{0,100}}?{b_range}", low)
+        # Do not attribute a neighbouring model's range to this model.
+        model_gap = rf"(?:(?!{b300}|{gb300})[^.!?。；;])"
+        b_match = re.search(rf"{b300}{model_gap}{{0,100}}?{b_range}", low)
         gb_match = (
-            re.search(rf"{gb300}[^.!?。；;]{{0,85}}?{gb_range}", low)
+            re.search(rf"{gb300}{model_gap}{{0,85}}?{gb_range}", low)
             or re.search(rf"{gb_range}\s+(?:for|on)\s+(?:the\s+)?{gb300}", low)
         )
         return bool(b_match and gb_match)
@@ -2223,7 +2228,7 @@ def gpu_followup_ranges(body: str) -> dict:
     """Conservative follow-up: paired explicit new-order ranges, not mixed
     product/old-new numbers or undated headlines. Ambiguous bodies stay pending."""
     low = gpu_normal_text(body)
-    if not re.search(r"\bnew orders?\b", low) or not re.search(r"\bnvidia\b", low):
+    if not re.search(r"\bnew\s+(?:(?:b300|gb300)\s+(?:gpu\s+)?)?orders?\b", low) or not re.search(r"\bnvidia\b", low):
         return {}
     if not any(x in low for x in ("commercial times", "china times", "taiwanese odm", "supply chain sources", "supply-chain sources")):
         return {}
@@ -2233,7 +2238,9 @@ def gpu_followup_ranges(body: str) -> dict:
         matches = set()
         pattern = rf"\b{name.lower()}\b(?P<context>[^.!?;]{{0,85}}?)\b(?P<a>\d{{1,2}})\s*(?:-|to)\s*(?P<b>\d{{1,2}})\s*weeks?\b"
         for m in re.finditer(pattern, low):
-            ctx = m.group("context")
+            # "ranges from 26 to 40 weeks" introduces one current range;
+            # a preceding old/from-to comparison remains disallowed.
+            ctx = re.sub(r"\bfrom\s*$", "", m.group("context"))
             if re.search(r"\b(?:gb300|b300|dgx station|previously|prior|old|formerly|from)\b", ctx):
                 continue
             a,b = int(m.group("a")),int(m.group("b"))
