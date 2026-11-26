@@ -262,7 +262,7 @@ def read_oem_configurations(now: datetime) -> tuple[list[dict], list[str]]:
         ("Lenovo", "https://lenovopress.lenovo.com/lp2527-lenovo-nvidia-vera-rubin-nvl72",
          "7DQQ", r"fixed configuration,\s*768\s*GB per processor"),
         ("Supermicro", "https://www.supermicro.com/manuals/brochure/Brochure_NVIDIA-Vera-Rubin-Architecture-Solutions.pdf",
-         "SRS-VR-NVL72", r"each with up to 1\.5\s*TB LPDDR5X memory\s*\(\s*768\s*GB for standard configuration\s*\)"),
+         "SRS-VR-NVL72", r"each with up to 1\.5\s*TB LPDDR5X memory\s*\(\s*768\s*GB\s+for\s+standard\s+configuration\s*\)"),
     ]
     for maker, url, model, pattern in sources:
         try:
@@ -271,14 +271,16 @@ def read_oem_configurations(now: datetime) -> tuple[list[dict], list[str]]:
                 if not data.startswith(b"%PDF-"):
                     raise ValueError("공식 PDF 형식 불일치")
                 raw = subprocess.run(
-                    ["pdftotext", "-layout", "-", "-"], input=data,
+                    ["pdftotext", "-raw", "-", "-"], input=data,
                     capture_output=True, check=True, timeout=25,
                 ).stdout.decode("utf-8", errors="replace")
             else:
                 raw = data.decode("utf-8", errors="replace")
-            body = clean_text(raw)
-            match = re.search(pattern, body, re.I)
-            if not (model.lower() in body.lower() and match):
+            # Raw reading order avoids interleaving unrelated columns in brochure tables.
+            sections = raw.split("\f") if url.endswith(".pdf") else [raw]
+            same_section = any(model.lower() in body.lower() and re.search(pattern, body, re.I)
+                               for body in map(clean_text, sections))
+            if not same_section:
                 raise ValueError("모델 또는 CPU당 기본 구성 원문 확인 불가")
             cap = {"module_gb": [], "cpu_gb": [768], "rack_tb": [27.648], "slots": []}
             items.append({
