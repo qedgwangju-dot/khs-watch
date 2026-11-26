@@ -7,6 +7,7 @@ import json
 import math
 import re
 import urllib.parse
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
 from difflib import SequenceMatcher
@@ -61,6 +62,80 @@ if _JANUARY_PEACE_QUERY not in watch.QUERIES:
 for _i, _query in enumerate(watch.QUERIES):
     if _query.startswith('site:ft.com (Iran OR Ukraine)') and _query.endswith('when:6h'):
         watch.QUERIES[_i] = _query[:-len('when:6h')] + 'when:1d'
+
+
+# Small, independent publisher feeds for current Ukraine and Baltic/NATO
+# events. These are separate discovery scopes, not replacements or equivalent
+# coverage for any blocked Google News query.
+_DIRECT_PUBLISHER_FEEDS = {
+    'direct-ukraine-president-rss': (
+        'https://www.president.gov.ua/en/rss/news/all.rss', 'President of Ukraine',
+        r'\b(?:peace|cease[- ]?fire|truce|negotiat\w*|diplomac\w*|'
+        r'war|russia\w*|aggress\w*|attacks?|strikes?|air\s+defen[cs]e|'
+        r'security\s+guarantees?|military\s+aid|sanctions?)\b'),
+    'direct-err-news-rss': (
+        'https://news.err.ee/rss', 'ERR News',
+        r'\b(?:russia\w*|ukrain\w*|nato|poland|polish|finland|finnish|'
+        r'fin(nish)?\s+gulf|gulf\s+of\s+finland|baltic|sparta\s+ii)\b'),
+}
+for _query in _DIRECT_PUBLISHER_FEEDS:
+    if _query not in watch.QUERIES:
+        watch.QUERIES.append(_query)
+_previous_publisher_news = watch.google_news
+
+
+def _publisher_feed_news(query):
+    if query not in _DIRECT_PUBLISHER_FEEDS:
+        return _previous_publisher_news(query)
+    url, source, relevant = _DIRECT_PUBLISHER_FEEDS[query]
+    try:
+        raw = watch.req(url)
+        root = ET.fromstring(raw)
+        channel = root.find('channel')
+        if root.tag != 'rss' or channel is None or not watch.clean(channel.findtext('title')):
+            raise ValueError('invalid direct publisher RSS channel')
+        items = channel.findall('item')
+        if not items:
+            # These continuously published feeds are not expected to be empty.
+            # An unexpected empty response cannot prove absence of an event.
+            raise ValueError('unexpected empty direct publisher RSS')
+        rows = []
+        expected_host = (urllib.parse.urlparse(url).hostname or '').lower().removeprefix('www.')
+        for item in items:
+            title = watch.clean(item.findtext('title'))
+            if not title:
+                raise ValueError('direct publisher RSS item without headline')
+            if not re.search(relevant, title, re.I):
+                continue
+            if query == 'direct-err-news-rss' and not re.search(
+                    r'\b(?:war|peace|cease[- ]?fire|truce|negotiat\w*|'
+                    r'attacks?|strike\w*|missiles?|drones?|airspace|'
+                    r'incursions?|violat\w*|military|defen[cs]e|security|'
+                    r'sanctions?|blockade|emergency\s+meeting|'
+                    r'ship\w*|vessels?|tanker\w*|fire|border\s+clos\w*)\b',
+                    title, re.I):
+                continue
+            original_link = (item.findtext('link') or '').strip()
+            link = urllib.parse.urljoin(url, original_link)
+            parsed = urllib.parse.urlparse(link)
+            host = (parsed.hostname or '').lower().removeprefix('www.')
+            if not original_link or parsed.scheme != 'https' or host != expected_host or not parsed.path or parsed.path == '/':
+                raise ValueError('direct publisher RSS item lacks a matching publisher link')
+            published = (item.findtext('pubDate') or item.findtext('{http://purl.org/dc/elements/1.1/}date') or '').strip()
+            if watch.parse_pub(published) is None:
+                raise ValueError('direct publisher RSS item lacks a publication timestamp')
+            rows.append({
+                'title': title, 'title_original': title, 'title_ko': '',
+                'description': watch.clean(item.findtext('description')),
+                'link': link, 'source_url': url, 'source': source,
+                'published': published, 'body_verified': False,
+            })
+        return rows, None
+    except Exception as exc:
+        return [], f'{query}: {type(exc).__name__}: {exc}'
+
+
+watch.google_news = _publisher_feed_news
 
 
 def _ukraine_january_peace_target_report(row):
