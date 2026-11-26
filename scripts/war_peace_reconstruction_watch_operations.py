@@ -11,6 +11,7 @@ import collections
 import datetime as dt
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 from zoneinfo import ZoneInfo
@@ -171,12 +172,22 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
         'last_failure': None,
     })
 
+    # Record only the executing workflow's identifiers, never a send success.
+    # This links the existing operational state to the exact job/artifacts.
+    execution = {}
+    run_id = os.environ.get('GITHUB_RUN_ID', '')
+    code_sha = os.environ.get('WAR_WATCH_CODE_SHA', '')
+    if run_id.isdecimal():
+        execution['source_run_id'] = run_id
+    if re.fullmatch(r'[0-9a-f]{40}', code_sha):
+        execution['source_code_sha'] = code_sha
+
     partial_verified = (report.get('complete') is True and report.get('phase') == 'verified'
                         and report.get('source_coverage_complete') is False)
     if (report.get('complete') is True and report.get('phase') == 'verified'
             and not partial_verified):
         if state.get('active') is True:
-            state.update(active=False, recovered_at=now.isoformat(timespec='seconds'))
+            state.update(active=False, recovered_at=now.isoformat(timespec='seconds'), **execution)
             _write_json(pending_path, state)
             print('operational_source_incident=recovered')
             return 'recovered'
@@ -197,7 +208,7 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
     last_warning = _parse_time(state.get('last_warning_sent_at'))
     due = last_warning is None or now - last_warning >= WARNING_INTERVAL
     state.update(active=True, first_seen_at=first_seen, last_seen_at=now.isoformat(timespec='seconds'),
-                 last_failure=details)
+                 last_failure=details, **execution)
     # The partial situation alert already tells the recipient that collection
     # is incomplete. Do not prepare two Telegram payloads in the same run.
     if due and not (partial_verified and alert_path.is_file()):
