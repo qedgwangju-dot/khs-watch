@@ -25,16 +25,16 @@
     "api.gdeltproject.org": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795656524.3968627,
-      "retry_at_epoch": 1795657424.3968627,
-      "denials": 1
+      "observed_epoch": 1795670173.3033864,
+      "retry_at_epoch": 1795671973.3400712,
+      "denials": 2
     },
     "news.google.com": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795663252.3024437,
-      "retry_at_epoch": 1795665052.3024437,
-      "denials": 2
+      "observed_epoch": 1795670158.624783,
+      "retry_at_epoch": 1795673758.624783,
+      "denials": 3
     },
     "news.err.ee": {
       "reason": "HTTPError",
