@@ -68,6 +68,7 @@ IT_LEVELS = [4.50, 4.75, 5.00]
 DAILY_MOVE_BP = 10.0
 FIVE_OBS_MOVE_BP = 25.0
 MAX_BUSINESS_LAG = 1
+HISTORY_MAX_OBSERVATIONS = 730  # retain long daily history; trigger windows unchanged
 
 MARKET_URLS = {
     "fr_mkt": "https://tradingeconomics.com/france/government-bond-yield",
@@ -447,7 +448,7 @@ def merge_daily_history(state: dict, key: str, cur: Obs) -> list[dict]:
             by_date[day] = value
     by_date[cur.date] = cur.value
     return [{"date": day, "value": value}
-            for day, value in sorted(by_date.items())][-40:]
+            for day, value in sorted(by_date.items())][-HISTORY_MAX_OBSERVATIONS:]
 
 
 def comparable_market_spread(latest: dict[str, Obs], stale: list[str]) -> float | None:

@@ -8,6 +8,11 @@ retransmission. Store an independent receipt and do not retry uncertain sends.
 from __future__ import annotations
 
 import datetime as dt
+import csv
+import io
+import re
+import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
 import json
 import math
 import os
@@ -30,6 +35,10 @@ LABELS_KO = {"uk_mkt": "영국", "fr_mkt": "프랑스", "it10": "이탈리아", 
 # All modern Hangul syllables must be supported by the actual normal/bold faces.
 HANGUL_GLYPHS = frozenset(range(0xAC00, 0xD7A4))
 NANUM_DIR = pathlib.Path("/usr/share/fonts/truetype/nanum")
+DAILY_CHART_DAYS = 183
+MONTHLY_CHART_MONTHS = 24
+OECD_MONTHLY_SERIES = {"uk_mkt": "IRLTLT01GBM156N", "fr_mkt": "IRLTLT01FRM156N",
+                       "it10": "IRLTLT01ITM156N", "de_mkt": "IRLTLT01DEM156N"}
 
 
 def load(path):
@@ -56,7 +65,7 @@ def number(value):
     return v
 
 
-def market_rows(state, key, *, days=35):
+def market_rows(state, key, *, days=DAILY_CHART_DAYS):
     """Retain actual dated observations only, limited to the stored as-of date."""
     end = checked_date(state)
     floor = end - dt.timedelta(days=days)
@@ -108,6 +117,138 @@ def text_receipt(path, expected):
             or any(type(mid) is not int or mid <= 0 for mid in ids)):
         raise ValueError("Missing valid existing text receipt")
     return ids[-1]
+
+
+
+def previous_month(day):
+    return day.replace(day=1) - dt.timedelta(days=1)
+
+
+def monthly_bounds(day):
+    end = previous_month(day).replace(day=1)
+    n = end.year * 12 + end.month - 1 - (MONTHLY_CHART_MONTHS - 1)
+    return dt.date(n // 12, n % 12 + 1, 1), end
+
+
+def clean_monthly_rows(pairs, day):
+    floor, ceiling = monthly_bounds(day)
+    by_date = {}
+    for raw_date, raw_value in pairs:
+        try:
+            stamp = dt.date.fromisoformat(str(raw_date).strip())
+            value = number(raw_value)
+            if stamp.day == 1 and floor <= stamp <= ceiling and -10 < value < 40:
+                by_date[stamp] = value
+        except (ValueError, TypeError):
+            continue
+    return sorted(by_date.items())
+
+
+def parse_monthly_csv(raw, day):
+    reader = csv.DictReader(io.StringIO(raw.lstrip("\ufeff")))
+    date_col = next((name for name in (reader.fieldnames or [])
+                     if name.strip().lower() in ("date", "observation_date")), None)
+    if not date_col:
+        raise ValueError("Monthly CSV date column missing")
+    rows = list(reader)
+    return {key: clean_monthly_rows(
+        [(row.get(date_col), row.get(series)) for row in rows], day)
+        for key, series in OECD_MONTHLY_SERIES.items()}
+
+
+def parse_monthly_table(raw, series, day):
+    plain = base.strip_html(raw)
+    if series not in plain or not re.search(r"Organization for Economic Co-operation and Development|OECD", plain, re.I):
+        raise ValueError("FRED table source/series identity missing")
+    if not re.search(r"Frequency\s*Monthly", plain, re.I):
+        raise ValueError("Not a monthly series")
+    # Only dated numeric observations, not header date ranges or chart captions.
+    pairs = re.findall(r"\b(\d{4}-\d{2}-01)\s+(-?\d+(?:\.\d+)?)(?=\s|$)", plain)
+    return clean_monthly_rows(pairs, day)
+
+
+def fetch_monthly_context(state, fetch=None):
+    """Independent public OECD/FRED monthly comparison; never feeds triggers."""
+    day = checked_date(state)
+    floor, end = monthly_bounds(day)
+    if fetch is None:
+        fetch = lambda url: base.fetch(url, tries=1, timeout=12)
+    params = urllib.parse.urlencode({"id": ",".join(OECD_MONTHLY_SERIES.values()),
+                                    "cosd": floor.isoformat(), "coed": end.isoformat()})
+    source = {}
+    try:
+        source = parse_monthly_csv(fetch("https://fred.stlouisfed.org/graph/fredgraph.csv?" + params), day)
+    except Exception:
+        pass
+    def recover(item):
+        key, series = item
+        old = source.get(key, [])
+        # If current table is incomplete or behind the last completed month,
+        # check the public, separately published series table.
+        if len(old) >= MONTHLY_CHART_MONTHS and old[-1][0] == end:
+            return key, old
+        try:
+            rows = parse_monthly_table(fetch("https://fred.stlouisfed.org/data/" + series), series, day)
+            if rows and (not old or rows[-1][0] >= old[-1][0]):
+                merged = dict(old)
+                merged.update(rows)
+                return key, sorted(merged.items())
+        except Exception:
+            pass
+        return key, old
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return dict(pool.map(recover, OECD_MONTHLY_SERIES.items()))
+
+
+def monthly_summary(data):
+    return {key: {"months": len(rows), "first": rows[0][0].isoformat() if rows else None,
+                  "last": rows[-1][0].isoformat() if rows else None}
+            for key, rows in data.items()}
+
+
+def render_monthly_context(fig, mx, sx, monthly, state, colors):
+    import matplotlib.dates as mdates
+    floor, end = monthly_bounds(checked_date(state))
+    for key in MARKETS:
+        rows = monthly.get(key, [])
+        if not rows:
+            continue
+        xs, ys = zip(*rows)
+        mx.plot(xs, ys, marker="o", markersize=3, linewidth=1.8, color=colors[key])
+        mx.annotate(f"{LABELS_KO[key]} {ys[-1]:.2f}%\n{xs[-1]:%y.%m}", (xs[-1], ys[-1]),
+                    xytext=(7, 0), textcoords="offset points", va="center",
+                    color=colors[key], fontsize=10, annotation_clip=False)
+    mx.set_title("장기: 최근 2년 국채금리 (월평균, %)", loc="left", weight="bold", fontsize=15, pad=10)
+    for key in ("fr_mkt", "it10"):
+        rows = same_date_spread(monthly.get(key, []), monthly.get("de_mkt", []))
+        if not rows:
+            continue
+        xs, ys = zip(*rows)
+        sx.plot(xs, ys, marker="o", markersize=3, linewidth=1.8, color=colors[key])
+        sx.annotate(f"{LABELS_KO[key]}-독일 {ys[-1]:.1f}bp\n{xs[-1]:%y.%m}", (xs[-1], ys[-1]),
+                    xytext=(7, 0), textcoords="offset points", va="center",
+                    color=colors[key], fontsize=10, annotation_clip=False)
+    sx.set_title("장기: 독일 대비 금리차 (동일월 평균, bp)", loc="left", weight="bold", fontsize=15, pad=10)
+    if not any(monthly.values()):
+        mx.text(.5, .5, "OECD 월별 원천 조회 실패", transform=mx.transAxes, ha="center")
+    if not any(same_date_spread(monthly.get(k, []), monthly.get("de_mkt", [])) for k in ("fr_mkt", "it10")):
+        sx.text(.5, .5, "동일월 비교 자료 없음", transform=sx.transAxes, ha="center")
+    for panel in (mx, sx):
+        panel.set_xlim(floor-dt.timedelta(days=10), end+dt.timedelta(days=12))
+        panel.xaxis.set_major_locator(mdates.MonthLocator(interval=4))
+        panel.xaxis.set_major_formatter(mdates.DateFormatter("%y.%m"))
+        panel.grid(axis="y", alpha=.2)
+        panel.spines[["top", "right"]].set_visible(False)
+        panel.tick_params(length=0, pad=7)
+    missing = [LABELS_KO[k] for k in MARKETS if len(monthly.get(k, [])) < MONTHLY_CHART_MONTHS]
+    dates = [rows[-1][0] for rows in monthly.values() if rows]
+    last = min(dates).strftime("%Y.%m") if dates else "확인 불가"
+    status = f"월별 자료 최신 공통 확인 범위: {last} (국가별 끝 날짜 별도 표시)"
+    if missing:
+        status += "\n24개월 자료 부족: " + ", ".join(missing)
+    fig.text(.065, .055, "장기 자료: OECD 장기 국채수익률(IRLT), 미국 세인트루이스 연은 FRED.\n"
+             "월평균과 일별 시장 관측값은 별도 자료이며, 서로 연결하지 않음.\n" + status,
+             fontsize=10.5, va="top", linespacing=1.45)
 
 
 class KoreanFontUnavailable(RuntimeError):
@@ -181,7 +322,7 @@ def ensure_korean_font():
     return choose_font()
 
 
-def render(state, output):
+def render(state, output, *, monthly=None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -190,20 +331,21 @@ def render(state, output):
     plt.rcParams.update({"font.family": font, "axes.unicode_minus": False, "font.size": 12})
     labels = LABELS_KO
     data = {k: market_rows(state, k) for k in MARKETS}
+    monthly = fetch_monthly_context(state) if monthly is None else monthly
     if not any(data.values()):
         raise ValueError("No actual market observations for chart")
     end = checked_date(state)
     start = min(day for series in data.values() for day, _ in series)
     if start == end:
         start -= dt.timedelta(days=1)
-    fig = plt.figure(figsize=(10, 12), facecolor="white")
-    gs = fig.add_gridspec(2, 1, height_ratios=[1.2, 1], left=.10, right=.78,
-                          top=.76, bottom=.12, hspace=.32)
-    ax, bx = fig.add_subplot(gs[0]), fig.add_subplot(gs[1])
+    fig = plt.figure(figsize=(10, 20), facecolor="white")
+    gs = fig.add_gridspec(4, 1, height_ratios=[1.2, 1, 1.05, 1], left=.10, right=.76,
+                          top=.83, bottom=.105, hspace=.56)
+    ax, bx, mx, sx = [fig.add_subplot(gs[i]) for i in range(4)]
     title = "유럽 국채금리 경보"
-    fig.text(.065, .963, title, fontsize=25, weight="bold", va="top")
+    fig.text(.065, .977, title, fontsize=25, weight="bold", va="top")
     stamp = dt.datetime.fromisoformat(state["last_checked_kst"]).strftime("%Y.%m.%d %H:%M")
-    fig.text(.065, .922, stamp+" 한국시간", fontsize=13, va="top")
+    fig.text(.065, .951, stamp+" 한국시간", fontsize=13, va="top")
     def official(k, label):
         point = current(state, k)
         if point:
@@ -211,20 +353,21 @@ def render(state, output):
         return label + " 확인 불가/후행"
     f = official("fr10", "프랑스 공식 TEC10")
     g = official("de10", "독일 공식 10년")
-    fig.text(.065, .881, f, fontsize=19, weight="bold", va="top")
-    fig.text(.065, .844, g, fontsize=13, va="top")
+    fig.text(.065, .926, f, fontsize=19, weight="bold", va="top")
+    fig.text(.065, .902, g, fontsize=13, va="top")
     fd = live_spread(state, "fr_mkt", "de_mkt")
     it = live_spread(state, "it10", "de_mkt")
     missing = "확인 불가"
     fs = f"{fd:.1f}bp" if fd is not None else missing
     ins = f"{it:.1f}bp" if it is not None else missing
-    fig.text(.065, .808, f"프랑스-독일 {fs}  |  이탈리아-독일 {ins}", fontsize=14, va="top")
+    fig.text(.065, .878, f"프랑스-독일 {fs}  |  이탈리아-독일 {ins}", fontsize=14, va="top")
+    fig.text(.065, .855, f"일별: 최대 6개월, 확보 관측 {start:%Y.%m.%d}~{end:%Y.%m.%d} (없는 과거값 미보간)", fontsize=11, va="top")
     colors = dict(zip(MARKETS, plt.rcParams["axes.prop_cycle"].by_key()["color"]))
     for k, rows in data.items():
         if not rows:
             continue
         xs, ys = zip(*rows)
-        ax.plot(xs, ys, marker="o", markersize=3.3, linewidth=2, color=colors[k])
+        ax.plot(xs, ys, marker="o" if len(xs) <= 65 else None, markersize=3, linewidth=1.8, color=colors[k])
         point = current(state, k)
         current_label = (f"{ys[-1]:.3f}%" if point and point[0] == xs[-1] and
                          math.isclose(point[1], ys[-1], abs_tol=1e-8)
@@ -247,7 +390,7 @@ def render(state, output):
             continue
         has_spread = True
         xs, ys = zip(*rows)
-        bx.plot(xs, ys, marker="o", markersize=3.3, linewidth=2, color=colors[k])
+        bx.plot(xs, ys, marker="o" if len(xs) <= 65 else None, markersize=3, linewidth=1.8, color=colors[k])
         current_label = f"{val:.1f}bp" if val is not None and math.isclose(val, ys[-1], abs_tol=1e-8) else "과거"
         bx.annotate(f"{label}\n{current_label}", (xs[-1], ys[-1]), xytext=(8, 0),
                     textcoords="offset points", va="center", color=colors[k],
@@ -270,7 +413,8 @@ def render(state, output):
     footer = ("자료: 기존 알림과 동일한 Trading Economics 시장 관측값.\n"
               "금리차는 동일 기준일 자료만 계산. 장중 제공값은 확정 종가 아님.\n"
               "공식 중앙은행 수익률과 시장수익률은 별도 지표. 감시선은 내부 기준.")
-    fig.text(.065, .075, footer, fontsize=11, va="top", linespacing=1.45)
+    fig.text(.065, .095, footer, fontsize=10.5, va="top", linespacing=1.45)
+    render_monthly_context(fig, mx, sx, monthly, state, colors)
     try:
         # A partially broken Hangul image is not an acceptable fallback.
         with warnings.catch_warnings():
@@ -290,7 +434,9 @@ def render(state, output):
     width, height = struct.unpack(">II", prefix[16:24])
     if not (width > 0 and height > 0 and width+height <= 10000 and max(width/height, height/width) <= 20):
         raise ValueError("PNG dimensions outside Telegram limits")
-    return {"width": width, "height": height, "font_language": "ko"}
+    return {"width": width, "height": height, "font_language": "ko",
+            "daily_window_days": DAILY_CHART_DAYS, "daily_start": start.isoformat(),
+            "monthly_source": "OECD/FRED", "monthly_coverage": monthly_summary(monthly)}
 
 
 def multipart(fields, png):
@@ -337,7 +483,8 @@ def main():
         status.update(render(state, PNG))
         if status.get("font_language") != "ko":
             raise KoreanFontUnavailable("Non-Korean chart blocked")
-        print("europe_chart_font_language=ko")
+        print("europe_chart_font_language=ko daily_window_days=" + str(DAILY_CHART_DAYS))
+        print("europe_chart_monthly_coverage=" + json.dumps(status.get("monthly_coverage", {}), ensure_ascii=False))
         if mid is None:
             status["status"] = "preview_only_no_text_alert"
             save(RECEIPT, status)
@@ -346,7 +493,7 @@ def main():
         token, chat = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip(), os.environ.get("TELEGRAM_CHAT_ID", "").strip()
         if not token or not chat or not expected:
             raise ValueError("Missing existing Telegram configuration")
-        caption = "유럽 국채금리·금리차 추세 (" + state["last_checked_kst"][:16].replace("T", " ") + " 한국시간)\n기존 텍스트 경보와 동일 관측값 · 시장 제공값은 확정 종가 아님"
+        caption = "유럽 국채금리·금리차 추세 (" + state["last_checked_kst"][:16].replace("T", " ") + " 한국시간)\n일별 최대 6개월 · OECD 월평균 2년(별도 자료) · 시장 제공값은 확정 종가 아님"
         status["status"] = "send_unconfirmed"
         save(RECEIPT, status)
         photo_id = send_photo(token, chat, expected, mid, PNG.read_bytes(), caption)

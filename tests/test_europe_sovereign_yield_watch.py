@@ -202,5 +202,18 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         self.assertTrue(detail["signature"])
 
 
+
+    def test_history_retains_more_than_40_observations(self):
+        start = dt.date(2026, 1, 1)
+        rows = [{"date": (start + dt.timedelta(days=i)).isoformat(), "value": 4.5}
+                for i in range(150)]
+        cur = watch.Obs("it10", "Italy", (start + dt.timedelta(days=150)).isoformat(),
+                        4.6, "test")
+        result = watch.merge_daily_history({"history": {"it10": rows}}, "it10", cur)
+        self.assertEqual(len(result), 151)
+        self.assertEqual(result[0], rows[0])
+        self.assertEqual(result[-1]["value"], 4.6)
+
+
 if __name__ == "__main__":
     unittest.main()

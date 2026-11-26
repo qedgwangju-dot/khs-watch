@@ -102,5 +102,37 @@ class EuropeYieldChartTests(unittest.TestCase):
                 self.assertTrue(ack.is_file())
 
 
+    def test_daily_window_expanded(self):
+        self.state["history"]["fr_mkt"].extend([
+            {"date": "2026-07-01", "value": 4.0},
+            {"date": "2026-01-01", "value": 3.0}])
+        rows = c.market_rows(self.state, "fr_mkt")
+        self.assertEqual(rows[0], (dt.date(2026,7,1),4.0))
+        self.assertEqual(c.DAILY_CHART_DAYS, 183)
+
+    def test_monthly_csv_distinct_completed_months_and_missing(self):
+        raw = "observation_date,IRLTLT01FRM156N,IRLTLT01DEM156N\n2024-10-01,3.0,2.0\n2024-11-01,3.1,2.1\n2026-10-01,4.89,3.41591\n2026-11-01,9,8\n"
+        data = c.parse_monthly_csv(raw, dt.date(2026,11,26))
+        self.assertEqual(len(data["fr_mkt"]), 2)
+        self.assertEqual(data["fr_mkt"][-1], (dt.date(2026,10,1),4.89))
+        self.assertEqual(data["it10"], [])
+        self.assertEqual(c.same_date_spread(data["fr_mkt"], data["de_mkt"])[-1][1], 147.409)
+
+    def test_monthly_table_checks_source_and_series(self):
+        raw = "<p>IRLTLT01FRM156N OECD Frequency Monthly</p><table><tr><td>2026-10-01</td><td>4.89</td></tr></table>"
+        rows = c.parse_monthly_table(raw, "IRLTLT01FRM156N", dt.date(2026,11,26))
+        self.assertEqual(rows, [(dt.date(2026,10,1),4.89)])
+        with self.assertRaises(ValueError):
+            c.parse_monthly_table(raw, "IRLTLT01DEM156N", dt.date(2026,11,26))
+
+    def test_monthly_failure_does_not_fabricate_daily_data(self):
+        def broken(url):
+            raise OSError("test source unavailable")
+        data = c.fetch_monthly_context(self.state, fetch=broken)
+        self.assertEqual(data, {k: [] for k in c.MARKETS})
+        self.assertEqual(c.monthly_summary(data)["fr_mkt"]["months"], 0)
+
+
+
 if __name__ == "__main__":
     unittest.main()
