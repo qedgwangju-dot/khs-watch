@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-26T06:01:59+09:00",
+  "last_checked_kst": "2026-11-26T12:28:36+09:00",
   "schedule_sha256": "7fd8bf4054ff9184c130b9d6dd9d699853f559b166fef6469083e9b76649b248",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -50,8 +50,8 @@
       "start_date": "2026-11-17",
       "end_date": "2026-11-24"
     },
-    "latest_bond_common_date": "2026-11-24",
-    "lag_market_sessions": 0,
+    "latest_bond_common_date": "2026-11-25",
+    "lag_market_sessions": 1,
     "is_lagged": false,
     "latest": {
       "brent": {
@@ -63,12 +63,12 @@
         "value": 91.2
       },
       "nom10": {
-        "date": "2026-11-24",
-        "value": 4.91
+        "date": "2026-11-25",
+        "value": 4.85
       },
       "real10": {
-        "date": "2026-11-24",
-        "value": 2.79
+        "date": "2026-11-25",
+        "value": 2.73
       }
     },
     "verdict_key": "energy_disinflation_support",
