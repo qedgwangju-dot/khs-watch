@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-26T22:08:53+09:00",
+  "updated_at_kst": "2026-11-27T01:01:48+09:00",
   "monitoring_model": "topic_event_official_state_change_v2",
   "official_signature": "{\"cpu_gb\": [1536], \"module_gb\": [], \"rack_tb\": [54.0], \"slots\": []}",
   "official_capacity": {
@@ -13,13 +13,19 @@
     "slots": []
   },
   "official_url": "https://www.nvidia.com/ko-kr/data-center/vera-rubin-nvl72/",
-  "known_topic_states": [],
+  "known_topic_states": [
+    "oem-cpu-memory-v1:Lenovo:7DQQ:standard:768GB"
+  ],
   "evidence_ids": [],
   "fresh_hours": 96,
   "errors": [
+    "Supermicro 공식 사양 미확인: FileNotFoundError: [Errno 2] No such file or directory: 'pdftotext'",
     "뉴스 조회 실패 en: HTTPError: HTTP Error 429: Too Many Requests",
     "뉴스 조회 실패 ko: HTTPError: HTTP Error 429: Too Many Requests"
   ],
-  "verified_topic_states_now": 0,
-  "new_topic_state_changes": 0
+  "verified_topic_states_now": 1,
+  "new_topic_state_changes": 1,
+  "last_successful_delivery_kst": "2026-11-27T01:01:54+09:00",
+  "telegram_message_id": 575,
+  "bot_username": "khs88798879887988798879_bot"
 }
