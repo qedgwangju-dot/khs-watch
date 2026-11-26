@@ -206,6 +206,27 @@ class OperationsWarningTests(unittest.TestCase):
         warnings = workflow.split('- name: Prepare source coverage operational warning', 1)[1].split('- name: Publish status summary', 1)[0]
         self.assertIn("if: env.DRY_RUN != 'true'", collection)
         self.assertIn("if: always() && env.DRY_RUN != 'true'", warnings)
+        self.assertIn('WAR_SOURCE_BACKOFF_PATH: data/war_peace_reconstruction_watch_source_backoff.json', collection)
+        cooldown = workflow.split('- name: Commit source access cooldown state', 1)[1].split('- name: Upload verification artifacts', 1)[0]
+        self.assertIn("hashFiles('out/war_peace_reconstruction_source_backoff_pending.json') != ''", cooldown)
+        self.assertIn("env.TELEGRAM_TEST != 'true'", cooldown)
+        self.assertIn('git add data/war_peace_reconstruction_watch_source_backoff.json', cooldown)
+        self.assertNotIn('sendMessage', cooldown)
+        self.assertGreater(workflow.index('- name: Commit source access cooldown state'),
+                           workflow.index('- name: Commit confirmed alert state'))
+
+    def test_operational_state_links_to_actual_run_without_claiming_delivery(self):
+        from unittest.mock import patch
+        self.write_coverage(actual_run_727_coverage())
+        with patch.dict('os.environ', {'GITHUB_RUN_ID': '12345', 'WAR_WATCH_CODE_SHA': 'a' * 40}):
+            self.assertEqual(self.prepare(), 'send')
+        pending = json.loads(self.pending.read_text(encoding='utf-8'))
+        self.assertEqual(pending['source_run_id'], '12345')
+        self.assertEqual(pending['source_code_sha'], 'a' * 40)
+        self.assertFalse(self.finalize())
+        self.assertFalse(self.state.exists())
+        self.write_matching_delivery()
+        self.assertTrue(self.finalize())
 
 
 if __name__ == '__main__':
