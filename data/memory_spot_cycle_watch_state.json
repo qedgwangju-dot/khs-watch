@@ -1249,11 +1249,35 @@
       "source": "BigGo Finance",
       "published_kst": "2026-11-25T18:55:00+09:00",
       "first_seen_kst": "2026-11-26T05:19:41+09:00"
+    },
+    "6e056cdba188e557776dfd5b": {
+      "title": "3Q26 Revenue Ranking among Enterprise SSD Suppliers",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-26T09:00:00+09:00",
+      "first_seen_kst": "2026-11-26T21:41:05+09:00"
+    },
+    "9aa09df6164c323184dc3107": {
+      "title": "NAND 현물 가격 하락 전망…2027년 인하 예상, DRAM은 강세 유지 - Mezha.net",
+      "source": "Mezha.net",
+      "published_kst": "2026-11-25T01:19:00+09:00",
+      "first_seen_kst": "2026-11-26T21:41:05+09:00"
+    },
+    "e5df34c0e347f054336d0ef0": {
+      "title": "낸드 현물 가격 20% 하락…반도체 P 사이클 꺾이나 - KB Think",
+      "source": "KB Think",
+      "published_kst": "2026-11-23T10:06:48+09:00",
+      "first_seen_kst": "2026-11-26T21:41:05+09:00"
+    },
+    "9b1c13a2947e304951e5a24c": {
+      "title": "AI memory sells out while NAND and legacy DRAM prices fall amid weak PC and smartphone demand - MoneyToday - 머니투데이",
+      "source": "머니투데이",
+      "published_kst": "2026-11-19T17:50:00+09:00",
+      "first_seen_kst": "2026-11-26T21:41:05+09:00"
     }
   },
-  "updated_at_kst": "2026-11-26T11:59:16+09:00",
-  "last_scan_count": 31,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-11-26T21:41:05+09:00",
+  "last_scan_count": 24,
+  "last_new_count": 3,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1313,21 +1337,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-26T05:19:54+09:00",
+  "last_successful_delivery_kst": "2026-11-26T21:41:24+09:00",
   "telegram_message_ids": [
-    566
+    574
   ],
-  "telegram_message_id": 566,
+  "telegram_message_id": 574,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      566
+      574
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-26T05:19:54+09:00",
-    "alert_signature": "f799f415c63abdb06e3ce443667bf92eed0a15abd749c56636842d26928406df"
+    "confirmed_at_kst": "2026-11-26T21:41:24+09:00",
+    "alert_signature": "606b00c8fbce10532ef6c65297a2e008677217d638f95949fcb50dda72a540fa"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
