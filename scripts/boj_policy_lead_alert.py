@@ -1626,6 +1626,7 @@ def collect(now: dt.datetime) -> list[Signal]:
         signals,
         key=lambda s: (
             event_priority.get(s.event_type, 0),
+            int(s.speech_verified) if s.event_type == "official_speech" else 0,
             source_priority.get(s.source, 0),
             s.published,
         ),
@@ -3180,6 +3181,8 @@ def main() -> int:
         "top_source": top.source,
         "top_speaker": top.speaker,
         "top_speech_verified": top.speech_verified,
+        "top_speech_evidence": list(top.speech_evidence),
+        "verified_speech_count": sum(1 for x in signals if x.speech_verified),
         "selected_title": selected.title if selected else None,
         "selected_source": selected.source if selected else None,
         "selected_speaker": selected.speaker if selected else None,
