@@ -1487,7 +1487,7 @@
   },
   "_delivery": {
     "id": "685a1c0521790f6020fb02ec0b27fbb75cc142a0273d4b7cc32e1f90319518cd",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-11-26T16:03:42+09:00",
     "chunks": [
       "<b>GPU 모델별 공급망 납기 경보 — 11/25 대만 ODM 보도</b>\n• 신규 주문: B300 26~40주 / GB300 14~26주. 서로 다른 제품·공급계약 기준.\n• DGX Station용 GB300 약 26주, RTX Pro 서버·워크스테이션용 26주 이상(공급망 추정).\n• 최근 두 분기 신규 프로젝트의 다수는 2027년 2~3분기 이후 인도 예상; 기존 일부 주문은 정상 출하 보도.\n• 서버 DRAM 우선 생산에 따른 GDDR7 제약, RTX 60의 기존 2027년 말 양산 목표 지연 가능성. 확정 연기 아님.\n• 엔비디아 모델별 공식 납기 아님; TrendForce 11/23 산업 GPU 30~45주와 별도 관리.\n• <a href=\"https://www.trendforce.com/news/2026/11/25/news-nvidia-b300-lead-times-reportedly-hit-40-weeks-rtx-60-may-face-delays-as-memory-supply-tightens/\">수치 보도(공상시보 인용)</a> / <a href=\"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Expands-Commitments-With-Supply-Chain-Partners-to-Support-AI-Infrastructure-Buildout/default.aspx\">11/17 공식 공급망 확대 발표(납기 수치 별도)</a>\n\n<b>게이밍 GPU 공급 배분 선행경보 — 11/25 공급망 보도</b>\n• 회계연도 4분기(2026.11~2027.01) 공급 배정량 20~30% 추가 축소 보도.\n• Board Channels에서 유래한 동일 보도 계열; 엔비디아 공식 확인, 모델·적용 지역·비교 분모 미확인.\n• CEO 복귀와의 인과관계 미확인. 게이밍 GPU 배정량 감소를 전체 GPU 출하 감소로 계산하지 않음.\n• 다음 확인: 보드 파트너 배정·GDDR7 공급·실제 소비자용 출하·가격 및 재고.\n• <a href=\"https://videocardz.com/newz/nvidia-reportedly-cuts-gaming-gpu-supply-by-another-20-30-for-q4\">공급망 보도</a>"
@@ -3048,6 +3048,7 @@
         "unconfirmed_sources": [],
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield"
       }
-    }
+    },
+    "attempt_at_kst": "2026-11-26T16:03:44+09:00"
   }
 }
