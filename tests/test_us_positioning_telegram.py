@@ -99,6 +99,9 @@ class AlertImageContractTests(unittest.TestCase):
             {**payload, "result": {**payload["result"], "chat": {"id": -100999}}},
             {**payload, "result": {**payload["result"], "photo": []}},
             {**payload, "result": {**payload["result"], "message_id": None}},
+            {**payload, "result": "malformed"},
+            {**payload, "result": {**payload["result"], "chat": "malformed"}},
+            {**payload, "result": {**payload["result"], "photo": ["malformed"]}},
         ):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 telegram.build_send_photo_receipt(bad, 200, "-100123", photo, guard, "watch_bot")
