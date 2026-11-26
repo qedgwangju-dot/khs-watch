@@ -11,6 +11,8 @@ import json
 import hashlib
 import base64
 import datetime as dt
+from email.utils import parsedate_to_datetime
+from pathlib import Path
 import multiprocessing as mp
 from multiprocessing.connection import wait
 import os
@@ -109,11 +111,93 @@ def _preserve_rejected(watch, report):
         report['rejected_artifacts'] = retained
 
 
+# Persist only access restrictions observed by this war watch. Do not cache
+# articles, change provider identity, or treat a skipped query as successful.
+def _load_backoff(path):
+    if path is None or not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding='utf-8'))
+    if not isinstance(data, dict) or data.get('version') != 1 or not isinstance(data.get('providers'), dict):
+        raise ValueError('invalid war source backoff state; preserve existing file')
+    providers = data['providers']
+    for host, entry in providers.items():
+        if (not isinstance(host, str) or not host or not isinstance(entry, dict)
+                or not isinstance(entry.get('retry_at_epoch'), (int, float))
+                or not isinstance(entry.get('observed_epoch'), (int, float))
+                or not isinstance(entry.get('denials'), int)
+                or entry['denials'] < 1
+                or entry.get('code') not in (None, 401, 403, 429)
+                or not entry.get('reason')):
+            raise ValueError('invalid war source backoff provider; preserve existing file')
+    return providers
+
+
+def _retry_after_seconds(exc, now):
+    headers = getattr(exc, 'headers', None)
+    value = headers.get('Retry-After') if headers is not None else None
+    if value is None:
+        return 0
+    try:
+        return max(0, int(value))
+    except (ValueError, TypeError):
+        try:
+            stamp = parsedate_to_datetime(value)
+            if stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=dt.timezone.utc)
+            return max(0, stamp.timestamp() - now)
+        except (ValueError, TypeError, OverflowError, AttributeError):
+            return 0
+
+
+def _denial_entry(exc, now, previous=None):
+    previous = previous or {}
+    code = getattr(exc, 'code', None)
+    same_recent_denial = (previous.get('code') == code
+                          and 0 <= now - previous.get('observed_epoch', -86401) <= 86400)
+    denials = min(32, previous.get('denials', 0) + 1) if same_recent_denial else 1
+    # Rate limiting is transient: exponential cooldown, at least 15 min,
+    # up to 2 h by default. A server's longer Retry-After always wins.
+    # Auth/permission/challenge failures need source-side resolution, not
+    # rapid probes. Do not change credentials, identity, or access route.
+    delay = min(7200, 900 * (2 ** min(denials - 1, 3))) if code == 429 else 21600
+    delay = max(delay, _retry_after_seconds(exc, now))
+    return {'reason': type(exc).__name__, 'code': code, 'observed_epoch': now,
+            'retry_at_epoch': now + delay, 'denials': denials}
+
+
+def _save_backoff(path, previous, report):
+    if path is None or not isinstance(report.get('blocked_providers'), dict):
+        return False
+    # A cancelled/failed run may end before a previously denied host is
+    # actually probed. Never erase or extend its state based on that absence.
+    providers = dict(previous)
+    providers.update(report['blocked_providers'])
+    now = time.time()
+    # Keep expired restrictions for up to 24 h to detect repeated denials;
+    # they do not prevent the next authorized probe after retry_at_epoch.
+    providers = {host: entry for host, entry in providers.items()
+                 if entry.get('retry_at_epoch', 0) > now
+                 or now - entry.get('observed_epoch', 0) <= 86400}
+    # A successful response proves that this particular host has recovered,
+    # but do not clear a new restriction observed later in the same run.
+    successful = {(urllib.parse.urlparse(item.get('url', '')).hostname or '').lower().removeprefix('www.')
+                  for row in report.get('news', []) for item in row.get('http', [])
+                  if item.get('status') == 'ok'}
+    for host in successful - set(report['blocked_providers']):
+        providers.pop(host, None)
+    if providers == previous and path.exists():
+        return False
+    if not providers and not path.exists():
+        return False
+    _save(path, {'version': 1, 'providers': providers})
+    return True
+
+
 class _ProviderBlocks:
     """Small shared-memory registry; callers hold the collection's process lock."""
-    def __init__(self, context):
+    def __init__(self, context, seed=None):
         self.buffer = context.RawArray('c', 65536)
-        self.buffer.value = b'{}'
+        self.buffer.value = json.dumps(seed or {}).encode('utf-8')
 
     def snapshot(self):
         return json.loads(self.buffer.value)
@@ -130,7 +214,7 @@ class _ProviderBlocks:
         self.buffer.value = encoded
 
 
-def _source_worker(connection, watch, blocked, gate_lock, next_google_at, google_interval):
+def _source_worker(connection, watch, blocked, gate_lock, next_google_at, google_interval, previous_backoff):
     """A private copy of every parser/global; return only an HTTP transcript."""
     original_req = watch.req
     original_hook = getattr(watch, '_before_source_request', None)
@@ -140,16 +224,18 @@ def _source_worker(connection, watch, blocked, gate_lock, next_google_at, google
 
     def admit(url):
         with gate_lock:
-            if provider(url) in blocked:
-                raise RecordedSourceError('provider access circuit is open')
+            host = provider(url)
+            entry = blocked.snapshot().get(host)
+            if entry is not None:
+                raise RecordedSourceError('provider access circuit is open; host=' + host
+                                          + '; retry_at_epoch=' + str(entry.get('retry_at_epoch', 'unknown')))
 
     def mark_block(url, exc):
         if getattr(exc, 'provider_blocked', False) or getattr(exc, 'code', None) in (401, 403, 429):
             with gate_lock:
-                blocked.setdefault(provider(url), {
-                    'reason': type(exc).__name__, 'code': getattr(exc, 'code', None),
-                    'observed_monotonic': time.monotonic(),
-                })
+                host = provider(url)
+                if host not in blocked:
+                    blocked.setdefault(host, _denial_entry(exc, time.time(), previous_backoff.get(host)))
 
     # Limit burst traffic to the shared Google News RSS provider across all
     # collection workers. The original request hook still checks the circuit;
@@ -239,6 +325,8 @@ def _http_record(url, value, error):
     item = {'url': url, 'status': 'error' if error else 'ok'}
     if error:
         item['error'] = error
+        if error.startswith('RecordedSourceError: provider access circuit is open'):
+            item['request_disposition'] = 'skipped_provider_cooldown'
     if value is not None:
         item.update(bytes=len(value), sha256=hashlib.sha256(value).hexdigest())
         if error:
@@ -282,7 +370,7 @@ def _payload_retry_eligible(record, blocked):
 
 
 def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5,
-             allow_partial=False, google_interval=None):
+             allow_partial=False, google_interval=None, previous_backoff=None):
     """Collect each query; retain failed queries as explicit gaps in partial mode."""
     if seconds <= 0 or workers < 1 or payload_retry_delay < 0:
         raise ValueError('collection budget and workers must be positive')
@@ -301,7 +389,11 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     _save(report_path, report)
     context = mp.get_context('fork')
     deadline = time.monotonic() + seconds
-    blocked, gate_lock = _ProviderBlocks(context), context.RLock()
+    previous_backoff = previous_backoff or {}
+    active_backoff = {host: entry for host, entry in previous_backoff.items()
+                      if entry.get('retry_at_epoch', 0) > time.time()}
+    blocked, gate_lock = _ProviderBlocks(context, active_backoff), context.RLock()
+    report['provider_cooldown_carried_over'] = sorted(active_backoff)
     next_google_at = context.RawValue('d', 0.0)
     active, processes, traces = {}, [], {}
     failed_transcripts = {}
@@ -310,7 +402,7 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     try:
         for _ in range(min(workers, len(queries))):
             parent, child = context.Pipe()
-            process = context.Process(target=_source_worker, args=(child, watch, blocked, gate_lock, next_google_at, google_interval), daemon=True)
+            process = context.Process(target=_source_worker, args=(child, watch, blocked, gate_lock, next_google_at, google_interval, previous_backoff), daemon=True)
             process.start()
             child.close()
             processes.append((process, parent))
@@ -508,12 +600,12 @@ def _partial_notice(report):
             '아래 내용은 수집·검증된 기사에 한합니다.\n')
 
 
-def _child_run(watch, run_and_verify, report_path, seconds, workers, allow_partial):
+def _child_run(watch, run_and_verify, report_path, seconds, workers, allow_partial, previous_backoff):
     os.setsid()
     report = {'complete': False, 'phase': 'collection', 'collection_budget_seconds': seconds}
     try:
         queries, traces = prefetch(watch, report, report_path, seconds=seconds, workers=workers,
-                                   allow_partial=allow_partial)
+                                   allow_partial=allow_partial, previous_backoff=previous_backoff)
         report['phase'] = 'parse_render_verify'
         _save(report_path, report)
         missing = report.get('incomplete_query_indices', [])
@@ -547,7 +639,7 @@ def _child_run(watch, run_and_verify, report_path, seconds, workers, allow_parti
 
 
 def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=360,
-                workers=8, allow_partial=False):
+                workers=8, allow_partial=False, backoff_path=None):
     """No Telegram calls here; only verified, explicitly labelled runs leave artifacts."""
     if total_seconds <= collection_seconds or collection_seconds <= 0:
         raise ValueError('total budget must exceed positive collection budget')
@@ -555,10 +647,13 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
     _clean(watch)
     _clean_rejected(watch)
     report_path = watch.OUT / 'war_peace_reconstruction_coverage.json'
+    path_value = backoff_path or os.environ.get('WAR_SOURCE_BACKOFF_PATH')
+    backoff_path = Path(path_value) if path_value else None
+    previous_backoff = _load_backoff(backoff_path)
     _save(report_path, {'complete': False, 'phase': 'starting', 'total_budget_seconds': total_seconds})
     process = mp.get_context('fork').Process(
         target=_child_run, args=(watch, run_and_verify, report_path, collection_seconds,
-                                 workers, allow_partial))
+                                 workers, allow_partial, previous_backoff))
     process.start()
     process.join(timeout=total_seconds)
     timed_out = process.is_alive()
@@ -574,6 +669,8 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
     except (OSError, ValueError):
         report = {}
     report['total_budget_seconds'] = total_seconds
+    if backoff_path is not None:
+        report['source_backoff_updated'] = _save_backoff(backoff_path, previous_backoff, report)
     if timed_out or process.exitcode != 0 or report.get('complete') is not True:
         report.setdefault('failure_phase', report.get('phase'))
         if not report.get('rejected_artifacts'):
