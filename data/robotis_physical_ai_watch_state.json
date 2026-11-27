@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-27T10:07:00.112262+00:00",
+  "updated_at": "2026-11-27T18:55:02.600928+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1059,17 +1059,19 @@
     "3c3b66c7b0692ffd386818c18281d52be95198289263dbb8dd0cf59ff25962dc",
     "cb0b9bec62500426ace4315bf98a8b6ec45c779628e8717097e4ed25f482483b",
     "8d452597c91e2ac24981c8a8cd8f072df7ed3a3526b4fd8adbd19cbd8c98757e",
-    "2abf17e9d291f49857b5225d57274d0f00d14e1b87b8742718626a6e01f8d1ab"
+    "2abf17e9d291f49857b5225d57274d0f00d14e1b87b8742718626a6e01f8d1ab",
+    "e1b4dec313ede6d5c179ae6dcee88a99961dad68026fbd33d98737b384a807f3",
+    "715cfca0a7c4a095fedc6972f4260907cf302b0d11d75e461ea4fa09dede96b4",
+    "f24bc81c6dd5a6469d2b2c7bb721a5b8306f6ac680b5b4220df81ff8166a3f89",
+    "d822ce66c06bbe83d42a5ca714f3ccd3757305873e1ecd68f8734064efabd221",
+    "9c16062b64d53b6aaae33ff9c4e3a875233dd068746a73d868db7e591dcea5b5"
   ],
   "last_selected": [
-    "6bb4e5dc6aa2449f76692d2471611e3349c42b601cd127c183b18940765f7711",
-    "e9c8fa05caca93d6676636716810cc3f5b684a83076bde54e3c646d6b77643dc",
-    "56dd4478614b290a8adaf52d3cde71c9776891632610e183adba2d2308666748",
-    "d63a4e6350ac70ee5127b6bc131fe591cdb1c162de7be9f368adc873d26b1206",
-    "3c3b66c7b0692ffd386818c18281d52be95198289263dbb8dd0cf59ff25962dc",
-    "cb0b9bec62500426ace4315bf98a8b6ec45c779628e8717097e4ed25f482483b",
-    "8d452597c91e2ac24981c8a8cd8f072df7ed3a3526b4fd8adbd19cbd8c98757e",
-    "2abf17e9d291f49857b5225d57274d0f00d14e1b87b8742718626a6e01f8d1ab"
+    "e1b4dec313ede6d5c179ae6dcee88a99961dad68026fbd33d98737b384a807f3",
+    "715cfca0a7c4a095fedc6972f4260907cf302b0d11d75e461ea4fa09dede96b4",
+    "f24bc81c6dd5a6469d2b2c7bb721a5b8306f6ac680b5b4220df81ff8166a3f89",
+    "d822ce66c06bbe83d42a5ca714f3ccd3757305873e1ecd68f8734064efabd221",
+    "9c16062b64d53b6aaae33ff9c4e3a875233dd068746a73d868db7e591dcea5b5"
   ],
   "groups": [
     "ess_battery",
@@ -1080,16 +1082,6 @@
     "samsung_robot_scale"
   ],
   "delivery_history": [
-    {
-      "run_id": 45267826640,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-23T21:16:33.829957+00:00"
-    },
     {
       "run_id": 45283952191,
       "outcome": "normal_silence",
@@ -1379,108 +1371,97 @@
         false
       ],
       "state_timestamp_utc": "2026-11-27T10:07:00.112262+00:00"
+    },
+    {
+      "run_id": 46052840093,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "715cfca0a7c4a095fedc6972f4260907cf302b0d11d75e461ea4fa09dede96b4",
+        "9c16062b64d53b6aaae33ff9c4e3a875233dd068746a73d868db7e591dcea5b5",
+        "d822ce66c06bbe83d42a5ca714f3ccd3757305873e1ecd68f8734064efabd221",
+        "e1b4dec313ede6d5c179ae6dcee88a99961dad68026fbd33d98737b384a807f3",
+        "f24bc81c6dd5a6469d2b2c7bb721a5b8306f6ac680b5b4220df81ff8166a3f89"
+      ],
+      "message_ids": [
+        418
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-27T18:55:02.600928+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45979199634,
+    "run_id": 46052840093,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "2abf17e9d291f49857b5225d57274d0f00d14e1b87b8742718626a6e01f8d1ab",
-      "3c3b66c7b0692ffd386818c18281d52be95198289263dbb8dd0cf59ff25962dc",
-      "56dd4478614b290a8adaf52d3cde71c9776891632610e183adba2d2308666748",
-      "6bb4e5dc6aa2449f76692d2471611e3349c42b601cd127c183b18940765f7711",
-      "8d452597c91e2ac24981c8a8cd8f072df7ed3a3526b4fd8adbd19cbd8c98757e",
-      "cb0b9bec62500426ace4315bf98a8b6ec45c779628e8717097e4ed25f482483b",
-      "d63a4e6350ac70ee5127b6bc131fe591cdb1c162de7be9f368adc873d26b1206",
-      "e9c8fa05caca93d6676636716810cc3f5b684a83076bde54e3c646d6b77643dc"
+      "715cfca0a7c4a095fedc6972f4260907cf302b0d11d75e461ea4fa09dede96b4",
+      "9c16062b64d53b6aaae33ff9c4e3a875233dd068746a73d868db7e591dcea5b5",
+      "d822ce66c06bbe83d42a5ca714f3ccd3757305873e1ecd68f8734064efabd221",
+      "e1b4dec313ede6d5c179ae6dcee88a99961dad68026fbd33d98737b384a807f3",
+      "f24bc81c6dd5a6469d2b2c7bb721a5b8306f6ac680b5b4220df81ff8166a3f89"
     ],
     "message_ids": [
-      416,
-      417
+      418
     ],
     "recipient_verified": true,
     "recipient_checks": [
-      "numeric_id_equal",
       "numeric_id_equal"
     ],
     "message_topic_present": [
-      false,
       false
     ],
-    "state_timestamp_utc": "2026-11-27T10:07:00.112262+00:00"
+    "state_timestamp_utc": "2026-11-27T18:55:02.600928+00:00"
   },
   "last_selected_events": [
     {
-      "key": "6bb4e5dc6aa2449f76692d2471611e3349c42b601cd127c183b18940765f7711",
+      "key": "e1b4dec313ede6d5c179ae6dcee88a99961dad68026fbd33d98737b384a807f3",
       "group": "ess_battery",
-      "title": "삼성SDI, '역대 최대' ESS 정부계약 63% 수주 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE95cVY4eXFBX25VTXE2X05SY1VSM1l5NmxBZGNQdDV5NG4zYTNaa241STg5SUIyQVJhbU1Xai1Qd1pPYXAydC1iNnhYZkhkTEhXWkZYSnV3cUliZw?oc=5",
-      "source": "한국경제",
-      "source_url": "https://www.hankyung.com",
-      "published": "2026-11-27T08:28:11+00:00"
+      "title": "삼성SDI, 역대 최대 ESS 입찰서 63% 수주…SK온도 선전 - 뉴스토마토",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBKLS15NHhuZUlFNTNOY1NIMnlXS25IRm01VUw3bG85aFQzUXpoN0o2ZHY4bW01eGlYRm5DaHZPajVoZzNLcWlvTXVaRHNFSGNNdkJDdlljYU9wbzR3cGFvag?oc=5",
+      "source": "뉴스토마토",
+      "source_url": "https://www.newstomato.com",
+      "published": "2026-11-27T06:36:14+00:00"
     },
     {
-      "key": "e9c8fa05caca93d6676636716810cc3f5b684a83076bde54e3c646d6b77643dc",
+      "key": "715cfca0a7c4a095fedc6972f4260907cf302b0d11d75e461ea4fa09dede96b4",
       "group": "ess_battery",
-      "title": "[배터리이슈] 3차 BESS 중앙계약시장 낙찰 ‘물량 안배’ 뚜렷...삼성SDI·SK온·동서발전 약진 - 산경e뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAxZkxWbnd1ZUNwUURtTFROV2poVU02NE5NRXBlWDRlQ1R2cUpad21TWm1wM2VkZTZlcnQ1TVlYU1ptRnpGMEZrSUpTZDZwR3FWRXdoTlhLdFE4Zjlrdk9QbGs0TkhjOXc?oc=5",
-      "source": "산경e뉴스",
-      "source_url": "https://www.skenews.kr",
-      "published": "2026-11-27T08:43:38+00:00"
+      "title": "양자대결 ‘역대 최대’ ESS 수주전…출혈 경쟁 줄고, 삼성SDI 웃었다 - 중앙일보",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE54bW5ycEJBcU41ejRKSUpRVzZiR3g2c1JCS0JHUkNvWVFqVldoM2RpLTBBdWZ3T2sxSXJiX2ZfT0k5bmNJU0RVWXJ4ektmNjBFMHh4cUxn?oc=5",
+      "source": "중앙일보",
+      "source_url": "https://www.joongang.co.kr",
+      "published": "2026-11-27T06:33:00+00:00"
     },
     {
-      "key": "56dd4478614b290a8adaf52d3cde71c9776891632610e183adba2d2308666748",
+      "key": "f24bc81c6dd5a6469d2b2c7bb721a5b8306f6ac680b5b4220df81ff8166a3f89",
       "group": "ess_battery",
-      "title": "'삼성SDI가 웃었다' ESS 중앙계약 1~3차 60% 수주 - 이코노미스트",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE0xSkFCQjNINlcxSzRxZGttRS1NTzE5bHNoSUVtUGE1ZnhVYUtUaklTOWNRdV9ObHpGVjdtUGRfWHkyb2NwYVNPdVNrREw5WjRUcDFIdDllU3l5R1IwSHdjR3FR?oc=5",
-      "source": "이코노미스트",
-      "source_url": "https://economist.co.kr",
-      "published": "2026-11-27T08:41:00+00:00"
+      "title": "역대 최대 2조원 규모 ESS 입찰… 삼성SDI 63%·SK온 37% 수주 - 뉴데일리 경제",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE45VjN1d1UxUzVWeURvVWxGVkRJNFZUa04yaWYtVEFkaHhiaU9DLVh5MUl2OFpiSkFVUDRDeVBCRGZ4OFNpbEtLUEdnVzYwZmxhT0p0c21iTDBwaHMtQUhHNWpJT19vZVNWWlBYVDNLODFOR29vZVVUbTVBMNIBgAFBVV95cUxPcFNpN0pEN3IyWUltdjBINmNjTTJhRGVvSHBBbkJ3TlFlakVDTUdqYjdnbWZhVTdiYXFwbEhaZWhOc3Z1S0gtUmVvM201Q1NaaDI4WWNYYmhvMzIySGtNQXhLUDgxOWM2aVlLUmpTOVQyWFdYSVotYURfbWVybWJpbg?oc=5",
+      "source": "뉴데일리 경제",
+      "source_url": "https://biz.newdaily.co.kr",
+      "published": "2026-11-27T05:20:00+00:00"
     },
     {
-      "key": "d63a4e6350ac70ee5127b6bc131fe591cdb1c162de7be9f368adc873d26b1206",
+      "key": "d822ce66c06bbe83d42a5ca714f3ccd3757305873e1ecd68f8734064efabd221",
       "group": "ess_battery",
-      "title": "LG엔솔 빠진 역대 최대 ESS 수주전…삼성SDI 63%·SK온 37% 확보 - MTN 머니투데이방송",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1QNjNIaW1yRkgxYk5PZUlUWF9MeF8xaHdBM0luY3JVZ2g3NjRYcHpmWWFZVy03WDVhWXc2SkhXMFJpTF9HaEdVcjlORWo4QjIta2xCbERhbFZZS3JhSVRJ?oc=5",
-      "source": "MTN 머니투데이방송",
-      "source_url": "https://news.mtn.co.kr",
-      "published": "2026-11-27T08:20:56+00:00"
+      "title": "삼성SDI, 정부 3차 ESS 물량 63% 확보…SK온 37% - 전자신문",
+      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFAtcDZrWmEwUXh5eGxtUVMzbUlxbkhseUw2VThTZkFwS1pxVkFOQ0RHMFdkMk9mNVR1VGZhQ1RkNnp5UEZuSTJ6VTJwei10dw?oc=5",
+      "source": "전자신문",
+      "source_url": "https://www.etnews.com",
+      "published": "2026-11-27T03:53:42+00:00"
     },
     {
-      "key": "3c3b66c7b0692ffd386818c18281d52be95198289263dbb8dd0cf59ff25962dc",
+      "key": "9c16062b64d53b6aaae33ff9c4e3a875233dd068746a73d868db7e591dcea5b5",
       "group": "ess_battery",
-      "title": "정부 ESS 중앙계약시장 '엎치락뒤치락' : 삼성SDI 제주 포함 63% 가져가, SK온 수주물량 늘리며 37% 확보 - Howl.Link",
-      "link": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1ZRGhoaFQxTHF1YU9qYkRqQ2FBeC1qSHhGT3ZJa3QyTVE3c3VMMjZmejgwcTlOQ3Jfd3dV?oc=5",
-      "source": "Howl.Link",
-      "source_url": "https://t.co",
-      "published": "2026-11-27T02:21:30+00:00"
-    },
-    {
-      "key": "cb0b9bec62500426ace4315bf98a8b6ec45c779628e8717097e4ed25f482483b",
-      "group": "ess_battery",
-      "title": "SK온, ESS 3차 입찰서 443㎿ 수주…삼성SDI와 양분 - 더트래커",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBycHFiZjFhdUh1T19QUVdKd1JsQnNPY1dlQzFXOXhLWUNENTE4Qk50QVY1Y3liREx1VEpjNEVvTHRCZXFsRjg3cmJCb2l0dXZHcS1JUW5ucS0?oc=5",
-      "source": "더트래커",
-      "source_url": "https://thetracker.co.kr",
-      "published": "2026-11-27T00:56:51+00:00"
-    },
-    {
-      "key": "8d452597c91e2ac24981c8a8cd8f072df7ed3a3526b4fd8adbd19cbd8c98757e",
-      "group": "ess_battery",
-      "title": "세방리튬배터리, LG엔솔 덕분에 ESS 공장 '풀가동' - 디일렉",
-      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1XZnNKdGUzNnFkVmlHa19LRjJuZTFvTnNqZUJxeVY2dDRpMUNhRTMwVWF1LUxRbmtiOURjQmJKQWFXTHUwVlFCZGxFaDZ0Q1htaFdSaGVtNmlPTUp0YkRGYWszT0Nidw?oc=5",
-      "source": "디일렉",
-      "source_url": "https://www.thelec.kr",
-      "published": "2026-11-27T06:36:48+00:00"
-    },
-    {
-      "key": "2abf17e9d291f49857b5225d57274d0f00d14e1b87b8742718626a6e01f8d1ab",
-      "group": "ess_battery",
-      "title": "‘2조 ESS 입찰’ 삼성SDI 63%·SK온 37% 양분…LG엔솔은 숨고르기 - 뉴시안",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QTEY3bG9UN3Nfb1NvNUFSYTlaMjFfYUJqbGxkQWM4OWZ1YXZSWWU1NlVjUTFiTmtuaGc1UkVhMFBsVlBBYlFxZEtQcHZOR2hNcDRvRi13Z0lWRkJDU0Y0QWxna2VQeXF1OWtuTA?oc=5",
-      "source": "뉴시안",
-      "source_url": "https://www.newsian.co.kr",
-      "published": "2026-11-27T05:10:53+00:00"
+      "title": "정부 ESS 3차 입찰, 삼성SDI 63% 확보…SK온 37% - 글로벌이코노믹",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPVWFweE5VQ1RkdlhfTUhCWEFTSzcySnd3dUNZSHdTVzk0cy0wSDQ3YUJCaVNkUmh2ZHUtQ0J4WHhiWTQ1cHQtbllYbmduTGgxVmE4N01MN3ZCb0tUdmVxSnppamZrdkVQbmM1Um96UlRvU09PSFB5TXQ2Z1c4eEtRSzl0Sm4?oc=5",
+      "source": "글로벌이코노믹",
+      "source_url": "https://www.g-enews.com",
+      "published": "2026-11-27T01:31:22+00:00"
     }
   ],
   "message_corrections": {
