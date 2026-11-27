@@ -2,8 +2,8 @@
   "initialized": true,
   "version": 5,
   "dataset_updated": "Nov 27, 2026",
-  "source_hash": "ec36ab56ba855732ce9910bcc652c958d5b3b623e77924b27e41efec16e7a798",
-  "snapshot_hash": "967cc97044de0e5431ebbac3a70c3bf89ac17ccb777dbd3840e72840e6c258a9",
+  "source_hash": "0bc28e1e5d4a2d1a076088582e56dae25c7f3bc71547c131724b0ec22e640146",
+  "snapshot_hash": "7bb702e811b163d1daf9096bec9b3cd1d7936e52bb0a990366be40140050987d",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -109,13 +109,13 @@
         "investors": {}
       },
       "current_mw": 0.0,
-      "planned_mw": 1632.0,
+      "planned_mw": 2064.0,
       "progress": 0.0,
-      "completion_date": "2028-01-01",
-      "completion": "2028.1Q",
+      "completion_date": "2029-12-31",
+      "completion": "2029.4Q",
       "stage": "냉각설비 설치",
       "risk": false,
-      "source_status": "Building 1 and 2 roof is finished and cooling is at an advanced stage of installation. Building 3 and 6 roof and cooling in progress.",
+      "source_status": "Satellite imagery shows Buildings 1-3 are complete and their cooling install nears completion. Building 4 is under construction. Building 5 roof is almost complete and cooling install continues. Building 6 roof is complete and cooling nears completion. Building 7 roof and cooling nears completion. Building 8 and cooling are under construction. There is an outline for Building 9 and cooling.",
       "mw_quality": "미래 계획 IT전력·현재 추정 0MW",
       "energy_site": "Entergy 공급: 신규 천연가스 발전 7기 + 계통배터리 3개 + 원전 증출력 + 기타 구매전력",
       "energy_future": "Meta는 사용전력 100% 청정·재생에너지 매칭 및 최대 2.5GW 청정·재생에너지 추가 지원",
@@ -456,12 +456,11 @@
     }
   ],
   "last_changes": [
-    "xAI Colossus 2 (TN) 현재 추정 IT전력 ↑ 증가 +300MW (+31.7%) · 946→1,246MW (Epoch 추정·실제 공급 증가 아님)",
-    "xAI Colossus 2 (TN) 최종 계획 IT전력 ↑ 증가 +245MW (+16.0%) · 1,531→1,776MW (실제 증설 완료 아님)",
-    "xAI Colossus 2 (TN) Epoch 추정 IT전력 비율 ↑ 증가 +8.4%p · 61.8%→70.2%"
+    "Meta Hyperion (LA) 최종 계획 IT전력 ↑ 증가 +432MW (+26.5%) · 1,632→2,064MW (실제 증설 완료 아님)",
+    "Meta Hyperion (LA) 완료시점 2028.1Q→2029.4Q (지연)"
   ],
   "source_errors": [],
-  "updated_at_utc": "2026-11-27T21:17:46+00:00",
+  "updated_at_utc": "2026-11-27T23:50:49+00:00",
   "dataset_dates": {
     "metadata": "Nov 27, 2026",
     "timeline": "Nov 27, 2026"
@@ -571,13 +570,13 @@
         "investors": {}
       },
       "current_mw": 0.0,
-      "planned_mw": 1632.0,
+      "planned_mw": 2064.0,
       "progress": 0.0,
-      "completion_date": "2028-01-01",
-      "completion": "2028.1Q",
+      "completion_date": "2029-12-31",
+      "completion": "2029.4Q",
       "stage": "냉각설비 설치",
       "risk": false,
-      "source_status": "Building 1 and 2 roof is finished and cooling is at an advanced stage of installation. Building 3 and 6 roof and cooling in progress.",
+      "source_status": "Satellite imagery shows Buildings 1-3 are complete and their cooling install nears completion. Building 4 is under construction. Building 5 roof is almost complete and cooling install continues. Building 6 roof is complete and cooling nears completion. Building 7 roof and cooling nears completion. Building 8 and cooling are under construction. There is an outline for Building 9 and cooling.",
       "mw_quality": "미래 계획 IT전력·현재 추정 0MW",
       "energy_site": "Entergy 공급: 신규 천연가스 발전 7기 + 계통배터리 3개 + 원전 증출력 + 기타 구매전력",
       "energy_future": "Meta는 사용전력 100% 청정·재생에너지 매칭 및 최대 2.5GW 청정·재생에너지 추가 지원",
@@ -918,10 +917,9 @@
     }
   ],
   "last_reported_changes": [
-    "xAI Colossus 2 (TN) 현재 추정 IT전력 ↑ 증가 +300MW (+31.7%) · 946→1,246MW (Epoch 추정·실제 공급 증가 아님)",
-    "xAI Colossus 2 (TN) 최종 계획 IT전력 ↑ 증가 +245MW (+16.0%) · 1,531→1,776MW (실제 증설 완료 아님)",
-    "xAI Colossus 2 (TN) Epoch 추정 IT전력 비율 ↑ 증가 +8.4%p · 61.8%→70.2%"
+    "Meta Hyperion (LA) 최종 계획 IT전력 ↑ 증가 +432MW (+26.5%) · 1,632→2,064MW (실제 증설 완료 아님)",
+    "Meta Hyperion (LA) 완료시점 2028.1Q→2029.4Q (지연)"
   ],
   "last_check_status": "new_change",
-  "last_checked_at_utc": "2026-11-27T21:17:46+00:00"
+  "last_checked_at_utc": "2026-11-27T23:50:49+00:00"
 }
