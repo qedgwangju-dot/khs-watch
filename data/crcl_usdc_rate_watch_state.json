@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-27T23:27:39+09:00",
+  "updated_at_kst": "2026-11-27T23:50:25+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -65,11 +65,11 @@
     "crosscheck_status": "confirmed"
   },
   "tbx": {
-    "date": "2026-11-25",
-    "close": 29.059999465942383,
-    "prev_date": "2026-11-24",
-    "prev_close": 29.15999984741211,
-    "daily_pct": -0.34
+    "date": "2026-11-27",
+    "close": 29.056400299072266,
+    "prev_date": "2026-11-25",
+    "prev_close": 29.059999465942383,
+    "daily_pct": -0.01
   },
   "fx": {
     "rate": 1343.6,
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-11-25",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "crcl: CRCL cross-source close discrepancy: ChartExchange=48.13 Yahoo=48.21"
+  ]
 }
