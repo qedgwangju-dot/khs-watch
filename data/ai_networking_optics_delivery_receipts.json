@@ -194,15 +194,6 @@
     }
   },
   "history_cache": {
-    "44740663028:1": {
-      "checked_at_kst": "2026-11-20T22:45:27+09:00",
-      "completed": "2026-11-20T13:03:42+00:00",
-      "fingerprint": "28425a9b323de2234e96a352b0a89d7ae5824edfeb6f722119b69f496085ebe6",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-20T13:03:42+00:00"
-    },
     "44746806574:1": {
       "checked_at_kst": "2026-11-20T23:26:02+09:00",
       "completed": "2026-11-20T13:45:27+00:00",
@@ -211,11 +202,6 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-20T13:45:27+00:00"
-    },
-    "44748983942:1": {
-      "checked_at_kst": "2026-11-20T23:26:02+09:00",
-      "fingerprint": "b32c2cae7f9f0471466d0159cc241f9f3ab92889956c40f1a67ceaf552187999",
-      "outcome": "no_send"
     },
     "44753032465:1": {
       "checked_at_kst": "2026-11-21T00:12:09+09:00",
@@ -3864,6 +3850,16 @@
     "45936595611:1": {
       "checked_at_kst": "2026-11-27T13:14:07+09:00",
       "fingerprint": "3c4e2ae56960596dc43e7f94486b91e48948b04082ca9c04b811d0cf07191dae",
+      "outcome": "no_send"
+    },
+    "45938548575:1": {
+      "checked_at_kst": "2026-11-27T13:35:34+09:00",
+      "fingerprint": "459b0863796ecac77e66653ec51b3e369c48d0f8cb7ef28ed12b33321e1e93d3",
+      "outcome": "no_send"
+    },
+    "45940632355:1": {
+      "checked_at_kst": "2026-11-27T13:35:33+09:00",
+      "fingerprint": "05189fa3b7084c29daf8ca2949106bfee2e328ec462e8bd9de9c62b9fae7791c",
       "outcome": "no_send"
     }
   },
