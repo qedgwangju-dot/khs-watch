@@ -3,20 +3,22 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 1,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 64,
+    "google_news_rate_limit_429": 1,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 119,
+    "raw_items": 121,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -443,16 +445,6 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "vendor": "AI 생태계"
     },
-    "80d5e056c52fbac35cb75270": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-23T07:56:05.213766+00:00",
-      "published_at": "2026-10-23T07:40:00+00:00",
-      "severity": 3,
-      "source": "The Hacker News",
-      "title": "PHP2Shell Exploit Attempts Hit Millions as Attackers Try to Deploy Mirai Malware - The Hacker News",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRnJBWF9CM2ZZaDU4YU1tR0Z5MloxVDVqaUpsRWpSSXAtTzZnR0tJTGMwaklmTmtGS3B4WkxySmVTeWZxTDJreWwxdk1XNXRHWWlWNGc5SDNwMzc5M3B5QU9TdHlRcnlyVFVwVjdzZHkzUDhqdFd3bndiZl9MWnNPZTdzekI?oc=5",
-      "vendor": "PHP 재단"
-    },
     "81d35a0a15dc2621cc663ee8": {
       "category": "모델 비의도적 외부접근·사고 공개",
       "first_seen_at": "2026-11-14T04:42:20.962010+00:00",
@@ -872,5 +864,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T16:46:28+09:00"
+  "updated_at_kst": "2026-11-27T17:11:23+09:00"
 }
