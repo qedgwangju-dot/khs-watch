@@ -1001,7 +1001,7 @@
     "da0045c313780ccc504c4e76": {
       "title": "Enterprise SSD Cuts Pull NAND Price Drop to 2Q27 - TrendForce",
       "source": "TrendForce",
-      "published_kst": "2026-11-17T18:00:07+09:00",
+      "published_kst": "2026-11-17T17:00:00+09:00",
       "first_seen_kst": "2026-11-17T20:58:33+09:00"
     },
     "f71556f351f1a78116dd6168": {
@@ -1273,11 +1273,35 @@
       "source": "머니투데이",
       "published_kst": "2026-11-19T17:50:00+09:00",
       "first_seen_kst": "2026-11-26T21:41:05+09:00"
+    },
+    "d24fd35e431dc082a0eaa648": {
+      "title": "낸드 현물가 20% 급락…삼성·SK하이닉스 HBM이 방어선 - 자본시장뉴스",
+      "source": "자본시장뉴스",
+      "published_kst": "2026-11-27T09:18:31+09:00",
+      "first_seen_kst": "2026-11-27T13:22:56+09:00"
+    },
+    "51a851ef1c35655186da4f8e": {
+      "title": "Rankings of Top 10 Global SSD Module Brands for 2025",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-27T09:00:00+09:00",
+      "first_seen_kst": "2026-11-27T13:22:56+09:00"
+    },
+    "06182432cd486d59cfabb8dd": {
+      "title": "【Market View】Cuts to Chinese CSP Demand Weigh on Price Outlook, Slowing Memory Industry Revenue Growth in 2027, Says TrendForce - DRAMeXchange",
+      "source": "DRAMeXchange",
+      "published_kst": "2026-11-25T17:24:00+09:00",
+      "first_seen_kst": "2026-11-27T13:22:56+09:00"
+    },
+    "c2dd3fce01ac542560acba24": {
+      "title": "New DRAM Demand Concerns Mount, Raising Risk of Contract Price Declines in 2028",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-25T09:00:00+09:00",
+      "first_seen_kst": "2026-11-27T13:22:56+09:00"
     }
   },
-  "updated_at_kst": "2026-11-26T21:41:05+09:00",
-  "last_scan_count": 24,
-  "last_new_count": 3,
+  "updated_at_kst": "2026-11-27T13:22:56+09:00",
+  "last_scan_count": 25,
+  "last_new_count": 4,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1337,21 +1361,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-26T21:41:24+09:00",
+  "last_successful_delivery_kst": "2026-11-27T13:23:23+09:00",
   "telegram_message_ids": [
-    574
+    576
   ],
-  "telegram_message_id": 574,
+  "telegram_message_id": 576,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      574
+      576
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-26T21:41:24+09:00",
-    "alert_signature": "606b00c8fbce10532ef6c65297a2e008677217d638f95949fcb50dda72a540fa"
+    "confirmed_at_kst": "2026-11-27T13:23:23+09:00",
+    "alert_signature": "1ed613a151240aeb044fdf18d1ebfdbd554aad5b9f7155a54f84482024ed15c0"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1663,7 +1687,7 @@
     "published_model_date": "2026-11-13",
     "comparison_model_date": "2026-11-02",
     "publisher_probe": {
-      "checked_date": "2026-11-26",
+      "checked_date": "2026-11-27",
       "verified": false,
       "source_kind": "publisher_model_numeric_unverified"
     },
