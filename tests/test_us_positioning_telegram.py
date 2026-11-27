@@ -16,7 +16,42 @@ ALERT = """🇺🇸 <b>미국 포지셔닝 | 정정·보강</b>
 
 <b>한눈에 보기</b>
 • 반도체(SOX): 8,774.86pt | 1D -0.65%
-• NQ E-mini 순숏 10,928계약
+• 통합 기관: 순롱 84,381계약 | 주간 순포지션 변화 +10,486계약 · 순롱 확대
+• 통합 헤지펀드성: 순숏 12,468계약 | 주간 순포지션 변화 -25,358계약 · 순롱 → 순숏 전환
+• NQ E-mini: 순숏 10,928계약 · 1주 전 대비 순롱 13,967계약 → 순숏 10,928계약 전환
+  3년 순숏 16 / 총숏 12백분위 · 10년 순숏 31 / 총숏 28백분위
+
+① 기간 수익률과 현재 추세 | 2026-11-25 마감
+🟡 반도체 기간별 방향 혼재 · 주요지수 종합 확인 대기
+• SOX 8,774.86pt · 전일 -57.64pt (-0.65%)
+• 전일 종가 8,832.50pt | 1거래일 -0.65% | 3거래일 +4.36% | 5거래일 -9.10%
+• 1개월 전 대비: -18.60% · 하락
+• 3개월 전 대비: -24.28% · 하락
+• 나스닥100 26,046.90pt · 전일 -167.27pt (-0.64%)
+• 1일 -0.64% / 3일 +4.07% / 5일 -3.94%
+• 1개월 -10.05% / 3개월 -10.83%
+• S&P500 종가: 확인 대기
+• 1일 확인 대기 / 3일 확인 대기 / 5일 확인 대기
+
+② 실제 거래대금 | 미국 주식시장 전체
+• 2026-11-25 당일 1.1460조달러 (1,539.74조원)
+• 전일 대비 +825.61억달러 (+110.93조원) (+7.76%)
+• 5거래일 ↑ 증가 +30.63%
+• 1개월 ↑ 증가 +16.87%
+• 3개월 ↓ 감소 -7.70%
+
+③ 선물 | 2026-11-17 주간 · 계약
+• 나스닥100 통합: 기관 순롱 84,381계약 / 헤지펀드성 순숏 12,468계약
+<b>NQ E-mini 헤지펀드성 · 통합과 별도 집계</b>
+• 현재 순숏 10,928계약 · 참고 59.02억달러 (7.88조원)
+• 1주 전 대비: 순롱 13,967계약 → 순숏 10,928계약 전환
+  계약 수 변화의 동일가격 환산: 134.44억달러 (17.95조원)
+※ 참고금액: NDX 종가×20.00달러/pt. 거래대금·증거금 아님.
+
+④ 시장 확산·옵션 참고
+• 옵션 P/C(2026-11-25): 주식 0.64 / 지수 1.04 / 전체 0.98
+• 옵션 전체 거래량: 콜 8,707,205 / 풋 8,519,982계약 · 프리미엄 거래대금 미제공
+※ P/C=풋÷콜 거래량. 매수·매도 방향과 가격 반등을 확인한 값은 아님.
 <a href="https://github.com/qedgwangju-dot/khs-watch/actions/runs/12345">상세 수치·계산·출처</a>
 """
 
@@ -41,17 +76,34 @@ def tiny_png(width=1, height=1) -> bytes:
 
 
 class AlertImageContractTests(unittest.TestCase):
-    def test_source_html_is_preserved_in_a_korean_image_document(self):
+    def test_alert_is_reorganized_into_a_visual_korean_report(self):
         document = telegram.render_alert_document(ALERT)
-        self.assertIn(ALERT, document)
         self.assertIn('<html lang="ko">', document)
         self.assertIn("Noto Sans CJK KR", document)
+        self.assertIn('class="report-header"', document)
+        self.assertIn('class="summary-grid"', document)
+        self.assertIn('class="asset-card"', document)
+        self.assertIn('class="return-chart"', document)
+        self.assertIn('class="options-grid"', document)
+        self.assertNotIn(ALERT, document)
+        self.assertIn("2026-11-25", document)
+        self.assertIn("+4.36%", document)
+        self.assertIn("-9.10%", document)
+        self.assertIn("10년 순숏 31 / 총숏 28백분위", document)
+        self.assertIn("KRW 액면 환산은 확인 불가", document)
+        self.assertIn("17.95조원", document)
+        self.assertIn("확인 대기", document)
+        self.assertEqual(document.count('class="asset-card"'), 3)
         parsed = telegram.parse_alert_fragment(ALERT)
-        self.assertIn("NQ E-mini 순숏 10,928계약", parsed["visible_text"])
+        self.assertIn("NQ E-mini: 순숏 10,928계약", parsed["visible_text"])
         self.assertEqual(
             parsed["links"],
             ["https://github.com/qedgwangju-dot/khs-watch/actions/runs/12345"],
         )
+
+    def test_incomplete_section_contract_fails_closed_instead_of_making_a_text_poster(self):
+        with self.assertRaisesRegex(ValueError, "four numbered report sections"):
+            telegram.render_alert_document("🇺🇸 <b>미국 포지셔닝</b>\n\n<b>한눈에 보기</b>\n• SOX: 100pt")
 
     def test_fragment_rejects_unbalanced_and_untrusted_html(self):
         for text in ("<b>unterminated", "<script>alert(1)</script>", '<a href="https://evil.example/x">x</a>'):
