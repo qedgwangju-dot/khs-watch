@@ -3,30 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Critical cyber… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"training pause… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) data exfiltration netwo… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) (\"affected part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 9,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 56,
-    "google_news_rate_limit_429": 9,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 109,
+    "raw_items": 117,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -802,16 +792,6 @@
       "title": "CYFIRMA PHP2Shell advisory: 216 candidate target hosts and 21 active scanning nodes",
       "url": "https://www.cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure/",
       "vendor": "CYFIRMA"
-    },
-    "f8c4d7f740fcc6cd505c7c62": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-23T13:29:22.225144+00:00",
-      "published_at": "2026-10-23T12:45:52+00:00",
-      "severity": 3,
-      "source": "SecurityWeek",
-      "title": "Mirai Botnet Operators Join PHP2Shell Attacks as ASLR Bypass Exploits Emerge - SecurityWeek",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOMkxRSmMtek9DTG9TdjhLeXF4dHF5SDVWTVo3M2JkS1g1cVhfZjBvXzZEbWx0YmNDeXNRRXNLVHI1ckhWdTVGSGZmUmFLSExDekFFUUlYNVhjRXZCbVpLV3JjalEtOU5PakhVVW1nZ241YlQ4NDVsZnY5TFZfdUR1bFZ1SmpxZjZUSEZycURCTXp1LTY4VEJsLTQzU083ZWhaTGs2alRmXzhTd9IBrwFBVV95cUxOc0RXRi1EX0VZQ3hXRE1lNVptTURiX0ZFengtQnhGZmVLN3lMenVqbWxWOUlxbjBKWGlZR0ZwY1Rwbk9Pd2JrMy1lLWtvQlc4OUZveG5DVVNNWFVyMi1uYnJQd1NLNmU1NDljTkRzX2l6TjFkVmpSWnlOT1o3YVBHcmNpODktOF8zYkl2LU4xeHVCaURvVWY4YVpUQ2FQdHFkM0ZXX1N4UmNnQWdQaWdj?oc=5",
-      "vendor": "PHP 재단"
     }
   },
   "tracked_security_cases": {
@@ -852,5 +832,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T22:05:53+09:00"
+  "updated_at_kst": "2026-11-27T22:38:19+09:00"
 }
