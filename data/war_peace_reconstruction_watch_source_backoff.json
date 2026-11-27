@@ -4,37 +4,37 @@
     "truthsocial.com": {
       "reason": "HTTPError",
       "code": 403,
-      "observed_epoch": 1795737359.4651806,
-      "retry_at_epoch": 1795758959.4651806,
-      "denials": 3
+      "observed_epoch": 1795759638.942175,
+      "retry_at_epoch": 1795781238.942175,
+      "denials": 4
     },
     "apnews.com": {
       "reason": "HTTPError",
       "code": 403,
-      "observed_epoch": 1795737362.816088,
-      "retry_at_epoch": 1795758962.816088,
-      "denials": 3
+      "observed_epoch": 1795759683.6869237,
+      "retry_at_epoch": 1795781283.6869237,
+      "denials": 4
     },
     "reuters.com": {
       "reason": "HTTPError",
       "code": 401,
-      "observed_epoch": 1795737362.916398,
-      "retry_at_epoch": 1795758962.916398,
-      "denials": 3
+      "observed_epoch": 1795759684.0697348,
+      "retry_at_epoch": 1795781284.0697348,
+      "denials": 4
     },
     "api.gdeltproject.org": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795737372.2991843,
-      "retry_at_epoch": 1795744572.4930558,
-      "denials": 4
+      "observed_epoch": 1795759695.3140464,
+      "retry_at_epoch": 1795766895.3584752,
+      "denials": 5
     },
     "news.google.com": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795737359.4439285,
-      "retry_at_epoch": 1795744559.4439285,
-      "denials": 5
+      "observed_epoch": 1795759680.5499165,
+      "retry_at_epoch": 1795766880.5499165,
+      "denials": 6
     }
   }
 }
