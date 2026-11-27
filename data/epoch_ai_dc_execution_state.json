@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-11-28T05:04:46+09:00",
+  "as_of_kst": "2026-11-28T06:18:18+09:00",
   "site_count": 77,
-  "current_it_mw": 12640.3,
-  "planned_it_mw_2030": 33128.3,
-  "remaining_it_mw": 20488.0,
-  "execution_ratio_pct": 38.16,
+  "current_it_mw": 12940.3,
+  "planned_it_mw_2030": 33373.3,
+  "remaining_it_mw": 20433.0,
+  "execution_ratio_pct": 38.77,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -142,8 +142,8 @@
       "current": 340.0
     },
     "Colossus 2": {
-      "planned": 1531.0,
-      "current": 946.0
+      "planned": 1776.0,
+      "current": 1246.0
     },
     "Core42 Lake Mariner": {
       "planned": 58.0,
