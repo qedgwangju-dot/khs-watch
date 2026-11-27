@@ -1,11 +1,5 @@
 {
-  "pending": {
-    "source|6041eebcee3999738d1e94c1b068c3a6": {
-      "run_id": "46018726262",
-      "attempted_utc": "2026-11-27T14:49:18+00:00",
-      "status": "unconfirmed"
-    }
-  },
+  "pending": {},
   "delivered": {
     "source|166d6124867c787b073a2d783f59c567": {
       "run_id": "45144713464",
@@ -75,6 +69,13 @@
       "confirmed_utc": "2026-11-27T09:37:22+00:00",
       "message_ids": [
         3941
+      ]
+    },
+    "source|6041eebcee3999738d1e94c1b068c3a6": {
+      "run_id": "46018726262",
+      "confirmed_utc": "2026-11-27T14:49:20+00:00",
+      "message_ids": [
+        3943
       ]
     }
   }
