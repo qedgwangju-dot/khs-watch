@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "unconfirmed",
+  "status": "confirmed",
   "attempt_id": "58125990513616a61f8f36bc4b5ef61e5762d73a8cd59a9b60967fa37ef51618",
   "attempt_count": 2,
   "attempted_at_utc": "2026-11-27T05:07:20.533401+00:00",
@@ -14,5 +14,8 @@
   "image_sha256": "3f87e5d38957bccc81671b9be49ed50de230c712135a621fa7be757a641c381f",
   "image_width": 1280,
   "image_height": 3294,
-  "image_bytes": 785424
+  "image_bytes": 785424,
+  "confirmed_at_utc": "2026-11-27T05:07:26.710082+00:00",
+  "telegram_message_id": 3924,
+  "photo_sizes_returned": 5
 }

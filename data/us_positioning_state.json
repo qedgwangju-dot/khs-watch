@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "12ec306902e39bb73beea2ef27fd35da7da4c21b9140ca7b636d033af5b8c11b",
+    "Nasdaq SOX|sox": "00a078b51590e2a418948361ada88f17b700bd7e2b10d37cd38584600912a7c4",
     "Cboe|options": "149eb04bbad4d5f29c8deb77776a53af8556b5a543a98ed8d24761d14687431f",
     "CFTC|cot": "3d173fc52715d9aa837ca85d48a5655f1df70ce8f6c4db6313305f6ea006c878",
     "미국 주요지수·시장 확산·옵션 과거 비교|context": "22478c6715e7efe71b7722cb11c1366205e35bf87c9e4b7df36aaa7e660b451c"
@@ -18,12 +18,12 @@
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
         "pct": -0.6525898669685781,
         "d1_pct": -0.6525898669685781,
-        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-16&todate=2026-11-26&limit=200",
+        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-15&todate=2026-11-25&limit=200",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
         "crosscheck_close_diff": -0.0003515624994179234,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-11-26",
+        "expected_completed_session": "2026-11-25",
         "d3_pct": 4.35590883392587,
         "d5_pct": -9.09517933541586,
         "month_windows": {
@@ -58,7 +58,7 @@
             "return_pct": -24.27658171701168
           }
         },
-        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-16&todate=2026-11-26&limit=200",
+        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-15&todate=2026-11-25&limit=200",
         "price_path": {
           "status": "verified",
           "end_date": "2026-11-25",
@@ -504,8 +504,8 @@
           ]
         }
       },
-      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-16&todate=2026-11-26&limit=200",
-      "fingerprint": "12ec306902e39bb73beea2ef27fd35da7da4c21b9140ca7b636d033af5b8c11b"
+      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-15&todate=2026-11-25&limit=200",
+      "fingerprint": "00a078b51590e2a418948361ada88f17b700bd7e2b10d37cd38584600912a7c4"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -34476,7 +34476,7 @@
       "fingerprint": "22478c6715e7efe71b7722cb11c1366205e35bf87c9e4b7df36aaa7e660b451c"
     }
   },
-  "updated_at_kst": "2026-11-27T11:28:08.366073+09:00",
+  "updated_at_kst": "2026-11-27T14:07:07.985950+09:00",
   "presentation_version": "us-positioning-telegram-image-20261127-v1",
   "daily_digest_sent_date_kst": "2026-11-27",
   "last_verified_context_fx": {
