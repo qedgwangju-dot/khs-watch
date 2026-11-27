@@ -1,26 +1,26 @@
 {
   "active": true,
   "first_seen_at": "2026-11-01T10:44:00+00:00",
-  "last_seen_at": "2026-11-26T23:59:36+00:00",
+  "last_seen_at": "2026-11-27T06:09:43+00:00",
   "last_warning_sent_at": "2026-11-26T15:26:03+00:00",
   "last_failure": {
     "query_total": 230,
-    "query_complete": 76,
-    "query_incomplete": 154,
+    "query_complete": 121,
+    "query_incomplete": 109,
     "statuses": {
-      "error": 150,
-      "ok": 76,
-      "partial": 4
+      "error": 104,
+      "ok": 121,
+      "partial": 5
     },
     "causes": {
       "HTTP 401 인증 거부": 1,
       "HTTP 403 접근 거부": 2,
       "HTTP 429 요청 제한": 3,
-      "대체 원천의 범위 미확인": 4,
+      "대체 원천의 범위 미확인": 5,
       "수집 시간 초과": 2,
-      "원천 접근 제한으로 조회 중단": 148
+      "원천 접근 제한으로 조회 중단": 102
     }
   },
-  "source_run_id": "45913670003",
-  "source_code_sha": "e669690500c944d18456ce01c45b79eb21a6acf4"
+  "source_run_id": "45949694065",
+  "source_code_sha": "1b4a0c20b74b9de531674d9cdd2cb1dcee9bf27b"
 }
