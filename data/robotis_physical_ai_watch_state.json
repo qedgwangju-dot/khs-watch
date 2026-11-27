@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-27T00:47:22.044280+00:00",
+  "updated_at": "2026-11-27T08:17:48.256312+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1043,30 +1043,35 @@
     "7ad2ab80a9ca63d4e1d3b4b726977356bc9f2612daf11d03d15a45c590d8d567",
     "9d9fb28028d84888d0c8b9d76c0c3442c341153f8db64050e0223fecaddfcb00",
     "f38388c6725ecaae15f234562738278ffdf46e45666c11593397e56fc38045ec",
-    "dfa387bf603f5482b05e8e7d1802dc881d826511a957ad5c9644a18457eda48a"
+    "dfa387bf603f5482b05e8e7d1802dc881d826511a957ad5c9644a18457eda48a",
+    "b9f84138b7eaf54e83da1ed4fded9b5b371247f0d099f0a1086fd3c9cb520c42",
+    "e8f8d53243855c813427d6850d975989441737c0c6076c6f275e0084417a88f9",
+    "05d53a8da4b739efba7c173325b752e8cc1801dc73143f418c2beca6f70581ea",
+    "1293585835f383aeafaef101e8a1fbce50f2c6acc507de047f672638a397d0e9",
+    "2767bb9708f1ec8773af172dd586edc052b11cddbf748d614f6a97ff1aeefe2a",
+    "ea60e0171983c0710c623d4acf4794ba6ce6b3ded6a3a8867c73502c694a4c2a",
+    "94c52cb5b0047e5c203ae5d02491e54c3b3b16249d3509332e227d2adc5709ef",
+    "cf93bfa5f230575f436189533f52cb39cd79d5ff4ccf92eef2ba585c8042ca9f"
   ],
   "last_selected": [
-    "f38388c6725ecaae15f234562738278ffdf46e45666c11593397e56fc38045ec",
-    "dfa387bf603f5482b05e8e7d1802dc881d826511a957ad5c9644a18457eda48a"
+    "b9f84138b7eaf54e83da1ed4fded9b5b371247f0d099f0a1086fd3c9cb520c42",
+    "e8f8d53243855c813427d6850d975989441737c0c6076c6f275e0084417a88f9",
+    "05d53a8da4b739efba7c173325b752e8cc1801dc73143f418c2beca6f70581ea",
+    "1293585835f383aeafaef101e8a1fbce50f2c6acc507de047f672638a397d0e9",
+    "2767bb9708f1ec8773af172dd586edc052b11cddbf748d614f6a97ff1aeefe2a",
+    "ea60e0171983c0710c623d4acf4794ba6ce6b3ded6a3a8867c73502c694a4c2a",
+    "94c52cb5b0047e5c203ae5d02491e54c3b3b16249d3509332e227d2adc5709ef",
+    "cf93bfa5f230575f436189533f52cb39cd79d5ff4ccf92eef2ba585c8042ca9f"
   ],
   "groups": [
     "ess_battery",
-    "eugene_20261123_humanoid_lifecycle",
+    "lg_factory_loop",
     "lg_robotics",
     "robotis",
-    "robotis_excess_demand"
+    "robotis_excess_demand",
+    "samsung_robot_scale"
   ],
   "delivery_history": [
-    {
-      "run_id": 45163204918,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-23T11:14:24.223713+00:00"
-    },
     {
       "run_id": 45170833591,
       "outcome": "sent",
@@ -1328,45 +1333,136 @@
         false
       ],
       "state_timestamp_utc": "2026-11-27T00:47:22.044280+00:00"
+    },
+    {
+      "run_id": 45964428340,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "05d53a8da4b739efba7c173325b752e8cc1801dc73143f418c2beca6f70581ea",
+        "1293585835f383aeafaef101e8a1fbce50f2c6acc507de047f672638a397d0e9",
+        "2767bb9708f1ec8773af172dd586edc052b11cddbf748d614f6a97ff1aeefe2a",
+        "94c52cb5b0047e5c203ae5d02491e54c3b3b16249d3509332e227d2adc5709ef",
+        "b9f84138b7eaf54e83da1ed4fded9b5b371247f0d099f0a1086fd3c9cb520c42",
+        "cf93bfa5f230575f436189533f52cb39cd79d5ff4ccf92eef2ba585c8042ca9f",
+        "e8f8d53243855c813427d6850d975989441737c0c6076c6f275e0084417a88f9",
+        "ea60e0171983c0710c623d4acf4794ba6ce6b3ded6a3a8867c73502c694a4c2a"
+      ],
+      "message_ids": [
+        414,
+        415
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-27T08:17:48.256312+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45918714734,
+    "run_id": 45964428340,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "dfa387bf603f5482b05e8e7d1802dc881d826511a957ad5c9644a18457eda48a",
-      "f38388c6725ecaae15f234562738278ffdf46e45666c11593397e56fc38045ec"
+      "05d53a8da4b739efba7c173325b752e8cc1801dc73143f418c2beca6f70581ea",
+      "1293585835f383aeafaef101e8a1fbce50f2c6acc507de047f672638a397d0e9",
+      "2767bb9708f1ec8773af172dd586edc052b11cddbf748d614f6a97ff1aeefe2a",
+      "94c52cb5b0047e5c203ae5d02491e54c3b3b16249d3509332e227d2adc5709ef",
+      "b9f84138b7eaf54e83da1ed4fded9b5b371247f0d099f0a1086fd3c9cb520c42",
+      "cf93bfa5f230575f436189533f52cb39cd79d5ff4ccf92eef2ba585c8042ca9f",
+      "e8f8d53243855c813427d6850d975989441737c0c6076c6f275e0084417a88f9",
+      "ea60e0171983c0710c623d4acf4794ba6ce6b3ded6a3a8867c73502c694a4c2a"
     ],
     "message_ids": [
-      413
+      414,
+      415
     ],
     "recipient_verified": true,
     "recipient_checks": [
+      "numeric_id_equal",
       "numeric_id_equal"
     ],
     "message_topic_present": [
+      false,
       false
     ],
-    "state_timestamp_utc": "2026-11-27T00:47:22.044280+00:00"
+    "state_timestamp_utc": "2026-11-27T08:17:48.256312+00:00"
   },
   "last_selected_events": [
     {
-      "key": "f38388c6725ecaae15f234562738278ffdf46e45666c11593397e56fc38045ec",
-      "group": "ess_battery",
-      "title": "SK온, ESS 수주 영토 확장…국내 3차 ESS 443㎿ 확보 - 파이낸셜뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBIcGYzZF9uQnN4WV9NcTQ3N0NhMnVwbVZXVzZTcE9oM2xVcW9xemhZSVkxSUx5cWZLT081TUNpZEs2R01oMHRFQnFuQU5hWThRbmJnNmZERjNPZw?oc=5",
+      "key": "b9f84138b7eaf54e83da1ed4fded9b5b371247f0d099f0a1086fd3c9cb520c42",
+      "group": "robotis",
+      "title": "에이피알, 틱톡숍서 맞붙던 경쟁사 품었다…로보티즈, 내년 생산능력 2배 넘게 키운다 [株토피아] - 파이낸셜뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8yQ0lIWkR3a3NsQ056Z2RqdW1yZ29kdGNBcC1mTGE5NzREcmZTekRqbFJiUGx6QTN3SkR0dHVzcXMxWjJnQ3dPOVZSLUl0OXo1X1ZOMXVXVnBCQQ?oc=5",
       "source": "파이낸셜뉴스",
       "source_url": "https://www.fnnews.com",
-      "published": "2026-11-27T00:22:36+00:00"
+      "published": "2026-11-27T02:09:11+00:00"
     },
     {
-      "key": "dfa387bf603f5482b05e8e7d1802dc881d826511a957ad5c9644a18457eda48a",
+      "key": "e8f8d53243855c813427d6850d975989441737c0c6076c6f275e0084417a88f9",
       "group": "ess_battery",
-      "title": "삼성SDI, '정부 ESS 3차전' 63% 수주…SK온 37% 확보 - 지디넷코리아",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9LRUZhR3RNU0JHMFgzR05BeDdqUWpJdUctd2NRcHJkMnZvNXZKOG5jdlFVcFF5ejhiUXZBbUs1ek5SMFdtTm16TXhjUVhzbnEzOXhTWGJR?oc=5",
-      "source": "지디넷코리아",
-      "source_url": "https://zdnet.co.kr",
-      "published": "2026-11-27T00:22:29+00:00"
+      "title": "삼성SDI, 역대 최대 ESS 입찰서 63% 수주…SK온 37% - 한국경제TV",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1kbU9XLXFwRFdIZzBMOVR3cTJzN21nQTRaN0VNN1RWVnQzS3o1VUpaS2xMSGpoMkxyZHRyN0pubEkxSkRlS2pUd19wSGFVMWl2dk14OUpmdkJPUnFYZ003aENoeXdzRzh6TllCS1hPa0paRnNabDVF?oc=5",
+      "source": "한국경제TV",
+      "source_url": "https://www.wowtv.co.kr",
+      "published": "2026-11-27T04:24:00+00:00"
+    },
+    {
+      "key": "05d53a8da4b739efba7c173325b752e8cc1801dc73143f418c2beca6f70581ea",
+      "group": "samsung_robot_scale",
+      "title": "삼성전자, 2028년 반도체 공장에 로봇 투입⋯무인 생산체계 구축 추진 - 엠투데이",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9UTkczT1lVQm1xMWVVVkVZcjVrTDcta0s2blU4bEN6SXEtdnlmMXFlWW9XVDlFSDZlbjg1RkRuVzZ5VEhoX09BTGd5LUpPQWVuRU9uOFNsUVZWZ2FPa3NkU1R1ZUJsWHVCODJoTk1lQQ?oc=5",
+      "source": "엠투데이",
+      "source_url": "https://www.autodaily.co.kr",
+      "published": "2026-11-27T05:45:46+00:00"
+    },
+    {
+      "key": "1293585835f383aeafaef101e8a1fbce50f2c6acc507de047f672638a397d0e9",
+      "group": "lg_factory_loop",
+      "title": "류재철號 LG전자, '로봇 사업화' 시동··· 스마트팩토리 투입 ‘속도’ - 시사저널e",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1Fc2FYLWRxT2o2REtMeWl3dW9IVlZFbjZYUkF5WXlIaWR0UkViTmlEM0ZfdVFMOHV4V0J4RFBMcVN1a3B5RTEwczdZclBndGZhQXdWbllsZloyTTI3bkFCQTNXZ01yZlNDWFFyMTlDS2VPRDNWbmfSAXZBVV95cUxNRXNhWC1kcU9qNkRLTHlpd3VvSFZWRW42WFJBeVl5SGlkdFJFYk5pRDNGX3VRTDh1eFdCeERQTHFTdWtweUUxMHM3WXJQZ3RmYUF3Vm5ZbGZaMk0yN25BQkEzV2dNcmZTQ1hRcjE5Q0tlT0QzVm5n?oc=5",
+      "source": "시사저널e",
+      "source_url": "https://www.sisajournal-e.com",
+      "published": "2026-11-27T01:48:49+00:00"
+    },
+    {
+      "key": "2767bb9708f1ec8773af172dd586edc052b11cddbf748d614f6a97ff1aeefe2a",
+      "group": "ess_battery",
+      "title": "LG엔솔 빠진 2조원대 ESS 수주전…삼성SDI 과반 확보 - 디일렉",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5PeWJkQnF4ZkRYM1UzM0FRTWszb0ZXTFVGYmJxR0ZCMEdqMTBIb3FKU3h0ZUFfU0kyTVQtRFE5NDdsbVExTk50cXpSWWF3aHZhQlRVNWpBcTlnV1pHcjZROW05Y3o4UQ?oc=5",
+      "source": "디일렉",
+      "source_url": "https://www.thelec.kr",
+      "published": "2026-11-27T02:02:44+00:00"
+    },
+    {
+      "key": "ea60e0171983c0710c623d4acf4794ba6ce6b3ded6a3a8867c73502c694a4c2a",
+      "group": "ess_battery",
+      "title": "‘2조원’ 역대 최대 ESS 입찰…삼성SDI 63%·SK온 37% 수주 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNenAzZDhJY3BPSUlxTktjQ3pRUnV5Smw3elVWaklqUUpiT1E0Q0JDaElZLTdudVJleDZ1MDBOd3V5MzR1TjFWN1VOQWFtcmI1SzNNMDVLS0RONE5LMjhwQXVfcklxOTUxaG5xMXBEQ3R2NWdpZEtHVS1NQjRtaUp2ag?oc=5",
+      "source": "이데일리",
+      "source_url": "https://www.edaily.co.kr",
+      "published": "2026-11-27T01:31:07+00:00"
+    },
+    {
+      "key": "94c52cb5b0047e5c203ae5d02491e54c3b3b16249d3509332e227d2adc5709ef",
+      "group": "ess_battery",
+      "title": "[포커스] 삼성SDI 3차 ESS 물량 63% 확보…누적 수주 비중은? - 투데이에너지",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hUFJHY2tkWjd4QVgycjNqRG55VVZJeE9DZkFtR0tRN0V4enJCMmZidlFjMWRnWkZ1aGMxYVc5ZTQ0Nl90R1lpT0xiYkxlb19PMHgyTjRuWmx0UjVQRkRyaW5wcFM3dDNJLTNsNA?oc=5",
+      "source": "투데이에너지",
+      "source_url": "http://www.todayenergy.kr",
+      "published": "2026-11-27T07:37:10+00:00"
+    },
+    {
+      "key": "cf93bfa5f230575f436189533f52cb39cd79d5ff4ccf92eef2ba585c8042ca9f",
+      "group": "ess_battery",
+      "title": "삼성SDI, ESS 수주 ‘선두 탈환’…SK온도 물량 확대 - 시사저널",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1aR000R0NWOWVrLTNUQlNCSnJLZFhSdnkyVldId3l5TU9HQ2xrMWEzaGc5OHdEUmltejFCS1R3RlF0bHZMSWNLMnFwOWFFSkttM0YxaEFYUGhjb212Ynh0Q2NrblRzV2pJMG5vdHZ2VdIBc0FVX3lxTE13V19RY0pUY3U4b3djVlR1X2xBclJ0NF9xYU4tUi1sdDZ5WmlsRFdaSmdsSE1FZnQwZjVVV3E5eUFDZDlmdG1vV2VRZFBZdmdGci1qb0d6MGozeEpWZTNBZHZtMHAxUmVfMm16Smd1TWFBUlE?oc=5",
+      "source": "시사저널",
+      "source_url": "https://www.sisajournal.com",
+      "published": "2026-11-27T06:42:00+00:00"
     }
   ],
   "message_corrections": {
