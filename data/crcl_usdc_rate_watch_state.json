@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-28T06:33:09+09:00",
+  "updated_at_kst": "2026-11-28T06:51:13+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -83,6 +83,7 @@
   "crcl_last_alerted_close_date": "2026-11-27",
   "correction_pending": false,
   "errors": [
-    "crcl: CRCL cross-source close discrepancy: ChartExchange=49.44 Yahoo=49.29"
+    "crcl: CRCL cross-source close discrepancy: ChartExchange=49.44 Yahoo=49.29",
+    "fx: 2026-11-27 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
   ]
 }
