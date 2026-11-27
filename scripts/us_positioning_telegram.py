@@ -14,6 +14,7 @@ import html
 from html.parser import HTMLParser
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import struct
@@ -201,7 +202,11 @@ def _require_korean_font():
 
 
 def render_alert_document(fragment: str) -> str:
-    parse_alert_fragment(fragment)
+    parsed = parse_alert_fragment(fragment)
+    report = _split_visual_report(parsed["visible_text"])
+    header_date = _report_date(report)
+    summary_cards = _render_summary_cards(report["summary"])
+    sections = _render_report_sections(report["sections"])
     return f"""<!doctype html>
 <html lang="ko">
 <head>
@@ -209,33 +214,443 @@ def render_alert_document(fragment: str) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {{ box-sizing: border-box; }}
-html, body {{ margin: 0; padding: 0; background: #edf2f8; }}
+html, body {{ margin: 0; padding: 0; background: #f1f5fa; }}
 body {{
   width: {VIEWPORT_WIDTH}px;
-  padding: 34px 0;
-  color: #172033;
+  padding: 0 0 24px;
+  color: #17243a;
   font-family: "Noto Sans CJK KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
 }}
 main {{
-  width: 1160px;
+  width: 1200px;
   margin: 0 auto;
-  padding: 52px 58px;
-  border: 1px solid #dbe3ee;
-  border-radius: 22px;
-  background: #ffffff;
-  box-shadow: 0 12px 36px rgba(26, 45, 71, .10);
-  font-size: 25px;
-  line-height: 1.56;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: keep-all;
+  overflow: hidden;
+  background: #f1f5fa;
 }}
-b {{ color: #0d2745; font-weight: 750; }}
-a {{ color: #125e9a; text-decoration: underline; overflow-wrap: anywhere; }}
+.report-header {{ padding: 32px 44px 24px; color: #fff; background: #142844; }}
+.eyebrow {{ color: #b8cbe3; font-size: 16px; font-weight: 700; letter-spacing: .08em; }}
+h1 {{ margin: 7px 0 4px; font-size: 38px; line-height: 1.2; font-weight: 800; }}
+.report-date {{ color: #cad8e9; font-size: 20px; }}
+.header-pills {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }}
+.header-pill {{ padding: 13px 18px; border-radius: 13px; color: #17304d; background: #e5edf7; font-size: 21px; font-weight: 750; }}
+.header-pill.warn {{ color: #81450b; background: #ffe5c8; }}
+.content {{ padding: 22px 34px 28px; }}
+.block-title {{ margin: 0 0 14px; font-size: 25px; font-weight: 800; color: #142844; }}
+.summary-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }}
+.summary-card {{ min-height: 94px; padding: 15px 18px; border: 1px solid #e5eaf1; border-radius: 15px; background: #fff; box-shadow: 0 3px 10px rgba(25, 45, 70, .045); }}
+.summary-label {{ margin-bottom: 6px; color: #59708c; font-size: 17px; font-weight: 700; }}
+.summary-value {{ color: #182a43; font-size: 21px; line-height: 1.35; font-weight: 750; overflow-wrap: anywhere; }}
+.summary-extra {{ margin-top: 7px; color: #60758c; font-size: 13px; line-height: 1.4; }}
+.section-card {{ margin-top: 15px; padding: 19px 20px 16px; border: 1px solid #e3eaf2; border-radius: 17px; background: #fff; box-shadow: 0 3px 10px rgba(25, 45, 70, .045); }}
+.section-head {{ display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }}
+.section-head h2 {{ margin: 0; color: #142844; font-size: 25px; line-height: 1.28; }}
+.section-tag {{ flex: 0 0 auto; padding: 8px 13px; border-radius: 10px; background: #eaf0f7; color: #355271; font-size: 15px; font-weight: 750; }}
+.asset-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }}
+.asset-card {{ padding: 15px 15px 13px; border: 1px solid #e6ecf3; border-radius: 14px; background: #fbfcfe; }}
+.asset-title {{ margin: 0 0 10px; color: #1b2d45; font-size: 18px; line-height: 1.35; font-weight: 800; }}
+.chart-caption {{ margin: 0 0 5px; color: #718198; font-size: 12px; font-weight: 700; }}
+.return-chart {{ display: grid; grid-template-columns: 1fr; row-gap: 6px; margin: 6px 0 10px; }}
+.return-row {{ display: grid; grid-template-columns: 33px minmax(65px, 1fr) 62px; align-items: center; gap: 6px; font-size: 12px; }}
+.return-label {{ color: #5c7087; font-weight: 700; }}
+.bar-track {{ position: relative; height: 11px; border-radius: 7px; background: #edf1f6; }}
+.bar-track:after {{ position: absolute; top: -3px; bottom: -3px; left: 50%; width: 2px; content: ""; background: #9aaabd; }}
+.bar {{ position: absolute; top: 0; height: 11px; border-radius: 7px; }}
+.bar.pos {{ left: 50%; background: #25846a; }}
+.bar.neg {{ right: 50%; background: #c9515a; }}
+.bar-value {{ text-align: right; color: #344860; font-variant-numeric: tabular-nums; font-weight: 750; }}
+.pending-chart {{ padding: 12px; border-radius: 10px; background: #f1f4f8; color: #697b90; font-size: 15px; font-weight: 700; }}
+.data-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 9px 0 12px; }}
+.data-card {{ padding: 14px 15px; border-radius: 12px; background: #f5f8fc; }}
+.data-label {{ color: #62768e; font-size: 15px; font-weight: 700; }}
+.positive {{ color: #14785d; }} .negative {{ color: #b53e4e; }} .neutral {{ color: #3a5e83; }}
+.rows {{ display: grid; gap: 7px; margin-top: 10px; }}
+.report-row {{ padding: 9px 12px; border-radius: 9px; background: #f7f9fc; color: #3c4f67; font-size: 15px; line-height: 1.42; overflow-wrap: anywhere; }}
+.report-row.note {{ background: #eef3f8; color: #5f7084; font-size: 13px; }}
+.report-row.emphasis {{ color: #1b2d45; font-weight: 700; }}
+.options-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 8px 0 14px; }}
+.option-card {{ padding: 14px 16px; border: 1px solid #e5ebf2; border-radius: 12px; background: #f7f9fc; }}
+.option-label {{ color: #60758e; font-size: 15px; font-weight: 700; }}
+.option-value {{ margin: 4px 0 9px; color: #1b2d45; font-size: 27px; font-weight: 800; font-variant-numeric: tabular-nums; }}
+.option-track {{ position: relative; height: 9px; border-radius: 6px; background: #e6edf5; }}
+.option-track:after {{ position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; content: ""; background: #526c88; }}
+.option-dot {{ position: absolute; top: 0; width: 9px; height: 9px; border-radius: 50%; background: #356b9f; }}
+.turnover-hero {{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0 13px; }}
+.hero-card {{ padding: 16px 18px; border-radius: 13px; background: #f4f7fb; }}
+.hero-label {{ color: #667b94; font-size: 14px; font-weight: 700; }}
+.hero-value {{ margin-top: 4px; color: #172a43; font-size: 25px; line-height: 1.25; font-weight: 800; font-variant-numeric: tabular-nums; }}
+.period-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; margin: 10px 0 12px; }}
+.period-card {{ padding: 14px 15px; border: 1px solid #e4eaf2; border-radius: 12px; background: #fff; }}
+.period-title {{ color: #62758d; font-size: 14px; font-weight: 750; }}
+.period-value {{ margin: 4px 0 8px; font-size: 24px; line-height: 1.2; font-weight: 850; font-variant-numeric: tabular-nums; }}
+.period-amount {{ color: #344860; font-size: 13px; line-height: 1.45; font-weight: 650; }}
+.period-dates {{ margin-top: 6px; color: #75849a; font-size: 11px; line-height: 1.35; }}
+.futures-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }}
+.futures-card {{ padding: 14px 16px; border: 1px solid #e5ebf2; border-radius: 12px; background: #f8fafc; }}
+.futures-title {{ color: #667b94; font-size: 14px; font-weight: 750; }}
+.futures-value {{ margin-top: 5px; color: #1b2d45; font-size: 17px; line-height: 1.42; font-weight: 750; }}
+.futures-detail {{ margin-top: 5px; color: #5e7087; font-size: 13px; line-height: 1.42; }}
+.breadth-card {{ margin: 9px 0 12px; padding: 15px 17px; border-radius: 12px; background: #f5f8fc; }}
+.breadth-title {{ margin-bottom: 5px; color: #647991; font-size: 14px; font-weight: 750; }}
+.breadth-values {{ color: #19304c; font-size: 20px; font-weight: 800; }}
+.metric-pair {{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }}
+.metric-pair .data-card {{ min-width: 0; }}
+.footer-note {{ margin-top: 17px; padding: 14px 16px; border-radius: 12px; background: #e8eef6; color: #52667f; font-size: 13px; line-height: 1.45; }}
+.source-link {{ margin-top: 16px; color: #1c5f99; font-size: 16px; font-weight: 750; }}
 </style>
 </head>
-<body><main>{fragment}</main></body>
+<body><main>
+  <header class="report-header">
+    <div class="eyebrow">미국 시장 포지셔닝 · {html.escape(report['edition'] or '일일 요약')}</div>
+    <h1>{html.escape(report['title'])}</h1>
+    <div class="report-date">{html.escape(header_date or '확정 자료 기준일은 본문 참고')}</div>
+    {report['header_pills']}
+  </header>
+  <div class="content">
+    <div class="block-title">한눈에 보기</div>
+    {summary_cards}
+    {sections}
+    <div class="footer-note">수치의 단위·기준일·환산 가정은 각 카드의 주석을 따릅니다. 선물 계약·거래활동·옵션 비율은 실제 현금 유입·유출이나 가격 방향을 단독으로 확정하지 않습니다.</div>
+    <div class="source-link">상세 수치 · 계산 · 원문은 Telegram 캡션 링크에서 확인</div>
+  </div>
+</main></body>
 </html>"""
+
+
+def _split_visual_report(visible_text: str) -> dict:
+    lines = [line.strip() for line in visible_text.splitlines() if line.strip()]
+    if not lines:
+        raise ValueError("US positioning visual report has no visible text")
+    title_parts = lines[0].replace("🇺🇸", "").strip().split("|", 1)
+    report = {
+        "title": title_parts[0].strip(),
+        "edition": title_parts[1].strip() if len(title_parts) > 1 else "",
+        "summary": [],
+        "sections": [],
+        "header_pills": [],
+    }
+    current = None
+    in_summary = False
+    for line in lines[1:]:
+        if line == "한눈에 보기":
+            in_summary = True
+            current = None
+            continue
+        match = re.match(r"^([①②③④])\s*(.+)$", line)
+        if match:
+            in_summary = False
+            current = {"marker": match.group(1), "title": match.group(2), "lines": []}
+            report["sections"].append(current)
+            continue
+        if current is not None:
+            current["lines"].append(line)
+        elif in_summary:
+            report["summary"].append(line)
+    if not report["sections"]:
+        raise ValueError("US positioning image requires its four numbered report sections")
+    report["header_pills"] = _render_header_pills(report["sections"])
+    return report
+
+
+def _report_date(report: dict) -> str | None:
+    for section in report["sections"]:
+        match = re.search(r"20\d{2}-\d{2}-\d{2}", section["title"])
+        if match:
+            return f"{match.group(0)} · 시장 종가 및 주간 기준은 항목별 표기"
+    return None
+
+
+def _plain_line(line: str) -> str:
+    return re.sub(r"^[•→]\s*", "", line).strip()
+
+
+def _render_header_pills(sections: list[dict]) -> str:
+    overview = next((line for line in sections[0]["lines"] if line.startswith(("🔴", "🟡", "🟢", "⚪"))), "")
+    if not overview:
+        overview = "자료별 확인 상태는 각 항목에 표시"
+    status = "확인 대기" if "확인 대기" in overview else "기간별 방향 혼재" if "혼재" in overview else "방향 참고"
+    tone = "warn" if "대기" in status or "혼재" in status else ""
+    return (
+        '<div class="header-pills">'
+        f'<div class="header-pill {tone}">{html.escape(status)}</div>'
+        f'<div class="header-pill">{html.escape(_plain_line(overview).replace("🔴", "").replace("🟡", "").replace("🟢", "").replace("⚪", "").strip())}</div>'
+        "</div>"
+    )
+
+
+def _summary_parts(line: str) -> tuple[str, str]:
+    text = _plain_line(line)
+    if ":" in text:
+        return tuple(part.strip() for part in text.split(":", 1))
+    words = text.split(" ", 2)
+    return (" ".join(words[:2]), words[2] if len(words) > 2 else text)
+
+
+def _render_summary_cards(lines: list[str]) -> str:
+    cards = []
+    highlights = ("반도체(SOX):", "통합 기관:", "통합 헤지펀드성:", "NQ E-mini:")
+    for index, line in enumerate(lines):
+        if not line.startswith("•") or not any(_plain_line(line).startswith(item) for item in highlights):
+            continue
+        label, value = _summary_parts(line)
+        if not label or not value:
+            continue
+        extra = ""
+        if label == "NQ E-mini" and index + 1 < len(lines) and "백분위" in lines[index + 1]:
+            extra = _plain_line(lines[index + 1])
+        cards.append(
+            '<div class="summary-card">'
+            f'<div class="summary-label">{html.escape(label)}</div>'
+            f'<div class="summary-value">{html.escape(value)}</div>'
+            f'<div class="summary-extra">{html.escape(extra)}</div>'
+            "</div>"
+        )
+    if not cards:
+        raise ValueError("US positioning visual report has no summary metrics")
+    return '<div class="summary-grid">' + "".join(cards) + "</div>"
+
+
+def _asset_blocks(lines: list[str]) -> list[dict]:
+    labels = ("SOX", "나스닥100", "S&P500")
+    blocks = []
+    current = None
+    for line in lines:
+        text = _plain_line(line)
+        label = None
+        if text.startswith("SOX ") and "현재 추세" not in text:
+            label = "SOX"
+        elif text.startswith("나스닥100 ") and "추세" not in text:
+            label = "나스닥100"
+        elif text.startswith("S&P500 종가"):
+            label = "S&P500"
+        if label is not None:
+            if current is None or current["label"] != label:
+                current = {"label": label, "lines": []}
+                blocks.append(current)
+        if current is not None:
+            current["lines"].append(line)
+    return blocks
+
+
+def _asset_returns(lines: list[str]) -> list[tuple[str, float]]:
+    found = []
+    aliases = {"1거래일": "1D", "3거래일": "3D", "5거래일": "5D", "1일": "1D", "3일": "3D", "5일": "5D"}
+    for line in lines:
+        for label, value in re.findall(r"(?<!\d)(1거래일|3거래일|5거래일|1일|3일|5일)\s*([+-]?\d+(?:\.\d+)?)%", line):
+            pair = (aliases[label], float(value))
+            if pair[0] not in [item[0] for item in found]:
+                found.append(pair)
+        for label, value in re.findall(r"(?<!\d)(1개월|3개월)\s*(?:전\s*대비\s*:?\s*)?([+-]?\d+(?:\.\d+)?)%", line):
+            pair = ("1M" if label == "1개월" else "3M", float(value))
+            if pair[0] not in [item[0] for item in found]:
+                found.append(pair)
+    order = {"1D": 0, "3D": 1, "5D": 2, "1M": 3, "3M": 4}
+    return sorted(found, key=lambda item: order[item[0]])
+
+
+def _render_return_chart(lines: list[str]) -> str:
+    values = _asset_returns(lines)
+    if not values:
+        pending = next((html.escape(_plain_line(line)) for line in lines[1:] if "확인 대기" in line), "검증된 수익률이 없습니다.")
+        return f'<div class="pending-chart">{pending}</div>'
+    scale = max(5.0, min(50.0, float(((max(abs(value) for _, value in values) + 4.999) // 5) * 5)))
+    rows = []
+    for label, value in values:
+        width = min(50.0, abs(value) / scale * 50.0)
+        sign_class = "pos" if value > 0 else "neg" if value < 0 else "pos"
+        color_class = "positive" if value > 0 else "negative" if value < 0 else "neutral"
+        rows.append(
+            '<div class="return-row">'
+            f'<span class="return-label">{label}</span>'
+            f'<div class="bar-track"><i class="bar {sign_class}" style="width:{width:.2f}%"></i></div>'
+            f'<span class="bar-value {color_class}">{value:+.2f}%</span>'
+            "</div>"
+        )
+    return '<div class="chart-caption">기간별 수익률 · 0% 기준</div><div class="return-chart">' + "".join(rows) + "</div>"
+
+
+def _render_price_assets(section: dict) -> str:
+    blocks = _asset_blocks(section["lines"])
+    cards = []
+    for block in blocks:
+        lines = block["lines"]
+        title = _plain_line(lines[0])
+        chart = _render_return_chart(lines)
+        details = [
+            line for line in lines[1:]
+            if any(key in _plain_line(line) for key in ("현재 추세", "20일 평균", "60일 평균", "종가고점", "제공처 종가 불일치", "이력·제공처 검산 미완료"))
+        ]
+        cards.append(
+            '<div class="asset-card">'
+            f'<div class="asset-title">{html.escape(title)}</div>'
+            f'{chart}'
+            f'{_render_rows(details, note=True)}'
+            "</div>"
+        )
+    lead = next((line for line in section["lines"] if line.startswith(("🔴", "🟡", "🟢", "⚪"))), "")
+    result = f'<div class="section-tag">{html.escape(_plain_line(lead))}</div>' if lead else ""
+    if cards:
+        result += '<div class="asset-grid">' + "".join(cards) + "</div>"
+    notes = [line for line in section["lines"] if _plain_line(line).startswith("※")]
+    result += _render_rows(notes, note=True)
+    return result
+
+
+def _render_turnover(section: dict) -> str:
+    lines = [_plain_line(line) for line in section["lines"]]
+    daily = next((line for line in lines if " 당일 " in line), "")
+    change = next((line for line in lines if line.startswith("전일 대비")), "")
+    daily_value = daily.split("당일", 1)[1].strip() if "당일" in daily else "공식 총액 확인 대기"
+    change_value = change.removeprefix("전일 대비").strip() if change else "공식 비교값 확인 대기"
+    result = (
+        '<div class="turnover-hero">'
+        f'<div class="hero-card"><div class="hero-label">당일 전체 거래대금 · {html.escape(daily.split(" 당일", 1)[0] if " 당일" in daily else "")}</div>'
+        f'<div class="hero-value">{html.escape(daily_value)}</div></div>'
+        f'<div class="hero-card"><div class="hero-label">전일 대비</div><div class="hero-value">{html.escape(change_value)}</div></div>'
+        '</div>'
+    )
+    date_lines = [line for line in lines if line.startswith("직전") and "→ 최근" in line]
+    periods = []
+    for line in lines:
+        match = re.match(r"(5거래일|1개월|3개월)\s+[↑↓]\s+[^ ]+\s+([+-]\d+(?:\.\d+)?)%:\s*(.*?)\s*→\s*(.*)$", line)
+        if not match:
+            continue
+        label, percentage, before, after = match.groups()
+        value = float(percentage)
+        period_label = {"5거래일": "5D 일평균", "1개월": "1M 일평균", "3개월": "3M 일평균"}[label]
+        result_amounts = f"{before.strip()} → {after.strip()}"
+        date_index = len(periods)
+        dates = date_lines[date_index].removeprefix("직전").strip() if date_index < len(date_lines) else ""
+        periods.append((period_label, value, result_amounts, dates))
+    period_cards = []
+    for label, value, amounts, dates in periods:
+        tone = "positive" if value > 0 else "negative" if value < 0 else "neutral"
+        period_cards.append(
+            '<div class="period-card">'
+            f'<div class="period-title">{html.escape(label)}</div>'
+            f'<div class="period-value {tone}">{value:+.2f}%</div>'
+            f'<div class="period-amount">{html.escape(amounts)}</div>'
+            f'<div class="period-dates">{html.escape(dates)}</div>'
+            '</div>'
+        )
+    if period_cards:
+        result += '<div class="chart-caption">기간별 일평균 거래대금 변화</div><div class="period-grid">' + "".join(period_cards) + '</div>'
+    notes = [line for line in lines if line.startswith("※")]
+    return result + _render_rows(notes, note=True)
+
+
+def _futures_card(title: str, value: str, detail: str = "") -> str:
+    return (
+        '<div class="futures-card">'
+        f'<div class="futures-title">{html.escape(title)}</div>'
+        f'<div class="futures-value">{html.escape(value)}</div>'
+        f'<div class="futures-detail">{html.escape(detail)}</div>'
+        '</div>'
+    )
+
+
+def _render_futures(section: dict) -> str:
+    lines = [_plain_line(line) for line in section["lines"]]
+    cards = []
+    integrated = next((line for line in lines if line.startswith("나스닥100 통합:")), "")
+    if integrated:
+        cards.append(_futures_card(
+            "통합 포지션 · 계약",
+            integrated.split(":", 1)[1].strip(),
+            "이 요약에 상품별 구성·승수 근거가 없어 KRW 액면 환산은 확인 불가",
+        ))
+    current = next((line for line in lines if line.startswith("현재 ") and "계약" in line), "")
+    if current:
+        amount = next((line for line in lines if line.startswith("※ 참고금액:")), "")
+        cards.append(_futures_card("NQ E-mini 현재 포지션", current, amount))
+    period_specs = (("1주 전 대비:", "1W 변화"), ("1개월 비교:", "1M 변화"), ("3개월 비교:", "3M 변화"))
+    for prefix, label in period_specs:
+        for index, line in enumerate(lines):
+            if not line.startswith(prefix):
+                continue
+            notional = lines[index + 1] if index + 1 < len(lines) and "동일가격 환산" in lines[index + 1] else ""
+            cards.append(_futures_card(label + " · 계약 변화", line, notional))
+            break
+    result = '<div class="futures-grid">' + "".join(cards) + '</div>' if cards else ""
+    notes = [line for line in lines if line.startswith("※")]
+    return result + _render_rows(notes, note=True)
+
+
+def _render_options(section: dict) -> str:
+    lines = [_plain_line(line) for line in section["lines"]]
+    ratio_line = next((line for line in lines if "옵션 P/C(" in line), "")
+    ratios = re.search(r"주식\s+(\d+(?:\.\d+)?)\s*/\s*지수\s+(\d+(?:\.\d+)?)\s*/\s*전체\s+(\d+(?:\.\d+)?)", ratio_line)
+    cards = []
+    if ratios:
+        for label, value in zip(("주식 P/C", "지수 P/C", "전체 P/C"), ratios.groups()):
+            amount = float(value)
+            dot = max(0.0, min(100.0, amount / 2.0 * 100.0))
+            cards.append(
+                '<div class="option-card">'
+                f'<div class="option-label">{label}</div>'
+                f'<div class="option-value">{amount:.2f}</div>'
+                f'<div class="option-track"><i class="option-dot" style="left:calc({dot:.1f}% - 5px)"></i></div>'
+                "</div>"
+            )
+    ratio_markup = '<div class="options-grid">' + "".join(cards) + "</div>" if cards else ""
+    breadth = next((line for line in lines if line.startswith("동일가중 RSP")), "")
+    volume = next((line for line in lines if "옵션 전체 거래량" in line), "")
+    history = [line for line in lines if line.startswith("주식 P/C 과거")]
+    extra_cards = []
+    if breadth:
+        extra_cards.append(("ETF 상대수익률 차이", breadth.split(":", 1)[1].strip()))
+    if volume:
+        extra_cards.append(("옵션 거래량", volume.split(":", 1)[1].strip()))
+    for index, line in enumerate(history, start=1):
+        label = "P/C 과거 1개월" if "1개월" in line else "P/C 과거 3개월" if "3개월" in line else f"P/C 이력 {index}"
+        extra_cards.append((label, line.split(":", 1)[1].strip()))
+    extra_markup = ""
+    for title, value in extra_cards:
+        extra_markup += (
+            '<div class="data-card">'
+            f'<div class="data-label">{html.escape(title)}</div>'
+            f'<div class="futures-value">{html.escape(value)}</div>'
+            '</div>'
+        )
+    if extra_cards:
+        extra_markup = '<div class="data-grid">' + extra_markup + '</div>'
+    notes = [line for line in lines if line.startswith("※")]
+    return ratio_markup + extra_markup + _render_rows(notes, note=True)
+
+
+def _render_rows(lines: list[str], note: bool = False) -> str:
+    rows = []
+    for line in lines:
+        text = _plain_line(line)
+        if not text:
+            continue
+        is_note = note or text.startswith("※")
+        cls = "note" if is_note else "emphasis" if text.startswith(("→", "⚠")) else ""
+        rows.append(f'<div class="report-row {cls}">{html.escape(text)}</div>')
+    return '<div class="rows">' + "".join(rows) + "</div>" if rows else ""
+
+
+def _render_report_sections(sections: list[dict]) -> str:
+    rendered = []
+    for section in sections:
+        marker = section["marker"]
+        if marker == "①":
+            body = _render_price_assets(section)
+        elif marker == "②":
+            body = _render_turnover(section)
+        elif marker == "③":
+            body = _render_futures(section)
+        else:
+            body = _render_options(section)
+        rendered.append(
+            '<section class="section-card">'
+            '<div class="section-head">'
+            f'<h2>{html.escape(marker + " " + section["title"])}</h2>'
+            f'<span class="section-tag">{("기간별 비교" if marker == "①" else "검증값" if marker == "②" else "계약 수 · 명목 참고" if marker == "③" else "거래량 비율")}</span>'
+            "</div>"
+            f'{body}'
+            "</section>"
+        )
+    return "".join(rendered)
 
 
 def render_alert_png(alert_path: Path, image_path: Path) -> dict:
