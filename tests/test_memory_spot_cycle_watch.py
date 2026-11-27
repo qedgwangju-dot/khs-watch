@@ -1608,11 +1608,99 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
                 self.assertEqual(saved.get("delivery_receipt"), prior.get("delivery_receipt"))
                 self.assertFalse(w._stage_nand_nov19_press_update([]))
 
+
+    def test_dram_nov27_scenario_verifier_requires_each_path(self):
+        body = (
+            "Under the base case, conventional DRAM contract price increases narrow in 2027. "
+            "Chinese CSPs reduced demand; North American CSPs have largely absorbed supply. "
+            "Contract prices declining across all product categories beginning in 1Q28. "
+            "Under the bear case, server OEMs cut procurement, triggering inventory reductions. "
+            "Conventional DRAM contract prices begin declining in 4Q27."
+        )
+        self.assertTrue(w._dram_nov27_primary_verifiable(body))
+        self.assertFalse(w._dram_nov27_primary_verifiable(body.replace("1Q28", "4Q27")))
+        self.assertFalse(w._dram_nov27_primary_verifiable(body.replace("Under the bear case", "In all cases")))
+        zh = ("在基礎情境之下 conventional DRAM 價格漲幅收斂；中系CSP下修，北美CSP接收，"
+              "2028年第一季起合約價格將全面下跌。"
+              "在悲觀情境下 server OEM業者縮減採購，引發去庫存，"
+              "conventional DRAM合約價格自2027年第四季起反轉。")
+        self.assertTrue(w._dram_nov27_primary_verifiable(zh))
+
+    def test_dram_nov27_only_routes_exact_release_family(self):
+        row = {"title": "New DRAM Demand Concerns Mount, Raising Risk of Contract Price Declines in 2028",
+               "published_kst": "2026-11-25T09:00:00+09:00", "link": "https://example.com/research"}
+        self.assertTrue(w._is_dram_nov27_story(row))
+        self.assertFalse(w._is_dram_nov27_story(dict(row, published_kst="2027-01-03T09:00:00+09:00")))
+        self.assertTrue(w._is_dram_nov27_story({"link": w.DRAM_NOV27_URLS[0]}))
+        self.assertFalse(w._is_dram_nov27_story({"title": "NAND Flash 2027 Q1 prices"}))
+
+    def test_dram_nov27_partial_rss_preserves_old_events_and_unverified_range(self):
+        import datetime as dt
+        import json
+        previous = {"seen": {"old": {"title": "existing"}},
+                    "delivery_receipt": {"status": "confirmed", "message_ids": [578]},
+                    "nand_2027_reversal_samr": {"event": "previous NAND"},
+                    "trendforce_4q26_revision": {"conventional_dram_min_pct": 10,
+                                                 "conventional_dram_max_pct": 15}}
+        now = dt.datetime(2026, 11, 28, 2, 53, tzinfo=w.KST)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=previous), \
+                 patch.object(w, "_dram_nov27_live_publisher", return_value=(w.DRAM_NOV27_URLS[0], "verified")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertTrue(w._stage_dram_nov27_update(["RSS failed"], now))
+                state = json.loads(w.PENDING_PATH.read_text())
+                for key, value in previous.items():
+                    self.assertEqual(state[key], value)
+                record = state[w.DRAM_NOV27_STATE_KEY]
+                self.assertEqual(record["base_case_all_product_decline"], "2028-Q1")
+                self.assertEqual(record["bear_case_conventional_decline"], "2027-Q4")
+                self.assertIsNone(record["confirmed_20261127_q1_qoq_pct"])
+                self.assertEqual(record["provided_20261127_q1_qoq_pct"], [3, 8])
+                self.assertIn("공식 공개 본문에서 수치 독립 확인 전", w.ALERT_PATH.read_text())
+                with patch.object(w, "load_state", return_value=state):
+                    self.assertFalse(w._stage_dram_nov27_update([], now))
+
+    def test_dram_nov27_unavailable_source_does_not_stage(self):
+        import datetime as dt
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value={}), \
+                 patch.object(w, "_dram_nov27_live_publisher", return_value=("", "access_error:TimeoutError")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertFalse(w._stage_dram_nov27_update([], dt.datetime(2026, 11, 28, tzinfo=w.KST)))
+                self.assertFalse(w.PENDING_PATH.exists())
+                self.assertFalse(w.ALERT_PATH.exists())
+
+    def test_dram_nov27_confirmed_state_survives_quiet_scan(self):
+        import json
+        prior = dict(w.load_state())
+        record = {"event_id": w.DRAM_NOV27_EVENT_ID, "base_case_all_product_decline": "2028-Q1"}
+        prior[w.DRAM_NOV27_STATE_KEY] = record
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=prior), \
+                 patch.object(w, "_semia_revision_publisher_probe", return_value=(
+                     prior.get("semianalysis_accelerator_revision") or {}).get("publisher_probe", {})), \
+                 patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                w.write_outputs([], [])
+                staged = json.loads(w.PENDING_PATH.read_text())
+                self.assertEqual(staged[w.DRAM_NOV27_STATE_KEY], record)
+                self.assertEqual(staged.get("delivery_receipt"), prior.get("delivery_receipt"))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
              patch.object(w, "_stage_nand_verified_reversal", return_value=False), \
              patch.object(w, "_stage_nand_nov19_press_update", return_value=False), \
+             patch.object(w, "_stage_dram_nov27_update", return_value=False), \
              patch.object(w.currency_krw_guard, "enforce_file") as guard:
             w.main()
         guard.assert_called_once_with(w.ALERT_PATH)

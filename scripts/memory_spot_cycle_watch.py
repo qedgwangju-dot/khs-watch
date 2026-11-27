@@ -4378,6 +4378,8 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     # that deletion for a new, unrendered event, blocking the entire workflow.
     if "nand_2027_reversal_samr" in state:
         pending["nand_2027_reversal_samr"] = state["nand_2027_reversal_samr"]
+    if DRAM_NOV27_STATE_KEY in state:
+        pending[DRAM_NOV27_STATE_KEY] = state[DRAM_NOV27_STATE_KEY]
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [
@@ -5530,6 +5532,173 @@ def _stage_nand_nov19_press_update(source_errors: list[str],
     return True
 
 
+
+# 2026-11-27 TrendForce DRAM outlook: separate base/bear paths and evidence grades.
+# The reported 1Q27 +3~8% is not in the publisher's public article body.
+DRAM_NOV27_EVENT_ID = "trendforce-dram-20261127-base-1q28-bear-4q27-v1"
+DRAM_NOV27_STATE_KEY = "trendforce_dram_20261127_scenarios"
+DRAM_NOV27_HEADER = "<b>[TrendForce DRAM 계약가격 전망·기본/비관 시나리오]</b>"
+DRAM_NOV27_URLS = (
+    "https://www.trendforce.com/presscenter/news/20261127-13327.html",
+    "https://www.trendforce.com.tw/presscenter/news/20261127-13325.html",
+)
+DRAM_NOV27_PRIOR_URL = "https://www.ajupress.com/view/20261118180470279"
+DRAM_NOV27_RESEARCH_URL = "https://www.trendforce.com.tw/research/download/RP261126NY"
+
+
+def _is_dram_nov27_story(item: dict) -> bool:
+    """One semantic event for the Nov25 research/Nov27 release and its reprints."""
+    link = str(item.get("link") or "")
+    title = _clean(str(item.get("title") or "")).lower()
+    if any(x in link for x in ("20261127-13327.html", "20261127-13325.html", "RP261126NY")):
+        return True
+    day = str(item.get("published_kst") or "")[:10]
+    if not "2026-11-25" <= day <= "2026-11-29":
+        return False
+    return (
+        "dram contract price declines in 2028" in title
+        and ("limited demand visibility" in title or "demand concerns mount" in title)
+    ) or (
+        "2028年" in title and "dram" in title and "合約價" in title
+        and ("需求能見度" in title or "需求展望疑慮" in title)
+    )
+
+
+def _dram_nov27_primary_verifiable(raw: str) -> bool:
+    """Require both explicit publisher scenarios, not title/quarter co-occurrence."""
+    low = _clean(raw).lower()
+    base_pos = low.find("under the base case")
+    bear_pos = low.find("under the bear case", base_pos + 1)
+    if base_pos >= 0 and bear_pos > base_pos:
+        base = low[base_pos:bear_pos]
+        bear = low[bear_pos:]
+        return (
+            all(x in base for x in ("conventional dram", "1q28", "chinese csps",
+                                    "north american csps", "largely absorbed"))
+            and all(x in bear for x in ("server oems", "inventory reductions", "4q27"))
+            and "declining across all product categories" in base
+            and "conventional dram contract prices" in bear
+        )
+    base_pos = low.find("在基礎情境")
+    bear_pos = low.find("在悲觀情境", base_pos + 1)
+    if base_pos >= 0 and bear_pos > base_pos:
+        base = low[base_pos:bear_pos]
+        bear = low[bear_pos:]
+        return (
+            all(x in base for x in ("conventional dram", "中系", "北美csp", "接收", "全面下跌"))
+            and re.search(r"2028年\s*第?\s*[一1]季", base) is not None
+            and all(x in bear for x in ("server oem", "去庫存", "conventional dram"))
+            and re.search(r"2027年\s*第?\s*[四4]季", bear) is not None
+        )
+    return False
+
+
+def _dram_nov27_live_publisher() -> tuple[str, str]:
+    """Fetch exact publisher article; distinguish access error and content mismatch."""
+    outcomes = []
+    for url in DRAM_NOV27_URLS:
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0",
+                "Accept": "text/html,application/xhtml+xml",
+            })
+            with urllib.request.urlopen(req, timeout=11) as response:
+                final = urllib.parse.urlparse(response.geturl())
+                expected = urllib.parse.urlparse(url)
+                if (final.scheme != "https" or final.hostname != expected.hostname
+                        or final.path.rstrip("/") != expected.path.rstrip("/")):
+                    outcomes.append("redirect_mismatch")
+                    continue
+                raw = response.read(1500000).decode("utf-8", errors="replace")
+            if _dram_nov27_primary_verifiable(raw):
+                return url, "publisher_scenarios_verified"
+            outcomes.append("publisher_content_unverified")
+        except Exception as exc:
+            outcomes.append("access_error:" + type(exc).__name__)
+    return "", "; ".join(outcomes)
+
+
+def _dram_nov27_alert(url: str) -> str:
+    lines = [
+        DRAM_NOV27_HEADER,
+        "■ 11월 27일 공식 발표: 범용 DRAM 가격 상승률 둔화, 하락 시점은 조건별 전망.",
+        "• <b>기본</b>: 2027년 분기별 상승률 축소 → 하반기 보합 가능성 → 2028년 1분기 전 제품군 계약가격 하락 전망.",
+        "• <b>비관</b>: 서버 제조사(OEM) 조달 축소·재고 감축, 신흥 클라우드 투자 축소/통합, 수출규제 강화로 2027년 서버 출하 증가세 둔화 → 2027년 4분기 범용 DRAM 하락, 2028년 하락폭 확대 가능성.",
+        "• 2026년 4분기 기존 범용 DRAM 전망 +10~15%(전분기 대비). 11월 18일 공개 보도상 2027년 1분기 +5~10%, 2분기 +3~8%.",
+        "• 이번 제공 메모상 2027년 1분기 +3~8%는 공식 공개 본문에서 수치 독립 확인 전; 확정 가격 기준선에 반영하지 않음. 공식 유료 원표 미열람.",
+        "• 중국 CSP(클라우드 서비스 기업)는 2026년 4분기 초부터 서버 DRAM 수요 축소; 북미 CSP가 풀린 공급량을 대부분 흡수. 확정 장기계약 취소량·고객명 미공개.",
+        "• 소비자 수요 및 가격 수용력 약화, 미국 데이터센터 정책·전력 제약, 엔비디아의 신흥 클라우드 금융지원 변경 가능성, 미국 산업안보국(BIS) 첨단칩 규제는 하방 위험. 실제 금융지원 축소 확정과 구분.",
+        "• 2026~2028년 증설·선단 공정 전환으로 비트 공급 증가 예상. 2027년 수급 부족 지속 전망과 2028년 하락 위험은 양립 가능.",
+        "• 낸드·HBM의 가격전망과 구분: DRAM 기본 1Q28/비관 4Q27은 HBM 가격 하락 확정도, 현물가 하락률도 아님.",
+        "• 다음 확인: 중국 감소분을 흡수하는 북미 실제 주문량, 장기 구매약정 외 수요, 서버 출하 증가율·재고, 증설 가동, 범용 DRAM 분기 계약가.",
+        f'• <a href="{html.escape(url, quote=True)}">TrendForce 11/27 공식 발표</a>',
+        f'• <a href="{DRAM_NOV27_PRIOR_URL}">11/18 이전 전망 보도</a> · <a href="{DRAM_NOV27_RESEARCH_URL}">11/25 공식 리서치 공개 요약</a>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def _stage_dram_nov27_update(source_errors: list[str], now: dt.datetime | None = None) -> bool:
+    """Stage a verified typed event without advancing unrelated incomplete RSS."""
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 27) <= now.date() <= dt.date(2026, 12, 27):
+        return False
+    previous = load_state()
+    existing = dict(previous.get(DRAM_NOV27_STATE_KEY) or {})
+    if existing.get("event_id") == DRAM_NOV27_EVENT_ID:
+        print("dram_nov27_duplicate_suppressed=true")
+        return False
+    url, result = _dram_nov27_live_publisher()
+    if not url:
+        print("dram_nov27_source_verification_held=" + result)
+        if STATUS_PATH.exists():
+            with STATUS_PATH.open("a", encoding="utf-8") as f:
+                f.write("- DRAM 11/27 공식 발표 검증 보류: " + result + "\n")
+        return False
+    message = _dram_nov27_alert(url)
+    if not all(x in message for x in (DRAM_NOV27_HEADER, "2028년 1분기", "2027년 4분기",
+                                      "공식 공개 본문에서 수치 독립 확인 전", "대부분 흡수")):
+        raise RuntimeError("DRAM Nov27 alert missing required scenario or evidence")
+    if source_errors:
+        pending = dict(previous)
+        prior_alert = ""
+    else:
+        pending = (json.loads(PENDING_PATH.read_text(encoding="utf-8"))
+                   if PENDING_PATH.exists() else dict(previous))
+        prior_alert = (ALERT_PATH.read_text(encoding="utf-8").strip()
+                       if ALERT_PATH.exists() else "")
+    pending[DRAM_NOV27_STATE_KEY] = {
+        **existing,
+        "event_id": DRAM_NOV27_EVENT_ID,
+        "published": "2026-11-27",
+        "source_url": url,
+        "source_grade": "publisher_press_body_verified",
+        "base_case_plateau_possible": "2027-H2",
+        "base_case_all_product_decline": "2028-Q1",
+        "bear_case_conventional_decline": "2027-Q4",
+        "bear_case_decline_widens": "2028",
+        "china_server_dram_demand_cut_started": "2026-Q4",
+        "north_america_absorption": "mostly_absorbed",
+        "signed_order_cancellation_quantities": None,
+        "prior_20261118_reported_q1_qoq_pct": [5, 10],
+        "prior_20261118_reported_q2_qoq_pct": [3, 8],
+        "provided_20261127_q1_qoq_pct": [3, 8],
+        "provided_q1_range_status": "user_excerpt_not_verified_in_public_issuer_text",
+        "confirmed_20261127_q1_qoq_pct": None,
+        "scope": "conventional_dram_contract_price_forecast_not_HBM_or_spot",
+    }
+    pending["updated_at_kst"] = now.isoformat(timespec="seconds")
+    if source_errors:
+        pending["rss_outage_note"] = "DRAM direct publisher only; unrelated incomplete RSS not acknowledged"
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    ALERT_PATH.write_text((prior_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n" if prior_alert else "")
+                          + message, encoding="utf-8")
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as f:
+            f.write("- DRAM 11/27 기본 1Q28·비관 4Q27: 발행처 본문 확인, Telegram 발송 대기\n")
+    return True
+
+
 def _semia_independent_chart_fallback(errors: list[str],
                                       now: dt.datetime | None = None) -> bool:
     """Send only the already-user-supplied scenario when unrelated RSS is 429.
@@ -5586,9 +5755,12 @@ def _semia_independent_chart_fallback(errors: list[str],
 def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
-    write_outputs(items, errors, foxconn, price, warnings)
+    generic_items = [item for item in items if not _is_dram_nov27_story(item)]
+    write_outputs(generic_items, errors, foxconn, price, warnings)
     verified_nand_alert = _stage_nand_verified_reversal(errors)
     verified_nand_nov19 = _stage_nand_nov19_press_update(errors)
+    # On incomplete RSS, finish an already staged independent NAND event first.
+    verified_dram_nov27 = False if errors and (verified_nand_alert or verified_nand_nov19) else _stage_dram_nov27_update(errors)
     # A pending semantic key must never be checkpointed unless its exact alert
     # section exists. In particular no-alert state saves must not acknowledge
     # an unsent analyst model detail or future publisher-stage upgrade.
@@ -5609,6 +5781,10 @@ def main() -> int:
             required.append("<b>[NAND 2027 가격 반전 조기화·중국 SSD 규제 선행경보]</b>")
         if new_nand.get("press_20261119_event_id") != old_nand.get("press_20261119_event_id"):
             required.append("<b>[NAND 가격 전망 11/19 공식 상향 위험 경보 — 하락 시작 앞당김]</b>")
+        previous_dram = dict(load_state().get(DRAM_NOV27_STATE_KEY) or {})
+        staged_dram = dict(staged_doc.get(DRAM_NOV27_STATE_KEY) or {})
+        if previous_dram.get("event_id") != staged_dram.get("event_id"):
+            required.append(DRAM_NOV27_HEADER)
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
             missing_sections = [section for section in required if section not in body]
@@ -5616,6 +5792,10 @@ def main() -> int:
                 raise RuntimeError("Memory event key staged without matching Telegram section; state save blocked: "
                                    + ", ".join(missing_sections))
     if errors:
+        if verified_dram_nov27:
+            currency_krw_guard.enforce_file(ALERT_PATH)
+            print(f"dram_primary_only_alert=true incomplete_rss_sources={len(errors)}")
+            return 0
         if verified_nand_alert or verified_nand_nov19:
             # Verified, independent official report; no unrelated RSS state promoted.
             currency_krw_guard.enforce_file(ALERT_PATH)
