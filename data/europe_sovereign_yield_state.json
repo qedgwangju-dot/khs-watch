@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-27T22:59:12+09:00",
+  "last_checked_kst": "2026-11-28T07:38:11+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -643,7 +643,7 @@
       },
       {
         "date": "2026-11-27",
-        "value": 4.7
+        "value": 4.71
       }
     ],
     "de_mkt": [
@@ -1130,7 +1130,7 @@
     "fr10": 4.741,
     "de10": 3.29,
     "uk10": 5.0986,
-    "fr_mkt": 4.7,
+    "fr_mkt": 4.71,
     "de_mkt": 3.27,
     "it10": 4.32,
     "uk_mkt": 5.18
@@ -1215,10 +1215,10 @@
       "sp_milestone:2026-11-27:D-1",
       "sp_milestone:2026-11-27:D-0"
     ],
-    "checked_at_kst": "2026-11-27T22:59:17+09:00",
-    "source_fail_streak": 228,
+    "checked_at_kst": "2026-11-28T07:38:17+09:00",
+    "source_fail_streak": 229,
     "sp_ministry_source_status": "no_matching_statement",
-    "sp_ministry_last_checked_kst": "2026-11-27T22:59:17+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-28T07:38:17+09:00",
     "source_access": "access_restricted"
   }
 }
