@@ -27,9 +27,9 @@
     "sloos": "혼합/중립",
     "real_pce_3m_ann": 2.858929814962252,
     "real_pce_date": "2026-10-01",
-    "bei5y": 2.13,
-    "bei5y_10d_bp": -12.00000000000001,
-    "bei_date": "2026-11-25"
+    "bei5y": 2.16,
+    "bei5y_10d_bp": -14.999999999999991,
+    "bei_date": "2026-11-27"
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-27T21:37:24.408892+00:00",
+    "date": "2026-11-27T22:13:53.335088+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-27T21:37:25.632455+00:00"
+  "updated_at_utc": "2026-11-27T22:13:53.852593+00:00"
 }
