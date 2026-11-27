@@ -216,29 +216,6 @@
     }
   },
   "history_cache": {
-    "44808933662:1": {
-      "checked_at_kst": "2026-11-21T06:02:13+09:00",
-      "completed": "2026-11-20T20:12:32+00:00",
-      "fingerprint": "115dbf1fa92a3752bd6882a66f1ec6e9c0293caf637a6da2461d6e50f3d2d4d1",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-20T20:12:31+00:00"
-    },
-    "44812760775:1": {
-      "checked_at_kst": "2026-11-21T06:02:12+09:00",
-      "fingerprint": "fd08296b5aafd81a2b923e7db5f71e41834fa1867c88d73696e9b295938c3c13",
-      "outcome": "no_send"
-    },
-    "44816284150:1": {
-      "checked_at_kst": "2026-11-21T06:30:42+09:00",
-      "completed": "2026-11-20T21:02:13+00:00",
-      "fingerprint": "1a1ae1c50c448dc119d5f87a63d4649aaf807ef06426a2e960b7e5aee9535bdd",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-20T21:02:13+00:00"
-    },
     "44820655912:1": {
       "checked_at_kst": "2026-11-21T07:21:09+09:00",
       "completed": "2026-11-20T21:30:42+00:00",
@@ -3838,6 +3815,25 @@
     "45987425955:1": {
       "checked_at_kst": "2026-11-27T20:28:59+09:00",
       "fingerprint": "14312c0eb6568f2733f5f46c27b6fa0d61dd7892dadee790c2a726cec374f2aa",
+      "outcome": "no_send"
+    },
+    "45990540241:1": {
+      "checked_at_kst": "2026-11-27T21:08:06+09:00",
+      "completed": "2026-11-27T11:29:01+00:00",
+      "fingerprint": "af0cc95c0f86123ca72c8b9d129f774ded12ac7474a0205bb35c1f3e775c874c",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-27T11:29:00+00:00"
+    },
+    "45991290983:1": {
+      "checked_at_kst": "2026-11-27T21:08:05+09:00",
+      "fingerprint": "b8bf12ac37daeed02172b2370bbdc72228df0003a1b4c1156ec0953d939b7d9a",
+      "outcome": "no_send"
+    },
+    "45993956261:1": {
+      "checked_at_kst": "2026-11-27T21:08:05+09:00",
+      "fingerprint": "c93bb581d2782d2a6ceb9a6191758f9a82689a16253ecf5e8b2cd76561436638",
       "outcome": "no_send"
     }
   },
