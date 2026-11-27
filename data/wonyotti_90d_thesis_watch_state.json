@@ -1,81 +1,81 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-28T00:13:22+09:00",
+  "updated_at_kst": "2026-11-28T00:33:02+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 5.35e-05,
-        "index_price": 59655.1,
-        "mark_price": 59626.52,
-        "last_price": 59608.5,
-        "open_interest": 647261656.0,
-        "open_interest_value": 3828371461.97632,
-        "turnover24h": 709452224273.0,
+        "funding": 3.31e-05,
+        "index_price": 59847.3,
+        "mark_price": 59843.4,
+        "last_price": 59843.5,
+        "open_interest": 639803612.0,
+        "open_interest_value": 3825653234.057816,
+        "turnover24h": 709500002756.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 6.04e-05,
-        "index_price": 1659.12,
-        "mark_price": 1658.6,
-        "last_price": 1658.41,
-        "open_interest": 80602318.0,
-        "open_interest_value": 1323425579.7056,
-        "turnover24h": 194736281655.0,
+        "funding": 2.77e-05,
+        "index_price": 1664.63,
+        "mark_price": 1664.0,
+        "last_price": 1664.32,
+        "open_interest": 78760310.0,
+        "open_interest_value": 1309634310.711,
+        "turnover24h": 194753129055.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": 6.75e-05,
-        "index_price": 71.52,
-        "mark_price": 71.48,
-        "last_price": 71.47,
-        "open_interest": 6850020.0,
-        "open_interest_value": 483816912.6,
-        "turnover24h": 4658846193.0,
+        "funding": 4.53e-05,
+        "index_price": 71.674,
+        "mark_price": 71.64,
+        "last_price": 71.67,
+        "open_interest": 6853164.0,
+        "open_interest_value": 490206820.92,
+        "turnover24h": 4658984713.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 59466.03,
-        "change24": -1.5439848398116063,
-        "volume24": 26588831646.551197,
+        "usd": 59774.0,
+        "change24": -0.8044094492191712,
+        "volume24": 26764406094.710968,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 59254.0,
-          "Coinbase": 59466.03,
-          "Gate.io Spot": 59655.3
+          "CoinGecko": 59774.0,
+          "Coinbase": 59766.01,
+          "Gate.io Spot": 59833.0
         },
-        "dispersion_pct": 0.6748390635796654
+        "dispersion_pct": 0.11207213838792444
       },
       "ETH": {
-        "usd": 1652.04,
-        "change24": -1.8861080169129074,
-        "volume24": 10596460185.30003,
-        "verified": false,
+        "usd": 1662.34,
+        "change24": -1.2071074467400127,
+        "volume24": 10941922006.034008,
+        "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 1645.66,
-          "Coinbase": 1652.04,
-          "Gate.io Spot": 1660.76
+          "CoinGecko": 1662.34,
+          "Coinbase": 1661.01,
+          "Gate.io Spot": 1663.96
         },
-        "dispersion_pct": 0.9140214522650729
+        "dispersion_pct": 0.17746068794591033
       },
       "SOL": {
-        "usd": 70.97,
-        "change24": 0.8600928607081995,
-        "volume24": 2425006114.0253806,
-        "verified": false,
+        "usd": 71.68,
+        "change24": 1.5443996957442905,
+        "volume24": 2468720334.7565646,
+        "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 70.86,
-          "Coinbase": 70.97,
-          "Gate.io Spot": 71.48
+          "CoinGecko": 71.59,
+          "Coinbase": 71.7,
+          "Gate.io Spot": 71.68
         },
-        "dispersion_pct": 0.8736085670001473
+        "dispersion_pct": 0.15345982142857062
       }
     },
-    "price_verified": false,
+    "price_verified": true,
     "price_sources": [
       "CoinGecko",
       "Coinbase",
@@ -107,7 +107,7 @@
       ],
       "previous_five_day_complete": true,
       "source_url": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
-      "stable_obs": 96,
+      "stable_obs": 97,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -135,7 +135,7 @@
       ],
       "previous_five_day_complete": true,
       "source_url": "https://farside.co.uk/ethereum-etf-flow-all-data/",
-      "stable_obs": 96,
+      "stable_obs": 97,
       "trigger_ready": true
     }
   },
@@ -167,7 +167,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-11-28T00:14:09+09:00"
+    "checked_at_kst": "2026-11-28T00:33:47+09:00"
   },
   "nvidia_earnings": {
     "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
@@ -175,7 +175,7 @@
     "date": "2026-11-18",
     "revenue_b": 115.8,
     "verified": true,
-    "rss_checked_at_kst": "2026-11-28T00:14:13+09:00"
+    "rss_checked_at_kst": "2026-11-28T00:33:52+09:00"
   },
   "news_seen": [
     "01dd2dd9ae7aac7c855518c6",
@@ -238,7 +238,7 @@
     "candidate_first_price": null
   },
   "health": {
-    "crypto_prices": false,
+    "crypto_prices": true,
     "crypto_derivatives": true,
     "btc_etf": true,
     "eth_etf": true,
@@ -249,7 +249,7 @@
     "fx_conversion": true
   },
   "health_error_streaks": {
-    "crypto_prices": 2,
+    "crypto_prices": 0,
     "crypto_derivatives": 0,
     "btc_etf": 0,
     "eth_etf": 0,
