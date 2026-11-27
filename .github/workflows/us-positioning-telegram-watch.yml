@@ -6,6 +6,8 @@ on:
     paths:
       - ".github/workflows/us-positioning-telegram-watch.yml"
       - "scripts/us_positioning_watch.py"
+      - "scripts/us_positioning_calendar.py"
+      - "tests/test_us_positioning_calendar.py"
       - "scripts/us_positioning_presentation.py"
       - "scripts/us_positioning_horizons.py"
       - "scripts/us_positioning_context.py"
@@ -134,7 +136,11 @@ jobs:
 
       - name: Install dependencies
         if: steps.delivery_guard.outputs.blocked != 'true'
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright "exchange_calendars>=4.5,<5"
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright pytest "exchange_calendars>=4.5,<5"
+
+      - name: Validate US market session calendar
+        if: steps.delivery_guard.outputs.blocked != 'true'
+        run: python -m pytest -q tests/test_us_positioning_calendar.py
 
       - name: Verify exact Telegram route
         if: steps.delivery_guard.outputs.blocked != 'true'
@@ -156,7 +162,7 @@ jobs:
       - name: Query positioning sources
         if: steps.delivery_guard.outputs.blocked != 'true'
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_delivery.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py scripts/us_positioning_telegram.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_calendar.py scripts/us_positioning_presentation.py scripts/us_positioning_delivery.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py scripts/us_positioning_telegram.py
           for attempt in 1 2 3; do
             rm -f out/us_positioning_alert.html out/us_positioning_alert.png out/us_positioning_status.md out/us_positioning_pending_state.json out/us_positioning_telegram_confirmed.json out/us_positioning_telegram_attempt.json out/us_positioning_telegram_rejected.json out/us_positioning_telegram_unconfirmed.json
             if python scripts/us_positioning_watch.py; then
