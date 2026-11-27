@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-27T14:24:02+09:00",
-  "last_scan_count": 11,
+  "updated_at_kst": "2026-11-28T00:38:31+09:00",
+  "last_scan_count": 7,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "0ca01a219f648e5263ef4714",
     "0d663df29e83195c102df2a8",
@@ -202,6 +202,7 @@
     "bf4827f4410f83a265ca3e62",
     "c182d99ccc02222a244eb96e",
     "c21f43569955742f3d6b1742",
+    "c4e7a43a7cd819f07bf3e3a1",
     "c579cb29ce77119cfbcdf008",
     "cc7325ca7e0e3bba11ab1334",
     "cd07e4c8f885b1ddc3b5ff1e",
@@ -230,14 +231,7 @@
   "delivered_event_keys": [
     "taiwan|diversification|TSMC|arizona"
   ],
-  "last_held": [
-    {
-      "event_key": "taiwan|capacity|TSMC|3nm",
-      "source": "Howl.Link",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-27T13:01:00+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-11-25T21:46:58+09:00",
   "telegram_message_ids": [
     565
