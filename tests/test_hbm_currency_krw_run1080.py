@@ -77,15 +77,23 @@ class ActualRun1080CurrencyRegression(unittest.TestCase):
 
     def test_actual_report_facts_keep_their_stated_fx_basis(self):
         module = ast.parse((ROOT / "scripts" / "hbm_material_event_watch.py").read_text(encoding="utf-8"))
-        report_node = next(
+        reports_node = next(
             node.value for node in module.body
             if isinstance(node, ast.Assign)
             and any(isinstance(target, ast.Name) and target.id == "REPORTS" for target in node.targets)
         )
-        report = next(
-            item for item in ast.literal_eval(report_node)
-            if item["key"] == "20261118_trendforce_roadshow_hbm4_per_gb_price"
+        self.assertIsInstance(reports_node, (ast.Tuple, ast.List))
+        report_node = next(
+            entry for entry in reports_node.elts
+            if isinstance(entry, ast.Dict)
+            and any(
+                isinstance(key, ast.Constant) and key.value == "key"
+                and isinstance(value, ast.Constant)
+                and value.value == "20261118_trendforce_roadshow_hbm4_per_gb_price"
+                for key, value in zip(entry.keys, entry.values)
+            )
         )
+        report = ast.literal_eval(report_node)
         original = "\n".join(html.escape(fact) for fact in report["facts"])
         converted = guard.enforce_text(original, hbm_mode=True)
         self.assertEqual(converted, original)
