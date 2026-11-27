@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-28T04:40:40+09:00",
+  "updated_at_kst": "2026-11-28T05:01:01+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -39,14 +39,14 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-25",
-    "three_month": 4.34,
-    "ten_year": 4.85,
-    "prev_date": "2026-11-24",
-    "prev_three_month": 4.36,
-    "prev_ten_year": 4.91,
-    "daily_3m_bp": -2.0,
-    "daily_10y_bp": -6.0,
+    "date": "2026-11-27",
+    "three_month": 4.35,
+    "ten_year": 4.94,
+    "prev_date": "2026-11-25",
+    "prev_three_month": 4.34,
+    "prev_ten_year": 4.85,
+    "daily_3m_bp": 1.0,
+    "daily_10y_bp": 9.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
@@ -72,13 +72,13 @@
     "daily_pct": 0.42
   },
   "fx": {
-    "rate": 1343.6,
-    "date": "2026-11-25",
-    "requested_date": "2026-11-25",
+    "rate": 1342.7,
+    "date": "2026-11-27",
+    "requested_date": "2026-11-27",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,342.65원, 차이 0.07%"
+    "crosscheck": "Yahoo Finance 1,334.09원, 차이 0.64%"
   },
   "crcl_last_alerted_close_date": "2026-11-25",
   "correction_pending": false,
