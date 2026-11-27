@@ -1,5 +1,11 @@
 {
-  "pending": {},
+  "pending": {
+    "source|2026-11-28|암호화폐 현물가격 원천이 2회 연속 조회 실패": {
+      "run_id": "46022423835",
+      "attempted_utc": "2026-11-27T15:14:13+00:00",
+      "status": "unconfirmed"
+    }
+  },
   "delivered": {
     "source|166d6124867c787b073a2d783f59c567": {
       "run_id": "45144713464",
