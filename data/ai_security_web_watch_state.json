@@ -7,17 +7,20 @@
     "deferred_material_items": 0,
     "direct_official_items": 57,
     "errors": [
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"tool use\" paus… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: site:justice.gov (\"OpenAI\" OR \"AI researcher\") (wiretap… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"AI agent\" security vulnerability exploit \"data leak\" \"… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 3,
+    "google_news_queries_failed": 6,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 62,
-    "google_news_rate_limit_429": 3,
+    "google_news_queries_succeeded": 59,
+    "google_news_rate_limit_429": 6,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 115,
+    "raw_items": 109,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -866,5 +869,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-27T20:26:10+09:00"
+  "updated_at_kst": "2026-11-27T20:31:44+09:00"
 }
