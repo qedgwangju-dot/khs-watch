@@ -47,12 +47,14 @@ def native(code="319", name="화학", before=0, after=5, received=END + 30):
     for point, value in [(START, before), (END, after)]:
         stamp = dt.datetime.fromtimestamp(point, KST).strftime("%Y%m%d%H%M%S")
         rows.append({"datetime": stamp, "date": stamp[:8], "time": stamp[8:],
-                     "indmsamt": value, "formsamt": -value, "sysmsamt": 0})
+                     "indmsamt": value, "formsamt": -value, "sysmsamt": 0,
+                     "stomsamt": value})
     return {"record_type": "industry_history_snapshot", "source_tr": "t1621", "market": "KOSDAQ",
             "upcode": code, "industry": name, "received_ts": received, "status": "success",
             "request": {"t1621InBlock": {"upcode": code, "nmin": 1, "cnt": 10,
                                          "bgubun": "0", "exchgubun": "U"}},
             "response": {"t1621OutBlock": {"indcode": "0008", "forcode": "0017", "syscode": "0018",
+                                            "stocode": "0001",
                                             "ex_upcode": "U" + code}, "t1621OutBlock1": rows}}
 
 
@@ -68,6 +70,31 @@ class IndustryFixture:
 
 
 class IndustryContextTests(IndustryFixture, unittest.TestCase):
+    def test_financial_investment_ranks_t1621_securities_field_without_unit_conversion(self):
+        items = [("319", "화학", 100, 110), ("320", "제약", 500, 530),
+                 ("321", "비금속", 1000, 1000), ("322", "금속", 0, 5)]
+        records = [coverage([(code, name) for code, name, _, _ in items])]
+        for code, name, before, after in items:
+            snapshot = native(code, name, before=0, after=9999)
+            rows = snapshot["response"]["t1621OutBlock1"]
+            rows[0]["stomsamt"], rows[1]["stomsamt"] = before, after
+            records.append(snapshot)
+
+        result = self.load(records, actor="금융투자", market="KOSDAQ")
+        self.assertEqual(result["source_amount_field"], "stomsamt")
+        self.assertEqual([x["code"] for x in result["top"]], ["320", "319", "322"])
+        self.assertEqual([x["delta_raw"] for x in result["top"]], [30, 10, 5])
+        self.assertFalse(result["unit_verified"])
+        text = "\n".join(industry_context_lines(result, "금융투자", START, END))
+        self.assertIn("금융투자(기관 내) 업종 순매수 증가 상위 3개", text)
+        self.assertIn("금액: 원자료 단위 미확인으로 표시 보류", text)
+        self.assertNotIn("억원", text)
+
+    def test_financial_investment_rejects_wrong_t1621_actor_code(self):
+        snapshot = native()
+        snapshot["response"]["t1621OutBlock"]["stocode"] = "0002"
+        self.assertFalse(self.load([snapshot], actor="금융투자", market="KOSDAQ")["available"])
+
     def test_rank_delta_not_cumulative_and_limit_three(self):
         rows = (pair("319", "화학", 10000, 10002) + pair("320", "제약", -100, -60)
                 + pair("321", "비금속", 0, 30) + pair("322", "금속", 100, 120)
@@ -910,14 +937,17 @@ class KOSDAQPrealertTierTests(unittest.TestCase):
         self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자", "kosdaq_flow_prealert"), END)
         self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자"), 0.0)
 
-    def test_unverified_financial_industry_data_is_held(self):
+    def test_failed_financial_industry_context_stays_held(self):
         w = watcher.Watch("unused", [], "", False)
-        with patch.object(watcher, "industry_buy_context", side_effect=AssertionError("must not query")):
+        with patch.object(watcher, "industry_buy_context", side_effect=OSError("fixture")) as load_context:
             context = asyncio.run(w._surge_industry_context(
                 "KOSDAQ", "금융투자", 120.0, (START, END), OPEN))
         self.assertFalse(context["available"])
         self.assertEqual(context["requested_window"], [START, END])
-        self.assertIn("금융투자 업종 원자료 확인 불가", context["reason"])
+        self.assertEqual(context["reason"], "업종 수급 자료 처리 실패")
+        self.assertEqual(context["error_type"], "OSError")
+        load_context.assert_called_once_with(START, END, "금융투자",
+                                             session_open_ts=OPEN, market="KOSDAQ")
 
 
 class IndependentMarketRecoveryTests(unittest.TestCase):
@@ -1007,9 +1037,18 @@ class IndependentMarketRecoveryTests(unittest.TestCase):
         self.assertIn("현물 900억원 이상", text)
         self.assertIn("상품 범위·단위 확인 전", text)
         self.assertIn("금융투자는 원자료의 증권 항목", text)
-        with patch.object(watcher, "industry_buy_context", side_effect=AssertionError("not verified")):
-            context = asyncio.run(w._surge_industry_context("KOSPI", "금융투자", 1000, (START, END), OPEN))
-        self.assertFalse(context["available"])
+        context = {"market": "KOSDAQ", "investor": "금융투자", "available": True}
+        with patch.object(watcher, "industry_buy_context", return_value=context) as load_context:
+            results = [asyncio.run(w._surge_industry_context(
+                market, "금융투자", 1000, (START, END), OPEN))
+                for market in ("KOSPI", "KOSDAQ")]
+        self.assertEqual(results, [context, context])
+        self.assertEqual(load_context.call_count, 2)
+        self.assertEqual([c.args for c in load_context.call_args_list],
+                         [(START, END, "금융투자"), (START, END, "금융투자")])
+        self.assertEqual([c.kwargs for c in load_context.call_args_list],
+                         [{"session_open_ts": OPEN, "market": "KOSPI"},
+                          {"session_open_ts": OPEN, "market": "KOSDAQ"}])
 
         # Exercise the actual two-sample sender and its financial-investment cooldown.
         w.session_open_ts, w.session_close_ts = OPEN, END + 1800

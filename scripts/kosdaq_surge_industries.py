@@ -26,7 +26,8 @@ from kospi_shock_enrichment import _display_name, _is_real_industry
 from market_investors import actor_label
 
 KST = ZoneInfo("Asia/Seoul")
-INVESTORS = {"개인": "0008", "외국인": "0017", "기관": "0018", "투신": "0003"}
+INVESTORS = {"개인": "0008", "외국인": "0017", "기관": "0018", "투신": "0003",
+             "금융투자": "0001"}
 MAX_GAP_SEC = 30.0
 SOURCE = "LS UBM 통합 업종별투자자별매매현황"
 GUIDE_URL = "https://openapi.ls-sec.co.kr/apiservice?api_id=9a2800c3-9bf2-4d67-8d83-905074f06646"
@@ -99,8 +100,8 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
     block["observed_industries"] = len(latest)
     block["expected_industries"] = len(expected) if expected is not None else None
     field, actor_code = {"개인": ("indmsamt", "indcode"), "외국인": ("formsamt", "forcode"),
-                         "기관": ("sysmsamt", "syscode"),
-                         "투신": ("invmsamt", "invcode")}[block["investor"]]
+                         "기관": ("sysmsamt", "syscode"), "투신": ("invmsamt", "invcode"),
+                         "금융투자": ("stomsamt", "stocode")}[block["investor"]]
     block["source_amount_field"] = field
     block["ranking_basis"] = "positive end_" + field + " - start_" + field
     exclusions: dict[str, int] = defaultdict(int)

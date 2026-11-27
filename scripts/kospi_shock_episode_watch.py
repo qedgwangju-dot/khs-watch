@@ -2354,13 +2354,6 @@ class Watch:
                                       session_open_ts: float) -> dict[str, Any] | None:
         if fnum(spot) is None or spot <= 0 or not spot_window:
             return None
-        if actor == "금융투자":
-            return {
-                "market": market, "investor": actor, "requested_window": list(spot_window),
-                "available": False, "rows": [], "top": [], "covered_industries": 0,
-                "expected_industries": None, "coverage_complete": False,
-                "reason": "금융투자 업종 원자료 확인 불가",
-            }
         try:
             return await asyncio.to_thread(
                 industry_buy_context, *spot_window, actor,
