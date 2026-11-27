@@ -2,12 +2,16 @@
 import os, re, json, hashlib, time
 import urllib.parse
 from pathlib import Path
-from datetime import datetime, timezone, timedelta, time as dt_time
+from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 from io import StringIO, BytesIO
 
 import requests
 import pandas as pd
+from us_positioning_calendar import (
+    completed_us_session_candidates,
+    latest_completed_us_session,
+)
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
@@ -1019,35 +1023,15 @@ def _parse_cboe_daily_volume_section(text, heading, next_heading=None):
     return {"calls": calls, "puts": puts, "total": total}
 
 
-def _previous_weekday(day):
-    d = day - timedelta(days=1)
-    while d.weekday() >= 5:
-        d -= timedelta(days=1)
-    return d
-
-
-def _expected_completed_us_session():
-    """Latest session that should have a final close, not the live intraday date."""
-    now = datetime.now(NY)
-    if now.weekday() < 5 and now.time() >= dt_time(16, 30):
-        return now.date()
-    d = now.date()
-    if now.weekday() < 5:
-        d = _previous_weekday(d)
-    else:
-        while d.weekday() >= 5:
-            d -= timedelta(days=1)
-    return d
+def _expected_completed_us_session(now=None):
+    """Latest XNYS session with a final close and a 30-minute publication buffer."""
+    return latest_completed_us_session(now)
 
 
 def _completed_session_candidates(limit=7):
-    d = _expected_completed_us_session()
-    out = []
-    while len(out) < limit:
-        if d.weekday() < 5:
-            out.append(d)
-        d -= timedelta(days=1)
-    return out
+    return completed_us_session_candidates(
+        _expected_completed_us_session(), limit=limit
+    )
 
 
 def fetch_cboe_daily_snapshot(period):
