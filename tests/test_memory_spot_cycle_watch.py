@@ -1710,6 +1710,51 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
               "2028年初产能释放，WFE较低点上升60%。交货周期、长协、存储亮黄灯，37个月。")
         self.assertTrue(w._jpm_cycle_body_verified(zh))
 
+    def test_jpm_cycle_readable_notice_keeps_all_facts_fx_and_source(self):
+        import currency_krw_guard as guard
+        url = w.JPM_CYCLE_URLS[0]
+        notice = w._jpm_cycle_alert(url)
+        self.assertTrue(notice.startswith(w.JPM_CYCLE_HEADER + "\n"))
+        headings = ("핵심 판단", "① 재고", "② 생산능력", "③ 납기", "④ 장기공급계약",
+                    "시장 판단", "추가 경계 조건", "출처·확인 수준")
+        indexes = [notice.index(h) for h in headings]
+        self.assertEqual(indexes, sorted(indexes))
+        self.assertGreaterEqual(notice.count("\n\n<b>"), len(headings))
+        required = (
+            "2026년 11월 27일", "아시아 기술 전략", "광범위한 정점 신호는 없지만",
+            "메모리 장기계약 가격은 주의", "증권사 판단", "원 리서치는 미열람",
+            "AI 관련 클라우드 서비스 업체", "2~3주", "2018년 하락기 10~12주",
+            "소비자 PC·스마트폰", "6개 팹리스", "2026년 3분기", "640억달러", "130일",
+            "차트 눈금 근사", "대상·분모가 다름", "재고일수·재고주수 증가",
+            "현재 설비투자 계획 유지 시", "대부분", "2028년 초",
+            "2026년 웨이퍼 제조장비", "2022년 저점 대비 약 60% 증가 추정",
+            "발표·장비 반입·양산·실제 비트 생산", "주문·실제 웨이퍼/비트 생산량",
+            "웨이퍼·패키징·기판·메모리 납기는 아직 장기화",
+            "증설·생산성 개선", "주문 감소·공급과잉",
+            "메모리 가격 고정·구매 약정 확대", "선지급금", "최소 구매물량",
+            "가격상한·재협상", "실제 취소 및 인도", "장기계약 가격·물량·조건 변화",
+            "고점 대비 약 40% 하락", "37개월 연속 전년비 증가",
+            "수요 5~10% 약화", "전면 역전은 어렵고", "향후 3~4개월",
+            "대규모 이익 하향 위험은 낮다", "메모리 성장률 둔화는 별도",
+            "중국·신흥 클라우드 주문 축소", "북미의 추가 물량 흡수 실패",
+            "MediaTek·GUC·NVIDIA·AMD·Marvell·Broadcom",
+            "기업자료·Bloomberg 표기 사용자 제공 차트", "공식 실측/독립 검증 아님",
+            "동일 원출처 전재는 독립 증거 아님", url,
+        )
+        for fact in required:
+            with self.subTest(fact=fact):
+                self.assertIn(fact, notice)
+        self.assertEqual(notice.count(url), 1)
+        self.assertNotIn("<<<TELEGRAM_MESSAGE_BREAK>>>", notice)
+        with patch.object(guard, "_rate", return_value=(1334.9, "2026-11-27 test")):
+            converted = guard.enforce_text(notice)
+        self.assertIn("640억달러(약 85조4,336억원)", converted)
+        self.assertIn("환율 기준:", converted)
+        guard.validate_text(converted)
+        self.assertLessEqual(max(len(converted), len(converted.encode("utf-16-le")) // 2), 3900)
+        self.assertEqual(converted.count("<b>"), converted.count("</b>"))
+        self.assertEqual(converted.count("<a href="), converted.count("</a>"))
+
     def test_jpm_cycle_routes_only_report_family(self):
         row = {"title": "JPMorgan Refutes Semiconductor Cycle Peak Theory: Four Key Indicators",
                "published_kst": "2026-11-28T09:00:00+09:00"}
