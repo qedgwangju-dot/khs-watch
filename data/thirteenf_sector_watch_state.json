@@ -80,7 +80,7 @@
       "cik": "0001512857"
     }
   },
-  "updated_at": "2026-11-25T11:04:56.470317+00:00",
+  "updated_at": "2026-11-28T11:43:38.104176+00:00",
   "seen_context_events": [
     "13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08",
     "13f-duquesne-2026q3-article-audit-20261117-v1",
@@ -121,5 +121,96 @@
       "q2_accession": "0001536411-26-000006",
       "confirmed_utc": "2026-11-17T07:58:14.763311+00:00"
     }
+  },
+  "13f_legacy_cutoffs": {
+    "Situational Awareness": {
+      "accession": "0000935836-26-000610",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0002045724",
+      "accepted_at": "2026-11-16T21:30:50.000Z"
+    },
+    "Duquesne Family Office": {
+      "accession": "0001536411-26-000011",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001536411",
+      "accepted_at": "2026-11-16T20:33:15.000Z"
+    },
+    "Pershing Square": {
+      "accession": "0001172661-26-005427",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0002026053",
+      "accepted_at": "2026-11-16T22:02:35.000Z"
+    },
+    "Third Point": {
+      "accession": "0001040273-26-000004",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001040273",
+      "accepted_at": "2026-11-16T21:08:17.000Z"
+    },
+    "NVIDIA": {
+      "accession": "0001045810-26-000084",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001045810",
+      "accepted_at": "2026-11-16T21:41:59.000Z"
+    },
+    "Appaloosa": {
+      "accession": "0001656456-26-000004",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001656456",
+      "accepted_at": "2026-11-16T21:08:45.000Z"
+    },
+    "Berkshire Hathaway": {
+      "accession": "0001193125-26-463399",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001067983",
+      "accepted_at": "2026-11-16T21:00:04.000Z"
+    },
+    "Tudor Investment": {
+      "accession": "0000902664-26-004567",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0000923093",
+      "accepted_at": "2026-11-16T21:00:28.000Z"
+    },
+    "Morgan Stanley": {
+      "accession": "0000895421-26-000360",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-25",
+      "cik": "0000895421",
+      "accepted_at": "2026-11-24T23:10:27.000Z"
+    },
+    "JPMorgan Chase": {
+      "accession": "0000019617-26-000404",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-12",
+      "cik": "0000019617",
+      "accepted_at": "2026-11-12T13:25:09.000Z"
+    },
+    "UBS Group": {
+      "accession": "0001610520-26-000121",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-10",
+      "cik": "0001610520",
+      "accepted_at": "2026-11-10T19:22:42.000Z"
+    },
+    "BlackRock": {
+      "accession": "0002012383-26-003985",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-13",
+      "cik": "0002012383",
+      "accepted_at": "2026-11-13T20:52:08.000Z"
+    }
+  },
+  "13f_delivery_receipts": {},
+  "pending_13f_delivery": {
+    "key": "Blackstone|0001393818|0001193125-26-463513",
+    "reserved_at": "2026-11-28T11:43:38.104099+00:00"
   }
 }
