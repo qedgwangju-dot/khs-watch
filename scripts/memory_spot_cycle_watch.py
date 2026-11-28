@@ -5550,14 +5550,16 @@ def _is_dram_nov27_story(item: dict) -> bool:
     """One semantic event for the Nov25 research/Nov27 release and its reprints."""
     link = str(item.get("link") or "")
     title = _clean(str(item.get("title") or "")).lower()
-    if any(x in link for x in ("20261127-13327.html", "20261127-13325.html", "RP261126NY")):
+    if any(x in link for x in ("20261127-13327.html", "20261127-13325.html", "RP261126NY", "RP261126CM")):
         return True
     day = str(item.get("published_kst") or "")[:10]
     if not "2026-11-25" <= day <= "2026-11-29":
         return False
     return (
-        "dram contract price declines in 2028" in title
-        and ("limited demand visibility" in title or "demand concerns mount" in title)
+        ("dram contract price declines in 2028" in title
+         and "limited demand visibility" in title)
+        or ("dram demand concerns mount" in title
+            and "risk of contract price declines in 2028" in title)
     ) or (
         "2028年" in title and "dram" in title and "合約價" in title
         and ("需求能見度" in title or "需求展望疑慮" in title)
