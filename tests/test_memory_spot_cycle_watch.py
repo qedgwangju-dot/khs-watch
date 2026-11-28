@@ -1681,6 +1681,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         prior = dict(w.load_state())
         record = {"event_id": w.DRAM_NOV27_EVENT_ID, "base_case_all_product_decline": "2028-Q1"}
         prior[w.DRAM_NOV27_STATE_KEY] = record
+        prior[w.JPM_CYCLE_STATE_KEY] = {"event_id": w.JPM_CYCLE_EVENT_ID}
         with tempfile.TemporaryDirectory() as td:
             root = pathlib.Path(td)
             with patch.object(w, "load_state", return_value=prior), \
@@ -1693,7 +1694,83 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
                 w.write_outputs([], [])
                 staged = json.loads(w.PENDING_PATH.read_text())
                 self.assertEqual(staged[w.DRAM_NOV27_STATE_KEY], record)
+                self.assertEqual(staged[w.JPM_CYCLE_STATE_KEY], prior[w.JPM_CYCLE_STATE_KEY])
                 self.assertEqual(staged.get("delivery_receipt"), prior.get("delivery_receipt"))
+
+
+    def test_jpm_cycle_body_requires_distinct_axes(self):
+        en = ("JPMorgan November 27 cloud service providers 2 to 3 weeks vs "
+              "2018 10 to 12 weeks. Early 2028 capacity. WFE up 60%. "
+              "Lead times lengthen; long-term agreement pricing memory yellow light. "
+              "Revenue increased for 37 consecutive months.")
+        self.assertTrue(w._jpm_cycle_body_verified(en))
+        self.assertFalse(w._jpm_cycle_body_verified(en.replace("Lead times", "Prices")))
+        self.assertFalse(w._jpm_cycle_body_verified("JPMorgan semiconductor cycle peak four indicators"))
+        zh = ("摩根大通11月27日云服务商2至3周，2018年10至12周。"
+              "2028年初产能释放，WFE较低点上升60%。交货周期、长协、存储亮黄灯，37个月。")
+        self.assertTrue(w._jpm_cycle_body_verified(zh))
+
+    def test_jpm_cycle_routes_only_report_family(self):
+        row = {"title": "JPMorgan Refutes Semiconductor Cycle Peak Theory: Four Key Indicators",
+               "published_kst": "2026-11-28T09:00:00+09:00"}
+        self.assertTrue(w._is_jpm_nov27_story(row))
+        self.assertFalse(w._is_jpm_nov27_story(dict(row, published_kst="2027-01-10")))
+        self.assertTrue(w._is_jpm_nov27_story({"link": w.JPM_CYCLE_URLS[0]}))
+        self.assertFalse(w._is_jpm_nov27_story({"link": "https://example.org/articles/3786896"}))
+
+    def test_cycle_followups_ack_gated_and_preserve_old_state_on_rss_failure(self):
+        import datetime as dt
+        import json
+        previous = {
+            "seen": {"old": {"title": "keep"}},
+            "delivery_receipt": {"status": "confirmed", "recipient_verified": True,
+                                 "message_ids": [1]},
+            "trendforce_4q26_revision": {"conventional_dram_min_pct": 10,
+                                         "conventional_dram_max_pct": 15},
+            w.DRAM_NOV27_STATE_KEY: {"event_id": w.DRAM_NOV27_EVENT_ID,
+                                    "base_case_all_product_decline": "2028-Q1",
+                                    "confirmed_20261127_q1_qoq_pct": None},
+        }
+        now = dt.datetime(2026, 11, 28, 19, tzinfo=w.KST)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=previous), \
+                 patch.object(w, "_jpm_cycle_live_report", return_value=(w.JPM_CYCLE_URLS[1], "verified")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertTrue(w._stage_nov28_cycle_followups(["RSS failed"], now))
+                saved = json.loads(w.PENDING_PATH.read_text())
+                self.assertEqual(saved["seen"], previous["seen"])
+                self.assertEqual(saved["delivery_receipt"], previous["delivery_receipt"])
+                self.assertEqual(saved["trendforce_4q26_revision"], previous["trendforce_4q26_revision"])
+                dram = saved[w.DRAM_NOV27_STATE_KEY]
+                self.assertEqual(dram["chart_1q27_qoq_pct"], [3, 8])
+                self.assertIsNone(dram["confirmed_20261127_q1_qoq_pct"])
+                self.assertEqual(dram["base_case_all_product_decline"], "2028-Q1")
+                jpm = saved[w.JPM_CYCLE_STATE_KEY]
+                self.assertEqual(jpm["csp_ai_inventory_weeks"], [2, 3])
+                self.assertEqual(jpm["fabless_chart_doi_days_approx"], 130)
+                self.assertEqual(jpm["memory_lta_price_signal"], "caution")
+                self.assertIn(w.DRAM_CHART_HEADER, w.ALERT_PATH.read_text())
+                self.assertIn(w.JPM_CYCLE_HEADER, w.ALERT_PATH.read_text())
+                self.assertNotIn(w.DRAM_NOV27_HEADER, w.ALERT_PATH.read_text())
+                with patch.object(w, "load_state", return_value=saved):
+                    self.assertFalse(w._stage_nov28_cycle_followups([], now))
+
+    def test_cycle_source_failure_and_unacknowledged_parent_never_stage(self):
+        import datetime as dt
+        previous = {w.DRAM_NOV27_STATE_KEY: {"event_id": w.DRAM_NOV27_EVENT_ID}}
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=previous), \
+                 patch.object(w, "_jpm_cycle_live_report", return_value=("", "access_error:TimeoutError")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertFalse(w._stage_nov28_cycle_followups([], dt.datetime(2026, 11, 28, tzinfo=w.KST)))
+                self.assertFalse(w.PENDING_PATH.exists())
+                self.assertFalse(w.ALERT_PATH.exists())
 
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
@@ -1701,6 +1778,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
              patch.object(w, "_stage_nand_verified_reversal", return_value=False), \
              patch.object(w, "_stage_nand_nov19_press_update", return_value=False), \
              patch.object(w, "_stage_dram_nov27_update", return_value=False), \
+             patch.object(w, "_stage_nov28_cycle_followups", return_value=False), \
              patch.object(w.currency_krw_guard, "enforce_file") as guard:
             w.main()
         guard.assert_called_once_with(w.ALERT_PATH)

@@ -492,6 +492,9 @@ QUERIES = [
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
     ("en", 'DRAM wafer starts greenfield fab capacity expansion Samsung P4 SK hynix M15X Micron'),
     ("en", 'DRAM capacity 300000 400000 wafer starts per month Applied Materials'),
+    # Four-cycle axes: memory-specific, reuse the existing scan and source gates.
+    ("ko", '(DRAM OR HBM OR 메모리) (재고일수 OR 재고주수 OR 납기 OR 장기공급계약 OR 생산능력)'),
+    ("en", '(DRAM OR HBM OR memory) ("inventory days" OR "weeks of inventory" OR "lead times" OR "long-term agreement pricing" OR "wafer capacity")'),
 ]
 
 MEMORY_MARKERS = {
@@ -502,6 +505,7 @@ MEMORY_MARKERS = {
 CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
+    "lead time", "delivery time", "long-term agreement", "납기", "재고일수", "재고주수",
     "msrp", "sku", "launch", "price increase", "price hike",
     "outlook", "revised", "revision", "normalize", "normalization", "wafer", "wafer start", "wafer starts", "wspm",
     "eol", "end of life", "end-of-life", "support extension", "fulfillment",
@@ -514,6 +518,7 @@ CHANGE_MARKERS = {
 HIGH_SIGNAL = {
     "bofa", "bank of america", "bernstein", "goldman", "goldman sachs", "trendforce", "dram exchange", "dramexchange", "omdia",
     "reuters", "bloomberg", "citi", "ubs", "micron", "samsung", "sk hynix", "sk하이닉스",
+    "jpmorgan", "j.p. morgan", "jp모건", "제이피모건", "摩根大通",
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
     "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
     "ymtc", "yangtze memory", "长江存储", "counterpoint", "the wire china",
@@ -4380,6 +4385,8 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         pending["nand_2027_reversal_samr"] = state["nand_2027_reversal_samr"]
     if DRAM_NOV27_STATE_KEY in state:
         pending[DRAM_NOV27_STATE_KEY] = state[DRAM_NOV27_STATE_KEY]
+    if JPM_CYCLE_STATE_KEY in state:
+        pending[JPM_CYCLE_STATE_KEY] = state[JPM_CYCLE_STATE_KEY]
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [
@@ -5701,6 +5708,193 @@ def _stage_dram_nov27_update(source_errors: list[str], now: dt.datetime | None =
     return True
 
 
+
+# Nov 28 user-provided TrendForce table and Nov 27 JPMorgan cycle assessment.
+# Keep the already-delivered scenario, the supplied chart, and analyst-reported
+# inventory horizons separate. Never promote a secondary report to issuer data.
+DRAM_CHART_EVIDENCE_ID = "trendforce-202611-conventional-qoq-user-table-v1"
+DRAM_CHART_HEADER = "<b>[TrendForce 범용 DRAM 2027년 1분기 전망표 근거 보강]</b>"
+JPM_CYCLE_STATE_KEY = "jpm_memory_cycle_20261127"
+JPM_CYCLE_EVENT_ID = "jpm-asia-tech-20261127-four-axes-secondary-v1"
+JPM_CYCLE_HEADER = "<b>[JP모건 메모리 사이클 4대 지표·주의 신호]</b>"
+JPM_CYCLE_URLS = (
+    "https://wallstreetcn.com/articles/3786896",
+    "https://4g.stockstar.com/detail/IG2026112800012904",
+    "https://ttm.financial/m/news/1196505104",
+)
+
+
+def _is_jpm_nov27_story(item: dict) -> bool:
+    """Route only this report family away from title-based duplicate delivery."""
+    url = urllib.parse.urlparse(str(item.get("link") or ""))
+    if any(url.hostname == urllib.parse.urlparse(u).hostname
+           and url.path.rstrip("/") == urllib.parse.urlparse(u).path.rstrip("/")
+           for u in JPM_CYCLE_URLS):
+        return True
+    day = str(item.get("published_kst") or "")[:10]
+    if not "2026-11-27" <= day <= "2026-12-02":
+        return False
+    title = _clean(str(item.get("title") or "")).lower()
+    return (
+        ("jpmorgan" in title or "j.p. morgan" in title)
+        and "semiconductor" in title and "cycle peak" in title
+        and ("four" in title or "warning" in title)
+    ) or ("摩根大通" in title and "半导体周期见顶" in title and "四大指标" in title)
+
+
+def _jpm_cycle_body_verified(raw: str) -> bool:
+    """Require attributed full-body data for all four axes, not a headline."""
+    low = _clean(raw).lower()
+    en = (
+        all(x in low for x in ("jpmorgan", "november 27", "cloud service providers",
+                               "2018", "early 2028", "lead times",
+                               "long-term agreement", "memory", "yellow light"))
+        and re.search(r"2\s*(?:to|[-–—~])\s*3\s*weeks", low) is not None
+        and re.search(r"10\s*(?:to|[-–—~])\s*12\s*weeks", low) is not None
+        and re.search(r"60\s*%", low) is not None
+        and "37 consecutive months" in low
+    )
+    zh = (
+        all(x in low for x in ("摩根大通", "11月27日", "云服务商", "2018年",
+                               "2028年初", "交货周期", "长协", "存储", "黄灯",
+                               "37个月"))
+        and re.search(r"2\s*(?:至|到|[-–—~～])\s*3\s*周", low) is not None
+        and re.search(r"10\s*(?:至|到|[-–—~～])\s*12\s*周", low) is not None
+        and re.search(r"60\s*%", low) is not None
+    )
+    return bool(en or zh)
+
+
+def _jpm_cycle_live_report() -> tuple[str, str]:
+    """Read the reported article or its attributed reprint; not the bank's paid report."""
+    outcomes = []
+    for url in JPM_CYCLE_URLS:
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0",
+                "Accept": "text/html,application/xhtml+xml",
+            })
+            with urllib.request.urlopen(req, timeout=8) as response:
+                final = urllib.parse.urlparse(response.geturl())
+                expected = urllib.parse.urlparse(url)
+                if (final.scheme != "https" or final.hostname != expected.hostname
+                        or final.path.rstrip("/") != expected.path.rstrip("/")):
+                    outcomes.append("redirect_mismatch")
+                    continue
+                raw = response.read(1800000).decode("utf-8", errors="replace")
+            if _jpm_cycle_body_verified(raw):
+                return url, "attributed_press_body_verified"
+            outcomes.append("press_body_unverified")
+        except Exception as exc:
+            outcomes.append("access_error:" + type(exc).__name__)
+    return "", "; ".join(outcomes)
+
+
+def _jpm_cycle_alert(url: str) -> str:
+    return "\n".join((
+        JPM_CYCLE_HEADER,
+        "■ 11/27 아시아 기술 전략 보고서 인용 보도: 4대 지표에 광범위한 정점 신호는 없지만 메모리 장기계약 가격은 주의. 증권사 판단이며 원 리서치 미열람.",
+        "• 재고: AI 관련 클라우드 서비스 업체 2~3주(2018년 하락기 10~12주); 소비자 PC·스마트폰 재고는 별도. 사용자 제공 6개 팹리스 차트는 2026년 3분기 재고 약 640억달러·재고일수 약 130일(차트 눈금 근사), 클라우드 재고와 다른 분모·대상.",
+        "• 생산능력: 현재 설비투자 계획 유지 시 신규 생산능력 대부분 2028년 초 공급 전망; 2026년 웨이퍼 제조장비 지출은 2022년 저점 대비 약 60% 증가했다는 추정. 발표·장비반입·양산 및 실제 비트 생산을 구분.",
+        "• 납기: 웨이퍼·패키징·기판·메모리 납기는 아직 장기화. 단축 시 증설·생산성 개선인지 주문 감소·공급과잉인지 확인.",
+        "• 장기공급계약: 메모리 가격 고정·구매 약정 확대는 주의 신호; 선지급금, 최소 구매물량, 가격상한·재협상, 실제 취소 및 인도는 서로 다른 단계.",
+        "• 시장 판단: 반도체지수 고점 대비 약 40% 하락, 반도체 매출 37개월 연속 전년비 증가라는 보도. 일부 수요 5~10% 약화만으로 전면 역전은 어렵고 향후 3~4개월 대규모 이익 하향 위험은 낮다는 견해; 메모리 성장률 둔화는 별도.",
+        "• 감시: 재고일수·재고주수의 대상별 증가, 주문·실제 웨이퍼/비트 생산량, 납기 단축 원인, 장기계약 가격·물량·조건 변화. 중국·신흥 클라우드 주문 축소와 북미 흡수 실패가 함께 확인되는지도 추적.",
+        "• 출처: 팹리스 6개사(MediaTek·GUC·NVIDIA·AMD·Marvell·Broadcom), 기업자료·Bloomberg 표기 사용자 제공 차트; 지수 및 재고 수치는 JP모건 인용·차트 판독, 공식 실측/독립 검증 아님.",
+        f'• <a href="{html.escape(url, quote=True)}">JP모건 보고서 인용 보도</a> (동일 원출처 전재는 독립 증거 아님)',
+    )) + "\n"
+
+
+def _stage_nov28_cycle_followups(source_errors: list[str], now: dt.datetime | None = None) -> bool:
+    """One ACK-gated chart clarification and one source-graded analyst event.
+
+    If ordinary collection failed, retain the last confirmed state and append
+    only these independently evidenced alerts. Do not advance unrelated seen keys.
+    """
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 28) <= now.date() <= dt.date(2026, 12, 27):
+        return False
+    previous = load_state()
+    dram = dict(previous.get(DRAM_NOV27_STATE_KEY) or {})
+    receipt = dict(previous.get("delivery_receipt") or {})
+    chart_due = (
+        dram.get("event_id") == DRAM_NOV27_EVENT_ID
+        and receipt.get("status") == "confirmed"
+        and receipt.get("recipient_verified") is True
+        and bool(receipt.get("message_ids"))
+        and dram.get("chart_evidence_id") != DRAM_CHART_EVIDENCE_ID
+    )
+    jpm_old = dict(previous.get(JPM_CYCLE_STATE_KEY) or {})
+    jpm_url = ""
+    if jpm_old.get("event_id") != JPM_CYCLE_EVENT_ID:
+        jpm_url, result = _jpm_cycle_live_report()
+        if not jpm_url:
+            print("jpm_cycle_source_verification_held=" + result)
+            if STATUS_PATH.exists():
+                with STATUS_PATH.open("a", encoding="utf-8") as f:
+                    f.write("- JP모건 인용 본문 확인 보류(조회 실패/내용 미확인): " + result + "\n")
+    if not chart_due and not jpm_url:
+        return False
+    pending = (dict(previous) if source_errors or not PENDING_PATH.exists()
+               else json.loads(PENDING_PATH.read_text(encoding="utf-8")))
+    parts = []
+    if not source_errors and ALERT_PATH.exists():
+        prior_alert = ALERT_PATH.read_text(encoding="utf-8").strip()
+        if prior_alert:
+            parts.append(prior_alert)
+    if chart_due:
+        # A user-supplied publisher-branded image is stronger than a text memo
+        # but is not a directly verified copy of the publisher-hosted original.
+        dram.update({
+            "chart_evidence_id": DRAM_CHART_EVIDENCE_ID,
+            "chart_source_month": "2026-11",
+            "chart_4q26_qoq_pct": [10, 15],
+            "chart_1q27_qoq_pct": [3, 8],
+            "provided_q1_range_status": "user_provided_trendforce_branded_table_origin_unverified",
+        })
+        pending[DRAM_NOV27_STATE_KEY] = dram
+        parts.append("\n".join((
+            DRAM_CHART_HEADER,
+            "■ 새로 제공된 TrendForce 2026년 11월 표: 범용 DRAM 계약가격 전분기 대비 4Q26 추정 +10~15% → 1Q27 전망 +3~8%.",
+            "• 11/18 인용 전망 1Q27 +5~10% 대비 양 끝값 2%p 하향. 상승률 둔화이지 가격 하락 확정이 아님.",
+            "• 근거: 사용자 제공 TrendForce 로고·출처 표기 전망표 직접 판독; 발행처 원본 이미지·유료 원표의 독립 확인 전. 기존 공식 본문 검증값과 분리, 4Q26 기준선 변경 없음.",
+            "• 이미 발송한 기본 1Q28·비관 4Q27 하락 시나리오는 재전송하지 않음.",
+            f'• <a href="{DRAM_NOV27_URLS[0]}">11/27 공식 발표(시나리오)</a>',
+        )))
+    if jpm_url:
+        pending[JPM_CYCLE_STATE_KEY] = {
+            **jpm_old,
+            "event_id": JPM_CYCLE_EVENT_ID,
+            "report_date": "2026-11-27",
+            "source_url": jpm_url,
+            "source_grade": "attributed_press_body_verified_not_bank_original",
+            "csp_ai_inventory_weeks": [2, 3],
+            "csp_2018_inventory_weeks": [10, 12],
+            "fabless_chart_period": "2026-Q3",
+            "fabless_chart_inventory_usd_mn_approx": 64000,
+            "fabless_chart_doi_days_approx": 130,
+            "fabless_chart_companies": ["MediaTek", "GUC", "NVDA", "AMD", "MRVL", "AVGO"],
+            "fabless_chart_source_grade": "user_chart_axis_approx_not_csp",
+            "new_capacity_expected": "2028-Q1",
+            "wfe_vs_2022_low_pct_approx": 60,
+            "lead_time_direction": "lengthening_reported",
+            "memory_lta_price_signal": "caution",
+            "industry_revenue_growth_months": 37,
+            "scope": "analyst_assessment_not_confirmed_cycle_top_or_orders",
+        }
+        parts.append(_jpm_cycle_alert(jpm_url).strip())
+    pending["updated_at_kst"] = now.isoformat(timespec="seconds")
+    if source_errors:
+        pending["rss_outage_note"] = "Only independently evidenced Nov28 followups; unrelated RSS not acknowledged"
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    ALERT_PATH.write_text("\n<<<TELEGRAM_MESSAGE_BREAK>>>\n".join(parts) + "\n", encoding="utf-8")
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as f:
+            f.write(f"- 11/28 근거 보강 발송 대기: DRAM 표={chart_due}, JP모건 본문={bool(jpm_url)}\n")
+    return True
+
+
 def _semia_independent_chart_fallback(errors: list[str],
                                       now: dt.datetime | None = None) -> bool:
     """Send only the already-user-supplied scenario when unrelated RSS is 429.
@@ -5757,12 +5951,15 @@ def _semia_independent_chart_fallback(errors: list[str],
 def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
-    generic_items = [item for item in items if not _is_dram_nov27_story(item)]
+    generic_items = [item for item in items
+                     if not _is_dram_nov27_story(item) and not _is_jpm_nov27_story(item)]
     write_outputs(generic_items, errors, foxconn, price, warnings)
     verified_nand_alert = _stage_nand_verified_reversal(errors)
     verified_nand_nov19 = _stage_nand_nov19_press_update(errors)
     # On incomplete RSS, finish an already staged independent NAND event first.
     verified_dram_nov27 = False if errors and (verified_nand_alert or verified_nand_nov19) else _stage_dram_nov27_update(errors)
+    cycle_followups = (False if errors and (verified_nand_alert or verified_nand_nov19 or verified_dram_nov27)
+                       else _stage_nov28_cycle_followups(errors))
     # A pending semantic key must never be checkpointed unless its exact alert
     # section exists. In particular no-alert state saves must not acknowledge
     # an unsent analyst model detail or future publisher-stage upgrade.
@@ -5787,6 +5984,12 @@ def main() -> int:
         staged_dram = dict(staged_doc.get(DRAM_NOV27_STATE_KEY) or {})
         if previous_dram.get("event_id") != staged_dram.get("event_id"):
             required.append(DRAM_NOV27_HEADER)
+        if previous_dram.get("chart_evidence_id") != staged_dram.get("chart_evidence_id"):
+            required.append(DRAM_CHART_HEADER)
+        old_jpm = dict(load_state().get(JPM_CYCLE_STATE_KEY) or {})
+        new_jpm = dict(staged_doc.get(JPM_CYCLE_STATE_KEY) or {})
+        if old_jpm.get("event_id") != new_jpm.get("event_id"):
+            required.append(JPM_CYCLE_HEADER)
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
             missing_sections = [section for section in required if section not in body]
@@ -5794,6 +5997,10 @@ def main() -> int:
                 raise RuntimeError("Memory event key staged without matching Telegram section; state save blocked: "
                                    + ", ".join(missing_sections))
     if errors:
+        if cycle_followups:
+            currency_krw_guard.enforce_file(ALERT_PATH)
+            print(f"cycle_followup_only_alert=true incomplete_rss_sources={len(errors)}")
+            return 0
         if verified_dram_nov27:
             currency_krw_guard.enforce_file(ALERT_PATH)
             print(f"dram_primary_only_alert=true incomplete_rss_sources={len(errors)}")
