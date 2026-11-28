@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-28T02:10:04.993322+00:00",
+  "updated_at": "2026-11-28T10:17:59.329448+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1076,20 +1076,9 @@
     "lg_factory_loop",
     "lg_robotics",
     "robotis",
-    "robotis_excess_demand",
     "samsung_robot_scale"
   ],
   "delivery_history": [
-    {
-      "run_id": 45450111753,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-24T17:35:50.884764+00:00"
-    },
     {
       "run_id": 45466309426,
       "outcome": "normal_silence",
@@ -1399,17 +1388,27 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-28T02:10:04.993322+00:00"
+    },
+    {
+      "run_id": 46134443986,
+      "outcome": "normal_silence",
+      "confirmed_event_keys": [],
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-28T10:17:59.329448+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 46096656238,
+    "run_id": 46134443986,
     "outcome": "normal_silence",
     "confirmed_event_keys": [],
     "message_ids": [],
     "recipient_verified": null,
     "recipient_checks": [],
     "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-28T02:10:04.993322+00:00"
+    "state_timestamp_utc": "2026-11-28T10:17:59.329448+00:00"
   },
   "last_selected_events": [],
   "message_corrections": {
