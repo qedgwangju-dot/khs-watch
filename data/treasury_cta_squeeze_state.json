@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-28T19:56:09+09:00",
+  "last_checked_kst": "2026-11-28T21:52:51+09:00",
   "media_id": null,
   "cftc_date": "November 17, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-28T19:56:09+09:00",
+    "checked_kst": "2026-11-28T21:52:51+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 17, 2026",
@@ -222,7 +222,7 @@
         "source": "Yahoo distributed/delayed NQ=F fallback",
         "official": false,
         "official_errors": [
-          "CME Daily Bulletin PG11: RuntimeError: CME PG11 download failed: https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026112805: HTTPError: HTTP Error 403: Forbidden | https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?_=2026112805: HTTPError: HTTP Error 403: Forbidden | https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf: HTTPError: HTTP Error 403: Forbidden",
+          "CME Daily Bulletin PG11: RuntimeError: CME PG11 download failed: https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026112807: HTTPError: HTTP Error 403: Forbidden | https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?_=2026112807: HTTPError: HTTP Error 403: Forbidden | https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf: HTTPError: HTTP Error 403: Forbidden",
           "CME equity page: RuntimeError: 자료 조회 3회 실패: https://www.cmegroup.com/markets/equities.html / HTTPError: HTTP Error 403: Forbidden | HTTPError: HTTP Error 403: Forbidden | HTTPError: HTTP Error 403: Forbidden"
         ]
       },
