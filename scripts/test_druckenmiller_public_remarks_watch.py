@@ -195,6 +195,31 @@ class WatchTests(unittest.TestCase):
         self.assertEqual(json.loads(sent_payload["link_preview_options"][0]),{"is_disabled":True})
         self.assertIn('<a href=',sent_payload["text"][0])
 
+    def test_official_video_routes_and_same_event(self):
+        now=datetime(2026,11,24,tzinfo=timezone.utc)
+        channel=watcher.MS_VIDEO_CHANNEL
+        def atom(cid):
+            return (f'<feed xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://www.youtube.com/xml/schemas/2015">'
+                    f'<id>yt:channel:{cid}</id><entry><id>yt:video:N9DjSYMTZ5Q</id>'
+                    '<title>TomorrowX Summit | Stan Druckenmiller</title>'
+                    '<published>2026-11-23T20:00:00Z</published></entry></feed>').encode()
+        self.assertTrue(watcher.official_video_metadata(atom(channel),now)[0]["same_event"])
+        with self.assertRaises(ValueError):
+            watcher.official_video_metadata(atom(watcher.ICONNECTIONS_VIDEO_CHANNEL),now)
+        result=watcher.discover_video_channel(channel,now,lambda url: b"<html/>" if "channel_id=" in url else atom(channel))
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["route"],"uploads_atom")
+        other=watcher.ICONNECTIONS_VIDEO_CHANNEL
+        fixture={"metadata":{"channelMetadataRenderer":{"externalId":other}},
+                 "contents":{"videoRenderer":{"videoId":"6r3D-CMJkuI",
+                     "title":{"simpleText":"Stan Druckenmiller | TomorrowX Summit"},
+                     "publishedTimeText":{"simpleText":"6 days ago"}}}}
+        html=("var ytInitialData = "+json.dumps(fixture)+";").encode()
+        result=watcher.discover_video_channel(other,now,lambda url: html if url.endswith("/videos") else b"<html/>")
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["route"],"official_channel_page")
+        self.assertTrue(result["videos"][0]["same_event"])
+        self.assertFalse(watcher.discover_video_channel(other,now,lambda url:b"<html/>")["ok"])
     def test_strict_no_live_telegram(self):
         with patch.object(watcher,"http_bytes",return_value=b"<rss/>") as ignored:
             self.assertEqual(watcher.signals_from_text("nothing relevant"),[])

@@ -42,6 +42,9 @@ SEED_PUBLISHERS={
 FED_OFFICIAL="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
 MS_VIDEO_CHANNEL="UCz6RzD6KG_hH_oHb2kyW5jQ"
 MS_VIDEO_FEED="https://www.youtube.com/feeds/videos.xml?channel_id="+MS_VIDEO_CHANNEL
+ICONNECTIONS_VIDEO_CHANNEL="UCY6TEokyfC4sw--JMLoojDg"
+OFFICIAL_VIDEO_CHANNELS={"morgan_stanley_video":MS_VIDEO_CHANNEL,"iconnections_video":ICONNECTIONS_VIDEO_CHANNEL}
+KNOWN_TOMORROWX_VIDEO_IDS={"N9DjSYMTZ5Q","6r3D-CMJkuI"}
 CORE_FEEDS=("google","bing","coindesk")
 ALL_SIGNALS={
     "equity":"순주식노출 낮춤·방어적",
@@ -250,14 +253,28 @@ def feed_urls():
     }
 
 
-def official_video_metadata(raw,now):
+def official_video_metadata(raw,now,channel=MS_VIDEO_CHANNEL):
     # Official host's video metadata is a discovery aid, not a transcript or
     # an independent second confirmation of any trading position.
     ns={"a":"http://www.w3.org/2005/Atom",
         "yt":"http://www.youtube.com/xml/schemas/2015"}
     root=ET.fromstring(raw)
-    if root.tag!="{http://www.w3.org/2005/Atom}feed" or root.findtext("yt:channelId",namespaces=ns)!=MS_VIDEO_CHANNEL:
-        raise ValueError("Invalid Morgan Stanley channel feed")
+    if root.tag!="{http://www.w3.org/2005/Atom}feed":
+        raise ValueError("Invalid official video Atom feed")
+    identities=set()
+    for node in [root]+root.findall("a:entry",ns):
+        cid=(node.findtext("yt:channelId",namespaces=ns) or "").strip()
+        if cid:
+            identities.add(cid)
+        atomid=node.findtext("a:id",namespaces=ns) or ""
+        if atomid.startswith("yt:channel:"):
+            identities.add(atomid.split(":",2)[-1])
+        uri=node.findtext("a:author/a:uri",namespaces=ns) or ""
+        match=re.fullmatch(r"https://(?:www\.)?youtube\.com/channel/(UC[A-Za-z0-9_-]{22})/?",uri)
+        if match:
+            identities.add(match.group(1))
+    if identities!={channel}:
+        raise ValueError("Official video channel identity missing or mismatched")
     result=[]
     for entry in root.findall("a:entry",ns):
         title=clean(entry.findtext("a:title",namespaces=ns))
@@ -270,11 +287,84 @@ def official_video_metadata(raw,now):
         if not -timedelta(hours=6)<=now-date<=timedelta(days=14):
             continue
         video_id=entry.findtext("yt:videoId",namespaces=ns) or ""
+        if not video_id:
+            atomid=entry.findtext("a:id",namespaces=ns) or ""
+            if atomid.startswith("yt:video:"):
+                video_id=atomid.split(":",2)[-1]
         if not re.fullmatch(r"[A-Za-z0-9_-]{11}",video_id):
             raise ValueError("Invalid official video ID")
         result.append({"title":title,"video_id":video_id,"published":published,
-                       "same_event":"tomorrowx" in title.lower()})
+                       "same_event":(video_id in KNOWN_TOMORROWX_VIDEO_IDS or
+                            ("tomorrowx" in title.lower() and 0 <= (date.date()-datetime.fromisoformat(SEED_DATE).date()).days <= 21)),
+                       "url":"https://www.youtube.com/watch?v="+video_id})
     return result
+
+
+def official_channel_page(raw,now,channel):
+    """Official HTML fallback, with exact embedded identity; metadata only."""
+    page=raw.decode("utf-8",errors="replace")
+    match=re.search(r"(?:var\s+ytInitialData\s*=\s*|window\[['\"]ytInitialData['\"]\]\s*=\s*)",page)
+    if not match:
+        raise ValueError("Official channel metadata unavailable")
+    data,_=json.JSONDecoder().raw_decode(page[match.end():].lstrip())
+    md=(data.get("metadata") or {}).get("channelMetadataRenderer") or {}
+    if md.get("externalId")!=channel:
+        raise ValueError("Official channel page identity mismatch")
+    def nodes(obj):
+        if isinstance(obj,dict):
+            yield obj
+            for value in obj.values():
+                yield from nodes(value)
+        elif isinstance(obj,list):
+            for value in obj:
+                yield from nodes(value)
+    def content(obj):
+        return clean(obj.get("simpleText") or "".join(str(x.get("text") or "") for x in obj.get("runs",[]))) if isinstance(obj,dict) else ""
+    videos={}
+    listed=0
+    for node in nodes(data.get("contents") or {}):
+        v=node.get("videoRenderer") or node.get("gridVideoRenderer")
+        if not isinstance(v,dict):
+            continue
+        vid=str(v.get("videoId") or "")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{11}",vid):
+            continue
+        listed+=1
+        title=content(v.get("title"))
+        if not is_about_druckenmiller(title,""):
+            continue
+        age=re.search(r"(\d+|an?|one)\s+(minute|hour|day|week)s?\s+ago",content(v.get("publishedTimeText")),re.I)
+        if not age:
+            continue
+        number=int(age.group(1)) if age.group(1).isdigit() else 1
+        unit={"minute":"minutes","hour":"hours","day":"days","week":"weeks"}[age.group(2).lower()]
+        date=now-timedelta(**{unit:number})
+        if now-date>timedelta(days=14):
+            continue
+        videos[vid]={"title":title,"video_id":vid,"published":date.isoformat(),
+                    "publication_approximate":True,
+                    "same_event":(vid in KNOWN_TOMORROWX_VIDEO_IDS or ("tomorrowx" in title.lower() and 0 <= (date.date()-datetime.fromisoformat(SEED_DATE).date()).days <=21)),
+                    "url":"https://www.youtube.com/watch?v="+vid}
+    if not listed:
+        raise ValueError("Official channel listing unavailable")
+    return list(videos.values())
+
+
+def discover_video_channel(channel,now,fetch):
+    routes=(("channel_atom","https://www.youtube.com/feeds/videos.xml?channel_id="+channel),
+            ("uploads_atom","https://www.youtube.com/feeds/videos.xml?playlist_id=UU"+channel[2:]),
+            ("official_channel_page","https://www.youtube.com/channel/"+channel+"/videos"))
+    errors=[]
+    for route,url in routes:
+        try:
+            raw=fetch(url)
+            videos=(official_channel_page(raw,now,channel) if route=="official_channel_page"
+                    else official_video_metadata(raw,now,channel))
+            return {"ok":True,"kind":"metadata_only","route":route,"matches":len(videos),
+                    "videos":videos,"prior_route_errors":errors}
+        except (ET.ParseError,RuntimeError,ValueError,TypeError,AttributeError) as exc:
+            errors.append(route+":"+type(exc).__name__)
+    return {"ok":False,"kind":"metadata_only","errors":errors}
 
 
 def http_bytes(url,max_bytes=3_000_000,attempts=2):
@@ -308,12 +398,24 @@ def discover(now=None,fetch=http_bytes):
             all_items.extend(itemlist)
         except (ET.ParseError,RuntimeError,ValueError) as error:
             health[name]={"ok":False,"error":type(error).__name__}
-    try:
-        videos=official_video_metadata(fetch(MS_VIDEO_FEED),now)
-        health["morgan_stanley_video"]={"ok":True,"kind":"metadata_only","matches":len(videos),
-                                       "videos":videos}
-    except (ET.ParseError,RuntimeError,ValueError) as error:
-        health["morgan_stanley_video"]={"ok":False,"kind":"metadata_only","error":type(error).__name__}
+    leads={}
+    for name,channel in OFFICIAL_VIDEO_CHANNELS.items():
+        health[name]=discover_video_channel(channel,now,fetch)
+        for v in health[name].get("videos",[]):
+            if not v["same_event"]:
+                leads[v["video_id"]]=v
+    # Video titles are discovery leads only. Keep the two-original-publisher
+    # signal gate unchanged and do not replay the already reported 11/17 event.
+    for vid,v in list(leads.items())[:3]:
+        name="google_official_video_"+vid
+        query='Druckenmiller "'+v["title"][:100]+'" when:7d'
+        url="https://news.google.com/rss/search?q="+quote(query)+"&hl=en-US&gl=US&ceid=US:en"
+        try:
+            found=parse_rss(fetch(url),name,now)
+            health[name]={"ok":True,"matches":len(found),"metadata_lead":True}
+            all_items.extend(found)
+        except (ET.ParseError,RuntimeError,ValueError) as error:
+            health[name]={"ok":False,"error":type(error).__name__}
     # De-duplicate indexes of the same editorial story.
     dedup={}
     for article in all_items:
