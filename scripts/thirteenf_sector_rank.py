@@ -86,6 +86,9 @@ def verified_scale(label, filing):
     accession = (filing or {}).get("accession")
     if not accession:
         return None
+    if label == "Duquesne Family Office" and len(filing.get("effective_accessions") or []) > 1:
+        factors = {VERIFIED_ANOMALOUS_SCALE.get((label, a)) for a in filing["effective_accessions"]}
+        return next(iter(factors)) if len(factors) == 1 and None not in factors else None
     if (label, accession) in VERIFIED_ANOMALOUS_SCALE:
         return VERIFIED_ANOMALOUS_SCALE[(label, accession)]
     if label == "Duquesne Family Office":

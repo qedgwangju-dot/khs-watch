@@ -22,6 +22,8 @@ watch.MANAGERS.update({
     # BlackRock은 2026년 현재 새 CIK 0002012383으로 13F를 제출한다.
     # 과거 이력 연속성을 위해 이전 CIK 0001364742도 함께 조회한다.
     "BlackRock": ["0002012383", "0001364742"],
+    # Blackstone Inc. is a distinct SEC filer, not BlackRock.
+    "Blackstone": ["0001393818"],
     "Brevan Howard": ["0001512857"],
 })
 watch.MANAGER_KR.update({
@@ -30,8 +32,11 @@ watch.MANAGER_KR.update({
     "JPMorgan Chase": "JP모건체이스",
     "UBS Group": "UBS 그룹",
     "BlackRock": "블랙록",
+    "Blackstone": "블랙스톤",
     "Brevan Howard": "브레반 하워드 캐피털 매니지먼트",
 })
+# One verified historical recovery, only when no existing Blackstone checkpoint.
+watch.RECOVER_MISSING_MANAGERS.add("Blackstone")
 
 # 디지털자산 관련 13F 종목은 일반 금융/기타가 아니라 별도 산업축으로 분리한다.
 CRYPTO_DISPLAY_RULES = [
@@ -117,6 +122,7 @@ PORTFOLIO_OWNER_KR = {
     "JPMorgan Chase": "JP모건체이스",
     "UBS Group": "UBS 그룹",
     "BlackRock": "블랙록",
+    "Blackstone": "블랙스톤",
     "Brevan Howard": "브레반 하워드 캐피털 매니지먼트",
 }
 
@@ -315,10 +321,17 @@ def build_message_with_owner(label, filing, previous, changes, info_url,
         f"보유 기준 {filing['report_date']} · 제출 {filing['filing_date']} · "
         f"직전 {previous['report_date'] if previous else '비교 불가'}",
         f"환율 1달러={rate:,.2f}원 ({basis})",
-        "",
+    ]
+    if filing.get("recovery"):
+        lines.append("※ 기존 감시 누락 복구: 이미 제출된 과거 공시이며 오늘의 신규 거래가 아닙니다.")
+    if previous and len(previous.get("effective_accessions") or [])>1:
+        lines.append(f"직전 분기 비교: 최초/재작성 및 추가 신고 {len(previous['effective_accessions'])}건 반영")
+    if not previous:
+        lines.append("※ 직전 완전 신고본 미확인: 신규·보유 종료 및 증감 판정 보류.")
+    lines.extend(["",
         summary,
         f"SEC 공식 원문: {info_url}",
-    ]
+    ])
     message="\n".join(lines)
     if len(message)>3700:
         raise RuntimeError("13F automatic message too long; refuse partial/duplicate sending")

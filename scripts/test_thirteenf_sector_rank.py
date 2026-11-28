@@ -315,6 +315,24 @@ def main():
     assert "동일 분기" in correction and "그 외 신고 포지션 변경 없음" in correction
     assert "신규 편입" not in correction
     assert entry.format_13f_telegram_html(correction).count('<a href=')==2
+    # Late amendments for earlier quarters must not be hidden by a newer report.
+    late=dict(prior_q,form="13F-HR/A",filing_date="2026-11-26",accession="0000895421-26-000361")
+    assert watch.after_legacy_cutoff(late,amended)
+    assert not watch.after_legacy_cutoff(original,amended)
+    assert not watch.after_legacy_cutoff(amended,amended)
+    assert watch.MANAGERS["Blackstone"]==["0001393818"]
+    assert "Blackstone" in watch.RECOVER_MISSING_MANAGERS
+    q2base=dict(prior_q,filing_date="2026-08-14")
+    q2add=dict(late,filing_date="2026-10-09",accession="0000895421-26-000290")
+    base_row={"issuer":"BASE INC","shares":100,"value":1000,"source_rows":1}
+    add_row={"issuer":"ADD INC","shares":20,"value":200,"source_rows":1}
+    with patch.object(watch,"amendment_metadata",return_value={"type":"NEW HOLDINGS"}), \
+         patch.object(watch,"parse_holdings",side_effect=lambda cik,acc:(
+             {"base":base_row} if acc==q2base["accession"] else {"add":add_row}, "https://www.sec.gov/test.xml")):
+        effective,combined=watch.previous_quarter_holdings([original,q2base,q2add],original)
+        assert set(combined)=={"base","add"} and len(effective["effective_accessions"])==2
+    assert watch.filing_event_key("Blackstone",dict(late,cik="0001393818")).startswith("Blackstone|")
+    print("13F_ALL_FILINGS_AND_PRIOR_AMENDMENT_REGRESSION_PASS no_network=true no_telegram_send=true")
     print("13F_HTML_AND_AMENDMENT_REGRESSION_PASS no_network=true no_telegram_send=true")
 
     print("13F sector position-ranking regression checks passed.")

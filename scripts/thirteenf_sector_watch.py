@@ -4,6 +4,9 @@ import json
 import os
 import pathlib
 import sys
+import subprocess
+import hashlib
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -13,6 +16,8 @@ SEC_BASE = "https://www.sec.gov"
 SEC_DATA = "https://data.sec.gov"
 STATE_PATH = pathlib.Path("data/thirteenf_sector_watch_state.json")
 EXPECTED_BOT_USERNAME = "khs887988798879_bot"
+
+RECOVER_MISSING_MANAGERS = set()
 
 MANAGERS = {
     "Situational Awareness": ["0002045724"],
@@ -181,6 +186,7 @@ def recent_13f(cik: str):
             "form": form,
             "accession": recent["accessionNumber"][i],
             "filing_date": recent["filingDate"][i],
+            "accepted_at": (recent.get("acceptanceDateTime") or [""] * len(forms))[i],
             "report_date": recent["reportDate"][i],
             "primary_document": recent["primaryDocument"][i],
         })
@@ -521,9 +527,12 @@ def load_state():
     if not STATE_PATH.exists():
         return {"version": 1, "managers": {}, "updated_at": None}
     try:
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return {"version": 1, "managers": {}, "updated_at": None}
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        if not isinstance(state, dict) or not isinstance(state.get("managers"), dict):
+            raise ValueError("invalid 13F state")
+        return state
+    except (ValueError, OSError) as exc:
+        raise RuntimeError("13F state unreadable; refuse reset or repeat delivery") from exc
 
 
 def save_state(state):
@@ -547,113 +556,270 @@ def amendment_metadata(filing):
             "url":url,"number":child_text(cover,["amendmentNo"])}
 
 
+def filing_order(row):
+    """Submission chronology, distinct from the quarter-end date."""
+    return (str(row.get("filing_date") or ""), str(row.get("accepted_at") or ""),
+            str(row.get("accession") or ""))
+
+
+def after_legacy_cutoff(row, cutoff):
+    if row["accession"] == cutoff.get("accession"):
+        return False
+    date, accepted, accession = filing_order(row)
+    old_date, old_accepted, old_acc = filing_order(cutoff)
+    if date != old_date:
+        return date > old_date
+    if accepted and old_accepted:
+        return accepted > old_accepted or (accepted == old_accepted and accession > old_acc)
+    # Without acceptance times only same accession series is safely ordered.
+    return bool(old_acc and accession.rsplit("-", 1)[0] == old_acc.rsplit("-", 1)[0]
+                and accession > old_acc)
+
+
+def filing_event_key(label, row):
+    return "|".join((label, row["cik"], row["accession"]))
+
+
+def effective_holdings(rows, cik, period, before=None):
+    """Reconstruct a complete quarter: last full filing + subsequent add-only amendments.
+
+    A restatement replaces the earlier complete table. Add-only filings supplement it.
+    No complete base means no inferred additions/exits.
+    """
+    ordered = sorted((r for r in rows if r["cik"] == cik and
+                      r["report_date"] == period and
+                      (before is None or filing_order(r) < filing_order(before))),
+                     key=filing_order)
+    base = None
+    holdings = {}
+    accessions = []
+    for row in ordered:
+        kind = "FULL" if row["form"] == "13F-HR" else amendment_metadata(row)["type"]
+        if kind in ("FULL", "RESTATEMENT"):
+            holdings, _ = parse_holdings(row["cik"], row["accession"])
+            holdings = {k: dict(v) for k, v in holdings.items()}
+            base = dict(row)
+            accessions = [row["accession"]]
+        elif base is not None:
+            additions, _ = parse_holdings(row["cik"], row["accession"])
+            for key, item in additions.items():
+                if key not in holdings:
+                    holdings[key] = dict(item)
+                    continue
+                old = holdings[key]
+                if old["issuer"].strip().upper() != item["issuer"].strip().upper():
+                    raise RuntimeError("13F supplemental security identity conflict")
+                old["shares"] += item["shares"]
+                old["value"] += item["value"]
+                old["source_rows"] = old.get("source_rows", 1) + item.get("source_rows", 1)
+            accessions.append(row["accession"])
+    if base is not None:
+        base["effective_accessions"] = accessions
+    return base, holdings
+
+
+def previous_quarter_holdings(rows, filing):
+    periods = sorted({r["report_date"] for r in rows
+                      if r["report_date"] < filing["report_date"]}, reverse=True)
+    if not periods:
+        return None, {}
+    period = periods[0]
+    candidates = [r for r in rows if r["report_date"] == period and r["form"] == "13F-HR"]
+    if not candidates:
+        candidates = [r for r in rows if r["report_date"] == period and r["form"] == "13F-HR/A"
+                      and amendment_metadata(r)["type"] == "RESTATEMENT"]
+    if not candidates:
+        return None, {}
+    same = [r for r in candidates if r["cik"] == filing["cik"]]
+    ciks = {r["cik"] for r in same or candidates}
+    # Preserve known CIK succession, never merge different legal filers.
+    if len(ciks) != 1:
+        return None, {}
+    return effective_holdings(rows, next(iter(ciks)), period)
+
+
 def amendment_comparison(filing, rows, seen, metadata):
-    """Only a complete earlier report for the SAME period can show corrections."""
-    if metadata["type"]!="RESTATEMENT":
+    """Last complete earlier same-period report, never an add-only report."""
+    if metadata["type"] != "RESTATEMENT":
         return None
-    same=[row for row in rows if row["accession"]!=filing["accession"]
-          and row["cik"]==filing["cik"] and row["report_date"]==filing["report_date"]]
-    prior=next((row for row in same if row["accession"]==seen), None)
-    if prior is None:
-        prior=next(iter(same),None)
-    if prior is None:
-        return None
-    # An add-only amendment is not a full portfolio; never compare as if it were.
-    if prior["form"]=="13F-HR":
-        return prior
-    if prior["form"]=="13F-HR/A" and amendment_metadata(prior)["type"]=="RESTATEMENT":
-        return prior
+    same = sorted((r for r in rows if r["cik"] == filing["cik"]
+                   and r["report_date"] == filing["report_date"]
+                   and filing_order(r) < filing_order(filing)), key=filing_order, reverse=True)
+    for prior in same:
+        if prior["form"] == "13F-HR" or amendment_metadata(prior)["type"] == "RESTATEMENT":
+            return prior
     return None
+
+
+def prepare_filing_message(label, filing, rows, recovery=False):
+    latest = dict(filing)
+    current, url = parse_holdings(latest["cik"], latest["accession"])
+    previous, prior = None, {}
+    if latest["form"] == "13F-HR/A":
+        latest["amendment"] = amendment_metadata(latest)
+        if latest["amendment"]["type"] == "RESTATEMENT":
+            previous, prior = effective_holdings(
+                rows, latest["cik"], latest["report_date"], before=latest)
+    else:
+        previous, prior = previous_quarter_holdings(rows, latest)
+    changes = classify_changes(current, prior) if previous else []
+    latest["recovery"] = recovery
+    return build_message(label, latest, previous, changes, url,
+                         current_holdings=current, previous_holdings=prior)
+
+
+def _git(*args):
+    return subprocess.run(["git", *args], capture_output=True, text=True)
+
+
+def persist_delivery_state(state, description):
+    """Persist reservation before send, and receipt immediately after success.
+
+    Fail closed if an uncertain prior send exists. No force push or state reset.
+    """
+    save_state(state)
+    if os.environ.get("GITHUB_ACTIONS", "").lower() != "true":
+        return
+    path = STATE_PATH.as_posix()
+    if _git("fetch", "origin", "main").returncode:
+        raise RuntimeError("13F state remote fetch failed")
+    remote = _git("show", "origin/main:" + path)
+    local = _git("show", "HEAD:" + path)
+    if remote.returncode != local.returncode or remote.stdout != local.stdout:
+        raise RuntimeError("13F state changed concurrently; refuse stale send/checkpoint")
+    for args in (("config", "user.name", "github-actions[bot]"),
+                 ("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"),
+                 ("add", "--", path), ("commit", "-m", description)):
+        if _git(*args).returncode:
+            raise RuntimeError("13F delivery state commit failed")
+    for attempt in range(3):
+        if _git("fetch", "origin", "main").returncode:
+            raise RuntimeError("13F delivery state remote fetch failed")
+        if _git("rebase", "origin/main").returncode:
+            _git("rebase", "--abort")
+            raise RuntimeError("13F state rebase conflict; no force push")
+        if _git("push", "origin", "HEAD:main").returncode == 0:
+            return
+        time.sleep(attempt + 1)
+    raise RuntimeError("13F delivery state push unconfirmed; no automatic resend")
+
+
+def checkpoint_for(row):
+    return {key: row.get(key, "") for key in
+            ("accession", "report_date", "filing_date", "cik", "accepted_at")}
 
 
 def main():
     state = load_state()
+    if state.get("pending_13f_delivery"):
+        raise RuntimeError("13F_DELIVERY_UNCERTAIN: existing reservation requires reconciliation")
     token = os.environ.get("THIRTEENF_TELEGRAM_BOT_TOKEN") or os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or ""
     chat_id = os.environ.get("THIRTEENF_TELEGRAM_CHAT_ID") or os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or ""
     force_test = os.environ.get("THIRTEENF_FORCE_TEST", "false").lower() == "true"
-
-    grouped_latest = {}
+    checkpoints = state.setdefault("managers", {})
+    cutoffs = state.setdefault("13f_legacy_cutoffs", {})
+    receipts = state.setdefault("13f_delivery_receipts", {})
+    if not isinstance(cutoffs, dict) or not isinstance(receipts, dict):
+        raise RuntimeError("13F delivery ledger invalid")
+    grouped = {}
+    incomplete = []
     for label, ciks in MANAGERS.items():
         rows = []
+        errors = []
         for cik in ciks:
             try:
                 rows.extend(recent_13f(cik))
-            except Exception as e:
-                print(f"WARN submissions {label} {cik}: {e}", file=sys.stderr)
-        rows.sort(key=lambda x: (x["report_date"], x["filing_date"], x["accession"]), reverse=True)
-        if rows:
-            grouped_latest[label] = rows
+            except Exception as exc:
+                errors.append(cik)
+                print(f"13F_SOURCE_ERROR {label} {cik}: {type(exc).__name__}", file=sys.stderr)
+        if errors or not rows:
+            incomplete.append(label)
+            continue
+        grouped[label] = sorted(rows, key=filing_order)
 
-    alerts = []
-    pending_updates = {}
-    for label, rows in grouped_latest.items():
-        latest = rows[0]
-        seen = state.get("managers", {}).get(label, {}).get("accession")
-        if not seen:
-            pending_updates[label] = latest
+    if not grouped:
+        raise RuntimeError("13F source coverage unavailable; not a no-news result")
+    confirmed = 0
+    target = None
+    for label, rows in grouped.items():
+        seen = checkpoints.get(label)
+        latest = max(rows, key=lambda r: (r["report_date"], filing_order(r)))
+        recovery = not seen and label in RECOVER_MISSING_MANAGERS
+        if not seen and not recovery:
+            checkpoints[label] = checkpoint_for(latest)
+            cutoffs[label] = checkpoint_for(rows[-1])
             print(f"BASELINE {label}: {latest['accession']} {latest['report_date']}")
             continue
-        if latest["accession"] == seen:
-            print(f"UNCHANGED {label}: {seen}")
+        if recovery:
+            # Only recover the latest complete quarter, not a flood of old amendments.
+            full = [r for r in rows if r["report_date"] == latest["report_date"]
+                    and r["form"] == "13F-HR"]
+            if not full:
+                incomplete.append(label)
+                continue
+            candidates = [max(full, key=filing_order)]
+        else:
+            if label not in cutoffs:
+                legacy = next((r for r in rows if r["accession"] == seen.get("accession")
+                               and r["cik"] == seen.get("cik")), None)
+                cutoffs[label] = checkpoint_for(legacy or seen)
+            candidates = [r for r in rows if after_legacy_cutoff(r, cutoffs[label])
+                          and filing_event_key(label, r) not in receipts]
+        if not candidates:
+            print(f"UNCHANGED {label}: {seen.get('accession') if seen else 'baseline'}")
             continue
-
-        previous = None
-        for r in rows[1:]:
-            if r["report_date"] < latest["report_date"] and r["form"] == "13F-HR":
-                previous = r
+        for filing in candidates:
+            key = filing_event_key(label, filing)
+            if key in receipts:
+                continue
+            try:
+                message = prepare_filing_message(label, filing, rows, recovery=recovery)
+            except Exception as exc:
+                incomplete.append(label)
+                print(f"13F_PARSE_ERROR {label} {filing['accession']}: {type(exc).__name__}", file=sys.stderr)
                 break
-        if previous is None and len(rows) > 1:
-            previous = rows[1]
-        try:
-            cur, info_url = parse_holdings(latest["cik"], latest["accession"])
-            prev = {}
-            if latest["form"]=="13F-HR/A":
-                latest=dict(latest)
-                latest["amendment"]=amendment_metadata(latest)
-                previous=amendment_comparison(latest,rows,seen,latest["amendment"])
-                if previous:
-                    prev,_=parse_holdings(previous["cik"],previous["accession"])
-                # No full prior same-quarter report means no inferred exits or buys.
-                changes=classify_changes(cur,prev) if previous else []
-            else:
-                if previous:
-                    prev, _ = parse_holdings(previous["cik"], previous["accession"])
-                changes = classify_changes(cur, prev)
-            alerts.append(build_message(
-                label, latest, previous, changes, info_url,
-                current_holdings=cur, previous_holdings=prev,
-            ))
-            pending_updates[label] = latest
-        except Exception as e:
-            print(f"ERROR parse {label}: {e}", file=sys.stderr)
-            raise
-
+            if not token or not chat_id:
+                raise RuntimeError("13F Telegram configuration unavailable")
+            if target is None:
+                verify_bot(token)
+                target = telegram_api(token, "getChat", {"chat_id": chat_id}).get("id")
+                if type(target) is not int or not target:
+                    raise RuntimeError("13F Telegram recipient not verified")
+                if str(chat_id).strip().lstrip("-").isdigit() and int(chat_id) != target:
+                    raise RuntimeError("13F Telegram recipient mismatch")
+            state["pending_13f_delivery"] = {"key": key, "reserved_at": dt.datetime.now(dt.timezone.utc).isoformat()}
+            persist_delivery_state(state, "Reserve verified 13F filing delivery")
+            receipt = send_message(token, str(target), message)
+            mid = (receipt or {}).get("message_id")
+            actual = ((receipt or {}).get("chat") or {}).get("id")
+            if type(mid) is not int or mid <= 0 or actual != target:
+                raise RuntimeError("13F delivery uncertain; reservation preserved")
+            receipts[key] = {"message_id": mid,
+                             "recipient_fingerprint": hashlib.sha256(str(actual).encode()).hexdigest()[:16],
+                             "confirmed_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                             "report_date": filing["report_date"], "filing_date": filing["filing_date"],
+                             "recovery": recovery}
+            if recovery:
+                cutoffs[label] = checkpoint_for(filing)
+            prior_checkpoint = checkpoints.get(label)
+            if (not prior_checkpoint or
+                    (filing["report_date"], filing_order(filing)) >
+                    (prior_checkpoint["report_date"], filing_order(prior_checkpoint))):
+                checkpoints[label] = checkpoint_for(filing)
+            state.pop("pending_13f_delivery", None)
+            persist_delivery_state(state, "Confirm verified 13F filing delivery")
+            confirmed += 1
+            print(f"13F_FILING_RECEIPT_SAVED {label} {filing['accession']} recipient_verified=true")
     if force_test:
-        alerts.insert(
-            0,
-            "✅ [13F 감시 한국어 알림 테스트]\n"
-            "앞으로 운용사명·종목명·산업·매수/매도 표현은 한국어 중심으로 표시합니다.\n"
-            "티커·13F-HR·풋옵션(PUT)·콜옵션(CALL)처럼 식별에 필요한 원문만 괄호로 유지합니다.\n"
-            "발신 봇: @" + EXPECTED_BOT_USERNAME,
-        )
-
-    if alerts:
         if not token or not chat_id:
-            raise RuntimeError("Telegram 비밀값이 없습니다: THIRTEENF_* 또는 KHS_POLICY_TELEGRAM_* 설정을 확인하세요")
-        username = verify_bot(token)
-        print(f"Telegram bot verified: @{username}")
-        for msg in alerts:
-            send_message(token, chat_id, msg)
-    else:
+            raise RuntimeError("13F Telegram configuration unavailable")
+        verify_bot(token)
+        send_message(token, chat_id, "13F 감시 한국어 알림 테스트")
+    print(f"13F_SOURCE_COVERAGE {len(grouped)}/{len(MANAGERS)} confirmed={confirmed}")
+    if incomplete:
+        print("13F_PARTIAL_COVERAGE no-all-clear: " + ", ".join(sorted(set(incomplete))), file=sys.stderr)
+    elif not confirmed and not force_test:
         print("새 13F 공시 없음: Telegram 메시지를 보내지 않습니다.")
-
-    for label, latest in pending_updates.items():
-        state.setdefault("managers", {})[label] = {
-            "accession": latest["accession"],
-            "report_date": latest["report_date"],
-            "filing_date": latest["filing_date"],
-            "cik": latest["cik"],
-        }
     save_state(state)
 
 

@@ -72,6 +72,16 @@ def main():
           f" filings_prior={len(previous)} changes={len(changes)}"
           f" report_chars={len(summary)} article_input=false telegram_sent=false")
     print("13F_AUTO_PREVIEW_BEGIN\n"+summary+"\n13F_AUTO_PREVIEW_END")
+    # Real Blackstone Q3 source and Q2 supplemental filings: no Telegram send.
+    bx=w.recent_13f("0001393818")
+    bx_q3=next((r for r in bx if r["accession"]=="0001193125-26-463513"),None)
+    if not bx_q3:
+        raise RuntimeError("Blackstone SEC Q3 original unavailable")
+    prior,positions=w.previous_quarter_holdings(bx,bx_q3)
+    current,_=w.parse_holdings(bx_q3["cik"],bx_q3["accession"])
+    if not prior or len(prior.get("effective_accessions",[]))<4 or len(positions)<300 or len(current)<250:
+        raise RuntimeError("Blackstone complete prior report and supplemental holdings not verified")
+    print(f"BLACKSTONE_SEC_REGRESSION_PASS prior_filings={len(prior['effective_accessions'])} prior_positions={len(positions)} current_positions={len(current)} telegram_sent=false")
 
 if __name__=="__main__":
     main()
