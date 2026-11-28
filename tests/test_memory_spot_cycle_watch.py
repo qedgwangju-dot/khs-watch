@@ -1833,6 +1833,47 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertFalse(w._bofa_nov27_body_verified(body.replace("→ 50~60%", "→ 20~30%")))
         self.assertFalse(w._bofa_nov27_body_verified("BofA Global Memory Tech 2028년 메모리 다운턴 없다"))
 
+    def test_bofa_nov27_readable_notice_retains_metrics_evidence_fx(self):
+        import currency_krw_guard as guard
+        url = w.BOFA_NOV27_URLS[0]
+        notice = w._bofa_nov27_alert(url)
+        self.assertTrue(notice.startswith(w.BOFA_NOV27_HEADER + "\n"))
+        headings = ("핵심 판단", "① 2028년 기본 전망", "② 2028년 제품별 가격 가정",
+                    "③ 수익성", "④ 수익성 방어 요인", "⑤ 하락 위험과 조기경보", "출처·확인 수준")
+        indices = [notice.index(h) for h in headings]
+        self.assertEqual(indices, sorted(indices))
+        self.assertGreaterEqual(notice.count("\n\n<b>"), len(headings))
+        required = (
+            "2026년 11월 27일", "글로벌 DRAM 매출: +10%", "비트 출하량(메모리 용량 기준): +19%",
+            "평균판매단가(ASP): -8%", "1.19 × 0.92 = 1.0948", "+9.5%",
+            "60~70% 전망", "1,580억달러", "원표 금액·단위 미확인", "확정 기준선 미반영",
+            "HBM(고대역폭 메모리): 1% 하락", "DDR5: 5~10% 하락", "DDR4: 10~20% 하락",
+            "현물가격: 20~30% 또는 그 이상 하락", "제공 메모 기준", "현물가와 계약가는 구분",
+            "삼성전자 80%", "SK하이닉스 82%", "전사 영업이익률 아님",
+            "평균판매단가 40~50% 인하 가정", "DRAM 가격 40%·NAND 가격 50% 인하 가정",
+            "인하 기준 원표 미확인", "80% 이상 → 급락 가정 50~60%",
+            "최저 보장 마진이 아님", "고사양 메모리 공급충족률 60~70%",
+            "ASIC(주문형 반도체)", "HBM 제품 구성", "장기공급계약(LTA)",
+            "신규 팹 양산", "중국 생산능력 확대", "중국 수요 둔화", "미국 AI 데이터센터 설비투자 축소",
+            "공급충족률 상승", "ASIC 출하 하향", "장기계약 외 주문 취소", "실제 비트 공급·평균판매단가",
+            "2028년 1분기/비관 2027년 4분기", "JP모건 재고·생산능력·납기·장기계약",
+            "BofA 원문 전체·절대 매출·제품별 가격 원표 미열람",
+            "11월 10일 웨비나", "동일 보고서 전재, 독립 원문 아님", url,
+        )
+        for fact in required:
+            with self.subTest(fact=fact):
+                self.assertIn(fact, notice)
+        self.assertEqual(notice.count(url), 1)
+        self.assertNotIn("<<<TELEGRAM_MESSAGE_BREAK>>>", notice)
+        with patch.object(guard, "_rate", return_value=(1334.9, "2026-11-27 test")):
+            converted = guard.enforce_text(notice)
+        self.assertIn("1,580억달러(약 210조9,142억원)", converted)
+        self.assertIn("환율 기준:", converted)
+        guard.validate_text(converted)
+        self.assertLessEqual(max(len(converted), len(converted.encode("utf-16-le")) // 2), 3900)
+        self.assertEqual(converted.count("<b>"), converted.count("</b>"))
+        self.assertEqual(converted.count("<a href="), converted.count("</a>"))
+
     def test_bofa_nov27_report_family_not_old_or_future_revision(self):
         row = {"title": "BofA Global Memory Tech: trough valuation, webcast takeaways, 2028 downturn scenario",
                "published_kst": "2026-11-27T09:00:00+09:00"}
