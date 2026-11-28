@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-28T21:20:36+09:00",
+  "checked_at_kst": "2026-11-28T21:25:34+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -43,7 +43,7 @@
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-26T23:26:12+09:00",
   "errors": [
-    "Enhertu sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+    "Enhertu sender rc=1: RuntimeError: 한국어 송출 검증 실패 — API"
   ],
   "failed_component": "Enhertu",
   "failed_components": [
@@ -56,5 +56,5 @@
     "Enhertu|other",
     "Halozyme 특허분쟁|source_access"
   ],
-  "error_signature": "Enhertu|other"
+  "error_signature": "Enhertu|language_validation"
 }
