@@ -116,9 +116,9 @@
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "4634b7d554050c4406f1a803": {
-      "title": "DRAM Market Bulletin - Nov. 18, 2026",
+      "title": "DRAM Market Bulletin - Nov. 25, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-11-18T09:00:00+09:00",
+      "published_kst": "2026-11-25T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "7f775cdafa333a3587426d98": {
@@ -1145,7 +1145,7 @@
     "1e55aa260cee3239be30fd9e": {
       "title": "NAND Flash Prices Set to Decline in 2027 as Chinese CSP Order Cuts Outweigh North American Demand Growth, Says TrendForce - TrendForce",
       "source": "TrendForce",
-      "published_kst": "2026-11-19T16:05:29+09:00",
+      "published_kst": "2026-11-19T17:00:00+09:00",
       "first_seen_kst": "2026-11-24T11:03:19+09:00"
     },
     "8a10800a87e0fb657c45d13e": {
@@ -1157,7 +1157,7 @@
     "d69cf8aaa8c12273ebd32052": {
       "title": "Micron Vs. Sandisk: Stress-Testing The $89 Billion Contract Book For A 2027 NAND Glut (MU) - Seeking Alpha",
       "source": "Seeking Alpha",
-      "published_kst": "2026-11-20T06:02:39+09:00",
+      "published_kst": "2026-11-19T17:00:00+09:00",
       "first_seen_kst": "2026-11-24T15:14:25+09:00"
     },
     "dec29fa52d608cc653411513": {
@@ -1315,11 +1315,17 @@
       "source": "자본시장뉴스",
       "published_kst": "2026-11-27T09:18:31+09:00",
       "first_seen_kst": "2026-11-27T23:05:39+09:00"
+    },
+    "ef0ca1ded2f5e00adcf84cde": {
+      "title": "반도체 수요 지속?…D램은 공급부족, 낸드는 공급확대 - 한겨레",
+      "source": "한겨레",
+      "published_kst": "2026-11-28T10:17:00+09:00",
+      "first_seen_kst": "2026-11-28T19:13:46+09:00"
     }
   },
-  "updated_at_kst": "2026-11-27T23:05:39+09:00",
-  "last_scan_count": 24,
-  "last_new_count": 3,
+  "updated_at_kst": "2026-11-28T19:13:47+09:00",
+  "last_scan_count": 22,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1379,21 +1385,23 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-27T23:05:58+09:00",
+  "last_successful_delivery_kst": "2026-11-28T19:14:00+09:00",
   "telegram_message_ids": [
-    578
+    580,
+    581
   ],
-  "telegram_message_id": 578,
+  "telegram_message_id": 581,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      578
+      580,
+      581
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-27T23:05:58+09:00",
-    "alert_signature": "4a234ba8d9687c743e93397510aee2dd4ba927e2908f09397e3410c50db40b69"
+    "confirmed_at_kst": "2026-11-28T19:14:00+09:00",
+    "alert_signature": "df951e55f37e0e1136cadb455e6633efc2ea5131250bf96aae14044cb66b26c9"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1705,7 +1713,7 @@
     "published_model_date": "2026-11-13",
     "comparison_model_date": "2026-11-02",
     "publisher_probe": {
-      "checked_date": "2026-11-27",
+      "checked_date": "2026-11-28",
       "verified": false,
       "source_kind": "publisher_model_numeric_unverified"
     },
@@ -1750,5 +1758,33 @@
     ],
     "spot_price_correction_reported_gt_pct": 20.0,
     "customer_signed_order_cancellations_unverified": true
+  },
+  "trendforce_dram_20261127_scenarios": {
+    "event_id": "trendforce-dram-20261127-base-1q28-bear-4q27-v1",
+    "published": "2026-11-27",
+    "source_url": "https://www.trendforce.com/presscenter/news/20261127-13327.html",
+    "source_grade": "publisher_press_body_verified",
+    "base_case_plateau_possible": "2027-H2",
+    "base_case_all_product_decline": "2028-Q1",
+    "bear_case_conventional_decline": "2027-Q4",
+    "bear_case_decline_widens": "2028",
+    "china_server_dram_demand_cut_started": "2026-Q4",
+    "north_america_absorption": "mostly_absorbed",
+    "signed_order_cancellation_quantities": null,
+    "prior_20261118_reported_q1_qoq_pct": [
+      5,
+      10
+    ],
+    "prior_20261118_reported_q2_qoq_pct": [
+      3,
+      8
+    ],
+    "provided_20261127_q1_qoq_pct": [
+      3,
+      8
+    ],
+    "provided_q1_range_status": "user_excerpt_not_verified_in_public_issuer_text",
+    "confirmed_20261127_q1_qoq_pct": null,
+    "scope": "conventional_dram_contract_price_forecast_not_HBM_or_spot"
   }
 }
