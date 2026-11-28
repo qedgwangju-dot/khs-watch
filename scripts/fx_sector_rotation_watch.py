@@ -32,7 +32,7 @@ KOSPI_URL = "https://m.stock.naver.com/api/index/KOSPI/basic"
 KOSPI_DAILY_URL = "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
 KIWOOM_CLOSE_DOC = "https://openapi.kiwoom.com/m/guide/apiguide/07/ka11081"
 LS_CLOSE_DOC = "https://openapi.ls-sec.co.kr/"
-LS_CLOSE_BASIS = "LS증권 KRX 15:30 정규장 봉·종가 교차검증"
+LS_CLOSE_BASIS = "LS증권 KRX 일별 종가·정규장 종료 봉 교차검증"
 _CLOSE_SOURCES = {KIWOOM_CLOSE_DOC: "키움 KRX 정규장 일봉", LS_CLOSE_DOC: LS_CLOSE_BASIS}
 _LS_CLOSE_TOKEN = None
 _LS_CLOSE_DISABLED = False
@@ -371,52 +371,68 @@ def _fetch_kiwoom_close(name: str, code: str, bounds: tuple[dt.datetime, dt.date
                                name, code, bounds)
 
 
-def _parse_ls_close(data: dict, name: str, code: str,
-                    bounds: tuple[dt.datetime, dt.datetime],
-                    previous_bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
-    """Accept only exact KRX session-end bars independently matching both
-    official header closes. Never use the last extended-session candle."""
-    header = data.get("t8452OutBlock") or {}
-    if not isinstance(header, dict) or str(header.get("shcode") or "") != code:
+def _ls_session_header(data: dict, tr: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict:
+    header = data.get(tr+"OutBlock") or {}
+    if not isinstance(header, dict) or str(header.get("shcode") or "").strip() != code:
         raise SourceFailure("LS 정규장 종목코드 응답 불일치")
-    closed, previous_close = bounds[1], previous_bounds[1]
-    if (str(header.get("s_time") or "") != bounds[0].strftime("%H%M%S")
-            or str(header.get("e_time") or "") != closed.strftime("%H%M%S")):
+    if (str(header.get("s_time") or "").strip() != bounds[0].strftime("%H%M%S")
+            or str(header.get("e_time") or "").strip() != bounds[1].strftime("%H%M%S")):
         raise SourceFailure("LS 정규장 시작·종료시각 불일치")
+    return header
+
+
+def _ls_exact_close(data: dict, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> float:
+    _ls_session_header(data, "t8452", code, bounds)
     rows = data.get("t8452OutBlock1")
     if not isinstance(rows, list):
         raise SourceFailure("LS 분봉 형식 오류")
-    def at_close(when):
-        day, clock = when.strftime("%Y%m%d"), when.strftime("%H%M%S")
-        dated = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
-        # LS time fields can include a zero fractional-second suffix (up to
-        # ten digits). Do not truncate a nonzero fraction or accept nearby bars.
-        exact = [r for r in dated if re.fullmatch(clock+r"0{0,4}", str(r.get("time") or "").strip())]
+    when = bounds[1]
+    day, clock = when.strftime("%Y%m%d"), when.strftime("%H%M%S")
+    dated = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
+    exact = [r for r in dated if re.fullmatch(clock+r"0{0,4}", str(r.get("time") or "").strip())]
+    if len(exact) != 1:
+        raise SourceFailure(f"LS 정규장 종료 봉 누락·중복 날짜={day} 당일행={len(dated)} 일치={len(exact)}")
+    value = fnum(exact[0].get("close"))
+    if value is None or value <= 0:
+        raise SourceFailure("LS 정규장 종료 봉 종가 누락")
+    return value
+
+
+def _ls_daily_pair(data: dict, code: str, bounds: tuple[dt.datetime, dt.datetime],
+                   previous_bounds: tuple[dt.datetime, dt.datetime]) -> tuple[float, float]:
+    # Summary header prices have no date. Join explicitly dated KRX rows only.
+    _ls_session_header(data, "t8451", code, bounds)
+    rows = data.get("t8451OutBlock1")
+    if not isinstance(rows, list):
+        raise SourceFailure("LS KRX 일봉 형식 오류")
+    out = []
+    for session in (bounds, previous_bounds):
+        day = session[1].strftime("%Y%m%d")
+        exact = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
         if len(exact) != 1:
-            clocks = sorted({str(r.get("time") or "").strip() for r in dated
-                             if re.fullmatch(r"[0-9]{6,10}", str(r.get("time") or "").strip())})
-            near = [t for t in clocks if t[:4] in ("1525", "1529", "1530", "1531", "1535")]
-            raise SourceFailure(f"LS 정규장 종료 봉 누락·중복 날짜={day} 당일행={len(dated)} 일치={len(exact)} 종료부근시각={','.join(near[:6]) or '없음'}")
-        value = fnum(exact[0].get("close"))
-        if value is None or value <= 0:
-            raise SourceFailure("LS 정규장 종료 봉 종가 누락")
-        return value
-    price, prev = at_close(closed), at_close(previous_close)
-    official, official_prev = fnum(header.get("diclose")), fnum(header.get("jiclosev"))
-    if official != price or official_prev != prev:
-        raise SourceFailure("LS 정규장 종료 봉·공식 종가 교차검증 불일치")
-    limit_low, limit_high = fnum(header.get("lowend")), fnum(header.get("highend"))
-    if (limit_low is not None and limit_high is not None and limit_low > 0
-            and not limit_low <= prev <= limit_high):
-        raise SourceFailure("LS 직전 종가·당일 가격제한 기준 불일치")
+            raise SourceFailure(f"LS KRX 일봉 날짜 누락·중복 날짜={day} 일치={len(exact)}")
+        price = fnum(exact[0].get("close"))
+        if price is None or price <= 0:
+            raise SourceFailure("LS KRX 일봉 종가 누락")
+        out.append(price)
+    return out[0], out[1]
+
+
+def _parse_ls_dated_closes(daily: dict, current: dict, prior: dict, name: str, code: str,
+                           bounds: tuple[dt.datetime, dt.datetime],
+                           previous_bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    price, prev = _ls_daily_pair(daily, code, bounds, previous_bounds)
+    minute, prev_minute = _ls_exact_close(current, code, bounds), _ls_exact_close(prior, code, previous_bounds)
+    if price != minute or prev != prev_minute:
+        raise SourceFailure(f"LS KRX 일봉·정규장 종료 봉 불일치 당일={price}/{minute} 직전={prev}/{prev_minute}")
     pct = (price / prev - 1) * 100
     if not math.isfinite(pct) or abs(pct) > 30.1:
         raise SourceFailure("LS 정규장 등락률 범위 오류")
+    closed = bounds[1]
     return {"name": name, "code": code, "price": price, "change_pct": pct,
             "source": LS_CLOSE_DOC, "source_date": closed.date().isoformat(),
             "source_observed_at": None, "session_close_at": closed.isoformat(timespec="seconds"),
             "quote_basis": LS_CLOSE_BASIS}
-
 
 def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
     global _LS_CLOSE_TOKEN, _LS_CLOSE_DISABLED, _LS_CLOSE_NEXT, _LS_CLOSE_FAILURES
@@ -448,8 +464,10 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
         except Exception as exc:
             _LS_CLOSE_DISABLED = True
             raise SourceFailure("LS 인증: " + _failure_detail(exc)) from None
-    def fetch_day(day: str) -> dict:
+    def fetch_chart(tr: str, payload: dict) -> dict:
         global _LS_CLOSE_NEXT, _LS_CLOSE_DISABLED, _LS_CLOSE_FAILURES
+        if _LS_CLOSE_DISABLED:
+            raise SourceFailure("LS 통신 일시 중단")
         for attempt in range(2):
             time.sleep(max(0.0, _LS_CLOSE_NEXT - time.monotonic()))
             _LS_CLOSE_NEXT = time.monotonic() + 1.10
@@ -457,12 +475,8 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
                 r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
                                   headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
                                            "content-type": "application/json; charset=utf-8",
-                                           "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
-                                  json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
-                                        "nday": "0", "sdate": day, "stime": "",
-                                        "edate": day, "etime": "",
-                                        "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
-                                  timeout=(5, 10), allow_redirects=False)
+                                           "tr_cd": tr, "tr_cont": "N", "tr_cont_key": ""},
+                                  json={tr+"InBlock": payload}, timeout=(5, 10), allow_redirects=False)
             except requests.RequestException as exc:
                 if attempt == 0:
                     time.sleep(2.0)
@@ -470,7 +484,7 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
                 _LS_CLOSE_FAILURES += 1
                 if _LS_CLOSE_FAILURES >= 2:
                     _LS_CLOSE_DISABLED = True
-                raise SourceFailure("LS 정규장 분봉 통신: " + type(exc).__name__) from None
+                raise SourceFailure(f"LS {tr} 통신: "+type(exc).__name__) from None
             if r.status_code != 200:
                 retryable = r.status_code in (429, 500, 502, 503, 504) or (
                     r.status_code == 404 and "/503.html" in (r.text or ""))
@@ -481,33 +495,28 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
                     _LS_CLOSE_FAILURES += 1
                 if r.status_code in (401, 403, 429) or _LS_CLOSE_FAILURES >= 2:
                     _LS_CLOSE_DISABLED = True
-                raise SourceFailure(f"LS 정규장 분봉 HTTP {r.status_code}")
+                raise SourceFailure(f"LS {tr} HTTP {r.status_code}")
             data = r.json()
             if not isinstance(data, dict) or str(data.get("rsp_cd") or "") not in ("00000", "00001"):
-                raise SourceFailure("LS 정규장 분봉 응답 미승인")
-            header = data.get("t8452OutBlock") or {}
-            if not isinstance(header, dict) or str(header.get("shcode") or "") != code:
-                raise SourceFailure("LS 거래일별 종목코드 불일치")
-            rows = data.get("t8452OutBlock1")
-            if not isinstance(rows, list):
-                raise SourceFailure("LS 거래일별 분봉 형식 오류")
-            rows = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
-            if not rows:
-                raise SourceFailure(f"LS 거래일별 분봉 없음 날짜={day}")
+                raise SourceFailure(f"LS {tr} 응답 미승인")
             _LS_CLOSE_FAILURES = 0
-            return {"t8452OutBlock": header, "t8452OutBlock1": rows}
-        raise SourceFailure("LS 정규장 분봉 재시도 소진")
+            return data
+        raise SourceFailure(f"LS {tr} 재시도 소진")
 
-    # Real 2026-11-27 probe: the combined request returned only 33 prior-day
-    # rows without the prior session end. Query each trading date separately.
+    def fetch_day(day: str) -> dict:
+        return fetch_chart("t8452", {"shcode": code, "ncnt": 5, "qrycnt": 350,
+            "nday": "0", "sdate": day, "stime": "", "edate": day, "etime": "",
+            "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"})
+
     day = bounds[1].date().strftime("%Y%m%d")
     prior_day = previous.strftime("%Y%m%d")
+    daily = fetch_chart("t8451", {"shcode": code, "gubun": "2", "qrycnt": 10,
+        "sdate": prior_day, "edate": day, "cts_date": " ", "comp_yn": "N",
+        "sujung": "N", "exchgubun": "K"})
+    _ls_daily_pair(daily, code, bounds, prev_bounds)
     current = fetch_day(day)
     prior = fetch_day(prior_day)
-    combined = {"t8452OutBlock": current["t8452OutBlock"],
-                "t8452OutBlock1": current["t8452OutBlock1"] + prior["t8452OutBlock1"]}
-    return _parse_ls_close(combined, name, code, bounds, prev_bounds)
-
+    return _parse_ls_dated_closes(daily, current, prior, name, code, bounds, prev_bounds)
 
 def _fetch_regular_stock_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
     # LS authenticated in the real probe; Kiwoom authentication failed.
@@ -718,7 +727,7 @@ def build_alert(
     if any(row.get("source") == KIWOOM_CLOSE_DOC for row in close_rows):
         lines.append(f'• 종목 정규장 종가: <a href="{KIWOOM_CLOSE_DOC}">키움증권 공식 일봉</a> (원천 제공 종가 기준)')
     if any(row.get("source") == LS_CLOSE_DOC for row in close_rows):
-        lines.append(f'• 종목 정규장 종가: <a href="{LS_CLOSE_DOC}">LS증권</a> KRX 정규장 종료 봉과 당일·직전 종가 일치 검증')
+        lines.append(f'• 종목 정규장 종가: <a href="{LS_CLOSE_DOC}">LS증권</a> KRX 일별 종가와 날짜별 정규장 종료 봉 일치 검증')
     if daily_krw is not None and daily_pct is not None:
         lines.append(f"• 직전 서울 15:30 종가({fx.get('prev_date')}) 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
         if fx.get("basis_reused"):
@@ -913,30 +922,40 @@ def _regression_checks() -> None:
     prev_bounds = session_bounds(dt.date.fromisoformat(previous))
     def ls_bar(when, price):
         return {"date": when.strftime("%Y%m%d"), "time": when.strftime("%H%M%S"), "close": price}
-    ls_data = {"t8452OutBlock": {"shcode": code, "s_time": "090000", "e_time": "153000",
-                                "diclose": 10200, "jiclosev": 10000},
-               "t8452OutBlock1": [ls_bar(cl, 10200), ls_bar(prev_bounds[1], 10000),
-                                  ls_bar(cl+dt.timedelta(hours=1), 11000)]}
-    check(abs(_parse_ls_close(ls_data, "검사", code, bounds, prev_bounds)["change_pct"] - 2) < 1e-8,
-          "LS exact close not aftermarket")
-    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock1=ls_data["t8452OutBlock1"][1:]),
-                                   "검사", code, bounds, prev_bounds), "LS exact close missing")
-    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], diclose=11000)),
-                                   "검사", code, bounds, prev_bounds), "LS header mismatch")
-    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], shcode="000660")),
-                                   "검사", code, bounds, prev_bounds), "LS code mismatch")
-    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], e_time="200000")),
-                                   "검사", code, bounds, prev_bounds), "LS session mismatch")
-    extended_clock = dict(ls_data, t8452OutBlock1=[
-        dict(ls_data["t8452OutBlock1"][0], time=cl.strftime("%H%M%S")+"0000"),
-        ls_data["t8452OutBlock1"][1], ls_data["t8452OutBlock1"][2]])
-    check(abs(_parse_ls_close(extended_clock, "검사", code, bounds, prev_bounds)["change_pct"] - 2) < 1e-8,
-          "LS ten-digit exact clock")
-    rejects(lambda: _parse_ls_close(dict(extended_clock, t8452OutBlock1=[
-        dict(extended_clock["t8452OutBlock1"][0], time=cl.strftime("%H%M%S")+"0001"),
-        *extended_clock["t8452OutBlock1"][1:]]), "검사", code, bounds, prev_bounds),
-        "LS nonzero post-close fractional clock")
-    print("fx_sector_rotation_regressions=26 passed; no Telegram or state writes")
+    header = {"shcode": code, "s_time": "090000", "e_time": "153000",
+              "diclose": 99999, "jiclosev": 88888, "jiclose": 77777}
+    ls_today = {"t8452OutBlock": header, "t8452OutBlock1": [
+        ls_bar(cl, 10200), ls_bar(cl+dt.timedelta(hours=1), 11000)]}
+    ls_prior = {"t8452OutBlock": header, "t8452OutBlock1": [ls_bar(prev_bounds[1], 10000)]}
+    ls_daily = {"t8451OutBlock": header, "t8451OutBlock1": [
+        {"date": cl.strftime("%Y%m%d"), "close": 10200},
+        {"date": prev_bounds[1].strftime("%Y%m%d"), "close": 10000}]}
+    def ls_parse(d=ls_daily, c=ls_today, p=ls_prior):
+        return _parse_ls_dated_closes(d,c,p,"검사",code,bounds,prev_bounds)
+    check(abs(ls_parse()["change_pct"] - 2) < 1e-8, "dated daily and exact bars; ignore undated header")
+    rejects(lambda: ls_parse(c=dict(ls_today,t8452OutBlock1=ls_today["t8452OutBlock1"][1:])),
+            "LS exact close missing")
+    rejects(lambda: ls_parse(d=dict(ls_daily,t8451OutBlock1=[
+        dict(ls_daily["t8451OutBlock1"][0],close=11000),ls_daily["t8451OutBlock1"][1]])),
+            "LS daily versus exact close mismatch")
+    rejects(lambda: ls_parse(d=dict(ls_daily,t8451OutBlock=dict(header,shcode="000660"))),
+            "LS code mismatch")
+    rejects(lambda: ls_parse(c=dict(ls_today,t8452OutBlock=dict(header,e_time="200000"))),
+            "LS session mismatch")
+    extended = dict(ls_today,t8452OutBlock1=[
+        dict(ls_today["t8452OutBlock1"][0],time=cl.strftime("%H%M%S")+"0000"),
+        ls_today["t8452OutBlock1"][1]])
+    check(abs(ls_parse(c=extended)["change_pct"]-2)<1e-8,"LS ten-digit exact clock")
+    rejects(lambda: ls_parse(c=dict(extended,t8452OutBlock1=[
+        dict(extended["t8452OutBlock1"][0],time=cl.strftime("%H%M%S")+"0001"),
+        extended["t8452OutBlock1"][1]])), "LS nonzero post-close fractional clock")
+    rejects(lambda: ls_parse(d=dict(ls_daily,t8451OutBlock1=ls_daily["t8451OutBlock1"][:1])),
+            "LS daily prior session missing")
+    rejects(lambda: ls_parse(d=dict(ls_daily,t8451OutBlock1=ls_daily["t8451OutBlock1"]+[ls_daily["t8451OutBlock1"][0]])),
+            "LS duplicate dated daily row")
+    rejects(lambda: ls_parse(p=dict(ls_prior,t8452OutBlock1=[ls_bar(prev_bounds[1],9900)])),
+            "LS prior exact close mismatch")
+    print("fx_sector_rotation_regressions=29 passed; no Telegram or state writes")
 
 
 def _run() -> int:
