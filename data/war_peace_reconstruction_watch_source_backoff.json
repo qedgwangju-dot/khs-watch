@@ -4,30 +4,37 @@
     "truthsocial.com": {
       "reason": "HTTPError",
       "code": 403,
-      "observed_epoch": 1795824819.483648,
-      "retry_at_epoch": 1795846419.483648,
-      "denials": 6
+      "observed_epoch": 1795852234.5153852,
+      "retry_at_epoch": 1795873834.5153852,
+      "denials": 7
     },
     "apnews.com": {
       "reason": "HTTPError",
       "code": 403,
-      "observed_epoch": 1795824914.8456502,
-      "retry_at_epoch": 1795846514.8456502,
-      "denials": 6
+      "observed_epoch": 1795852329.9007146,
+      "retry_at_epoch": 1795873929.9007146,
+      "denials": 7
     },
     "reuters.com": {
       "reason": "HTTPError",
       "code": 401,
-      "observed_epoch": 1795824932.061461,
-      "retry_at_epoch": 1795846532.061461,
-      "denials": 6
+      "observed_epoch": 1795852346.2207577,
+      "retry_at_epoch": 1795873946.2207577,
+      "denials": 7
     },
     "api.gdeltproject.org": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795824927.3987625,
-      "retry_at_epoch": 1795832127.3987625,
-      "denials": 7
+      "observed_epoch": 1795852339.0355246,
+      "retry_at_epoch": 1795859539.0355246,
+      "denials": 8
+    },
+    "president.gov.ua": {
+      "reason": "HTTPError",
+      "code": 403,
+      "observed_epoch": 1795852189.0820913,
+      "retry_at_epoch": 1795873789.0820913,
+      "denials": 1
     }
   }
 }
