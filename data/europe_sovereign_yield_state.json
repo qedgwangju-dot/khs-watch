@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-28T07:38:11+09:00",
+  "last_checked_kst": "2026-11-28T13:19:12+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -1148,7 +1148,7 @@
     "uk10"
   ],
   "last_photo_delivery": {
-    "checked_at_kst": "2026-11-27T13:07:37+09:00",
+    "checked_at_kst": "2026-11-28T13:19:12+09:00",
     "status": "confirmed",
     "width": 1500,
     "height": 3000,
@@ -1213,12 +1213,13 @@
       "sp_milestone:2026-11-27:D-7",
       "sp_milestone:2026-11-27:D-3",
       "sp_milestone:2026-11-27:D-1",
-      "sp_milestone:2026-11-27:D-0"
+      "sp_milestone:2026-11-27:D-0",
+      "sp_review_unverified_after_due:2026-11-27"
     ],
-    "checked_at_kst": "2026-11-28T07:38:17+09:00",
-    "source_fail_streak": 229,
+    "checked_at_kst": "2026-11-28T13:19:24+09:00",
+    "source_fail_streak": 230,
     "sp_ministry_source_status": "no_matching_statement",
-    "sp_ministry_last_checked_kst": "2026-11-28T07:38:17+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-28T13:19:24+09:00",
     "source_access": "access_restricted"
   }
 }
