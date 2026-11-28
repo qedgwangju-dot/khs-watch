@@ -18,6 +18,7 @@ on:
       - "scripts/gs_prime_korea_allocation_watch.py"
       - "tests/test_gs_prime_korea_allocation_watch.py"
       - "scripts/fx_sector_rotation_watch.py"
+      - "scripts/fx_sector_rotation_delivery.py"
       - "scripts/korea_equity_fx_hedge_signal.py"
       - "tests/test_korea_equity_fx_hedge_signal.py"
       - "scripts/kospi_rapid_fallback_watch.py"
@@ -43,10 +44,14 @@ permissions:
 
 concurrency:
   group: korea-market-stress-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
+  queue: max
 
 jobs:
   watch:
+    # Explicit read-only repair probes replace the ordinary push execution.
+    # All existing cron events still use the production job.
+    if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, '[fx-rotation-close-probe]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -68,6 +73,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 1
 
       - name: Set up Python
@@ -77,6 +83,24 @@ jobs:
 
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml exchange_calendars cryptography
+
+      - name: Run and durably deliver FX rotation only
+        id: fx_rotation
+        continue-on-error: true
+        timeout-minutes: 4
+        run: |
+          mkdir -p out
+          rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json
+          python -m py_compile scripts/fx_sector_rotation_watch.py scripts/fx_sector_rotation_delivery.py
+          watch_rc=0
+          python scripts/fx_sector_rotation_watch.py || watch_rc=$?
+          delivery_rc=0
+          python scripts/fx_sector_rotation_delivery.py || delivery_rc=$?
+          if [ -s out/fx_sector_rotation_status.md ]; then
+            cat out/fx_sector_rotation_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "- FX rotation: watcher exit=$watch_rc / delivery exit=$delivery_rc" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$watch_rc" -ne 0 ] || [ "$delivery_rc" -ne 0 ]; then exit 1; fi
 
       - name: Restore encrypted Namuh token cache
         uses: actions/cache/restore@v4
@@ -373,21 +397,16 @@ jobs:
               )
           PY
 
-      - name: Run market stress and FX sector rotation watchers
+      - name: Run market stress and equity FX hedge watchers
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
-          rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json out/korea_equity_fx_hedge_status.md
-          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/korea_market_stress_watch_v15.py scripts/korea_market_stress_watch_v16.py scripts/fx_sector_rotation_watch.py scripts/kospi_flow_attribution_ls.py
+          rm -f out/korea_equity_fx_hedge_status.md
+          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/korea_market_stress_watch_v15.py scripts/korea_market_stress_watch_v16.py scripts/kospi_flow_attribution_ls.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p "test_korea_market_stress_fx_quote.py" -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p "test_korea_equity_fx_hedge_signal.py" -v
           python scripts/korea_market_stress_watch_v16.py
-          python scripts/fx_sector_rotation_watch.py
           python scripts/korea_equity_fx_hedge_signal.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
-          if [ -s out/fx_sector_rotation_status.md ]; then
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            cat out/fx_sector_rotation_status.md >> "$GITHUB_STEP_SUMMARY"
-          fi
           if [ -s out/korea_equity_fx_hedge_status.md ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             cat out/korea_equity_fx_hedge_status.md >> "$GITHUB_STEP_SUMMARY"
@@ -436,7 +455,7 @@ jobs:
           EOF
 
       - name: Send Telegram messages
-        if: hashFiles('out/korea_market_stress_connection_test.html') != '' || hashFiles('out/korea_market_stress_alert.html') != '' || hashFiles('out/fx_sector_rotation_alert.html') != '' || hashFiles('out/gs_prime_korea_allocation_alert.html') != ''
+        if: hashFiles('out/korea_market_stress_connection_test.html') != '' || hashFiles('out/korea_market_stress_alert.html') != '' || hashFiles('out/gs_prime_korea_allocation_alert.html') != ''
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
@@ -451,7 +470,6 @@ jobs:
           files = [
               pathlib.Path("out/korea_market_stress_connection_test.html"),
               pathlib.Path("out/korea_market_stress_alert.html"),
-              pathlib.Path("out/fx_sector_rotation_alert.html"),
               pathlib.Path("out/gs_prime_korea_allocation_alert.html"),
           ]
           sent_ids = []
@@ -497,9 +515,6 @@ jobs:
           if [ -s out/korea_market_stress_pending_state.json ]; then
             cp out/korea_market_stress_pending_state.json data/korea_market_stress_watch_state.json
           fi
-          if [ -s out/fx_sector_rotation_pending_state.json ]; then
-            cp out/fx_sector_rotation_pending_state.json data/fx_sector_rotation_state.json
-          fi
           if [ -s out/gs_prime_korea_allocation_pending_state.json ]; then
             cp out/gs_prime_korea_allocation_pending_state.json data/gs_prime_korea_allocation_state.json
           fi
@@ -510,15 +525,13 @@ jobs:
           git config user.name "korea-market-watch[bot]"
           git config user.email "korea-market-watch[bot]@users.noreply.github.com"
           [ -f data/korea_market_stress_watch_state.json ] && cp data/korea_market_stress_watch_state.json /tmp/korea_market_stress_watch_state.json || true
-          [ -f data/fx_sector_rotation_state.json ] && cp data/fx_sector_rotation_state.json /tmp/fx_sector_rotation_state.json || true
           [ -f data/gs_prime_korea_allocation_state.json ] && cp data/gs_prime_korea_allocation_state.json /tmp/gs_prime_korea_allocation_state.json || true
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
             [ -f /tmp/korea_market_stress_watch_state.json ] && cp /tmp/korea_market_stress_watch_state.json data/korea_market_stress_watch_state.json || true
-            [ -f /tmp/fx_sector_rotation_state.json ] && cp /tmp/fx_sector_rotation_state.json data/fx_sector_rotation_state.json || true
             [ -f /tmp/gs_prime_korea_allocation_state.json ] && cp /tmp/gs_prime_korea_allocation_state.json data/gs_prime_korea_allocation_state.json || true
-            git add data/korea_market_stress_watch_state.json data/fx_sector_rotation_state.json data/gs_prime_korea_allocation_state.json 2>/dev/null || true
+            git add data/korea_market_stress_watch_state.json data/gs_prime_korea_allocation_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "Watcher states unchanged"
               exit 0
@@ -594,3 +607,50 @@ jobs:
             out/market_source_evidence/
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Surface FX rotation failure separately after other watchers
+        if: always() && (steps.fx_rotation.outcome == 'failure' || steps.fx_rotation.outcome == 'cancelled')
+        run: |
+          echo "FX rotation source or delivery verification failed; other watcher steps were not suppressed."
+          exit 1
+
+  verify_fx_rotation:
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[fx-rotation-close-probe]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install existing dependencies
+        id: deps
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml exchange_calendars cryptography
+      - name: Target regression and durable delivery fault tests
+        run: |
+          python -m py_compile scripts/fx_sector_rotation_watch.py scripts/fx_sector_rotation_delivery.py
+          python scripts/fx_sector_rotation_delivery.py --self-test
+      - name: Read-only exact Telegram route
+        if: always() && steps.deps.outcome == 'success'
+        run: python scripts/fx_sector_rotation_delivery.py --verify-route
+      - name: Last completed regular session source verification
+        if: always() && steps.deps.outcome == 'success'
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          import fx_sector_rotation_watch as watcher
+          watcher._regression_checks()
+          if not watcher._close_probe(dt.datetime.now(watcher.KST)):
+              raise SystemExit(2)
+          PY

@@ -448,56 +448,77 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
         except Exception as exc:
             _LS_CLOSE_DISABLED = True
             raise SourceFailure("LS 인증: " + _failure_detail(exc)) from None
-    for attempt in range(2):
-        time.sleep(max(0.0, _LS_CLOSE_NEXT - time.monotonic()))
-        _LS_CLOSE_NEXT = time.monotonic() + 1.10
-        try:
-            r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
-                              headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
-                                       "content-type": "application/json; charset=utf-8",
-                                       "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
-                              json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
-                                    "nday": "0", "sdate": previous.strftime("%Y%m%d"), "stime": "",
-                                    "edate": bounds[1].date().strftime("%Y%m%d"), "etime": "",
-                                    "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
-                              timeout=(5, 10), allow_redirects=False)
-        except requests.RequestException as exc:
-            reason = "LS 정규장 분봉 통신: " + type(exc).__name__
-            if attempt == 0:
-                time.sleep(2.0)
-                continue
-            _LS_CLOSE_FAILURES += 1
-            if _LS_CLOSE_FAILURES >= 2:
-                _LS_CLOSE_DISABLED = True
-            raise SourceFailure(reason) from None
-        if r.status_code != 200:
-            retryable = r.status_code in (429, 500, 502, 503, 504) or (
-                r.status_code == 404 and "/503.html" in (r.text or ""))
-            if retryable and attempt == 0:
-                time.sleep(2.5)
-                continue
-            if retryable:
+    def fetch_day(day: str) -> dict:
+        global _LS_CLOSE_NEXT, _LS_CLOSE_DISABLED, _LS_CLOSE_FAILURES
+        for attempt in range(2):
+            time.sleep(max(0.0, _LS_CLOSE_NEXT - time.monotonic()))
+            _LS_CLOSE_NEXT = time.monotonic() + 1.10
+            try:
+                r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
+                                  headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
+                                           "content-type": "application/json; charset=utf-8",
+                                           "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
+                                  json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
+                                        "nday": "0", "sdate": day, "stime": "",
+                                        "edate": day, "etime": "",
+                                        "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
+                                  timeout=(5, 10), allow_redirects=False)
+            except requests.RequestException as exc:
+                if attempt == 0:
+                    time.sleep(2.0)
+                    continue
                 _LS_CLOSE_FAILURES += 1
-            if r.status_code in (401, 403, 429) or _LS_CLOSE_FAILURES >= 2:
-                _LS_CLOSE_DISABLED = True
-            raise SourceFailure(f"LS 정규장 분봉 HTTP {r.status_code}")
-        data = r.json()
-        if not isinstance(data, dict) or str(data.get("rsp_cd") or "") not in ("00000", "00001"):
-            raise SourceFailure("LS 정규장 분봉 응답 미승인")
-        _LS_CLOSE_FAILURES = 0
-        return _parse_ls_close(data, name, code, bounds, prev_bounds)
-    raise SourceFailure("LS 정규장 분봉 재시도 소진")
+                if _LS_CLOSE_FAILURES >= 2:
+                    _LS_CLOSE_DISABLED = True
+                raise SourceFailure("LS 정규장 분봉 통신: " + type(exc).__name__) from None
+            if r.status_code != 200:
+                retryable = r.status_code in (429, 500, 502, 503, 504) or (
+                    r.status_code == 404 and "/503.html" in (r.text or ""))
+                if retryable and attempt == 0:
+                    time.sleep(2.5)
+                    continue
+                if retryable:
+                    _LS_CLOSE_FAILURES += 1
+                if r.status_code in (401, 403, 429) or _LS_CLOSE_FAILURES >= 2:
+                    _LS_CLOSE_DISABLED = True
+                raise SourceFailure(f"LS 정규장 분봉 HTTP {r.status_code}")
+            data = r.json()
+            if not isinstance(data, dict) or str(data.get("rsp_cd") or "") not in ("00000", "00001"):
+                raise SourceFailure("LS 정규장 분봉 응답 미승인")
+            header = data.get("t8452OutBlock") or {}
+            if not isinstance(header, dict) or str(header.get("shcode") or "") != code:
+                raise SourceFailure("LS 거래일별 종목코드 불일치")
+            rows = data.get("t8452OutBlock1")
+            if not isinstance(rows, list):
+                raise SourceFailure("LS 거래일별 분봉 형식 오류")
+            rows = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
+            if not rows:
+                raise SourceFailure(f"LS 거래일별 분봉 없음 날짜={day}")
+            _LS_CLOSE_FAILURES = 0
+            return {"t8452OutBlock": header, "t8452OutBlock1": rows}
+        raise SourceFailure("LS 정규장 분봉 재시도 소진")
+
+    # Real 2026-11-27 probe: the combined request returned only 33 prior-day
+    # rows without the prior session end. Query each trading date separately.
+    day = bounds[1].date().strftime("%Y%m%d")
+    prior_day = previous.strftime("%Y%m%d")
+    current = fetch_day(day)
+    prior = fetch_day(prior_day)
+    combined = {"t8452OutBlock": current["t8452OutBlock"],
+                "t8452OutBlock1": current["t8452OutBlock1"] + prior["t8452OutBlock1"]}
+    return _parse_ls_close(combined, name, code, bounds, prev_bounds)
 
 
 def _fetch_regular_stock_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
-    try:
-        return _fetch_kiwoom_close(name, code, bounds)
-    except Exception as exc:
-        kiwoom_reason = _failure_detail(exc)
+    # LS authenticated in the real probe; Kiwoom authentication failed.
     try:
         return _fetch_ls_close(name, code, bounds)
     except Exception as exc:
-        raise SourceFailure("키움: " + kiwoom_reason + " / LS: " + _failure_detail(exc)) from None
+        ls_reason = _failure_detail(exc)
+    try:
+        return _fetch_kiwoom_close(name, code, bounds)
+    except Exception as exc:
+        raise SourceFailure("LS: " + ls_reason + " / 키움: " + _failure_detail(exc)) from None
 
 
 def fetch_kospi(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
@@ -930,13 +951,21 @@ def _run() -> int:
 
     state = _checked("상태 읽기", load_state, today)
     fx = _checked("원/달러 조회", fetch_fx, now)
-    kospi = _checked("KOSPI 조회", fetch_kospi, bounds)
     after_close = now >= bounds[1]
 
     samples = list(state.get("fx_samples") or [])
     samples.append({"ts": fx.get("source_observed_at") or fx["queried_at"], "value": float(fx["value"])})
     state["fx_samples"] = samples[-256:]
     session_low, gap = _sample_low_and_gap(state, bounds, now)
+    try:
+        kospi = _checked("KOSPI 조회", fetch_kospi, bounds)
+    except SourceFailure as exc:
+        state["last_attempt"] = {"checked_at": now.isoformat(timespec="seconds"),
+                                 "quality": "unavailable", "reason": str(exc)}
+        save_pending(state)
+        write_status(now, "판정 보류 / " + str(exc) + " / 유효 환율 표본만 저장")
+        print("fx_sector_rotation=unavailable reason=" + str(exc))
+        return 2
     fx["after_close"] = after_close
     fx["sample_gap_minutes"] = round(gap, 2)
     rebound_krw = float(fx["value"])-session_low if session_low is not None else None
@@ -984,6 +1013,7 @@ def _run() -> int:
     if fx.get("basis_error"):
         coverage += " / 직전 종가 미확인 — 강한 일간 신호 판정 보류"
 
+    ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
     if level > sent_level:
         ALERT_PATH.write_text(
             build_alert(now, fx, session_low, rebound_krw, rebound_pct, daily_krw, daily_pct,
@@ -1027,10 +1057,13 @@ def _run() -> int:
         "quote_sources": {r["code"]: {k: r.get(k) for k in ("source", "source_date", "session_close_at", "source_observed_at", "error")}
                           for r in ship_rows + defense_rows + auto_rows + counter_rows},
     }
+    partial = any(g["valid"] < 3 for g in (ship, defense, auto)) or bool(fx.get("basis_error")) or session_low is None
+    state["last_attempt"] = {"checked_at": now.isoformat(timespec="seconds"),
+                             "quality": "partial" if partial else "validated", "decision": decision}
     save_pending(state)
     write_status(now, decision+" / "+coverage)
     print("fx_sector_rotation="+decision+" / "+coverage)
-    return 0
+    return 2 if partial else 0
 
 
 def _requested_close_probe(now: dt.datetime) -> bool:
@@ -1045,7 +1078,7 @@ def _requested_close_probe(now: dt.datetime) -> bool:
         return False
 
 
-def _close_probe(now: dt.datetime) -> None:
+def _close_probe(now: dt.datetime) -> bool:
     day = dt.date.fromisoformat(_previous_session_day(now.date()))
     bounds = session_bounds(day)
     if bounds is None:
@@ -1059,12 +1092,21 @@ def _close_probe(now: dt.datetime) -> None:
     rows = []
     for name, code in SHIPBUILDING + DEFENSE + AUTOMOTIVE + COUNTER:
         try:
-            rows.append(_fetch_regular_stock_close(name, code, bounds))
+            row = _fetch_regular_stock_close(name, code, bounds)
+            rows.append(row)
+            print(f"fx_sector_rotation_close_probe_stock={code} ok price={row['price']:.0f} pct={row['change_pct']:+.4f} source={row['quote_basis']}")
         except Exception as exc:
             print(f"fx_sector_rotation_close_probe_stock={code} unavailable reason={_failure_detail(exc)}")
     kiwoom_count = sum(r.get("source") == KIWOOM_CLOSE_DOC for r in rows)
     ls_count = sum(r.get("source") == LS_CLOSE_DOC for r in rows)
     print(f"fx_sector_rotation_close_probe=history_only date={day} index={int(index is not None)} stocks={len(rows)}/16 kiwoom={kiwoom_count} ls={ls_count}; no Telegram or state writes")
+    if index is not None and len(rows) == 16:
+        for label, items in (("조선", SHIPBUILDING), ("방산", DEFENSE), ("자동차", AUTOMOTIVE), ("반대편", COUNTER)):
+            codes = {code for _, code in items}
+            stats = group_stats([r for r in rows if r["code"] in codes], index["change_pct"])
+            print(f"fx_sector_rotation_close_probe_group={label} avg={stats['avg']:+.4f} relative={stats['relative']:+.4f} valid={stats['valid']}")
+        return True
+    return False
 
 
 def main() -> int:
@@ -1074,7 +1116,7 @@ def main() -> int:
     try:
         _regression_checks()
         if _requested_close_probe(now):
-            _close_probe(now)
+            return 0 if _close_probe(now) else 2
         return _run()
     except Exception as exc:
         # No fresh/confirmed state or alert on source failure or invalid
@@ -1085,7 +1127,7 @@ def main() -> int:
         detail = _failure_detail(exc)
         write_status(now, f"{label} ({detail}) — 로테이션 판정 보류, 기존 상태 보존")
         print(f"fx_sector_rotation=unavailable reason={detail}; no delivery or state update")
-        return 0
+        return 2
 
 
 if __name__ == "__main__":
