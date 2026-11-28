@@ -72,6 +72,46 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(verdict, "판정 보류")
         self.assertIn("BTC ETF 조회·검증 이상", reason)
 
+    def test_etf_amount_line_labels_direction_and_partial_scope(self):
+        # Reproduces the amount-line omission in natural run #724 (11/12 funds, IBIT missing).
+        raw = """[크립토 유동성 변화 감지]
+조회시각(KST): 2026-11-28T13:14:55+09:00
+• BTC 현물 ETF 새 일간 자금흐름(현재 전체 집계): -61.8백만달러
+원화 환산 기준: 1달러=1,342.70원 | 기준일 2026-11-27 | 한국은행 ECOS 매매기준율 | 조회 2026-11-28
+"""
+        state = {
+            "rates": {
+                "date": "2026-11-27", "daily_10y_bp": 0.0, "daily_30y_bp": 0.0,
+                "10y": 4.94, "30y": 5.33,
+            },
+            "btc_etf": {
+                "date": "2026-11-27", "total_usd_m": -61.8, "status": "partial",
+                "reported_funds": 11, "missing_funds": 1, "missing_tickers": ["IBIT"],
+                "last5_usd_m": -1985.1, "prev5_usd_m": -1306.2, "windows": {},
+            },
+            "errors": [],
+        }
+        with patch.object(fmt, "load_pending_state", return_value=state):
+            alert = fmt.format_alert(raw)
+        self.assertIn(
+            "• ETF 2026-11-27 · <b>-61.8백만달러 (약 -830억원)</b> · "
+            "보고분 순유출 · 잠정 11/12 반영 · 미보고 IBIT",
+            alert,
+        )
+
+        for flow, expected in ((453.0, "순유입"), (0.0, "중립")):
+            with self.subTest(flow=flow):
+                complete = {
+                    **state,
+                    "btc_etf": {
+                        **state["btc_etf"], "total_usd_m": flow, "status": "complete",
+                        "reported_funds": 12, "missing_funds": 0, "missing_tickers": [],
+                    },
+                }
+                with patch.object(fmt, "load_pending_state", return_value=complete):
+                    complete_alert = fmt.format_alert(raw)
+                self.assertIn(f"</b> · {expected}", complete_alert)
+
     def test_ecos_failure_does_not_substitute_another_fx_series(self):
         with patch.object(krw, "ecos_usdkrw", return_value=None):
             with self.assertRaisesRegex(RuntimeError, "한국은행 ECOS"):

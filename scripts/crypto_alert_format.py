@@ -684,8 +684,11 @@ def format_alert(text: str) -> str:
             missing = etf.get("missing_tickers") or []
             if missing:
                 status_text += " · 미보고 " + ", ".join(map(str, missing))
+        direction_label = "순유입" if flow > 0 else "순유출" if flow < 0 else "중립"
+        if is_partial:
+            direction_label = "보고분 " + direction_label
         out.append(
-            f"• ETF {etf.get('date', 'N/A')} · <b>{fmt_usd_m(flow, fx_rate)}</b>{status_text}"
+            f"• ETF {etf.get('date', 'N/A')} · <b>{fmt_usd_m(flow, fx_rate)}</b> · {direction_label}{status_text}"
         )
 
         last5 = etf.get("last5_usd_m")
