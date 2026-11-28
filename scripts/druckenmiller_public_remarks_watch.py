@@ -736,12 +736,240 @@ def main():
     return 0
 
 
+# Existing 13F managers' identifiable public decision-makers. A personal
+# comment is never treated as a fund's verified trade. Corporate bank research
+# and stock recommendations are excluded from this lane.
+OTHER_PUBLIC_MANAGERS={
+    "Berkshire Hathaway":("워런 버핏",("Warren Buffett",)),
+    "Pershing Square":("빌 애크먼",("Bill Ackman","William Ackman")),
+    "Appaloosa":("데이비드 테퍼",("David Tepper",)),
+    "Third Point":("대니얼 롭",("Daniel Loeb","Dan Loeb")),
+    "Tudor Investment":("폴 튜더 존스",("Paul Tudor Jones",)),
+    "Situational Awareness":("레오폴드 아셴브레너",("Leopold Aschenbrenner",)),
+    "Brevan Howard":("앨런 하워드",("Alan Howard",)),
+}
+OTHER_POSITION_LABELS={
+    "long":"매수·강세 포지션 발언", "short":"매도(숏)·약세 포지션 발언",
+    "buy":"보도상 보유 확대·투자", "sell":"보도상 보유 축소·처분",
+}
+OTHER_POSITION_RE=(
+    ("long",r"\b(?:now|currently)\s+(?:is\s+|are\s+)?long\s+(?:on\s+)?"),
+    ("short",r"\b(?:now|currently)\s+(?:is\s+|are\s+)?short\s+(?:on\s+)?"),
+    ("long",r"\b(?:is|are)\s+(?:now\s+|currently\s+)?long\s+(?:on\s+)?"),
+    ("short",r"\b(?:is|are)\s+(?:now\s+|currently\s+)?short\s+(?:on\s+)?"),
+    ("buy",r"\b(?:buys|bought|acquires|acquired|increases|increased|raises|raised)\s+(?:his\s+|its\s+|a\s+)?(?:stake|position|holdings|exposure)\s+(?:in|to|of)\s+"),
+    ("sell",r"\b(?:sells|sold|exits|exited|reduces|reduced|cuts|cut)\s+(?:his\s+|its\s+|the\s+)?(?:stake|position|holdings|exposure)\s+(?:in|to|of)\s+"),
+)
+
+
+def _other_target(raw):
+    text=re.split(r"[,;:!?\n]|\s+[—–]\s+|\s+(?:amid|after|before|as|while|but|because|and|or|ahead|by|in|to|with|for|says?|said|report(?:s|ed)?)\b",
+                  raw,1,flags=re.I)[0].strip(" .\"'()")
+    text=re.sub(r"\s+(?:inc|corp|corporation|limited|ltd|plc)\.?$","",text,flags=re.I)
+    key=re.sub(r"[^a-z0-9]+"," ",text.lower()).strip()
+    if not key or len(key.split())>6 or len(text)>65:
+        return None
+    if key in {"a stock","the stock","stock","stocks","the company","the market","the sector","it","this","that","them","a company"}:
+        return None
+    # Normalize common asset synonyms, preserve newly discovered names.
+    synonym={"us treasury bonds":"us treasuries","u s treasuries":"us treasuries",
+             "treasury bonds":"us treasuries","u s dollar":"us dollar",
+             "the dollar":"us dollar","the us dollar":"us dollar",
+             "bitcoin btc":"bitcoin"}
+    return synonym.get(key,key),text
+
+
+def _other_signals(title,description,aliases):
+    # Attribution must be explicit in the headline. For the description,
+    # only use sentences naming the very same person.
+    actor=lambda txt:any(re.search(r"\b"+re.escape(a)+r"\b",txt,re.I) for a in aliases)
+    if not actor(title):
+        return []
+    if re.search(r"\b(?:13F|13D|13G|SEC filing|quarterly filing)\b",title,re.I):
+        return []  # separate official SEC alert
+    statements=[title]
+    statements.extend(x for x in re.split(r"(?<=[.!?])\s+",description) if actor(x))
+    found={}
+    for statement in statements:
+        # Exclude conditional recommendations, historical recaps, and negation.
+        if re.search(r"\b(?:could|would|might|should|if|last year|years ago|in 20(?:1\d|2[0-5])|not|no longer|denies)\b",statement,re.I):
+            continue
+        for action,pattern in OTHER_POSITION_RE:
+            for match in re.finditer(pattern,statement,re.I):
+                target=_other_target(statement[match.end():])
+                if target:
+                    k,display=target
+                    found[(action,k)]={"action":action,"target":k,"display":display}
+        for signal in signals_from_text(statement):
+            if signal in ("copper_short","copper_long","copper_closed","equity_defensive",
+                          "equity_risk_on","equity_net_short","dollar_long","dollar_short",
+                          "fed_hawkish","fed_dovish","credit_stress","credit_easing","ai_applications"):
+                dimension=SIGNAL_DIMENSION[signal]
+                found[(signal,dimension)]={"action":signal,"target":dimension,"display":LABELS[signal]}
+    return list(found.values())
+
+
+def parse_other_manager_rss(raw,source,manager,aliases,now):
+    root=ET.fromstring(raw)
+    if root.tag.lower()!="rss" or root.find("channel") is None:
+        raise ValueError("Expected RSS for manager news")
+    result=[]
+    for item in root.findall(".//item")[:80]:
+        title=clean(item.findtext("title"))
+        description=clean(item.findtext("description"))
+        date=parse_date(item.findtext("pubDate"))
+        if not date or not -timedelta(hours=6)<=now-date<=timedelta(days=4):
+            continue
+        link=original_link(item.findtext("link") or "")
+        src=item.findtext("source") or ""
+        for node in item:
+            if node.tag.lower().endswith("}source"):
+                src=src or (node.text or "")
+        if source=="google" and not src and " - " in title:
+            src=title.rsplit(" - ",1)[-1]
+        label=publisher(src,link)
+        if not label:
+            continue
+        # Explicitly credited original reporting is not independent.
+        lower=(title+" "+description).lower()
+        for alias,canonical in PUBLISHER_ALIASES.items():
+            if any(prefix+alias in lower for prefix in ("according to ","originally published by ","source: ","via ")):
+                label=canonical
+                break
+        signals=_other_signals(title,description,aliases)
+        if signals:
+            result.append({"manager":manager,"title":title,"publisher":label,"url":link,
+                           "published":date.isoformat(),"signals":signals})
+    return result
+
+
+def discover_other_managers(now,fetch=http_bytes):
+    from concurrent.futures import ThreadPoolExecutor
+    jobs=[]
+    for manager,(_,aliases) in OTHER_PUBLIC_MANAGERS.items():
+        term=" OR ".join('"'+a+'"' for a in aliases)
+        query="("+term+") (portfolio OR position OR investment OR stake OR long OR short OR exposure OR outlook)"
+        jobs.extend([(manager,aliases,"google","https://news.google.com/rss/search?q="+quote(query+" when:7d")+"&hl=en-US&gl=US&ceid=US:en"),
+                     (manager,aliases,"bing","https://www.bing.com/news/search?q="+quote(query)+"&format=rss&setmkt=en-US")])
+    def collect(job):
+        manager,aliases,source,url=job
+        try:
+            rows=parse_other_manager_rss(fetch(url),source,manager,aliases,now)
+            return manager,source,True,rows,None
+        except (ET.ParseError,RuntimeError,ValueError) as exc:
+            return manager,source,False,[],type(exc).__name__
+    items=[]
+    health={}
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for manager,source,ok,rows,error in pool.map(collect,jobs):
+            health.setdefault(manager,{})[source]={"ok":ok,"matches":len(rows),"error":error}
+            items.extend(rows)
+    return items,health
+
+
+def other_manager_candidates(state,items,now):
+    grouped=defaultdict(dict)
+    for article in items:
+        for fact in article["signals"]:
+            k=(article["manager"],fact["target"],fact["action"])
+            grouped[k].setdefault(article["publisher"],(article,fact))
+    candidates=[]
+    for (manager,target,action),publishers in grouped.items():
+        evidence=sorted(publishers.values(),key=lambda x:x[0]["published"],reverse=True)
+        if len(evidence)<2:
+            continue
+        # Identical syndicated headlines are one report, not two sources.
+        independent=[]
+        titles=set()
+        for article,fact in evidence:
+            headline=re.sub(r"\W+"," ",article["title"].lower().split(" - ")[0]).strip()
+            if headline in titles:
+                continue
+            titles.add(headline)
+            independent.append((article,fact))
+        if len(independent)<2:
+            continue
+        latest=datetime.fromisoformat(independent[0][0]["published"])
+        if now-latest>timedelta(hours=72):
+            continue
+        dimension=manager+"|"+target
+        prior=(state.get("other_manager_signals") or {}).get(dimension,{})
+        if prior.get("published"):
+            old=datetime.fromisoformat(prior["published"])
+            if latest<=old or (prior.get("action")==action and latest-old<timedelta(days=90)):
+                continue
+        candidates.append({"manager":manager,"target":target,"action":action,"dimension":dimension,
+                           "display":independent[0][1]["display"],"published":latest.isoformat(),
+                           "proof":[a for a,_ in independent[:2]]})
+    # Do not alert conflicting directions for the same manager and target.
+    counts=defaultdict(int)
+    for x in candidates:
+        counts[x["dimension"]]+=1
+    return [x for x in candidates if counts[x["dimension"]]==1]
+
+
+def other_manager_message(candidate):
+    manager=candidate["manager"]
+    name=OTHER_PUBLIC_MANAGERS[manager][0]
+    action=candidate["action"]
+    detail=LABELS.get(action) or (OTHER_POSITION_LABELS[action]+" · "+candidate["display"])
+    return "\n".join([
+        "<b>[주요 투자자 공개 투자 판단] "+html_escape(name)+"</b>",
+        "보도일 "+html_escape(candidate["published"][:10])+" · "+html_escape(manager),
+        "■ "+html_escape(detail),
+        "■ 독립 원출처 매체 2곳의 일치 보도 기준; 발언 전문·실제 펀드 매매는 별도 확인 대상.",
+        "※ 13F 분기 보유현황과 개인 공개 발언은 서로 다릅니다.",
+        "출처: "+" · ".join(source_link(x["publisher"],x["url"]) for x in candidate["proof"]),
+    ])
+
+
+def other_manager_main():
+    now=iso_now()
+    state=load_state()
+    probe=(os.getenv("DRUCKENMILLER_PROBE_ONLY") or "false").lower()=="true"
+    items,health=discover_other_managers(now)
+    complete=sum(all(x.get("ok") for x in h.values()) and len(h)==2 for h in health.values())
+    print(f"OTHER_MANAGER_SOURCE_COVERAGE={complete}/{len(OTHER_PUBLIC_MANAGERS)} detail={json.dumps(health,ensure_ascii=False)}")
+    candidates=other_manager_candidates(state,items,now)
+    if not candidates:
+        print("OTHER_MANAGER_NO_VERIFIED_CHANGE" if complete==len(OTHER_PUBLIC_MANAGERS)
+              else "OTHER_MANAGER_PARTIAL_SCAN_NO_CONFIRMED_CHANGE")
+        return
+    route=None
+    for candidate in candidates:
+        event="other-public:"+hashlib.sha256(
+            (candidate["dimension"]+"|"+candidate["action"]+"|"+candidate["published"][:10]).encode()).hexdigest()[:24]
+        if event in state["sent_events"]:
+            continue
+        message=other_manager_message(candidate)
+        if probe:
+            print("OTHER_MANAGER_PROBE_NO_SEND "+event+" "+message)
+            continue
+        if route is None:
+            route=telegram_preflight((state.get("last_success") or {}).get("chat_id"),check_live_chat=True)
+        state["pending"]={"key":event,"reserved_at":now.isoformat(),"verified_mode":"two_original_publishers_other_manager"}
+        save_state(state)
+        commit_state("Reserve verified investor public remarks delivery")
+        receipt=telegram_send(message,route)
+        state["pending"]=None
+        state["sent_events"][event]={"receipt":receipt,"date":now.date().isoformat()}
+        state.setdefault("other_manager_signals",{})[candidate["dimension"]]={
+            "action":candidate["action"],"published":candidate["published"]}
+        state["last_success"]=receipt
+        save_state(state)
+        commit_state("Confirm investor public remarks Telegram delivery")
+        print("OTHER_MANAGER_DELIVERY_CONFIRMED recipient_verified=true")
+
+
 if __name__=="__main__":
     try:
         if (os.getenv("DRUCKENMILLER_PROBE_ONLY") or "false").lower()=="true":
             baseline=load_state()
             telegram_preflight((baseline.get("last_success") or {}).get("chat_id"),check_live_chat=True)
-        raise SystemExit(main())
+        result=main()
+        if result==0:
+            other_manager_main()
+        raise SystemExit(result)
     except Exception as exc:
         print(f"DRUCKENMILLER_WATCH_ERROR={type(exc).__name__} {exc}",file=sys.stderr)
         raise

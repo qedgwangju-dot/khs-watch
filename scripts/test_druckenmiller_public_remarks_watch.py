@@ -220,6 +220,27 @@ class WatchTests(unittest.TestCase):
         self.assertEqual(result["route"],"official_channel_page")
         self.assertTrue(result["videos"][0]["same_event"])
         self.assertFalse(watcher.discover_video_channel(other,now,lambda url:b"<html/>")["ok"])
+    def test_other_manager_explicit_attribution_and_independent_gate(self):
+        now=NOW
+        manager="Pershing Square"
+        aliases=watcher.OTHER_PUBLIC_MANAGERS[manager][1]
+        first=watcher.parse_other_manager_rss(rss(item("Bill Ackman increases stake in Example Corp",
+            "Bill Ackman increases stake in Example Corp","Reuters",link="https://www.reuters.com/a")),"bing",manager,aliases,now)
+        second=watcher.parse_other_manager_rss(rss(item("Bill Ackman raised stake in Example",
+            "Bill Ackman raised stake in Example","Bloomberg",link="https://www.bloomberg.com/b")),"bing",manager,aliases,now)
+        self.assertEqual(len(first),1)
+        self.assertEqual(len(second),1)
+        state=watcher.empty_state()
+        self.assertEqual(watcher.other_manager_candidates(state,first,now),[])
+        candidates=watcher.other_manager_candidates(state,first+second,now)
+        self.assertEqual(len(candidates),1)
+        self.assertEqual(candidates[0]["target"],"example")
+        self.assertIn("빌 애크먼",watcher.other_manager_message(candidates[0]))
+        self.assertEqual(watcher._other_signals("Analyst buys stock","Bill Ackman was mentioned",aliases),[])
+        self.assertEqual(watcher._other_signals("Bill Ackman could buy stake in Example","",aliases),[])
+        self.assertEqual(watcher._other_signals("Bill Ackman increases stake in Example in 13F filing","",aliases),[])
+        state["other_manager_signals"]={candidates[0]["dimension"]:{"action":"buy","published":candidates[0]["published"]}}
+        self.assertEqual(watcher.other_manager_candidates(state,first+second,now),[])
     def test_strict_no_live_telegram(self):
         with patch.object(watcher,"http_bytes",return_value=b"<rss/>") as ignored:
             self.assertEqual(watcher.signals_from_text("nothing relevant"),[])
