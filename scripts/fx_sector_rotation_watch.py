@@ -31,6 +31,12 @@ FX_URL = "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page
 KOSPI_URL = "https://m.stock.naver.com/api/index/KOSPI/basic"
 KOSPI_DAILY_URL = "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
 KIWOOM_CLOSE_DOC = "https://openapi.kiwoom.com/m/guide/apiguide/07/ka11081"
+LS_CLOSE_DOC = "https://openapi.ls-sec.co.kr/"
+LS_CLOSE_BASIS = "LS증권 KRX 15:30 정규장 봉·종가 교차검증"
+_CLOSE_SOURCES = {KIWOOM_CLOSE_DOC: "키움 KRX 정규장 일봉", LS_CLOSE_DOC: LS_CLOSE_BASIS}
+_LS_CLOSE_TOKEN = None
+_LS_CLOSE_DISABLED = False
+_LS_CLOSE_NEXT = 0.0
 CLOSE_SETTLE_MINUTES = 5
 _CLOSE_TOKEN = None
 _CLOSE_DISABLED = False
@@ -364,6 +370,116 @@ def _fetch_kiwoom_close(name: str, code: str, bounds: tuple[dt.datetime, dt.date
                                name, code, bounds)
 
 
+def _parse_ls_close(data: dict, name: str, code: str,
+                    bounds: tuple[dt.datetime, dt.datetime],
+                    previous_bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    """Accept only exact KRX session-end bars independently matching both
+    official header closes. Never use the last extended-session candle."""
+    header = data.get("t8452OutBlock") or {}
+    if not isinstance(header, dict) or str(header.get("shcode") or "") != code:
+        raise SourceFailure("LS 정규장 종목코드 응답 불일치")
+    closed, previous_close = bounds[1], previous_bounds[1]
+    if (str(header.get("s_time") or "") != bounds[0].strftime("%H%M%S")
+            or str(header.get("e_time") or "") != closed.strftime("%H%M%S")):
+        raise SourceFailure("LS 정규장 시작·종료시각 불일치")
+    rows = data.get("t8452OutBlock1")
+    if not isinstance(rows, list):
+        raise SourceFailure("LS 분봉 형식 오류")
+    def at_close(when):
+        day, clock = when.strftime("%Y%m%d"), when.strftime("%H%M%S")
+        exact = [r for r in rows if isinstance(r, dict)
+                 and str(r.get("date") or "") == day
+                 and str(r.get("time") or "") in (clock, clock+"000")]
+        if len(exact) != 1:
+            raise SourceFailure("LS 당일·직전 정규장 종료 봉 누락 또는 중복")
+        value = fnum(exact[0].get("close"))
+        if value is None or value <= 0:
+            raise SourceFailure("LS 정규장 종료 봉 종가 누락")
+        return value
+    price, prev = at_close(closed), at_close(previous_close)
+    official, official_prev = fnum(header.get("diclose")), fnum(header.get("jiclosev"))
+    if official != price or official_prev != prev:
+        raise SourceFailure("LS 정규장 종료 봉·공식 종가 교차검증 불일치")
+    limit_low, limit_high = fnum(header.get("lowend")), fnum(header.get("highend"))
+    if (limit_low is not None and limit_high is not None and limit_low > 0
+            and not limit_low <= prev <= limit_high):
+        raise SourceFailure("LS 직전 종가·당일 가격제한 기준 불일치")
+    pct = (price / prev - 1) * 100
+    if not math.isfinite(pct) or abs(pct) > 30.1:
+        raise SourceFailure("LS 정규장 등락률 범위 오류")
+    return {"name": name, "code": code, "price": price, "change_pct": pct,
+            "source": LS_CLOSE_DOC, "source_date": closed.date().isoformat(),
+            "source_observed_at": None, "session_close_at": closed.isoformat(timespec="seconds"),
+            "quote_basis": LS_CLOSE_BASIS}
+
+
+def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    global _LS_CLOSE_TOKEN, _LS_CLOSE_DISABLED, _LS_CLOSE_NEXT
+    if _LS_CLOSE_DISABLED:
+        raise SourceFailure("LS 인증 또는 통신 일시 중단")
+    if not re.fullmatch(r"[0-9]{6}", code):
+        raise SourceFailure("LS 종목코드 형식 오류")
+    previous = dt.date.fromisoformat(_previous_session_day(bounds[1].date()))
+    prev_bounds = session_bounds(previous)
+    if prev_bounds is None:
+        raise SourceFailure("LS 직전 거래일 달력 확인 실패")
+    if _LS_CLOSE_TOKEN is None:
+        try:
+            key = (os.getenv("LS_OPENAPI_APP_KEY") or "").strip()
+            secret = (os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
+            if not key or not secret:
+                raise SourceFailure("LS 기존 인증 설정 없음")
+            auth = requests.post("https://openapi.ls-sec.co.kr:8080/oauth2/token",
+                                 headers={"content-type": "application/x-www-form-urlencoded"},
+                                 params={"grant_type": "client_credentials", "appkey": key,
+                                         "appsecretkey": secret, "scope": "oob"},
+                                 timeout=(5, 10), allow_redirects=False)
+            if auth.status_code != 200:
+                raise SourceFailure(f"LS 인증 HTTP {auth.status_code}")
+            token = auth.json().get("access_token")
+            if not isinstance(token, str) or not token:
+                raise SourceFailure("LS 인증 응답 토큰 없음")
+            _LS_CLOSE_TOKEN = token
+        except Exception as exc:
+            _LS_CLOSE_DISABLED = True
+            raise SourceFailure("LS 인증: " + _failure_detail(exc)) from None
+    try:
+        time.sleep(max(0.0, _LS_CLOSE_NEXT - time.monotonic()))
+        _LS_CLOSE_NEXT = time.monotonic() + 1.10
+        r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
+                          headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
+                                   "content-type": "application/json; charset=utf-8",
+                                   "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
+                          json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
+                                "nday": "0", "sdate": previous.strftime("%Y%m%d"), "stime": "",
+                                "edate": bounds[1].date().strftime("%Y%m%d"), "etime": "",
+                                "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
+                          timeout=(5, 10), allow_redirects=False)
+        if r.status_code != 200:
+            if r.status_code in (401, 403, 429) or r.status_code >= 500:
+                _LS_CLOSE_DISABLED = True
+            raise SourceFailure(f"LS 정규장 분봉 HTTP {r.status_code}")
+        data = r.json()
+        if not isinstance(data, dict) or str(data.get("rsp_cd") or "") not in ("00000", "00001"):
+            _LS_CLOSE_DISABLED = True
+            raise SourceFailure("LS 정규장 분봉 응답 미승인")
+        return _parse_ls_close(data, name, code, bounds, prev_bounds)
+    except requests.RequestException as exc:
+        _LS_CLOSE_DISABLED = True
+        raise SourceFailure("LS 정규장 분봉 통신: " + type(exc).__name__) from None
+
+
+def _fetch_regular_stock_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    try:
+        return _fetch_kiwoom_close(name, code, bounds)
+    except Exception as exc:
+        kiwoom_reason = _failure_detail(exc)
+    try:
+        return _fetch_ls_close(name, code, bounds)
+    except Exception as exc:
+        raise SourceFailure("키움: " + kiwoom_reason + " / LS: " + _failure_detail(exc)) from None
+
+
 def fetch_kospi(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
     now = dt.datetime.now(KST)
     close_error = None
@@ -432,20 +548,20 @@ def fetch_group(items: list[tuple[str, str]], bounds: tuple[dt.datetime, dt.date
             if (isinstance(cached, dict) and cached.get("code") == code
                     and cached.get("source_date") == bounds[1].date().isoformat()
                     and cached.get("session_close_at") == bounds[1].isoformat(timespec="seconds")
-                    and cached.get("source") == KIWOOM_CLOSE_DOC
-                    and cached.get("quote_basis") == "키움 KRX 정규장 일봉"
+                    and cached.get("source") in _CLOSE_SOURCES
+                    and cached.get("quote_basis") == _CLOSE_SOURCES[cached["source"]]
                     and (fnum(cached.get("price")) or 0) > 0
                     and fnum(cached.get("change_pct")) is not None
                     and abs(float(cached["change_pct"])) <= 100):
                 out.append(dict(cached))
                 continue
             try:
-                row = _fetch_kiwoom_close(name, code, bounds)
+                row = _fetch_regular_stock_close(name, code, bounds)
                 cache[code] = row
                 out.append(row)
                 continue
             except Exception as exc:
-                reasons.append("키움 정규장: " + _failure_detail(exc))
+                reasons.append("증권사 정규장: " + _failure_detail(exc))
         try:
             out.append(fetch_quote(name, code, bounds))
             continue
@@ -557,8 +673,11 @@ def build_alert(
         lines.append("• KOSPI: " + html.escape(str(kospi["quote_basis"])) + " · " + html.escape(str(kospi.get("session_close_at") or "")))
     else:
         lines.append(f"• KOSPI 관측시각: {html.escape(str(kospi.get('source_observed_at') or '미확인'))}")
-    if any(row.get("source") == KIWOOM_CLOSE_DOC for row in ship_rows + defense_rows + auto_rows + counter_rows):
+    close_rows = ship_rows + defense_rows + auto_rows + counter_rows
+    if any(row.get("source") == KIWOOM_CLOSE_DOC for row in close_rows):
         lines.append(f'• 종목 정규장 종가: <a href="{KIWOOM_CLOSE_DOC}">키움증권 공식 일봉</a> (원천 제공 종가 기준)')
+    if any(row.get("source") == LS_CLOSE_DOC for row in close_rows):
+        lines.append(f'• 종목 정규장 종가: <a href="{LS_CLOSE_DOC}">LS증권</a> KRX 정규장 종료 봉과 당일·직전 종가 일치 검증')
     if daily_krw is not None and daily_pct is not None:
         lines.append(f"• 직전 서울 15:30 종가({fx.get('prev_date')}) 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
         if fx.get("basis_reused"):
@@ -750,7 +869,24 @@ def _regression_checks() -> None:
     rejects(lambda: _parse_kiwoom_close(bad, "검사", code, bounds), "stock arithmetic")
     down = dict(data, result_list=[dict(data["result_list"][0], cur_prc="-9800", pred_pre="-200", pred_pre_sig="5"), data["result_list"][1]])
     check(abs(_parse_kiwoom_close(down, "검사", code, bounds)["change_pct"] + 2) < 1e-8, "signed decline")
-    print("fx_sector_rotation_regressions=19 passed; no Telegram or state writes")
+    prev_bounds = session_bounds(dt.date.fromisoformat(previous))
+    def ls_bar(when, price):
+        return {"date": when.strftime("%Y%m%d"), "time": when.strftime("%H%M%S"), "close": price}
+    ls_data = {"t8452OutBlock": {"shcode": code, "s_time": "090000", "e_time": "153000",
+                                "diclose": 10200, "jiclosev": 10000},
+               "t8452OutBlock1": [ls_bar(cl, 10200), ls_bar(prev_bounds[1], 10000),
+                                  ls_bar(cl+dt.timedelta(hours=1), 11000)]}
+    check(abs(_parse_ls_close(ls_data, "검사", code, bounds, prev_bounds)["change_pct"] - 2) < 1e-8,
+          "LS exact close not aftermarket")
+    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock1=ls_data["t8452OutBlock1"][1:]),
+                                   "검사", code, bounds, prev_bounds), "LS exact close missing")
+    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], diclose=11000)),
+                                   "검사", code, bounds, prev_bounds), "LS header mismatch")
+    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], shcode="000660")),
+                                   "검사", code, bounds, prev_bounds), "LS code mismatch")
+    rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], e_time="200000")),
+                                   "검사", code, bounds, prev_bounds), "LS session mismatch")
+    print("fx_sector_rotation_regressions=24 passed; no Telegram or state writes")
 
 
 def _run() -> int:
@@ -808,8 +944,10 @@ def _run() -> int:
     sent_level = int(state.get("sent_level") or 0)
     coverage = f"유효 종목 조선 {ship['valid']}/4·방산 {defense['valid']}/4·자동차 {auto['valid']}/4·반대편 {counter['valid']}/4"
     if after_close:
-        official = sum(r.get("source") == KIWOOM_CLOSE_DOC for r in ship_rows + defense_rows + auto_rows + counter_rows)
-        coverage += f" / 키움 정규장 종가 {official}/16"
+        close_rows = ship_rows + defense_rows + auto_rows + counter_rows
+        official = sum(r.get("source") == KIWOOM_CLOSE_DOC for r in close_rows)
+        ls_official = sum(r.get("source") == LS_CLOSE_DOC for r in close_rows)
+        coverage += f" / 증권사 정규장 종가 키움 {official}·LS {ls_official}/16"
     if not fx["source_time_verified"]:
         coverage += " / 환율 원천시각 미제공(동일일 조회 표본)"
     if gap > 30:
@@ -892,10 +1030,12 @@ def _close_probe(now: dt.datetime) -> None:
     rows = []
     for name, code in SHIPBUILDING + DEFENSE + AUTOMOTIVE + COUNTER:
         try:
-            rows.append(_fetch_kiwoom_close(name, code, bounds))
+            rows.append(_fetch_regular_stock_close(name, code, bounds))
         except Exception as exc:
             print(f"fx_sector_rotation_close_probe_stock={code} unavailable reason={_failure_detail(exc)}")
-    print(f"fx_sector_rotation_close_probe=history_only date={day} index={int(index is not None)} stocks={len(rows)}/16; no Telegram or state writes")
+    kiwoom_count = sum(r.get("source") == KIWOOM_CLOSE_DOC for r in rows)
+    ls_count = sum(r.get("source") == LS_CLOSE_DOC for r in rows)
+    print(f"fx_sector_rotation_close_probe=history_only date={day} index={int(index is not None)} stocks={len(rows)}/16 kiwoom={kiwoom_count} ls={ls_count}; no Telegram or state writes")
 
 
 def main() -> int:
