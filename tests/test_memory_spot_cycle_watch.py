@@ -1682,6 +1682,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         record = {"event_id": w.DRAM_NOV27_EVENT_ID, "base_case_all_product_decline": "2028-Q1"}
         prior[w.DRAM_NOV27_STATE_KEY] = record
         prior[w.JPM_CYCLE_STATE_KEY] = {"event_id": w.JPM_CYCLE_EVENT_ID}
+        prior[w.BOFA_NOV27_STATE_KEY] = {"event_id": w.BOFA_NOV27_EVENT_ID, "confirmed_dram_revenue_usd_bn": None}
         with tempfile.TemporaryDirectory() as td:
             root = pathlib.Path(td)
             with patch.object(w, "load_state", return_value=prior), \
@@ -1695,6 +1696,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
                 staged = json.loads(w.PENDING_PATH.read_text())
                 self.assertEqual(staged[w.DRAM_NOV27_STATE_KEY], record)
                 self.assertEqual(staged[w.JPM_CYCLE_STATE_KEY], prior[w.JPM_CYCLE_STATE_KEY])
+                self.assertEqual(staged[w.BOFA_NOV27_STATE_KEY], prior[w.BOFA_NOV27_STATE_KEY])
                 self.assertEqual(staged.get("delivery_receipt"), prior.get("delivery_receipt"))
 
 
@@ -1817,6 +1819,74 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
                 self.assertFalse(w.PENDING_PATH.exists())
                 self.assertFalse(w.ALERT_PATH.exists())
 
+
+    def test_bofa_nov27_source_requires_growth_and_distinct_margin_cases(self):
+        body = (
+            "BofA Global Memory Tech 2028년 글로벌 DRAM 매출 전망 +10% YoY "
+            "(ASP -8%, 비트 성장 +19%). 대부분 DRAM 업체 영업이익률 60~70% 전망. "
+            "중국 수요와 신규 팹, 미국 AIDC 투자 축소. ASIC 성장과 고사양 메모리 충족률 60~70%. "
+            "2028년 ASP 40~50% 하락 민감도 분석. DRAM OPM은 현재 80%+ → 50~60%로 하락. HBM, LTA 효과."
+        )
+        self.assertTrue(w._bofa_nov27_body_verified(body))
+        self.assertFalse(w._bofa_nov27_body_verified(body.replace("+19%", "+9%")))
+        self.assertFalse(w._bofa_nov27_body_verified(body.replace("충족률 60~70%", "충족률 90%")))
+        self.assertFalse(w._bofa_nov27_body_verified(body.replace("→ 50~60%", "→ 20~30%")))
+        self.assertFalse(w._bofa_nov27_body_verified("BofA Global Memory Tech 2028년 메모리 다운턴 없다"))
+
+    def test_bofa_nov27_report_family_not_old_or_future_revision(self):
+        row = {"title": "BofA Global Memory Tech: trough valuation, webcast takeaways, 2028 downturn scenario",
+               "published_kst": "2026-11-27T09:00:00+09:00"}
+        self.assertTrue(w._is_bofa_nov27_story(row))
+        self.assertFalse(w._is_bofa_nov27_story(dict(row, published_kst="2026-11-11")))
+        self.assertFalse(w._is_bofa_nov27_story(dict(row, published_kst="2027-01-10")))
+        self.assertTrue(w._is_bofa_nov27_story({"link": "https://t.me/jstockclass/15568?embed=1"}))
+        self.assertFalse(w._is_bofa_nov27_story({"link": "https://example.org/jstockclass/15568"}))
+
+    def test_bofa_nov27_ack_gated_separates_unverified_amount_preserves_old_state(self):
+        import datetime as dt
+        import json
+        prior = {"seen": {"old": {"title": "keep"}},
+                 "delivery_receipt": {"status": "confirmed", "message_ids": [1], "recipient_verified": True},
+                 w.DRAM_NOV27_STATE_KEY: {"event_id": w.DRAM_NOV27_EVENT_ID, "chart_1q27_qoq_pct": [3, 8]},
+                 w.JPM_CYCLE_STATE_KEY: {"event_id": w.JPM_CYCLE_EVENT_ID}}
+        now = dt.datetime(2026, 11, 28, 21, tzinfo=w.KST)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=prior), \
+                 patch.object(w, "_bofa_nov27_live_report", return_value=(w.BOFA_NOV27_URLS[0], "verified")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertTrue(w._stage_bofa_nov27(["RSS failed"], now))
+                saved = json.loads(w.PENDING_PATH.read_text())
+                for k, v in prior.items():
+                    self.assertEqual(saved[k], v)
+                self.assertNotIn(w.BOFA_NOV27_STATE_KEY, prior)
+                record = saved[w.BOFA_NOV27_STATE_KEY]
+                self.assertEqual(record["provided_dram_revenue_usd_bn"], 158)
+                self.assertIsNone(record["confirmed_dram_revenue_usd_bn"])
+                self.assertEqual(record["base_dram_opm_pct"], [60, 70])
+                self.assertEqual(record["stress_dram_opm_pct"], [50, 60])
+                body = w.ALERT_PATH.read_text()
+                self.assertIn(w.BOFA_NOV27_HEADER, body)
+                self.assertIn("원표", body)
+                self.assertNotIn(w.JPM_CYCLE_HEADER, body)
+                with patch.object(w, "load_state", return_value=saved):
+                    self.assertFalse(w._stage_bofa_nov27([], now))
+
+    def test_bofa_nov27_source_failure_never_advances_state(self):
+        import datetime as dt
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value={}), \
+                 patch.object(w, "_bofa_nov27_live_report", return_value=("", "access_error:TimeoutError")), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                self.assertFalse(w._stage_bofa_nov27([], dt.datetime(2026, 11, 28, tzinfo=w.KST)))
+                self.assertFalse(w.PENDING_PATH.exists())
+                self.assertFalse(w.ALERT_PATH.exists())
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
@@ -1824,6 +1894,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
              patch.object(w, "_stage_nand_nov19_press_update", return_value=False), \
              patch.object(w, "_stage_dram_nov27_update", return_value=False), \
              patch.object(w, "_stage_nov28_cycle_followups", return_value=False), \
+             patch.object(w, "_stage_bofa_nov27", return_value=False), \
              patch.object(w.currency_krw_guard, "enforce_file") as guard:
             w.main()
         guard.assert_called_once_with(w.ALERT_PATH)

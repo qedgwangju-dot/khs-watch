@@ -495,6 +495,8 @@ QUERIES = [
     # Four-cycle axes: memory-specific, reuse the existing scan and source gates.
     ("ko", '(DRAM OR HBM OR 메모리) (재고일수 OR 재고주수 OR 납기 OR 장기공급계약 OR 생산능력)'),
     ("en", '(DRAM OR HBM OR memory) ("inventory days" OR "weeks of inventory" OR "lead times" OR "long-term agreement pricing" OR "wafer capacity")'),
+    ("ko", '(BofA OR 뱅크오브아메리카 OR 메릴린치) (DRAM OR 메모리) (공급충족률 OR 비트성장 OR 영업이익률 OR 다운턴 OR ASIC)'),
+    ("en", '(BofA OR "Bank of America") (DRAM OR memory) ("bit growth" OR "operating margin" OR "supply fulfillment" OR "downturn scenario")'),
 ]
 
 MEMORY_MARKERS = {
@@ -506,6 +508,7 @@ CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
     "lead time", "delivery time", "long-term agreement", "납기", "재고일수", "재고주수",
+    "bit growth", "operating margin", "supply fulfillment", "downturn", "공급충족률", "영업이익률", "비트 성장",
     "msrp", "sku", "launch", "price increase", "price hike",
     "outlook", "revised", "revision", "normalize", "normalization", "wafer", "wafer start", "wafer starts", "wspm",
     "eol", "end of life", "end-of-life", "support extension", "fulfillment",
@@ -4387,6 +4390,8 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         pending[DRAM_NOV27_STATE_KEY] = state[DRAM_NOV27_STATE_KEY]
     if JPM_CYCLE_STATE_KEY in state:
         pending[JPM_CYCLE_STATE_KEY] = state[JPM_CYCLE_STATE_KEY]
+    if BOFA_NOV27_STATE_KEY in state:
+        pending[BOFA_NOV27_STATE_KEY] = state[BOFA_NOV27_STATE_KEY]
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [
@@ -5926,6 +5931,165 @@ def _stage_nov28_cycle_followups(source_errors: list[str], now: dt.datetime | No
     return True
 
 
+
+# BofA 11/27: analyst scenario, not confirmed production or a new spot quote.
+# The user supplied a title image and a text memo. The public repost confirms
+# growth/margin assumptions but not the absolute USD revenue or every price band.
+BOFA_NOV27_STATE_KEY = "bofa_memory_downturn_20261127"
+BOFA_NOV27_EVENT_ID = "bofa-global-memory-tech-20261127-downturn-scenario-v1"
+BOFA_NOV27_HEADER = "<b>[BofA 2028 메모리 가격 하락·수익성 방어 시나리오]</b>"
+BOFA_NOV27_URLS = (
+    "https://t.me/jstockclass/15568?embed=1",
+    "https://telemoon.app/channel/jstockclass",
+    "https://arod2750.cafe24.com/doc/blog-naver-blog-dc56bd13aed5d90e-65d2808b00a1",
+)
+
+
+def _is_bofa_nov27_story(item: dict) -> bool:
+    """Only dedupe the named November report; later revisions remain discoverable."""
+    link = urllib.parse.urlparse(str(item.get("link") or ""))
+    if link.hostname == "t.me" and link.path.rstrip("/") in (
+            "/jstockclass/15568", "/s/jstockclass/15568"):
+        return True
+    day = str(item.get("published_kst") or "")[:10]
+    if not "2026-11-26" <= day <= "2026-12-02":
+        return False
+    title = _clean(str(item.get("title") or "")).lower()
+    if not any(x in title for x in ("bofa", "bank of america", "뱅크오브아메리카", "美银")):
+        return False
+    return (
+        "trough valuation" in title and "2028 downturn scenario" in title
+    ) or ("2028년" in title and "메모리" in title and "다운턴 없다" in title)
+
+
+def _bofa_nov27_body_verified(raw: str) -> bool:
+    """Require matching report, same-paragraph growth assumptions and both margin cases.
+
+    All supplied numbers are retained with their evidence grades. In particular
+    the $158B absolute figure is NOT validated by matching growth rates.
+    """
+    low = _clean(raw).lower().replace("−", "-").replace("–", "~").replace("～", "~")
+    anchors = list(re.finditer(r"bofa\s+global\s+memory\s+tech", low))
+    for a in anchors:
+        body = low[a.start():a.start()+6500]
+        if not re.search(r"2028년\s*글로벌\s*dram\s*매출.{0,90}?\+\s*10\s*%.{0,90}?(?:asp|평균판매단가)\s*-\s*8\s*%.{0,90}?(?:비트\s*성장|비트\s*출하량|b/g)\s*\+\s*19\s*%", body):
+            continue
+        if not re.search(r"(?:영업이익률|opm)\s*60\s*[-~]\s*70\s*%", body):
+            continue
+        if not re.search(r"(?:고사양|고성능)\s*메모리\s*(?:공급\s*)?충족률\s*60\s*[-~]\s*70\s*%", body):
+            continue
+        if not re.search(r"asp\s*40\s*[-~]\s*50\s*%\s*하락", body):
+            continue
+        if not re.search(r"dram\s*opm.{0,80}?80\s*%\s*\+?.{0,30}?50\s*[-~]\s*60\s*%", body):
+            continue
+        if all(x in body for x in ("신규 팹", "중국", "aidc", "asic", "hbm", "lta")):
+            return True
+    return False
+
+
+def _bofa_nov27_live_report() -> tuple[str, str]:
+    """Use public report excerpts only; distinguish access from content failure."""
+    outcomes = []
+    for url in BOFA_NOV27_URLS:
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0",
+                "Accept": "text/html,application/xhtml+xml",
+            })
+            with urllib.request.urlopen(req, timeout=8) as response:
+                final = urllib.parse.urlparse(response.geturl())
+                expected = urllib.parse.urlparse(url)
+                if (final.scheme != "https" or final.hostname != expected.hostname
+                        or final.path.rstrip("/") != expected.path.rstrip("/")):
+                    outcomes.append("redirect_mismatch")
+                    continue
+                raw = response.read(2200000).decode("utf-8", errors="replace")
+            if _bofa_nov27_body_verified(raw):
+                return url, "matching_public_excerpt_verified"
+            outcomes.append("excerpt_content_unverified")
+        except Exception as exc:
+            outcomes.append("access_error:" + type(exc).__name__)
+    return "", "; ".join(outcomes)
+
+
+def _bofa_nov27_alert(url: str) -> str:
+    return "\n".join((
+        BOFA_NOV27_HEADER,
+        "■ 11/27 BofA 인용 전망: 2028년 DRAM 매출 +10%(전년 대비), 비트 출하 +19%, 평균판매단가 -8%. 가격 하락과 산업 매출 성장을 구분.",
+        "• 검산: 1.19 × 0.92 = 1.0948, 매출 약 +9.5%. 제공 메모의 절대 매출 1,580억달러는 BofA 원표에서 금액·단위 미확인(확정 기준선 미반영).",
+        "• 기본 전망: 2028년 대부분 DRAM 제조사 영업이익률 60~70%. 고사양 메모리 공급충족률 60~70%, ASIC(주문형 반도체) 성장·HBM 제품 구성·장기공급계약(LTA)이 방어요인.",
+        "• 스트레스: 평균판매단가 40~50% 하락 시 DRAM 영업이익률 80% 이상 → 50~60% 가정. 기본 전망과 별도이며 확정 마진·최저 보장선 아님.",
+        "• 제공 메모의 2026년 DRAM 영업이익률 삼성전자 80%, SK하이닉스 82%; 2028년 전년비 HBM -1%, DDR5 -5~-10%, DDR4 -10~-20%, 현물가격 -20~-30% 이상. 원표 독립 확인 전, 계약가·현물가·전사 마진 혼용 금지.",
+        "• 역풍: 신규 팹 양산·중국 생산능력 확대, 중국 수요 둔화, 미국 AI 데이터센터 설비투자 축소. 공급충족률 상승·ASIC 출하 하향·LTA 외 주문 취소·실제 비트 공급과 평균판매단가를 추적.",
+        "• 기존 TrendForce 기본 1Q28/비관 4Q27 가격 하락 전망과 양립 가능; JP모건 재고·생산능력·납기·장기계약 지표를 유지.",
+        "• 확인 수준: 제공 리포트 제목 이미지와 공개 인용문 일치 범위만 검증. BofA 원문 전체·절대 매출·제품별 가격표 미열람. 11/10 웨비나의 기존 낙관론과 별도 수치·스트레스 시나리오.",
+        f'• <a href="{html.escape(url, quote=True)}">11/27 보고서 공개 인용 자료</a> (동일 보고서 전재, 독립 원문 아님)',
+    )) + "\n"
+
+
+def _stage_bofa_nov27(source_errors: list[str], now: dt.datetime | None = None) -> bool:
+    """Stage only a verified secondary scenario; persist through existing ACK gate."""
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 27) <= now.date() <= dt.date(2026, 12, 27):
+        return False
+    previous = load_state()
+    old = dict(previous.get(BOFA_NOV27_STATE_KEY) or {})
+    if old.get("event_id") == BOFA_NOV27_EVENT_ID:
+        print("bofa_nov27_duplicate_suppressed=true")
+        return False
+    url, result = _bofa_nov27_live_report()
+    if not url:
+        print("bofa_nov27_source_verification_held=" + result)
+        if STATUS_PATH.exists():
+            with STATUS_PATH.open("a", encoding="utf-8") as f:
+                f.write("- BofA 11/27 인용자료 검증 보류(새 발표 없음으로 처리하지 않음): " + result + "\n")
+        return False
+    pending = (dict(previous) if source_errors or not PENDING_PATH.exists()
+               else json.loads(PENDING_PATH.read_text(encoding="utf-8")))
+    prior_alert = (ALERT_PATH.read_text(encoding="utf-8").strip()
+                   if not source_errors and ALERT_PATH.exists() else "")
+    pending[BOFA_NOV27_STATE_KEY] = {
+        **old,
+        "event_id": BOFA_NOV27_EVENT_ID,
+        "report_date": "2026-11-27",
+        "source_url": url,
+        "source_grade": "matching_public_excerpt_not_bank_original",
+        "year": 2028,
+        "dram_revenue_yoy_pct": 10,
+        "dram_bit_growth_yoy_pct": 19,
+        "dram_asp_yoy_pct": -8,
+        "calculated_revenue_yoy_pct": 9.48,
+        "provided_dram_revenue_usd_bn": 158,
+        "confirmed_dram_revenue_usd_bn": None,
+        "absolute_revenue_evidence": "user_memo_amount_and_unit_unverified",
+        "high_spec_memory_fulfillment_pct": [60, 70],
+        "base_dram_opm_pct": [60, 70],
+        "stress_asp_decline_pct": [40, 50],
+        "stress_dram_opm_pct": [50, 60],
+        "current_dram_opm_over_pct": 80,
+        "provided_current_dram_opm_by_company_pct": {"Samsung": 80, "SK hynix": 82},
+        "provided_2028_yoy_price_change_pct": {
+            "HBM": -1, "DDR5": [-10, -5], "DDR4": [-20, -10],
+            "spot": [-30, -20], "spot_decline_could_be_larger": True,
+        },
+        "company_and_product_figures_evidence": "user_memo_original_table_unverified",
+        "upside": ["high_spec_shortage", "ASIC_growth", "HBM_mix", "LTA"],
+        "downside": ["new_fab_ramp", "China_capacity_growth", "China_demand_weakness", "US_AIDC_capex_cuts"],
+        "scope": "analyst_forecast_not_actual_price_or_profit",
+    }
+    pending["updated_at_kst"] = now.isoformat(timespec="seconds")
+    if source_errors:
+        pending["rss_outage_note"] = "BofA secondary excerpt only; unrelated incomplete RSS not acknowledged"
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    ALERT_PATH.write_text((prior_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n" if prior_alert else "")
+                          + _bofa_nov27_alert(url), encoding="utf-8")
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as f:
+            f.write("- BofA 11/27 인용문 검증·수치 성격 분리, Telegram 발송 대기\n")
+    return True
+
+
 def _semia_independent_chart_fallback(errors: list[str],
                                       now: dt.datetime | None = None) -> bool:
     """Send only the already-user-supplied scenario when unrelated RSS is 429.
@@ -5983,7 +6147,8 @@ def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
     generic_items = [item for item in items
-                     if not _is_dram_nov27_story(item) and not _is_jpm_nov27_story(item)]
+                     if not _is_dram_nov27_story(item) and not _is_jpm_nov27_story(item)
+                     and not _is_bofa_nov27_story(item)]
     write_outputs(generic_items, errors, foxconn, price, warnings)
     verified_nand_alert = _stage_nand_verified_reversal(errors)
     verified_nand_nov19 = _stage_nand_nov19_press_update(errors)
@@ -5991,6 +6156,9 @@ def main() -> int:
     verified_dram_nov27 = False if errors and (verified_nand_alert or verified_nand_nov19) else _stage_dram_nov27_update(errors)
     cycle_followups = (False if errors and (verified_nand_alert or verified_nand_nov19 or verified_dram_nov27)
                        else _stage_nov28_cycle_followups(errors))
+    bofa_followup = (False if errors and (verified_nand_alert or verified_nand_nov19
+                                          or verified_dram_nov27 or cycle_followups)
+                     else _stage_bofa_nov27(errors))
     # A pending semantic key must never be checkpointed unless its exact alert
     # section exists. In particular no-alert state saves must not acknowledge
     # an unsent analyst model detail or future publisher-stage upgrade.
@@ -6021,6 +6189,10 @@ def main() -> int:
         new_jpm = dict(staged_doc.get(JPM_CYCLE_STATE_KEY) or {})
         if old_jpm.get("event_id") != new_jpm.get("event_id"):
             required.append(JPM_CYCLE_HEADER)
+        old_bofa = dict(load_state().get(BOFA_NOV27_STATE_KEY) or {})
+        new_bofa = dict(staged_doc.get(BOFA_NOV27_STATE_KEY) or {})
+        if old_bofa.get("event_id") != new_bofa.get("event_id"):
+            required.append(BOFA_NOV27_HEADER)
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
             missing_sections = [section for section in required if section not in body]
@@ -6028,6 +6200,10 @@ def main() -> int:
                 raise RuntimeError("Memory event key staged without matching Telegram section; state save blocked: "
                                    + ", ".join(missing_sections))
     if errors:
+        if bofa_followup:
+            currency_krw_guard.enforce_file(ALERT_PATH)
+            print(f"bofa_secondary_only_alert=true incomplete_rss_sources={len(errors)}")
+            return 0
         if cycle_followups:
             currency_krw_guard.enforce_file(ALERT_PATH)
             print(f"cycle_followup_only_alert=true incomplete_rss_sources={len(errors)}")
