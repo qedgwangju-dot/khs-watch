@@ -182,6 +182,23 @@ class FundHorizonMath(unittest.TestCase):
         self.assertIn("3M 감소 -22.018bn", lines[3])
         self.assertTrue(any("집합투자신탁 활동" in line for line in lines[:5]))
 
+    def test_run1632_margin_explanation_preserves_saved_horizons(self):
+        fixture = json.loads(Path("tests/fixtures/us_preopen_run1632_horizons.json").read_text(encoding="utf-8"))
+        self.assertEqual(fixture["source_run"], 44624484208)
+        scope = us_functions("krw_trillion", "fmt_krw_trillion", "fmt_usd_bn_kr",
+                             "_horizon_change", "_brief_horizon", "_horizon_headlines")
+        scope["html"] = html
+        values = fixture["values"]
+        lines = scope["_horizon_headlines"](values["ICI|combined"], values["ICI|mmf"],
+                                           values["FINRA|margin"], {"usdkrw": 1331.1})
+        self.assertEqual(lines[:5], fixture["observed_horizon_first_five_lines"])
+        self.assertNotIn("양방향", fixture["observed_old_margin_line"])
+        margin = next(line for line in lines if "마진부채 증가" in line)
+        for expected in ("레버리지 확대", "상승 신호가 아니", "상승·하락 양방향", "하락 시 손실"):
+            self.assertIn(expected, margin)
+        self.assertTrue(any("채권가격 상승·수익률 하락" in line for line in lines))
+        self.assertTrue(any("순유입·순유출 또는 주식으로의 직접 이동을 뜻하지" in line for line in lines))
+
     def test_derived_horizon_addition_is_not_an_ici_source_correction(self):
         scope = us_functions("period_date", "_same_period_core_change", "_horizon_only_update")
         old = {"kind": "mmf", "period": "October 28, 2026", "metrics": {

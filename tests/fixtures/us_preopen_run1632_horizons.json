@@ -1,0 +1,90 @@
+{
+  "source_run": 44624484208,
+  "artifact_sha256": "7c4e7aa628dab440b0fdbffbddeed39a1b43d69eabbc6f195f696fc7298fc049",
+  "values": {
+    "ICI|combined": {
+      "period": "November 11, 2026",
+      "fingerprint": "3abe718134a004c7e54d4dd19f06d0d4f30233526ca06610d609d805cd9b6fe0",
+      "metrics": {
+        "domestic_flow_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_date": "2026-10-11",
+            "start_week_ended": "2026-10-14",
+            "end_week_ended": "2026-11-11",
+            "observation_count": 5,
+            "value_bn": -415.036,
+            "reason": null
+          },
+          "m3": {
+            "months_back": 3,
+            "target_date": "2026-08-11",
+            "start_week_ended": "2026-10-14",
+            "end_week_ended": "2026-11-11",
+            "observation_count": 5,
+            "value_bn": null,
+            "reason": "weekly_history_does_not_cover_target_window"
+          }
+        },
+        "domestic_collective_trust_note_week": "2026-10-14"
+      }
+    },
+    "ICI|mmf": {
+      "period": "November 18, 2026",
+      "fingerprint": "dbe991759e766fc088b479860e35646c6a3e57c29526f2f9c2e9bd9ea457550c",
+      "metrics": {
+        "asset_balance_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_date": "2026-10-18",
+            "anchor_date": "2026-10-14",
+            "end_date": "2026-11-18",
+            "change_bn": 53.357,
+            "reason": null
+          },
+          "m3": {
+            "months_back": 3,
+            "target_date": "2026-08-18",
+            "anchor_date": "2026-08-12",
+            "end_date": "2026-11-18",
+            "change_bn": 48.861,
+            "reason": null
+          }
+        }
+      }
+    },
+    "FINRA|margin": {
+      "period": "Oct-26",
+      "fingerprint": "023172414c834c3d51f292db8acbb3313778143e8763992adc96ff53351e53a6",
+      "metrics": {
+        "margin_debt_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_month": "2026-09",
+            "anchor_period": "Sep-26",
+            "end_period": "Oct-26",
+            "change_bn": -31.694,
+            "reason": null
+          },
+          "m3": {
+            "months_back": 3,
+            "target_month": "2026-07",
+            "anchor_period": "Jul-26",
+            "end_period": "Oct-26",
+            "change_bn": 31.135,
+            "reason": null
+          }
+        }
+      }
+    }
+  },
+  "status_text": "- ICI combined | November 11, 2026 | 3abe718134a0\n- ICI mmf | November 18, 2026 | dbe991759e76\n- FINRA margin | Oct-26 | 023172414c83\n- USD/KRW: 1331.1 (20261119)\n",
+  "observed_horizon_first_five_lines": [
+    "<b>1개월·3개월 방향 (각 원천 기준일 별도)</b>",
+    "• ICI 미국 국내주식형 주간 순유입 합계 (November 11, 2026): 1M 순유출 -4,150.36억달러(약 -552조4,544억원)↓ / 3M 확인불가(공식 기간 이력 부족)",
+    "• ICI MMF 총자산 잔액 차이 (November 18, 2026): 1M 증가 +533.57억달러(약 +71조235억원)↑ / 3M 증가 +488.61억달러(약 +65조389억원)↑",
+    "• FINRA 마진부채 잔액 차이 (Oct-26): 1M 감소 -316.94억달러(약 -42조1,879억원)↓ / 3M 증가 +311.35억달러(약 +41조4,438억원)↑",
+    "• ICI 1M 주의: 10/14 주간 대규모 유출은 주로 집합투자신탁 활동; 개인 환매로 단정 불가"
+  ],
+  "observed_old_margin_line": "• 마진부채 증가는 레버리지 확대를 뜻할 뿐 상승 신호가 아니며, 하락 시 손실·변동성을 키울 수 있습니다."
+}
