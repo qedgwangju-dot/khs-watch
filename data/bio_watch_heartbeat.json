@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-28T18:33:52+09:00",
+  "checked_at_kst": "2026-11-28T21:20:36+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -33,7 +33,7 @@
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-24",
-  "failure_notice_message_id": 416,
+  "failure_notice_message_id": 421,
   "last_qlex_telegram_message_ids": [
     419
   ],
@@ -43,7 +43,7 @@
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-26T23:26:12+09:00",
   "errors": [
-    "Enhertu sender rc=1: RuntimeError: 한국어 송출 검증 실패 — API"
+    "Enhertu sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
   ],
   "failed_component": "Enhertu",
   "failed_components": [
@@ -53,7 +53,8 @@
   "last_wac_telegram_sent_at_kst": "",
   "failure_notice_signatures": [
     "Enhertu|language_validation",
+    "Enhertu|other",
     "Halozyme 특허분쟁|source_access"
   ],
-  "error_signature": "Enhertu|language_validation"
+  "error_signature": "Enhertu|other"
 }
