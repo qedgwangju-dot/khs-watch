@@ -335,6 +335,8 @@ def main():
     print("13F_ALL_FILINGS_AND_PRIOR_AMENDMENT_REGRESSION_PASS no_network=true no_telegram_send=true")
     print("13F_HTML_AND_AMENDMENT_REGRESSION_PASS no_network=true no_telegram_send=true")
 
+    import thirteenf_ownership_watch
+    thirteenf_ownership_watch.self_test()
     print("13F sector position-ranking regression checks passed.")
 
 if __name__=="__main__":

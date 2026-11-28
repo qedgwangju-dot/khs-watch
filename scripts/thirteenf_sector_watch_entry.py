@@ -238,7 +238,7 @@ def format_13f_telegram_html(message):
             rendered.append(f'<a href="{escape(url,quote=True)}">{escape(label)}</a>')
             continue
         escaped=escape(line,quote=False)
-        if line.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]")):
+        if line.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]","[13D/G 지분신고]")):
             rendered.append("<b>"+escaped+"</b>")
         elif line.startswith(("■","▶")):
             if rendered and rendered[-1]!="":
@@ -271,7 +271,7 @@ _original_send_message = watch.send_message
 
 def send_13f_message(token,chat_id,message):
     # Keep unrelated context notices and established test routes unchanged.
-    if not message.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]")):
+    if not message.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]","[13D/G 지분신고]")):
         return _original_send_message(token,chat_id,message)
     html=format_13f_telegram_html(message)
     configured=str(chat_id).strip()
@@ -392,6 +392,9 @@ if __name__ == "__main__":
     if not send_purr_test_if_requested():
         # Preserve the original SEC → 13F Telegram route first.
         watch.main()
+        # Same workflow, distinct official beneficial-ownership lane.
+        import thirteenf_ownership_watch
+        thirteenf_ownership_watch.main()
         # Separate quarter-end ownership from newer editorial analysis.
         import thirteenf_context_watch
         thirteenf_context_watch.main()
