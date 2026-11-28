@@ -41,7 +41,7 @@ def bp(new, old):
     return float((Decimal(str(new)) - Decimal(str(old))) * 100)
 
 
-def parse_rows(raw, year, today):
+def parse_rows(raw, year, today, allow_empty=False):
     root = ET.fromstring(raw)
     rows = {}
     for props in root.findall('.//{*}properties'):
@@ -61,14 +61,34 @@ def parse_rows(raw, year, today):
             raise RuntimeError('Conflicting Treasury 2Y observations')
         rows[date] = y
     if not rows:
+        # Only an official, genuinely empty Atom feed at the start of a new
+        # year can use the previous year's verified observations. HTML,
+        # malformed XML, error payloads, partial entries and pages are failures.
+        atom = '{http://www.w3.org/2005/Atom}'
+        if (allow_empty and root.tag == atom + 'feed'
+                and not root.findall('.//' + atom + 'entry')
+                and not root.findall('.//{*}error')
+                and not any(x.attrib.get('rel') == 'next'
+                            for x in root.findall('.//' + atom + 'link'))):
+            return []
         raise RuntimeError('Treasury XML feed: 2Y rows not found')
     return sorted(rows.items())
 
 
-def official_rows(old_date=None):
-    today = datetime.now(NY).date()
+def earliest_required_date(state):
+    pending = state.get('pending_event') or {}
+    # A January event can still require its December baseline, even when
+    # the saved latest observation and both new-year rows are in January.
+    dates = [state.get('date'), pending.get('event_date'), pending.get('base_date')]
+    return min((d for d in dates if d), default=None)
+
+
+def official_rows(old_date=None, today=None):
+    today = today or datetime.now(NY).date()
     year = today.year
-    rows = parse_rows(fetch(treasury_url(year)), year, today)
+    prior_baseline = bool(old_date and old_date < f'{year}-01-01')
+    allow_empty = prior_baseline and today.month == 1 and today.day <= 7
+    rows = parse_rows(fetch(treasury_url(year)), year, today, allow_empty=allow_empty)
     if len(rows) < 2 or (old_date and old_date < rows[0][0]):
         previous_year = year - 1
         rows = parse_rows(fetch(treasury_url(previous_year)), previous_year, today) + rows
@@ -394,6 +414,35 @@ def self_test():
     try: parse_rows(sample.replace(b'4.63',b''),2026,datetime(2026,11,24).date())
     except RuntimeError: pass
     else: raise AssertionError('missing published yield accepted')
+    # Cross-year official feed: January event, December comparison base.
+    dec = b'<feed><properties><NEW_DATE>2026-12-30</NEW_DATE><BC_2YEAR>4.75</BC_2YEAR></properties><properties><NEW_DATE>2026-12-31</NEW_DATE><BC_2YEAR>4.76</BC_2YEAR></properties></feed>'
+    jan = b'<feed><properties><NEW_DATE>2027-01-04</NEW_DATE><BC_2YEAR>4.63</BC_2YEAR></properties><properties><NEW_DATE>2027-01-05</NEW_DATE><BC_2YEAR>4.63</BC_2YEAR></properties></feed>'
+    empty_jan = b'<feed xmlns="http://www.w3.org/2005/Atom"><title>Daily Treasury Yield Curve</title></feed>'
+    year_event = {**event,'base_date':'2026-12-31','event_date':'2027-01-04'}
+    year_state = {'date':'2027-01-04','value':4.63,'pending_event':year_event,
+                  'last_alert_date':'2027-01-04'}
+    assert earliest_required_date(year_state) == '2026-12-31'
+    with patch(__name__+'.fetch', side_effect=lambda url: dec if url.endswith('=2026') else jan) as get:
+        year_rows = official_rows(earliest_required_date(year_state), datetime(2027,1,5).date())
+        assert year_rows == [('2026-12-30',4.75),('2026-12-31',4.76),
+                             ('2027-01-04',4.63),('2027-01-05',4.63)]
+        assert get.call_count == 2
+    with patch(__name__+'.fetch', side_effect=lambda url: dec if url.endswith('=2026') else empty_jan):
+        assert official_rows('2026-12-31', datetime(2027,1,1).date())[-1] == ('2026-12-31',4.76)
+        try: official_rows('2026-12-31',datetime(2027,1,8).date())
+        except RuntimeError: pass
+        else: raise AssertionError('unexpected empty source accepted')
+    for invalid in (b'<html/>', b'<feed xmlns="http://www.w3.org/2005/Atom"><entry/></feed>'):
+        try: parse_rows(invalid,2027,datetime(2027,1,1).date(),allow_empty=True)
+        except RuntimeError: pass
+        else: raise AssertionError('invalid empty source accepted')
+    with tempfile.TemporaryDirectory() as p, patch(__name__+'.STATE_PATH',Path(p)/'state.json'):
+        with patch(__name__+'.send_followup_alert',return_value={'status':'confirmed','message_id':98,'recipient_verified':True}) as follow:
+            process_rows(year_state,year_rows)
+            process_rows(year_state,year_rows)
+            assert follow.call_count == 1
+            assert follow.call_args.args[:2] == ('2027-01-05',4.63)
+            assert year_state['last_followup_date'] == '2027-01-05'
     assert verified_receipt({'ok':True,'result':{'message_id':44,'chat':{'id':-100}}},'-100')['message_id']==44
     for result in ({'ok':True,'result':{'message_id':44,'chat':{'id':-101}}},
                    {'ok':True,'result':{'chat':{'id':-100}}}):
@@ -427,7 +476,7 @@ def self_test():
             else: raise AssertionError('regressed source accepted')
         assert load_state()['last_followup_completed']
     print(json.dumps({'treasury_2y_regression':'passed',
-                      'checks':'equal,extension,partial,weak,zero,reversal,direction,decimal,receipt,retry,uncertain,catchup,repeat,stale'},ensure_ascii=False))
+                      'checks':'equal,extension,partial,weak,zero,reversal,direction,decimal,receipt,retry,uncertain,catchup,repeat,stale,year_boundary,empty_year_feed,year_followup'},ensure_ascii=False))
 
 
 def main():
@@ -435,7 +484,7 @@ def main():
     state = load_state()
     previous_date = state.get('date')
     try:
-        rows = official_rows(previous_date)
+        rows = official_rows(earliest_required_date(state))
     except Exception as exc:
         print(json.dumps({'source_status':'official_source_lookup_failed','error_type':type(exc).__name__,
                           'last_verified_date':previous_date},ensure_ascii=False))
