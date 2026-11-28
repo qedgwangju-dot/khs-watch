@@ -176,7 +176,9 @@ def study_snapshot(payload: dict) -> dict:
     return {
         "status": overall, "count": count, "count_type": enrollment["type"],
         "primary_completion": status.get("primaryCompletionDateStruct", {}).get("date", ""),
-        "completion": status.get("studyCompletionDateStruct", {}).get("date", ""),
+        # ClinicalTrials.gov v2 calls this completionDateStruct. Never infer it
+        # from the primary-completion field or turn an absent value into a delay.
+        "completion": (status.get("completionDateStruct") or status.get("studyCompletionDateStruct") or {}).get("date", ""),
         "phase": design.get("phases", []),
         "arms": base.digest(json.dumps(arms, ensure_ascii=False, sort_keys=True)),
         "arm_labels": arm_labels,
@@ -226,7 +228,9 @@ def registry_changes(previous: dict, current: dict) -> list[str]:
     # Date-only revisions and fields newly available after a source recovery
     # are not material changes. Never dedupe all SC developments as one event.
     return [key for key in FIELD_KO
-            if key in previous and key in current and previous[key] != current[key]]
+            if key in previous and key in current and previous[key] != current[key]
+            and not (key in {"primary_completion", "completion"}
+                     and (not previous[key] or not current[key]))]
 
 
 def count_display(s: dict) -> str:
@@ -256,6 +260,10 @@ def registry_report(previous: dict, current: dict, changes: list[str]) -> str:
     if current.get("completion"):
         rows.extend(["**■ 현재 전체 완료 예정일:** " + current["completion"]
                      + (" (기존 일정 유지)" if current.get("completion") == previous.get("completion") else ""), ""])
+    else:
+        rows.extend(["**■ 현재 전체 완료 예정일:** 공식 자료에서 해당 날짜를 확인하지 못함; 일정 변경·삭제로 단정하지 않습니다.", ""])
+    if current.get("primary_completion"):
+        rows.extend(["**■ 주요 평가 완료 예정일:** " + current["primary_completion"], ""])
     if current.get("part2_present") is not None:
         rows.extend(["**■ 용량 확장 파트:** " + (
             "등록된 임상 설계에 남아 있음; 실제 개시·모집 확정과는 구별."
@@ -281,8 +289,8 @@ def registry_report(previous: dict, current: dict, changes: list[str]) -> str:
         ])
     rows.extend([
         "**■ 다음 확인:** 용량 확장 파트 진행 결정·모집 재개·권장 용량·약동학(PK)·안전성·임상 결과·후속 일정·파트너 공식 설명.", "",
-        "**■ 검증:** " + ("미국 공식 임상정보 API 직접 확인." if current["verification"] == "official_api"
-                         else "미국 공식 API 접근 실패; 11월 20일 등록정보 변경을 보도와 등록정보 대체 자료로 대조. 공식 API 재확인 필요."), "",
+        "**■ 검증:** " + ("미국 공식 임상 등록자료 직접 조회 확인." if current["verification"] == "official_api"
+                         else "미국 공식 임상자료 조회 실패; 11월 20일 등록정보 변경을 보도와 등록정보 대체 자료로 대조. 공식 자료 재확인 필요."), "",
         "**미국 임상시험 등록 원문**", "- 원문: " + TRIAL_PAGE, "",
         "**등록 변경 이력**", "- 원문: " + TRIAL_PAGE + "?tab=history",
     ])
@@ -339,8 +347,75 @@ def collect_ir() -> tuple[list[dict], str]:
         return [], "source_failed:" + type(exc).__name__
 
 
+# These are semantic translations of the actual issuer's bilingual text,
+# not a broader change to the shared Korean-language guard.
+_IR_LOCAL_REPLACEMENTS = (
+    (r"\(\s*per US regulatory requirements\s*\)", ""),
+    (r"\(\s*Patient enrollment in this trial has been completed\.\s*\)", ""),
+    (r"\(\s*Patient enrollment in the dose[-\s]escalation part of this trial has been completed\.\s*We are evaluating next steps for this trial and will share updates as relevant\.\s*\)", ""),
+    (r"\(\s*Dose[-\s]Escalation\s*/\s*Part\s*1\s*\)", " (1부)"),
+    (r"\bActive\s*,\s*not\s+rec(?:ruiting|uiting)\b", "임상 진행 중·신규 모집 종료"),
+    (r"\bActive\b", "임상 진행 중"),
+    (r"\bstatus\b", "상태"),
+    (r"\bDose[-\s]Escalation\b", "용량 증량"),
+    (r"\bDose[-\s]Expansion\b", "용량 확장"),
+    (r"\bPart\s*1\b", "1부"),
+    (r"\bPart\s*2\b", "2부"),
+    (r"\bPatient enrollment in this trial has been completed\.", "이 임상시험의 환자 모집이 완료되었습니다."),
+    (r"\bPatient enrollment in the dose[-\s]escalation part of this trial has been completed\.", "이번 임상의 용량 증량 파트 환자 등록이 완료됐습니다."),
+    (r"\bWe are evaluating next steps for this trial and will share updates as relevant\.", "이번 임상의 다음 단계를 평가 중이며 관련 업데이트를 공유할 예정입니다."),
+    (r"\bper US regulatory requirements\b", "미국 규제 요건에 따라"),
+    (r"\bAPI\b", "자료 연동 방식"),
+)
+
+
+def localize_ir_body(body: str) -> str:
+    """Remove only verified redundant bilingual copies, translate labels locally.
+    Preserve the Korean original, source numbers, and any unknown text for the
+    existing strict guard (which must still reject unresolved translations).
+    """
+    out = body
+    # Remove a bilingual parenthesis only when its Korean meaning is actually
+    # present on the same post. Otherwise translate the English wording below.
+    duplicates = (
+        ("미국 규제 요건", _IR_LOCAL_REPLACEMENTS[0]),
+        ("이 임상시험의 환자 모집이 완료", _IR_LOCAL_REPLACEMENTS[1]),
+        ("용량 증량 파트", _IR_LOCAL_REPLACEMENTS[2]),
+    )
+    for index, (korean, (pattern, replacement)) in enumerate(duplicates):
+        if korean in out and (index != 2 or (
+                "환자 등록이 완료" in out and "다음 단계" in out
+                and "공유할 예정" in out)):
+            out = re.sub(pattern, replacement, out, flags=re.I)
+    for pattern, replacement in _IR_LOCAL_REPLACEMENTS[3:]:
+        out = re.sub(pattern, replacement, out, flags=re.I)
+    # Keep all source statements, but split the previously very long IR line
+    # into readable paragraphs so the existing formatter cannot clip it.
+    out = re.sub(r"\s*(?:▶️?|✅)\s*", "\n\n- ", out)
+    return out.strip()
+
+
+def previous_delivery_uncertain() -> bool:
+    """Respect the existing runner's persisted failure evidence. Never turn an
+    ambiguous Telegram POST into a successful seen event or blindly resend it.
+    Translation/validation failures are pre-POST and remain safely retryable.
+    """
+    heartbeat = STATE.parent / "bio_watch_heartbeat.json"
+    if not heartbeat.exists():
+        return False
+    try:
+        state = json.loads(heartbeat.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        raise RuntimeError("엔허투 이전 전송 상태 확인 실패")
+    errors = [str(x) for x in state.get("errors", []) if "enhertu" in str(x).lower()]
+    return any(
+        re.search(r"enhertu_delivery_unconfirmed|delivery_unconfirmed|receipt not confirmed|message_id|chat mismatch|sender rc=\d+.*(?:timeout|timed out|Telegram rejected)", x, re.I)
+        for x in errors
+    )
+
+
 def ir_report(post: dict) -> str:
-    body = post["text"]
+    body = localize_ir_body(post["text"])
     low = body.lower()
     rows = ["**알테오젠 공식 IR — 엔허투 피하주사 임상 후속 설명**", "",
             "**■ 게시 시각(한국시간):** " + post["date"], ""]
@@ -365,7 +440,14 @@ def direct_trial_updates(state: dict, current: dict | None, posts: list[dict]) -
             changes = registry_changes(previous, current)
             if changes:
                 reports.append(registry_report(previous, current, changes))
-            updates["trial_registry_snapshot"] = current
+            # If a source lacks a date, retain the last verified baseline for
+            # comparisons; do not silently replace a verified date with blank.
+            checkpoint = dict(current)
+            for key in ("primary_completion", "completion"):
+                if not checkpoint.get(key) and previous.get(key):
+                    checkpoint.pop(key, None)
+                    checkpoint[key] = previous[key]
+            updates["trial_registry_snapshot"] = checkpoint
     known = set(state.get("trial_ir_seen_keys") or [])
     for post in sorted(posts, key=lambda x: (x["date"], int(x["id"]))):
         if post["key"] in known:
@@ -384,7 +466,7 @@ def self_test_direct_trial() -> None:
         "statusModule": {
             "overallStatus": "ACTIVE_NOT_RECRUITING", "lastUpdatePostDateStruct": {"date": "2026-11-20"},
             "primaryCompletionDateStruct": {"date": "2028-12-31"},
-            "studyCompletionDateStruct": {"date": "2028-12-31"},
+            "completionDateStruct": {"date": "2028-12-31"},
         },
         "designModule": {"enrollmentInfo": {"count": 17, "type": "ACTUAL"}, "phases": ["PHASE1"]},
         "armsInterventionsModule": {"armGroups": [{"label": "Part 1 (Dose Escalation)"}, {"label": "Part 2 (Dose Expansion)"}]},
@@ -414,11 +496,75 @@ def self_test_direct_trial() -> None:
     ir_reports, ir_updates = direct_trial_updates(updates, None, posts)
     assert len(ir_reports) == 1 and "용량 증량 파트" in ir_reports[0]
     assert direct_trial_updates(ir_updates, None, posts)[0] == []
+
+    # Reproduce the 11/28 failed report against the actual shared sender guard.
+    # Network translation is deliberately made unavailable for this regression.
+    from unittest.mock import patch
+    import bio_korean_guard as language
+    import bio_korean_guard_strict_v2 as strict
+    import qlex_telegram_send as sender
+    original_first = (
+        "안녕하세요. 당사의 파트너제품 다이이찌산쿄의 엔허투SC의 임상정보가 업데이트되어 내용 공유드립니다. "
+        "▶️ 미국 임상정보사이트( ClinicalTrials.gov )상 엔허투SC 임상 1상의 status가 'Active'에서 "
+        "'Active, not recuiting'으로 전환되었습니다. ▶️ 파트너사 다이이찌산쿄는 업데이트에 대해 다음과 같이 밝혔습니다. "
+        "✅ \"미국 규제 요건(per US regulatory requirements)에 따라 임상정보를 업데이트하였음\" "
+        "✅ “이 임상시험의 환자 모집이 완료되었습니다.(Patient enrollment in this trial has been completed.)” "
+        "다이이찌산쿄는 개발의 다음 단계를 평가하고 있다고 밝혔고, 관련 업데이트시 공유드리도록 하겠습니다. 감사합니다."
+    )
+    original_second = (
+        "[업데이트] 안녕하세요. 당사의 파트너제품 다이이찌산쿄의 엔허투SC의 임상정보에 대해 업데이트 내용 공유드립니다. "
+        "▶️ 미국 임상정보사이트( ClinicalTrials.gov )상 엔허투SC 임상 1상의 status가 'Active'에서 "
+        "'Active, not recruiting'으로 전환되었습니다. ▶️ 파트너사 다이이찌산쿄는 업데이트에 대해 다음과 같이 밝혔습니다. "
+        "✅ \"미국 규제 요건(per US regulatory requirements)에 따라 임상정보를 업데이트하였습니다.\" "
+        "✅ \"이번 임상의 용량 증량 파트(Dose-Escalation/Part 1)의 환자 등록이 완료되었습니다. "
+        "다이이찌산쿄는 이번 임상의 다음 단계를 평가하고 있으며, 관련 업데이트를 공유할 예정입니다. "
+        "(Patient enrollment in the dose-escalation part of this trial has been completed. "
+        "We are evaluating next steps for this trial and will share updates as relevant.)\" "
+        "당사에서는 다이이찌산쿄로부터 상기 내용을 전달 받았으며, 임상환자수 변경 등에 대한 투자자분들의 질문에 대해 추가 확인 중에 있습니다. "
+        "답변이 확인될 시 투자자분들께 바로 공유드리도록 하겠습니다. 감사합니다."
+    )
+    a = {"date": "2026-11-24T09:29:13+09:00", "text": original_first,
+         "url": "https://t.me/alteogenIR/367"}
+    b = {"date": "2026-11-24T14:53:51+09:00", "text": original_second,
+         "url": "https://t.me/alteogenIR/368"}
+    actual = "\n\n".join((reports[0], ir_report(a), ir_report(b)))
+    assert sample["completion"] == "2028-12-31"
+    assert "2028-12-31 → " not in actual
+    assert "환자 모집이 완료되었습니다" in actual
+    assert "용량 증량 파트 (1부)의 환자 등록이 완료되었습니다" in actual
+    assert "추가 확인 중" in actual
+    assert "59명 재모집은 확정되지 않았습니다" in actual
+    with patch.object(language, "translate_to_korean", side_effect=AssertionError("unexpected network translation")):
+        normalized = strict.ensure_korean_text(sender.normalize_alert_language(actual))
+        for line in normalized.splitlines():
+            if not line.startswith("- 원문:"):
+                assert not language.general_english_words(line), line
+        rendered = "\n".join(sender.render_html(part) for part in sender.split_message(normalized))
+        for url in (TRIAL_PAGE, TRIAL_PAGE + "?tab=history", a["url"], b["url"]):
+            assert url in rendered, url
+        for phrase in ("76명(예상) → 17명(실제)", "2028-12-31", "추가 확인 중"):
+            assert phrase in rendered, phrase
+    missing = deepcopy(sample)
+    missing["completion"] = ""
+    assert "completion" not in registry_changes(sample, missing)
+    assert direct_trial_updates(updates, missing, [])[1]["trial_registry_snapshot"]["completion"] == "2028-12-31"
+    # A truly unknown English claim remains subject to the normal strict guard.
+    with patch.object(language, "translate_to_korean", side_effect=RuntimeError("translation unavailable")):
+        try:
+            strict.ensure_korean_text(localize_ir_body("Completely unknown technical announcement"))
+        except RuntimeError:
+            pass
+        else:
+            raise AssertionError("unknown translation must not be marked verified")
+    print("enhertu_failed_report_korean_layout_regressions=passed network_translation=not_called", flush=True)
     print("enhertu_direct_trial_ir_regressions=passed", flush=True)
 
 
 def main() -> int:
     self_test_direct_trial()
+    if previous_delivery_uncertain():
+        print("enhertu_delivery_unconfirmed: prior Telegram receipt requires reconciliation; no automatic resend", flush=True)
+        return 2
     migrate_seen_event_keys()
     base.event_key = unified_event_key
     base.build_item_summary = build_item_summary
