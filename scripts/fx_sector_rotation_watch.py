@@ -5,7 +5,9 @@ import datetime as dt
 import html
 import json
 import math
+import os
 import re
+import time
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -27,6 +29,39 @@ STATUS_PATH = ROOT / "out" / "fx_sector_rotation_status.md"
 
 FX_URL = "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
 KOSPI_URL = "https://m.stock.naver.com/api/index/KOSPI/basic"
+KOSPI_DAILY_URL = "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
+KIWOOM_CLOSE_DOC = "https://openapi.kiwoom.com/m/guide/apiguide/07/ka11081"
+CLOSE_SETTLE_MINUTES = 5
+_CLOSE_TOKEN = None
+_CLOSE_DISABLED = False
+_CLOSE_NEXT = 0.0
+
+
+class SourceFailure(RuntimeError):
+    """Safe diagnostic: never include provider response bodies or credentials."""
+
+
+def _failure_detail(exc: Exception) -> str:
+    if isinstance(exc, SourceFailure):
+        return str(exc)
+    if isinstance(exc, requests.HTTPError):
+        response = exc.response
+        return f"HTTP {response.status_code}" if response is not None else "HTTP error"
+    if type(exc) is RuntimeError and str(exc) in {
+        "원/달러 시세 없음", "원/달러 현재값 범위 오류", "원/달러 기준일 불일치",
+        "환율 원천 관측시각 지연", "KOSPI 정규장 날짜·시각·수치 검증 실패",
+        "종목 정규장 날짜·시각·수치 검증 실패",
+        "정규장 종료 경계 또는 수집 시차 초과",
+    }:
+        return str(exc)
+    return type(exc).__name__
+
+
+def _checked(stage: str, fn, *args):
+    try:
+        return fn(*args)
+    except Exception as exc:
+        raise SourceFailure(f"{stage}: {_failure_detail(exc)}") from None
 VALIDATION_FOOTER = "• 검증 원칙: 값의 시장·시점·산출방식을 확인한 뒤 사용하며, 서로 다른 기준값은 혼용하지 않음"
 
 START = dt.time(9, 0)
@@ -225,7 +260,128 @@ def fetch_fx(now: dt.datetime) -> dict[str, Any]:
     }
 
 
+def _dated_pair(rows: Any, date_key: str, today: str, previous: str) -> tuple[dict, dict]:
+    if not isinstance(rows, list):
+        raise SourceFailure("일별 자료 형식 오류")
+    a = [r for r in rows if isinstance(r, dict) and str(r.get(date_key) or "") == today]
+    b = [r for r in rows if isinstance(r, dict) and str(r.get(date_key) or "") == previous]
+    if len(a) != 1 or len(b) != 1:
+        raise SourceFailure("당일·직전 거래일 일별 자료 누락 또는 중복")
+    return a[0], b[0]
+
+
+def _parse_kospi_close(rows: Any, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    closed = bounds[1]
+    day = closed.date().isoformat()
+    previous = _previous_session_day(closed.date())
+    row, prior = _dated_pair(rows, "localTradedAt", day, previous)
+    price, prev, pct = (fnum(row.get("closePrice")), fnum(prior.get("closePrice")),
+                        fnum(row.get("fluctuationsRatio")))
+    if price is None or prev is None or pct is None or price <= 0 or prev <= 0 or abs(pct) > 30:
+        raise SourceFailure("KOSPI 일별 종가 수치 누락")
+    if abs((price / prev - 1) * 100 - pct) > 0.02:
+        raise SourceFailure("KOSPI 일별 종가·등락률 검산 불일치")
+    return {"price": price, "change_pct": pct, "source": KOSPI_DAILY_URL,
+            "source_date": day, "source_observed_at": None,
+            "session_close_at": closed.isoformat(timespec="seconds"),
+            "quote_basis": "정규장 일별 지수 종가"}
+
+
+def _fetch_kospi_close(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    r = requests.get(KOSPI_DAILY_URL, headers=HEADERS, timeout=(5, 10))
+    r.raise_for_status()
+    return _parse_kospi_close(r.json(), bounds)
+
+
+def _kiwoom_close_response(code: str, day: str) -> dict:
+    # Read-only regular-session TR; reuse the existing Kiwoom authentication
+    # helper, not its cash-flow TR dispatch or any order/account interface.
+    global _CLOSE_TOKEN, _CLOSE_DISABLED, _CLOSE_NEXT
+    if not re.fullmatch(r"[0-9]{6}", code) or not re.fullmatch(r"[0-9]{8}", day):
+        raise SourceFailure("키움 정규장 종목·날짜 형식 오류")
+    if _CLOSE_DISABLED:
+        raise SourceFailure("키움 인증 또는 통신 일시 중단")
+    if _CLOSE_TOKEN is None:
+        try:
+            import market_kiwoom_flow as kiwoom_auth
+            if not kiwoom_auth.configured():
+                raise SourceFailure("키움 기존 인증 설정 없음")
+            _CLOSE_TOKEN = kiwoom_auth._token()
+        except Exception as exc:
+            _CLOSE_DISABLED = True
+            raise SourceFailure("키움 인증: " + type(exc).__name__) from None
+    try:
+        time.sleep(max(0.0, _CLOSE_NEXT - time.monotonic()))
+        _CLOSE_NEXT = time.monotonic() + 0.30
+        r = requests.post("https://api.kiwoom.com/api/dostk/chart",
+                          headers={"authorization": "Bearer " + _CLOSE_TOKEN,
+                                   "api-id": "ka11081", "content-type": "application/json;charset=UTF-8",
+                                   "cont-yn": "N", "next-key": ""},
+                          json={"stk_cd": code, "base_dt": day, "upd_stkpc_tp": "1"},
+                          timeout=(5, 8), allow_redirects=False)
+        if r.status_code != 200:
+            if r.status_code in (401, 403, 429) or r.status_code >= 500:
+                _CLOSE_DISABLED = True
+            raise SourceFailure(f"키움 정규장 일봉 HTTP {r.status_code}")
+        data = r.json()
+        if not isinstance(data, dict) or data.get("return_code") not in (0, "0"):
+            _CLOSE_DISABLED = True
+            raise SourceFailure("키움 정규장 일봉 응답 미승인")
+        return data
+    except requests.RequestException as exc:
+        _CLOSE_DISABLED = True
+        raise SourceFailure("키움 정규장 일봉 통신: " + type(exc).__name__) from None
+
+
+def _parse_kiwoom_close(data: dict, name: str, code: str,
+                        bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    closed = bounds[1]
+    day = closed.date().strftime("%Y%m%d")
+    previous = _previous_session_day(closed.date()).replace("-", "")
+    if str(data.get("stk_cd") or "") != code:
+        raise SourceFailure("키움 정규장 종목코드 응답 불일치")
+    row, prior = _dated_pair(data.get("result_list"), "dt", day, previous)
+    price, prev, delta = (fnum(row.get("cur_prc")), fnum(prior.get("cur_prc")),
+                          fnum(row.get("pred_pre")))
+    sign = str(row.get("pred_pre_sig") or "")
+    if price is None or prev is None or delta is None or not price or not prev or sign not in ("1", "2", "3", "4", "5"):
+        raise SourceFailure("키움 정규장 종가·전일 대비 원값 누락")
+    price, prev = abs(price), abs(prev)
+    signed_delta = abs(delta) * (1 if sign in ("1", "2") else -1 if sign in ("4", "5") else 0)
+    if (sign == "3" and delta != 0) or abs((price - prev) - signed_delta) > 0.5:
+        raise SourceFailure("키움 정규장 전일 대비·직전 종가 검산 불일치")
+    pct = (price / prev - 1) * 100
+    if not math.isfinite(pct) or abs(pct) > 100:
+        raise SourceFailure("키움 정규장 등락률 범위 오류")
+    return {"name": name, "code": code, "price": price, "change_pct": pct,
+            "source": KIWOOM_CLOSE_DOC, "source_date": closed.date().isoformat(),
+            "source_observed_at": None, "session_close_at": closed.isoformat(timespec="seconds"),
+            "quote_basis": "키움 KRX 정규장 일봉"}
+
+
+def _fetch_kiwoom_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    return _parse_kiwoom_close(_kiwoom_close_response(code, bounds[1].date().strftime("%Y%m%d")),
+                               name, code, bounds)
+
+
 def fetch_kospi(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
+    now = dt.datetime.now(KST)
+    close_error = None
+    if now >= bounds[1] + dt.timedelta(minutes=CLOSE_SETTLE_MINUTES):
+        try:
+            return _fetch_kospi_close(bounds)
+        except Exception as exc:
+            close_error = _failure_detail(exc)
+            print("fx_sector_rotation_kospi_daily_unavailable=" + close_error)
+    try:
+        return _fetch_kospi_basic(bounds)
+    except Exception as exc:
+        if close_error is not None:
+            raise SourceFailure("일별 종가: " + close_error + " / 기본 시세: " + _failure_detail(exc)) from None
+        raise
+
+
+def _fetch_kospi_basic(bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
     r = requests.get(KOSPI_URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
     d = r.json()
@@ -260,13 +416,44 @@ def fetch_quote(name: str, code: str,
             "source_observed_at": stamp.isoformat(timespec="seconds")}
 
 
-def fetch_group(items: list[tuple[str, str]], bounds: tuple[dt.datetime, dt.datetime]) -> list[dict[str, Any]]:
+def fetch_group(items: list[tuple[str, str]], bounds: tuple[dt.datetime, dt.datetime],
+                state: dict[str, Any] | None = None) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
+    settled = dt.datetime.now(KST) >= bounds[1] + dt.timedelta(minutes=CLOSE_SETTLE_MINUTES)
+    cache = state.setdefault("regular_closes", {}) if state is not None and settled else {}
+    if not isinstance(cache, dict):
+        cache = {}
+        if state is not None:
+            state["regular_closes"] = cache
     for name, code in items:
+        reasons = []
+        if settled:
+            cached = cache.get(code) or {}
+            if (isinstance(cached, dict) and cached.get("code") == code
+                    and cached.get("source_date") == bounds[1].date().isoformat()
+                    and cached.get("session_close_at") == bounds[1].isoformat(timespec="seconds")
+                    and cached.get("source") == KIWOOM_CLOSE_DOC
+                    and cached.get("quote_basis") == "키움 KRX 정규장 일봉"
+                    and (fnum(cached.get("price")) or 0) > 0
+                    and fnum(cached.get("change_pct")) is not None
+                    and abs(float(cached["change_pct"])) <= 100):
+                out.append(dict(cached))
+                continue
+            try:
+                row = _fetch_kiwoom_close(name, code, bounds)
+                cache[code] = row
+                out.append(row)
+                continue
+            except Exception as exc:
+                reasons.append("키움 정규장: " + _failure_detail(exc))
         try:
             out.append(fetch_quote(name, code, bounds))
-        except Exception:
-            out.append({"name": name, "code": code, "price": None, "change_pct": None})
+            continue
+        except Exception as exc:
+            reasons.append("기본 시세: " + _failure_detail(exc))
+        reason = " / ".join(reasons)
+        print(f"fx_sector_rotation_quote_unavailable={code}: {reason}")
+        out.append({"name": name, "code": code, "price": None, "change_pct": None, "error": reason})
     return out
 
 
@@ -366,7 +553,12 @@ def build_alert(
         lines.append("• 정규장 저점 표본 없음 — 저점 반등 조건 판정 보류")
     if fx.get("sample_gap_minutes", 0) > 30:
         lines.append(f"• 정규장 표본 최대 공백 {fx['sample_gap_minutes']:.0f}분 — 사이에 발생한 움직임은 미확인")
-    lines.append(f"• KOSPI 관측시각: {html.escape(str(kospi.get('source_observed_at') or '미확인'))}")
+    if kospi.get("quote_basis"):
+        lines.append("• KOSPI: " + html.escape(str(kospi["quote_basis"])) + " · " + html.escape(str(kospi.get("session_close_at") or "")))
+    else:
+        lines.append(f"• KOSPI 관측시각: {html.escape(str(kospi.get('source_observed_at') or '미확인'))}")
+    if any(row.get("source") == KIWOOM_CLOSE_DOC for row in ship_rows + defense_rows + auto_rows + counter_rows):
+        lines.append(f'• 종목 정규장 종가: <a href="{KIWOOM_CLOSE_DOC}">키움증권 공식 일봉</a> (원천 제공 종가 기준)')
     if daily_krw is not None and daily_pct is not None:
         lines.append(f"• 직전 서울 15:30 종가({fx.get('prev_date')}) 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
         if fx.get("basis_reused"):
@@ -410,7 +602,7 @@ def build_alert(
         "",
         "<b>원문</b>",
         f'• <a href="{html.escape(str(fx["source"]), quote=True)}">원/달러 시세</a>',
-        f'• <a href="{html.escape(KOSPI_URL, quote=True)}">KOSPI 시세</a>',
+        f'• <a href="{html.escape(str(kospi.get("source") or KOSPI_URL), quote=True)}">KOSPI 시세</a>',
     ]
     if fx.get("prev_close_source"):
         lines.append(f'• <a href="{html.escape(str(fx["prev_close_source"]), quote=True)}">전일 서울 15:30 종가 근거</a>')
@@ -535,7 +727,30 @@ def _regression_checks() -> None:
     check(low == 1340 and gap == 270, "regular low and gap")
     state["fx_samples"] = []
     check(_sample_low_and_gap(state, bounds, cl)[0] == 1340, "persisted regular low")
-    print("fx_sector_rotation_regressions=11 passed; no Telegram or state writes")
+    previous = _previous_session_day(day)
+    pair = [{"localTradedAt": day.isoformat(), "closePrice": 1020, "fluctuationsRatio": 2.0},
+            {"localTradedAt": previous, "closePrice": 1000}]
+    check(_parse_kospi_close(pair, bounds)["change_pct"] == 2.0, "daily close")
+    def rejects(fn, label):
+        try:
+            fn()
+        except SourceFailure:
+            return
+        raise AssertionError(label)
+    rejects(lambda: _parse_kospi_close(pair[:1], bounds), "previous day missing")
+    rejects(lambda: _parse_kospi_close([dict(pair[0], fluctuationsRatio=3), pair[1]], bounds), "index arithmetic")
+    code = "005930"
+    data = {"stk_cd": code, "result_list": [
+        {"dt": day.strftime("%Y%m%d"), "cur_prc": "10200", "pred_pre": "200", "pred_pre_sig": "2"},
+        {"dt": previous.replace("-", ""), "cur_prc": "10000"}]}
+    check(abs(_parse_kiwoom_close(data, "검사", code, bounds)["change_pct"] - 2) < 1e-8, "regular stock close")
+    rejects(lambda: _parse_kiwoom_close(dict(data, stk_cd=code+"_NX"), "검사", code, bounds), "NXT rejection")
+    rejects(lambda: _parse_kiwoom_close(dict(data, result_list=data["result_list"][:1]), "검사", code, bounds), "stock prior date missing")
+    bad = dict(data, result_list=[dict(data["result_list"][0], pred_pre="300"), data["result_list"][1]])
+    rejects(lambda: _parse_kiwoom_close(bad, "검사", code, bounds), "stock arithmetic")
+    down = dict(data, result_list=[dict(data["result_list"][0], cur_prc="-9800", pred_pre="-200", pred_pre_sig="5"), data["result_list"][1]])
+    check(abs(_parse_kiwoom_close(down, "검사", code, bounds)["change_pct"] + 2) < 1e-8, "signed decline")
+    print("fx_sector_rotation_regressions=19 passed; no Telegram or state writes")
 
 
 def _run() -> int:
@@ -548,13 +763,13 @@ def _run() -> int:
         print("fx_sector_rotation=outside_session_window")
         return 0
 
-    state = load_state(today)
-    fx = fetch_fx(now)
-    kospi = fetch_kospi(bounds)
+    state = _checked("상태 읽기", load_state, today)
+    fx = _checked("원/달러 조회", fetch_fx, now)
+    kospi = _checked("KOSPI 조회", fetch_kospi, bounds)
     after_close = now >= bounds[1]
 
     samples = list(state.get("fx_samples") or [])
-    samples.append({"ts": fx["queried_at"], "value": float(fx["value"])})
+    samples.append({"ts": fx.get("source_observed_at") or fx["queried_at"], "value": float(fx["value"])})
     state["fx_samples"] = samples[-256:]
     session_low, gap = _sample_low_and_gap(state, bounds, now)
     fx["after_close"] = after_close
@@ -566,10 +781,10 @@ def _run() -> int:
         daily_krw = float(fx["value"])-float(fx["prev_close"])
         daily_pct = (float(fx["value"])/float(fx["prev_close"])-1)*100
 
-    ship_rows = fetch_group(SHIPBUILDING, bounds)
-    defense_rows = fetch_group(DEFENSE, bounds)
-    auto_rows = fetch_group(AUTOMOTIVE, bounds)
-    counter_rows = fetch_group(COUNTER, bounds)
+    ship_rows = fetch_group(SHIPBUILDING, bounds, state)
+    defense_rows = fetch_group(DEFENSE, bounds, state)
+    auto_rows = fetch_group(AUTOMOTIVE, bounds, state)
+    counter_rows = fetch_group(COUNTER, bounds, state)
     benchmark = float(kospi["change_pct"])
     ship, defense, auto, counter = (group_stats(rows, benchmark)
         for rows in (ship_rows, defense_rows, auto_rows, counter_rows))
@@ -592,6 +807,9 @@ def _run() -> int:
 
     sent_level = int(state.get("sent_level") or 0)
     coverage = f"유효 종목 조선 {ship['valid']}/4·방산 {defense['valid']}/4·자동차 {auto['valid']}/4·반대편 {counter['valid']}/4"
+    if after_close:
+        official = sum(r.get("source") == KIWOOM_CLOSE_DOC for r in ship_rows + defense_rows + auto_rows + counter_rows)
+        coverage += f" / 키움 정규장 종가 {official}/16"
     if not fx["source_time_verified"]:
         coverage += " / 환율 원천시각 미제공(동일일 조회 표본)"
     if gap > 30:
@@ -636,11 +854,48 @@ def _run() -> int:
         "kospi_pct": benchmark, "ship": ship, "defense": defense,
         "auto": auto, "counter": counter,
         "kospi_source_observed_at": kospi.get("source_observed_at"),
+        "kospi_source": kospi.get("source"),
+        "kospi_quote_basis": kospi.get("quote_basis"),
+        "kospi_session_close_at": kospi.get("session_close_at"),
+        "quote_sources": {r["code"]: {k: r.get(k) for k in ("source", "source_date", "session_close_at", "source_observed_at", "error")}
+                          for r in ship_rows + defense_rows + auto_rows + counter_rows},
     }
     save_pending(state)
     write_status(now, decision+" / "+coverage)
     print("fx_sector_rotation="+decision+" / "+coverage)
     return 0
+
+
+def _requested_close_probe(now: dt.datetime) -> bool:
+    # One explicitly marked push on a non-trading day only; no alerts or state
+    # writes. Scheduled executions never invoke this historical read-only probe.
+    if os.getenv("GITHUB_EVENT_NAME") != "push" or session_bounds(now.date()) is not None:
+        return False
+    try:
+        event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
+        return "[fx-rotation-close-probe]" in str((event.get("head_commit") or {}).get("message") or "")
+    except (OSError, ValueError, KeyError, AttributeError):
+        return False
+
+
+def _close_probe(now: dt.datetime) -> None:
+    day = dt.date.fromisoformat(_previous_session_day(now.date()))
+    bounds = session_bounds(day)
+    if bounds is None:
+        raise SourceFailure("과거 정규장 달력 확인 실패")
+    try:
+        index = _fetch_kospi_close(bounds)
+        print(f"fx_sector_rotation_close_probe_index=ok date={day} pct={index['change_pct']:+.2f}")
+    except Exception as exc:
+        print("fx_sector_rotation_close_probe_index=unavailable reason=" + _failure_detail(exc))
+        index = None
+    rows = []
+    for name, code in SHIPBUILDING + DEFENSE + AUTOMOTIVE + COUNTER:
+        try:
+            rows.append(_fetch_kiwoom_close(name, code, bounds))
+        except Exception as exc:
+            print(f"fx_sector_rotation_close_probe_stock={code} unavailable reason={_failure_detail(exc)}")
+    print(f"fx_sector_rotation_close_probe=history_only date={day} index={int(index is not None)} stocks={len(rows)}/16; no Telegram or state writes")
 
 
 def main() -> int:
@@ -649,6 +904,8 @@ def main() -> int:
     now = dt.datetime.now(KST)
     try:
         _regression_checks()
+        if _requested_close_probe(now):
+            _close_probe(now)
         return _run()
     except Exception as exc:
         # No fresh/confirmed state or alert on source failure or invalid
@@ -656,8 +913,9 @@ def main() -> int:
         ALERT_PATH.unlink(missing_ok=True)
         PENDING_PATH.unlink(missing_ok=True)
         label = "자체 회귀검사 실패" if isinstance(exc, AssertionError) else "자료 조회·검증 또는 상태 처리 실패"
-        write_status(now, f"{label} ({type(exc).__name__}) — 로테이션 판정 보류, 기존 상태 보존")
-        print(f"fx_sector_rotation=unavailable reason={type(exc).__name__}; no delivery or state update")
+        detail = _failure_detail(exc)
+        write_status(now, f"{label} ({detail}) — 로테이션 판정 보류, 기존 상태 보존")
+        print(f"fx_sector_rotation=unavailable reason={detail}; no delivery or state update")
         return 0
 
 
