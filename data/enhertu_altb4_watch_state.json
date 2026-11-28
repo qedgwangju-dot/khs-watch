@@ -71,6 +71,7 @@
     "e504b39941b31c57f861e3b1",
     "e90f2ba9a153a3ffdbbbb805",
     "e97c454cc67ac59eca9e243b",
+    "ea861c64f73dc92d7a963302",
     "eaa2d863b315a251e4768b2b",
     "eafcf54bf5eb83facbc8596d",
     "eb08aee616051df76ab42d64",
@@ -98,6 +99,33 @@
     "e5965d6603ecbe51a9ef3a27"
   ],
   "initialized_at_kst": "2026-09-01T16:24:44+09:00",
-  "last_check_kst": "2026-11-24T15:30:29+09:00",
-  "dedupe_version": 3
+  "last_check_kst": "2026-11-28T21:48:06+09:00",
+  "dedupe_version": 3,
+  "trial_registry_snapshot": {
+    "status": "ACTIVE_NOT_RECRUITING",
+    "count": 17,
+    "count_type": "ACTUAL",
+    "primary_completion": "2028-12-31",
+    "completion": "2028-12-31",
+    "phase": [
+      "PHASE1"
+    ],
+    "arms": "7ad9837908a0df82425a68ee",
+    "arm_labels": [
+      "Part 1 (Dose Escalation)",
+      "Part 2 (Dose Expansion)"
+    ],
+    "part2_present": true,
+    "outcomes": "b8ac0365496ea537ebe59192",
+    "results": false,
+    "why_stopped": "",
+    "posted": "2026-11-20",
+    "verification": "official_api"
+  },
+  "trial_ir_seen_keys": [
+    "7cb0c8e7d738eee8a47df221",
+    "9ea003064306ff34d010df3b"
+  ],
+  "trial_registry_source_status": "official_api_verified",
+  "trial_ir_source_status": "official_ir_verified"
 }
