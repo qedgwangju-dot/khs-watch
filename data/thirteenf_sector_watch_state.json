@@ -78,9 +78,16 @@
       "report_date": "2026-09-30",
       "filing_date": "2026-11-16",
       "cik": "0001512857"
+    },
+    "Blackstone": {
+      "accession": "0001193125-26-463513",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001393818",
+      "accepted_at": "2026-11-16T21:10:03.000Z"
     }
   },
-  "updated_at": "2026-11-28T11:43:38.104176+00:00",
+  "updated_at": "2026-11-28T11:43:41.174498+00:00",
   "seen_context_events": [
     "13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08",
     "13f-duquesne-2026q3-article-audit-20261117-v1",
@@ -206,11 +213,23 @@
       "filing_date": "2026-11-13",
       "cik": "0002012383",
       "accepted_at": "2026-11-13T20:52:08.000Z"
+    },
+    "Blackstone": {
+      "accession": "0001193125-26-463513",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "cik": "0001393818",
+      "accepted_at": "2026-11-16T21:10:03.000Z"
     }
   },
-  "13f_delivery_receipts": {},
-  "pending_13f_delivery": {
-    "key": "Blackstone|0001393818|0001193125-26-463513",
-    "reserved_at": "2026-11-28T11:43:38.104099+00:00"
+  "13f_delivery_receipts": {
+    "Blackstone|0001393818|0001193125-26-463513": {
+      "message_id": 168,
+      "recipient_fingerprint": "46ff1e104ec2e07b",
+      "confirmed_at": "2026-11-28T11:43:41.174423+00:00",
+      "report_date": "2026-09-30",
+      "filing_date": "2026-11-16",
+      "recovery": true
+    }
   }
 }
