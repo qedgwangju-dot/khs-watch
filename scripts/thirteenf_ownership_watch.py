@@ -73,10 +73,12 @@ def rows_from_submissions(payload,cik):
             raise ValueError("Invalid SEC ownership accession")
         dt.date.fromisoformat(date)
         pieces=str(document).split("/")
-        if any(not re.fullmatch(r"[A-Za-z0-9_.-]+",x) or x in (".","..") for x in pieces):
-            raise ValueError("Invalid SEC document path")
+        # Historical metadata sometimes has legacy filenames. The accession and
+        # filing date are enough for baseline bookkeeping. Never use an unsafe
+        # path in a request; a new filing must pass the official XML checks.
+        safe=all(re.fullmatch(r"[A-Za-z0-9_.-]+",x) and x not in (".","..") for x in pieces)
         rows.append({"cik":cik,"accession":acc,"filing_date":date,
-                     "form":form,"primary_document":pieces[-1]})
+                     "form":form,"primary_document":pieces[-1] if safe else ""})
     return sorted(rows,key=lambda x:(x["filing_date"],x["accession"]))
 
 
@@ -224,6 +226,9 @@ def self_test():
     msg=message("Blackstone",SAMPLE,owner,previous,"https://www.sec.gov/Archives/test.xml")
     assert "100,000주 → 120,000주" in msg and "5% → 5.5%" in msg
     assert "실제 체결대금과 다릅니다" in msg
+    legacy={"cik":1393818,"filings":{"recent":{"form":["SC 13G","SCHEDULE 13D/A"],"accessionNumber":["0001193125-20-123456","0001193125-26-455574"],"filingDate":["2020-03-12","2026-11-10"],"primaryDocument":["old report.htm","xslSCHEDULE_13D_X01/primary_doc.xml"]}}}
+    parsed=rows_from_submissions(legacy,"0001393818")
+    assert len(parsed)==2 and parsed[0]["primary_document"]=="" and parsed[1]["primary_document"]=="primary_doc.xml"
     print("13DG_OWNERSHIP_IDENTITY_REGRESSION_PASS no_network=true no_telegram_send=true")
 
 
@@ -261,7 +266,7 @@ def main():
                 rows=rows_from_submissions(w.http_json(w.SEC_DATA+"/submissions/CIK"+cik+".json"),cik)
                 healthy+=1
             except Exception as exc:
-                print(f"13DG_SOURCE_ERROR {label} {type(exc).__name__}",file=sys.stderr)
+                print(f"13DG_SOURCE_ERROR {label} {type(exc).__name__}: {str(exc)[:140]}",file=sys.stderr)
                 continue
             if cik not in lane["baseline"]:
                 lane["baseline"][cik]={"date":today,"same_day":[r["accession"] for r in rows if r["filing_date"]==today]}
