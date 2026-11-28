@@ -37,6 +37,7 @@ _CLOSE_SOURCES = {KIWOOM_CLOSE_DOC: "키움 KRX 정규장 일봉", LS_CLOSE_DOC:
 _LS_CLOSE_TOKEN = None
 _LS_CLOSE_DISABLED = False
 _LS_CLOSE_NEXT = 0.0
+_LS_CLOSE_FAILURES = 0
 CLOSE_SETTLE_MINUTES = 5
 _CLOSE_TOKEN = None
 _CLOSE_DISABLED = False
@@ -387,11 +388,15 @@ def _parse_ls_close(data: dict, name: str, code: str,
         raise SourceFailure("LS 분봉 형식 오류")
     def at_close(when):
         day, clock = when.strftime("%Y%m%d"), when.strftime("%H%M%S")
-        exact = [r for r in rows if isinstance(r, dict)
-                 and str(r.get("date") or "") == day
-                 and str(r.get("time") or "") in (clock, clock+"000")]
+        dated = [r for r in rows if isinstance(r, dict) and str(r.get("date") or "").strip() == day]
+        # LS time fields can include a zero fractional-second suffix (up to
+        # ten digits). Do not truncate a nonzero fraction or accept nearby bars.
+        exact = [r for r in dated if re.fullmatch(clock+r"0{0,4}", str(r.get("time") or "").strip())]
         if len(exact) != 1:
-            raise SourceFailure("LS 당일·직전 정규장 종료 봉 누락 또는 중복")
+            clocks = sorted({str(r.get("time") or "").strip() for r in dated
+                             if re.fullmatch(r"[0-9]{6,10}", str(r.get("time") or "").strip())})
+            near = [t for t in clocks if t[:4] in ("1525", "1529", "1530", "1531", "1535")]
+            raise SourceFailure(f"LS 정규장 종료 봉 누락·중복 날짜={day} 당일행={len(dated)} 일치={len(exact)} 종료부근시각={','.join(near[:6]) or '없음'}")
         value = fnum(exact[0].get("close"))
         if value is None or value <= 0:
             raise SourceFailure("LS 정규장 종료 봉 종가 누락")
@@ -414,7 +419,7 @@ def _parse_ls_close(data: dict, name: str, code: str,
 
 
 def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
-    global _LS_CLOSE_TOKEN, _LS_CLOSE_DISABLED, _LS_CLOSE_NEXT
+    global _LS_CLOSE_TOKEN, _LS_CLOSE_DISABLED, _LS_CLOSE_NEXT, _LS_CLOSE_FAILURES
     if _LS_CLOSE_DISABLED:
         raise SourceFailure("LS 인증 또는 통신 일시 중단")
     if not re.fullmatch(r"[0-9]{6}", code):
@@ -443,30 +448,45 @@ def _fetch_ls_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime
         except Exception as exc:
             _LS_CLOSE_DISABLED = True
             raise SourceFailure("LS 인증: " + _failure_detail(exc)) from None
-    try:
+    for attempt in range(2):
         time.sleep(max(0.0, _LS_CLOSE_NEXT - time.monotonic()))
         _LS_CLOSE_NEXT = time.monotonic() + 1.10
-        r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
-                          headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
-                                   "content-type": "application/json; charset=utf-8",
-                                   "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
-                          json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
-                                "nday": "0", "sdate": previous.strftime("%Y%m%d"), "stime": "",
-                                "edate": bounds[1].date().strftime("%Y%m%d"), "etime": "",
-                                "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
-                          timeout=(5, 10), allow_redirects=False)
+        try:
+            r = requests.post("https://openapi.ls-sec.co.kr:8080/stock/chart",
+                              headers={"authorization": "Bearer " + _LS_CLOSE_TOKEN,
+                                       "content-type": "application/json; charset=utf-8",
+                                       "tr_cd": "t8452", "tr_cont": "N", "tr_cont_key": ""},
+                              json={"t8452InBlock": {"shcode": code, "ncnt": 5, "qrycnt": 350,
+                                    "nday": "0", "sdate": previous.strftime("%Y%m%d"), "stime": "",
+                                    "edate": bounds[1].date().strftime("%Y%m%d"), "etime": "",
+                                    "cts_date": " ", "cts_time": "", "comp_yn": "N", "exchgubun": "K"}},
+                              timeout=(5, 10), allow_redirects=False)
+        except requests.RequestException as exc:
+            reason = "LS 정규장 분봉 통신: " + type(exc).__name__
+            if attempt == 0:
+                time.sleep(2.0)
+                continue
+            _LS_CLOSE_FAILURES += 1
+            if _LS_CLOSE_FAILURES >= 2:
+                _LS_CLOSE_DISABLED = True
+            raise SourceFailure(reason) from None
         if r.status_code != 200:
-            if r.status_code in (401, 403, 429) or r.status_code >= 500:
+            retryable = r.status_code in (429, 500, 502, 503, 504) or (
+                r.status_code == 404 and "/503.html" in (r.text or ""))
+            if retryable and attempt == 0:
+                time.sleep(2.5)
+                continue
+            if retryable:
+                _LS_CLOSE_FAILURES += 1
+            if r.status_code in (401, 403, 429) or _LS_CLOSE_FAILURES >= 2:
                 _LS_CLOSE_DISABLED = True
             raise SourceFailure(f"LS 정규장 분봉 HTTP {r.status_code}")
         data = r.json()
         if not isinstance(data, dict) or str(data.get("rsp_cd") or "") not in ("00000", "00001"):
-            _LS_CLOSE_DISABLED = True
             raise SourceFailure("LS 정규장 분봉 응답 미승인")
+        _LS_CLOSE_FAILURES = 0
         return _parse_ls_close(data, name, code, bounds, prev_bounds)
-    except requests.RequestException as exc:
-        _LS_CLOSE_DISABLED = True
-        raise SourceFailure("LS 정규장 분봉 통신: " + type(exc).__name__) from None
+    raise SourceFailure("LS 정규장 분봉 재시도 소진")
 
 
 def _fetch_regular_stock_close(name: str, code: str, bounds: tuple[dt.datetime, dt.datetime]) -> dict[str, Any]:
@@ -886,7 +906,16 @@ def _regression_checks() -> None:
                                    "검사", code, bounds, prev_bounds), "LS code mismatch")
     rejects(lambda: _parse_ls_close(dict(ls_data, t8452OutBlock=dict(ls_data["t8452OutBlock"], e_time="200000")),
                                    "검사", code, bounds, prev_bounds), "LS session mismatch")
-    print("fx_sector_rotation_regressions=24 passed; no Telegram or state writes")
+    extended_clock = dict(ls_data, t8452OutBlock1=[
+        dict(ls_data["t8452OutBlock1"][0], time=cl.strftime("%H%M%S")+"0000"),
+        ls_data["t8452OutBlock1"][1], ls_data["t8452OutBlock1"][2]])
+    check(abs(_parse_ls_close(extended_clock, "검사", code, bounds, prev_bounds)["change_pct"] - 2) < 1e-8,
+          "LS ten-digit exact clock")
+    rejects(lambda: _parse_ls_close(dict(extended_clock, t8452OutBlock1=[
+        dict(extended_clock["t8452OutBlock1"][0], time=cl.strftime("%H%M%S")+"0001"),
+        *extended_clock["t8452OutBlock1"][1:]]), "검사", code, bounds, prev_bounds),
+        "LS nonzero post-close fractional clock")
+    print("fx_sector_rotation_regressions=26 passed; no Telegram or state writes")
 
 
 def _run() -> int:
