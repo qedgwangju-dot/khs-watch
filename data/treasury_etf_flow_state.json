@@ -864,6 +864,21 @@
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "fetched_at_kst": "2026-11-28T08:50:56+09:00",
         "flow_usd": 106093000.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "미 국채 1~3년",
+        "date": "2026-11-27",
+        "nav_date": "2026-11-27",
+        "shares_date": "2026-11-27",
+        "nav": 81.55,
+        "shares": 332000000.0,
+        "sec_yield": 4.55,
+        "nav_change_pct": -0.07,
+        "net_assets": 27074871536.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-11-28T11:45:00+09:00",
+        "flow_usd": 260960000.0
       }
     ],
     "IEF": [
@@ -1744,6 +1759,21 @@
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "fetched_at_kst": "2026-11-28T08:50:57+09:00",
         "flow_usd": 414135000.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "미 국채 7~10년",
+        "date": "2026-11-27",
+        "nav_date": "2026-11-27",
+        "shares_date": "2026-11-27",
+        "nav": 91.62,
+        "shares": 496900000.0,
+        "sec_yield": 4.77,
+        "nav_change_pct": -0.44,
+        "net_assets": 45528342140.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-11-28T11:45:01+09:00",
+        "flow_usd": 9162000.0
       }
     ],
     "TLT": [
@@ -2624,6 +2654,21 @@
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "fetched_at_kst": "2026-11-28T08:50:58+09:00",
         "flow_usd": 213694000.0
+      },
+      {
+        "ticker": "TLT",
+        "label": "미 국채 20년 이상",
+        "date": "2026-11-27",
+        "nav_date": "2026-11-27",
+        "shares_date": "2026-11-27",
+        "nav": 81.32,
+        "shares": 603600000.0,
+        "sec_yield": 5.23,
+        "nav_change_pct": -1.07,
+        "net_assets": 49083837885.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-11-28T11:45:01+09:00",
+        "flow_usd": 81320000.0
       }
     ],
     "LQD": [
@@ -3527,6 +3572,23 @@
         "oas_bps": 102.26,
         "oas_date": "2026-11-25",
         "flow_usd": -197980000.0
+      },
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-11-27",
+        "nav_date": "2026-11-27",
+        "shares_date": "2026-11-27",
+        "nav": 103.85,
+        "shares": 323100000.0,
+        "sec_yield": 5.93,
+        "nav_change_pct": -0.33,
+        "net_assets": 33554352675.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "fetched_at_kst": "2026-11-28T11:45:02+09:00",
+        "oas_bps": 102.26,
+        "oas_date": "2026-11-25",
+        "flow_usd": 425785000.0
       }
     ],
     "HYG": [
@@ -4430,25 +4492,42 @@
         "oas_bps": 331.22,
         "oas_date": "2026-11-25",
         "flow_usd": 129693000.0
+      },
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-11-27",
+        "nav_date": "2026-11-27",
+        "shares_date": "2026-11-27",
+        "nav": 76.54,
+        "shares": 224700000.0,
+        "sec_yield": 7.48,
+        "nav_change_pct": 0.33,
+        "net_assets": 17199380759.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "fetched_at_kst": "2026-11-28T11:45:04+09:00",
+        "oas_bps": 331.22,
+        "oas_date": "2026-11-25",
+        "flow_usd": 183696000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-11-26T13:32:33+09:00",
+    "at_kst": "2026-11-28T11:44:58+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      666,
-      667
+      675,
+      676
     ],
     "overall": "혼조·추가 확인",
-    "treasury_flow": "중·장기채 가격·자금 동반 회복",
-    "credit_flow": "신용시장 혼조",
+    "treasury_flow": "중·장기채 저가매수",
+    "credit_flow": "신용 위험선호 회복 확인",
     "curve_regime": "수익률곡선 구간별 혼조",
-    "treasury_date": "2026-11-25",
-    "credit_oas_date": "2026-11-24",
+    "treasury_date": "2026-11-27",
+    "credit_oas_date": "2026-11-25",
     "format": "treasury-credit-ishares-oas-v3",
-    "data_fingerprint": "00db3d7f9a1968267df5ccfe3bcf4f92302a30b4451a480ccac9f4de605de435",
-    "daily_delivery_date_kst": "2026-11-26"
+    "data_fingerprint": "c3c5efc94c44a1af81e7f46f205f60c50e945798b1d5d1924e62656e052f635b",
+    "daily_delivery_date_kst": "2026-11-28"
   },
   "daily_status_notification": {
     "date_kst": "2026-11-27",
