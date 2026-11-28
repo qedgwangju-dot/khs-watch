@@ -853,11 +853,21 @@ def discover_other_managers(now,fetch=http_bytes):
                      (manager,aliases,"bing","https://www.bing.com/news/search?q="+quote(query)+"&format=rss&setmkt=en-US")])
     def collect(job):
         manager,aliases,source,url=job
-        try:
-            rows=parse_other_manager_rss(fetch(url),source,manager,aliases,now)
-            return manager,source,True,rows,None
-        except (ET.ParseError,RuntimeError,ValueError) as exc:
-            return manager,source,False,[],type(exc).__name__
+        # Retry with a simpler query on the same provider. Alternate URLs
+        # never count as independent publishers or as a successful empty scan.
+        simple=quote('"'+aliases[0]+'"')
+        fallback=("https://www.bing.com/news/search?q="+simple+"&format=rss" if source=="bing"
+                  else "https://news.google.com/rss/search?q="+simple+"%20when%3A7d&hl=en-US&gl=US&ceid=US:en")
+        errors=[]
+        for endpoint in dict.fromkeys((url,fallback)):
+            try:
+                rows=parse_other_manager_rss(fetch(endpoint),source,manager,aliases,now)
+                if errors:
+                    print("OTHER_MANAGER_SOURCE_FALLBACK_OK "+manager+" "+source)
+                return manager,source,True,rows,None
+            except (ET.ParseError,RuntimeError,ValueError) as exc:
+                errors.append(type(exc).__name__)
+        return manager,source,False,[],"/".join(errors)
     items=[]
     health={}
     with ThreadPoolExecutor(max_workers=4) as pool:
